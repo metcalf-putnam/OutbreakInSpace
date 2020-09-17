@@ -1,5 +1,5 @@
 extends Node2D
-var starting_npcs := 100
+var starting_npcs := 250
 export (PackedScene) var NPC
 var screen_size
 var rng = RandomNumberGenerator.new()
@@ -17,8 +17,8 @@ func spawn_npc():
 
 
 func get_random_pos() -> Vector2:
-	var x = rng.randf_range(-1.0, 1.0)
-	var y = rng.randf_range(-1.0, 1.0)
+	var x = rng.randf_range(0, screen_size.x)
+	var y = rng.randf_range(0, screen_size.y)
 	var vector = Vector2(x, y)
 	return vector
 	

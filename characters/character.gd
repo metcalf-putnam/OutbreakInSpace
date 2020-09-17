@@ -2,7 +2,7 @@ extends KinematicBody2D
 class_name Character
 
 var screen_size
-var speed = 50
+var speed = 25
 
 var is_infected := false
 var is_contagious := false setget set_contagious

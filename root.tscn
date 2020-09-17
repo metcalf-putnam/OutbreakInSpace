@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/character.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=3]
 [ext_resource path="res://root.gd" type="Script" id=4]
+[ext_resource path="res://fps.gd" type="Script" id=5]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 4 )
@@ -17,3 +18,13 @@ position = Vector2( 193.218, 92.1041 )
 
 [node name="NPC" parent="." instance=ExtResource( 3 )]
 position = Vector2( 495.149, 205.997 )
+
+[node name="FPS" type="Label" parent="."]
+margin_left = 982.02
+margin_top = 1.99774
+margin_right = 1022.02
+margin_bottom = 15.9977
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

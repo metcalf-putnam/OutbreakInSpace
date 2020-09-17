@@ -18,6 +18,15 @@ func get_random_direction():
 	var x = rng.randf_range(-1.0, 1.0)
 	var y = rng.randf_range(-1.0, 1.0)
 	direction = Vector2(x, y)
+	animate_sprite()
+
+
+func animate_sprite():
+	$AnimationPlayer.play("walk_left")
+	if direction.x <= 0:
+		$Sprite.flip_h = false
+	else: 
+		$Sprite.flip_h = true
 
 
 func _physics_process(_delta):

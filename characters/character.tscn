@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://characters/character.gd" type="Script" id=1]
+[ext_resource path="res://characters/circle.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 39.3685
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 60.0323
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 16.0912
+
+[node name="Character" type="KinematicBody2D" groups=[
+"susceptible",
+]]
+script = ExtResource( 1 )
+
+[node name="VeryClose" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VeryClose"]
+shape = SubResource( 1 )
+
+[node name="Close" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Close"]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -20.3563
+margin_top = -31.035
+margin_right = 19.6437
+margin_bottom = -17.035
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfectionVisual" type="Sprite" parent="."]
+modulate = Color( 0.77, 0.14, 0.14, 0 )
+texture = ExtResource( 2 )

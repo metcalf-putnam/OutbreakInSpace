@@ -1,7 +1,8 @@
 extends KinematicBody2D
 class_name Character
 
-var speed = 120
+var screen_size
+var speed = 50
 
 var is_infected := false
 var is_contagious := false setget set_contagious
@@ -20,10 +21,12 @@ var very_close_contacts = []
 var breathing_shed := 5
 var speaking_shed := 50
 var coughing_shed := 1500
+var singing_shed := 100
 
 
 func _ready():
 	update_label()
+	screen_size = get_viewport_rect().size
 
 
 func add_viral_particles(particles_in : float):
@@ -51,7 +54,7 @@ func update_label():
 		$InfectionVisual.modulate.a = float(viral_load/infection_limit)
 
 
-func _on_Timer_timeout():
+func _on_ShedTimer_timeout():
 	if is_contagious:
 		shed_particles()
 
@@ -69,10 +72,10 @@ func set_contagious(boolean):
 	
 	if is_contagious:
 		connect_area_signals()
-		$Timer.start()
+		$ShedTimer.start()
 	else:
 		disconnect_area_signals()
-		$Timer.stop()
+		$ShedTimer.stop()
 	update_label()
 
 
@@ -108,6 +111,13 @@ func _on_Close_body_exited(body):
 func _on_VeryClose_body_exited(body):
 	if very_close_contacts.has(body):
 		very_close_contacts.erase(body)
+
+
+func sing():
+	for body in close_contacts:
+		body.add_viral_particles(singing_shed)
+	for body in very_close_contacts:
+		body.add_viral_particles(singing_shed)
 
 
 func cough():

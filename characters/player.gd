@@ -1,12 +1,11 @@
 extends Character
 var last_direction
-var screen_size
 
 
 func _ready():
-	screen_size = get_viewport_rect().size
 	is_infected = true
 	set_contagious(true)
+	speed = 125
 
 func _physics_process(_delta):
 	var direction = Vector2()
@@ -25,4 +24,4 @@ func _physics_process(_delta):
 func _unhandled_input(event):
 	# TODO: make this different? maybe they can sing on command?
 	if event.is_action_pressed("ui_accept"):
-		cough()
+		sing()

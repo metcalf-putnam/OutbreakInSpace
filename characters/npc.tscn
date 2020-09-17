@@ -5,3 +5,7 @@
 
 [node name="NPC" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+
+[node name="RandDirTimer" type="Timer" parent="." index="7"]
+wait_time = 2.0
+[connection signal="timeout" from="RandDirTimer" to="." method="_on_RandDirTimer_timeout"]

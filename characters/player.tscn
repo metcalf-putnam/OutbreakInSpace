@@ -5,4 +5,3 @@
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,9 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://bullet-prototype/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://bullet-prototype/B&W_Explosão_32x32.png" type="Texture" id=2]
-
-
+[ext_resource path="res://bullet-prototype/bullet/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://bullet-prototype/assets/B&W_Explosão_32x32.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.0

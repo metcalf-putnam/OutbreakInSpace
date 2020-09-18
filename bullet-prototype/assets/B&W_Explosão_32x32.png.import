@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/B&W_Explosão_32x32.png-28f7c902fba5a3917dd0dfea708ca25e.stex"
+path="res://.import/B&W_Explosão_32x32.png-5f5af3ec37d7de8099016991ae82c9e9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://bullet-prototype/B&W_Explosão_32x32.png"
-dest_files=[ "res://.import/B&W_Explosão_32x32.png-28f7c902fba5a3917dd0dfea708ca25e.stex" ]
+source_file="res://bullet-prototype/assets/B&W_Explosão_32x32.png"
+dest_files=[ "res://.import/B&W_Explosão_32x32.png-5f5af3ec37d7de8099016991ae82c9e9.stex" ]
 
 [params]
 

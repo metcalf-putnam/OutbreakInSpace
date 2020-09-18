@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://bullet-prototype/enemies/prototype/1-S.tscn" type="PackedScene" id=1]
+
+[node name="3-S" type="Node2D"]
+
+[node name="1-S" parent="." instance=ExtResource( 1 )]
+position = Vector2( 7, 0 )
+
+[node name="Spawner" parent="1-S" index="2"]
+bullet_array_starting_angle = 315
+
+[node name="1-S2" parent="." instance=ExtResource( 1 )]
+position = Vector2( -7, 0 )
+
+[node name="Spawner" parent="1-S2" index="2"]
+bullet_array_starting_angle = 225
+
+[node name="1-S3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 7 )
+
+[node name="Spawner" parent="1-S3" index="2"]
+bullet_array_starting_angle = 270
+
+[editable path="1-S"]
+
+[editable path="1-S2"]
+
+[editable path="1-S3"]

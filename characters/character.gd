@@ -48,8 +48,10 @@ func check_status():
 func update_label():
 	if is_contagious:
 		$Label.text = "Contagious"
+		$InfectionVisual.modulate.a = 1
 	elif is_infected:
 		$Label.text = "Infected"
+		$InfectionVisual.modulate.a = 1
 	else:
 		$Label.text = str(viral_load) + "/" + str(infection_limit)
 		$InfectionVisual.modulate.a = float(viral_load/infection_limit)
@@ -74,6 +76,7 @@ func set_contagious(boolean):
 	if is_contagious:
 		connect_area_signals()
 		$ShedTimer.start()
+		
 	else:
 		disconnect_area_signals()
 		$ShedTimer.stop()

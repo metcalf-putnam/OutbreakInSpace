@@ -62,7 +62,7 @@ func add_button(data):
 	node.show()
 	node.set_name(data.key)
 	print("data.key:", data.key)
-	lastBttnPos -= 23
+	lastBttnPos -= 25
 
 
 func reset():

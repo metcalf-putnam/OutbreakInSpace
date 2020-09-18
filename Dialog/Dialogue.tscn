@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Dialog/Dialogue.gd" type="Script" id=1]
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=3]
 [ext_resource path="res://Dialog/ChoiceButton.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+font_data = ExtResource( 2 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
@@ -52,7 +56,10 @@ margin_left = 27.0
 margin_top = 31.0
 margin_right = 402.0
 margin_bottom = 116.0
+custom_fonts/normal_font = SubResource( 5 )
 bbcode_enabled = true
+bbcode_text = "dfssdffasddf"
+text = "dfssdffasddf"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -109,7 +116,7 @@ margin_left = 296.965
 margin_top = 125.202
 margin_right = 463.965
 margin_bottom = 157.202
-rect_scale = Vector2( 1.04829, 1.04829 )
+rect_scale = Vector2( 1.0604, 1.0604 )
 texture = ExtResource( 3 )
 patch_margin_left = 3
 patch_margin_top = 3

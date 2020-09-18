@@ -22,6 +22,7 @@ var breathing_shed := 5
 var speaking_shed := 50
 var coughing_shed := 1500
 var singing_shed := 100
+# TODO: something like outside vs. inside transmission? Or something on size of bubble?
 
 
 func _ready():
@@ -47,8 +48,10 @@ func check_status():
 func update_label():
 	if is_contagious:
 		$Label.text = "Contagious"
+		$InfectionVisual.modulate.a = 1
 	elif is_infected:
 		$Label.text = "Infected"
+		$InfectionVisual.modulate.a = 1
 	else:
 		$Label.text = str(viral_load) + "/" + str(infection_limit)
 		$InfectionVisual.modulate.a = float(viral_load/infection_limit)
@@ -73,6 +76,7 @@ func set_contagious(boolean):
 	if is_contagious:
 		connect_area_signals()
 		$ShedTimer.start()
+		
 	else:
 		disconnect_area_signals()
 		$ShedTimer.stop()
@@ -125,3 +129,11 @@ func cough():
 		body.add_viral_particles(coughing_shed)
 	for body in very_close_contacts:
 		body.add_viral_particles(coughing_shed)
+		
+
+func animate_sprite(direction : Vector2):
+	$AnimationPlayer.play("walk_left")
+	if direction.x <= 0:
+		$Sprite.flip_h = false
+	else: 
+		$Sprite.flip_h = true

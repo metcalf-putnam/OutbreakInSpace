@@ -1,0 +1,138 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Dialog/Dialogue.gd" type="Script" id=1]
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=3]
+[ext_resource path="res://Dialog/ChoiceButton.tscn" type="PackedScene" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "blinking"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="Dialogue" type="NinePatchRect"]
+margin_left = 71.2173
+margin_top = 415.435
+margin_right = 521.217
+margin_bottom = 565.435
+texture = ExtResource( 3 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+ChoiceButton = ExtResource( 4 )
+
+[node name="Text" type="RichTextLabel" parent="."]
+margin_left = 27.0
+margin_top = 31.0
+margin_right = 402.0
+margin_bottom = 116.0
+bbcode_enabled = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Template" type="Button" parent="."]
+visible = false
+margin_left = 438.64
+margin_top = 34.41
+margin_right = 688.64
+margin_bottom = 54.41
+custom_styles/focus = SubResource( 3 )
+text = "Testing "
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name_NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = -14.1237
+margin_top = -8.05069
+margin_right = 120.876
+margin_bottom = 22.9493
+texture = ExtResource( 3 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="Label" parent="Name_NinePatchRect"]
+margin_left = 5.36514
+margin_top = 5.08832
+margin_right = 130.365
+margin_bottom = 27.0883
+custom_fonts/font = SubResource( 1 )
+text = "Christopher"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Space_NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = 296.965
+margin_top = 125.202
+margin_right = 463.965
+margin_bottom = 157.202
+rect_scale = Vector2( 1.04829, 1.04829 )
+texture = ExtResource( 3 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Space_NinePatchRect"]
+margin_left = 7.94592
+margin_top = 4.64868
+margin_right = 157.946
+margin_bottom = 26.6487
+custom_fonts/font = SubResource( 2 )
+text = "Press Spacebar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Space_NinePatchRect"]
+autoplay = "blinking"
+anims/blinking = SubResource( 4 )
+
+[node name="ChoicePos" type="Position2D" parent="."]
+position = Vector2( 428.484, 90.7691 )

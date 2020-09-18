@@ -1,23 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://characters/character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/interactables/interactable.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=3]
 [ext_resource path="res://root.gd" type="Script" id=4]
 [ext_resource path="res://fps.gd" type="Script" id=5]
+[ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=6]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 4 )
 NPC = ExtResource( 3 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 69.0781, 64.0724 )
-
-[node name="Character" parent="." instance=ExtResource( 2 )]
-position = Vector2( 193.218, 92.1041 )
-
-[node name="NPC" parent="." instance=ExtResource( 3 )]
-position = Vector2( 495.149, 205.997 )
+position = Vector2( 486.883, 521.922 )
 
 [node name="FPS" type="Label" parent="."]
 margin_left = 982.02
@@ -28,3 +23,10 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Interactable" parent="." instance=ExtResource( 2 )]
+position = Vector2( 487.039, 252.014 )
+
+[node name="npcs" type="Node2D" parent="."]
+
+[node name="Dialogue" parent="." instance=ExtResource( 6 )]

@@ -14,9 +14,12 @@ func _physics_process(_delta):
 	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 
 	if direction.length() > 0:
+		animate_sprite(direction)
 		last_direction = direction
 		var velocity = direction.normalized() * speed
 		velocity = move_and_slide(velocity)
+	else:
+		$AnimationPlayer.play("idle")
 
 	position.x = clamp(position.x, 12, screen_size.x - 12)
 	position.y = clamp(position.y, 12, screen_size.y - 20)

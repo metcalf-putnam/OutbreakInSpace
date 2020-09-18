@@ -80,11 +80,14 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Close"]
 shape = SubResource( 2 )
 
+[node name="InfectionVisual" type="Sprite" parent="."]
+modulate = Color( 0.77, 0.14, 0.14, 0 )
+texture = ExtResource( 2 )
+
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
 vframes = 3
 hframes = 4
-frame = 8
 
 [node name="ShedTimer" type="Timer" parent="."]
 
@@ -100,10 +103,6 @@ margin_bottom = -17.035
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="InfectionVisual" type="Sprite" parent="."]
-modulate = Color( 0.77, 0.14, 0.14, 0 )
-texture = ExtResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/idle = SubResource( 4 )

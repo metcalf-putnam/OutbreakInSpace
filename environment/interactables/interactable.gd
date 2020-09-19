@@ -1,6 +1,9 @@
 extends Area2D
+class_name Interactable 
+
 var player_in_range := false
 var has_new_info := true setget set_new_info
+var is_interactable := true
 
 
 func _on_Interactable_body_entered(body):

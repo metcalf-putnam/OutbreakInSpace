@@ -1,15 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Dialog/Dialogue.gd" type="Script" id=1]
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=3]
 [ext_resource path="res://Dialog/ChoiceButton.tscn" type="PackedScene" id=4]
-
-[sub_resource type="DynamicFont" id=5]
-size = 32
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -19,8 +13,11 @@ font_data = ExtResource( 2 )
 size = 32
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 2 )
+
 [sub_resource type="Animation" id=4]
-resource_name = "blinking"
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_scale")
@@ -56,23 +53,10 @@ margin_left = 27.0
 margin_top = 31.0
 margin_right = 402.0
 margin_bottom = 116.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "dfssdffasddf"
 text = "dfssdffasddf"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Template" type="Button" parent="."]
-visible = false
-margin_left = 438.64
-margin_top = 34.41
-margin_right = 688.64
-margin_bottom = 54.41
-custom_styles/focus = SubResource( 3 )
-text = "Testing "
-flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -103,7 +87,7 @@ margin_left = 5.36514
 margin_top = 5.08832
 margin_right = 130.365
 margin_bottom = 27.0883
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Christopher"
 align = 1
 valign = 1
@@ -116,7 +100,6 @@ margin_left = 296.965
 margin_top = 125.202
 margin_right = 463.965
 margin_bottom = 157.202
-rect_scale = Vector2( 1.0604, 1.0604 )
 texture = ExtResource( 3 )
 patch_margin_left = 3
 patch_margin_top = 3
@@ -131,7 +114,7 @@ margin_left = 7.94592
 margin_top = 4.64868
 margin_right = 157.946
 margin_bottom = 26.6487
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Press Spacebar"
 __meta__ = {
 "_edit_use_anchors_": false

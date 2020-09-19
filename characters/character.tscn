@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/circle.png" type="Texture" id=2]
-[ext_resource path="res://characters/Animated_Aliens-Sheet.png" type="Texture" id=3]
+[ext_resource path="res://characters/Blues/Child/base_sprite.png" type="Texture" id=3]
+[ext_resource path="res://characters/Blues/Child/helmet.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.9767
@@ -11,10 +12,10 @@ radius = 23.9767
 radius = 45.3409
 
 [sub_resource type="CircleShape2D" id=3]
-radius = 7.10376
+radius = 4.13257
 
 [sub_resource type="Animation" id=4]
-resource_name = "idle"
+resource_name = "idle_down"
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -29,10 +30,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Helmet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
 
 [sub_resource type="Animation" id=5]
-resource_name = "walk_down"
-length = 0.8
+resource_name = "idle_left"
+length = 0.6
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -41,17 +54,28 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 4, 5, 6, 7 ]
+"values": [ 8, 9 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Helmet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 26, 27 ]
 }
 
 [sub_resource type="Animation" id=6]
-resource_name = "walk_left"
-length = 0.8
+resource_name = "idle_right"
+length = 0.6
 loop = true
-step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -59,11 +83,226 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 12, 13 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Helmet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 9 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "idle_up"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Helmet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 4, 5 ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 8, 9, 10, 11 ]
+"values": [ 17, 18, 19, 16 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Helmet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 17, 18, 19, 16 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "walk_left"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 25, 26, 27, 24 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Helmet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 25, 26, 27, 26 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 29, 30, 31, 28 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Helmet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 29, 30, 29, 30 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "walk_up"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 22, 23, 22 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Helmet:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 21, 22, 21, 22 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "idle_down"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "idle_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=16]
+blend_point_0/node = SubResource( 12 )
+blend_point_0/pos = Vector2( 0, 0.7 )
+blend_point_1/node = SubResource( 13 )
+blend_point_1/pos = Vector2( 0, -0.7 )
+blend_point_2/node = SubResource( 14 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 15 )
+blend_point_3/pos = Vector2( -1, 0 )
+min_space = Vector2( -1.2, -1.2 )
+max_space = Vector2( 1.2, 1.2 )
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "walk_up"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "walk_left"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=21]
+blend_point_0/node = SubResource( 17 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 18 )
+blend_point_1/pos = Vector2( 0, -1 )
+blend_point_2/node = SubResource( 19 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 20 )
+blend_point_3/pos = Vector2( -1, 0 )
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachine" id=24]
+states/idle/node = SubResource( 16 )
+states/idle/position = Vector2( 280, 53 )
+states/walk/node = SubResource( 21 )
+states/walk/position = Vector2( 444, 53 )
+transitions = [ "idle", "walk", SubResource( 22 ), "walk", "idle", SubResource( 23 ) ]
+start_node = "idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
 [node name="Character" type="KinematicBody2D" groups=[
 "susceptible",
@@ -86,12 +325,20 @@ texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )
-vframes = 3
+vframes = 10
 hframes = 4
+frame = 8
+
+[node name="Helmet" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+vframes = 10
+hframes = 4
+frame = 26
 
 [node name="ShedTimer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4.25 )
 shape = SubResource( 3 )
 
 [node name="Label" type="Label" parent="."]
@@ -105,7 +352,24 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/idle = SubResource( 4 )
-anims/walk_down = SubResource( 5 )
-anims/walk_left = SubResource( 6 )
+anims/idle_down = SubResource( 4 )
+anims/idle_left = SubResource( 5 )
+anims/idle_right = SubResource( 6 )
+anims/idle_up = SubResource( 7 )
+anims/walk_down = SubResource( 8 )
+anims/walk_left = SubResource( 9 )
+anims/walk_right = SubResource( 10 )
+anims/walk_up = SubResource( 11 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 24 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 25 )
+parameters/idle/blend_position = Vector2( -0.0537678, 0.103448 )
+parameters/walk/blend_position = Vector2( 0, 0 )
+[connection signal="body_entered" from="VeryClose" to="." method="_on_VeryClose_body_entered"]
+[connection signal="body_exited" from="VeryClose" to="." method="_on_VeryClose_body_exited"]
+[connection signal="body_entered" from="Close" to="." method="_on_Close_body_entered"]
+[connection signal="body_exited" from="Close" to="." method="_on_Close_body_exited"]
 [connection signal="timeout" from="ShedTimer" to="." method="_on_ShedTimer_timeout"]

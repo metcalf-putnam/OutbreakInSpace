@@ -3,6 +3,9 @@ extends Node
 var littleMouse = 'awesome'
 var exampleVar = true
 var hasItem = false
+var player_can_sing := false
+var player_position := Vector2(300, 300)
+
 
 # `export` our variables and quick documentation about them on hover
 var variables = [
@@ -28,6 +31,12 @@ func change_var(name, value):
 	elif(val == "False") or (val == "false"):
 		val = false
 	set(name, val)
+
+func increment_cookies():
+	pass
+	
+func singing_lesson():
+	player_can_sing = true
 
 # `export` our functions and documentation about them! 
 var functions = [

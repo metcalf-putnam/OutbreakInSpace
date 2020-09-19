@@ -2,16 +2,11 @@ extends KinematicBody2D
 class_name Character
 
 var screen_size
-var speed = 25
+var speed = 15
+var has_helmet := false
+var animationState : AnimationNodeStateMachinePlayback
 
-var is_infected := false
-var is_contagious := false setget set_contagious
-var is_symptomatic := false
-
-# Getting infected
-var infection_limit := 1000.0
-var viral_load := 0.0
-var viral_acceptance_rate := 0.5
+var data
 
 # Tracking those in your personal bubble
 var close_contacts = []
@@ -26,39 +21,57 @@ var singing_shed := 100
 
 
 func _ready():
-	update_label()
 	screen_size = get_viewport_rect().size
+	animationState = $AnimationTree["parameters/playback"]
+
+
+func init(data_in):
+	data = data_in
+	update_label()
+	update_sprite()
+	if data["is_contagious"]:
+		$ShedTimer.start()
+
+
+func update_sprite():
+	var sprite_folder_path = "res://characters/" + data["race"] + "/" + data["type"]
+	$Sprite.texture = load(sprite_folder_path + "/base_sprite.png")
+	$Helmet.texture = load(sprite_folder_path + "/helmet.png")
+	if has_helmet: 
+		$Helmet.show()
+	else:
+		$Helmet.hide()
 
 
 func add_viral_particles(particles_in : float):
 	# TODO: contact tracing element to it?
-	viral_load += particles_in * viral_acceptance_rate
-	if !is_infected:
+	data["viral_load"] += particles_in * data["viral_acceptance_rate"]
+	if !data["is_infected"]:
 		check_status()
 	update_label()
 
 
 func check_status():
 	# TODO: logic around fighting infection if at moderate viral load
-	if viral_load >= infection_limit:
-		is_infected = true
+	if data["viral_load"] >= data["infective_dose"]:
+		data["is_infected"] = true
 		# TODO: add timer to contagious (and separate timer to symptoms if applicable?)
 
 
 func update_label():
-	if is_contagious:
+	if data["is_contagious"]:
 		$Label.text = "Contagious"
 		$InfectionVisual.modulate.a = 1
-	elif is_infected:
+	elif data["is_infected"]:
 		$Label.text = "Infected"
 		$InfectionVisual.modulate.a = 1
 	else:
-		$Label.text = str(viral_load) + "/" + str(infection_limit)
-		$InfectionVisual.modulate.a = float(viral_load/infection_limit)
+		$Label.text = str(data["viral_load"]) + "/" + str(data["infective_dose"])
+		$InfectionVisual.modulate.a = float(data["viral_load"]/data["infective_dose"])
 
 
 func _on_ShedTimer_timeout():
-	if is_contagious:
+	if data["is_contagious"]:
 		shed_particles()
 
 
@@ -70,10 +83,10 @@ func shed_particles():
 	
 
 func set_contagious(boolean):
-	is_contagious = boolean
+	data["is_contagious"] = boolean
 	remove_from_group("susceptible")
 	
-	if is_contagious:
+	if data["is_contagious"]:
 		connect_area_signals()
 		$ShedTimer.start()
 		
@@ -129,11 +142,9 @@ func cough():
 		body.add_viral_particles(coughing_shed)
 	for body in very_close_contacts:
 		body.add_viral_particles(coughing_shed)
-		
+
 
 func animate_sprite(direction : Vector2):
-	$AnimationPlayer.play("walk_left")
-	if direction.x <= 0:
-		$Sprite.flip_h = false
-	else: 
-		$Sprite.flip_h = true
+	$AnimationTree.set("parameters/idle/blend_position", direction)
+	$AnimationTree.set("parameters/walk/blend_position", direction)
+	animationState.travel("walk")

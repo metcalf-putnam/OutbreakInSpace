@@ -10,7 +10,7 @@ func _ready():
 	get_random_direction()
 	$RandDirTimer.start()
 
-	
+
 func _on_RandDirTimer_timeout():
 	get_random_direction()
 

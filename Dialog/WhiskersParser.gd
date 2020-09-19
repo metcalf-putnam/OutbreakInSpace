@@ -29,8 +29,6 @@ static func open_whiskers(file_path : String) -> Dictionary:
 	
 	return dialogue_data
 
-static func parse_whiskers(data : Dictionary) -> Dictionary:
-	return data
 
 func start_dialogue(dialogue_data : Dictionary, custom_base_instance : Object = null) -> Dictionary:
 	if not dialogue_data.has("Start"):

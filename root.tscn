@@ -21,7 +21,7 @@ format = 1
 
 [node name="CoreNPC" parent="YSort/npcs" instance=ExtResource( 2 )]
 position = Vector2( 673.477, 411.944 )
-dialog_file = "res://Dialog/json/singing_v3.json"
+dialog_file = "res://Dialog/json/granny_day_1.json"
 full_name = "Django"
 infective_dose = 1000
 

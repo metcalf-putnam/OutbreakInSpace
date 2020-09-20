@@ -37,6 +37,7 @@ func init(file_path : String, name := " "):
 	$Name_NinePatchRect/Name.text = name
 	set_process(true)
 	parser = WhiskersParser.new(Global)
+	parser.set_format_dictionary({"player_name" : "Knuthl"})
 	dialogue_data = parser.open_whiskers(file_path)
 	block = parser.start_dialogue(dialogue_data)
 	next()

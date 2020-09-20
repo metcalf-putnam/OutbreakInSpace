@@ -1,0 +1,153 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://bullet-prototype/enemies/base_enemy.gd" type="Script" id=1]
+[ext_resource path="res://bullet-prototype/assets/B&W_Explosão_32x32.png" type="Texture" id=2]
+[ext_resource path="res://bullet-prototype/spawner/Spawner.tscn" type="PackedScene" id=3]
+[ext_resource path="res://bullet-prototype/bullets/medium_bullet/MediumBullet.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 18.0
+
+[node name="Easy" type="Area2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+self_modulate = Color( 0.243137, 1, 0, 1 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Arms" type="Node2D" parent="."]
+
+[node name="1" type="Sprite" parent="Arms"]
+rotation = 0.785398
+scale = Vector2( 0.3, 4 )
+z_index = -1
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Spawner" parent="Arms/1" instance=ExtResource( 3 )]
+position = Vector2( 0.5, -7 )
+bullet_scn = ExtResource( 4 )
+bullet_array_starting_angle = 45
+bullets_per_array = 1
+spin_speed = 0
+fire_rate = 20
+
+[node name="Spawner2" parent="Arms/1" instance=ExtResource( 3 )]
+position = Vector2( -0.5, 7 )
+bullet_scn = ExtResource( 4 )
+bullet_array_starting_angle = 225
+bullets_per_array = 1
+spin_speed = 0
+fire_rate = 20
+
+[node name="TimerArm1" type="Timer" parent="Arms/1"]
+wait_time = 10.0
+autostart = true
+
+[node name="2" type="Sprite" parent="Arms"]
+rotation = 2.35619
+scale = Vector2( 0.3, 4 )
+z_index = -1
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Spawner" parent="Arms/2" instance=ExtResource( 3 )]
+position = Vector2( 0.5, 7 )
+bullet_scn = ExtResource( 4 )
+bullet_array_starting_angle = 135
+bullets_per_array = 1
+spin_speed = 0
+fire_rate = 20
+
+[node name="Spawner2" parent="Arms/2" instance=ExtResource( 3 )]
+position = Vector2( 0.5, -7 )
+bullet_scn = ExtResource( 4 )
+bullet_array_starting_angle = 315
+bullets_per_array = 1
+spin_speed = 0
+fire_rate = 20
+
+[node name="TimerArm2" type="Timer" parent="Arms/2"]
+wait_time = 10.0
+autostart = true
+
+[node name="3" type="Sprite" parent="Arms"]
+rotation = 1.5708
+scale = Vector2( 0.3, 4 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Spawner" parent="Arms/3" instance=ExtResource( 3 )]
+position = Vector2( 0.5, 7 )
+bullet_scn = ExtResource( 4 )
+bullet_array_starting_angle = 180
+bullets_per_array = 1
+spin_speed = 0
+fire_rate = 15
+is_running = false
+
+[node name="Spawner2" parent="Arms/3" instance=ExtResource( 3 )]
+position = Vector2( -0.7, -7 )
+bullet_scn = ExtResource( 4 )
+bullets_per_array = 1
+spin_speed = 0
+fire_rate = 15
+is_running = false
+
+[node name="TimerArm3" type="Timer" parent="Arms/3"]
+wait_time = 20.0
+
+[node name="4" type="Sprite" parent="Arms"]
+scale = Vector2( 0.3, 4 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Spawner" parent="Arms/4" instance=ExtResource( 3 )]
+position = Vector2( 0, -7 )
+bullet_scn = ExtResource( 4 )
+bullet_array_starting_angle = 90
+bullets_per_array = 1
+spin_speed = 0
+fire_rate = 15
+is_running = false
+
+[node name="Spawner2" parent="Arms/4" instance=ExtResource( 3 )]
+position = Vector2( 0.7, 7 )
+scale = Vector2( 0.709093, 125.708 )
+bullet_scn = ExtResource( 4 )
+bullet_array_starting_angle = 270
+bullets_per_array = 1
+spin_speed = 0
+fire_rate = 15
+is_running = false
+
+[node name="TimerArm4" type="Timer" parent="Arms/4"]
+wait_time = 20.0
+
+[node name="5" type="Sprite" parent="Arms"]
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Spawner" parent="Arms/5" instance=ExtResource( 3 )]
+bullet_scn = ExtResource( 4 )
+bullet_array_starting_angle = 90
+bullets_per_array = 1
+fire_rate = 5
+is_running = false
+
+[node name="TimerArm5" type="Timer" parent="Arms/5"]
+wait_time = 30.0
+[connection signal="area_entered" from="." to="." method="_on_Easy_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Easy_body_entered"]
+[connection signal="timeout" from="Arms/1/TimerArm1" to="." method="_on_TimerArm1_timeout"]
+[connection signal="timeout" from="Arms/2/TimerArm2" to="." method="_on_TimerArm2_timeout"]
+[connection signal="timeout" from="Arms/3/TimerArm3" to="." method="_on_TimerArm3_timeout"]
+[connection signal="timeout" from="Arms/4/TimerArm4" to="." method="_on_TimerArm4_timeout"]
+[connection signal="timeout" from="Arms/5/TimerArm5" to="." method="_on_TimerArm5_timeout"]

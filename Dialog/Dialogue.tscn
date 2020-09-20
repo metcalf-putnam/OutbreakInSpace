@@ -34,9 +34,9 @@ tracks/0/keys = {
 
 [node name="Dialogue" type="NinePatchRect"]
 margin_left = 71.2173
-margin_top = 415.435
+margin_top = 383.435
 margin_right = 521.217
-margin_bottom = 565.435
+margin_bottom = 563.435
 texture = ExtResource( 3 )
 patch_margin_left = 3
 patch_margin_top = 3
@@ -50,9 +50,9 @@ ChoiceButton = ExtResource( 4 )
 
 [node name="Text" type="RichTextLabel" parent="."]
 margin_left = 27.0
-margin_top = 31.0
-margin_right = 402.0
-margin_bottom = 116.0
+margin_top = 28.0
+margin_right = 417.0
+margin_bottom = 153.0
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
 bbcode_text = "dfssdffasddf"
@@ -70,9 +70,9 @@ __meta__ = {
 
 [node name="Name_NinePatchRect" type="NinePatchRect" parent="."]
 margin_left = -14.1237
-margin_top = -8.05069
+margin_top = -16.0507
 margin_right = 120.876
-margin_bottom = 22.9493
+margin_bottom = 14.9493
 texture = ExtResource( 3 )
 patch_margin_left = 2
 patch_margin_top = 2
@@ -97,9 +97,9 @@ __meta__ = {
 
 [node name="Space_NinePatchRect" type="NinePatchRect" parent="."]
 margin_left = 296.965
-margin_top = 125.202
+margin_top = 165.202
 margin_right = 463.965
-margin_bottom = 157.202
+margin_bottom = 197.202
 texture = ExtResource( 3 )
 patch_margin_left = 3
 patch_margin_top = 3

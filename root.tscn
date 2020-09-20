@@ -20,10 +20,20 @@ format = 1
 [node name="npcs" type="YSort" parent="YSort"]
 
 [node name="CoreNPC" parent="YSort/npcs" instance=ExtResource( 2 )]
-position = Vector2( 673.477, 411.944 )
-dialog_file = "res://Dialog/json/granny_day_1.json"
-full_name = "Django"
+position = Vector2( 659.19, 389.72 )
+dialog_file = "res://Dialog/json/professor.json"
+full_name = "Professor"
 infective_dose = 1000
+
+[node name="CoreNPC2" parent="YSort/npcs" instance=ExtResource( 2 )]
+position = Vector2( 366.69, 328.592 )
+dialog_file = "res://Dialog/json/granny_day_1.json"
+full_name = "Granny"
+
+[node name="CoreNPC3" parent="YSort/npcs" instance=ExtResource( 2 )]
+position = Vector2( 542.891, 238.11 )
+dialog_file = "res://Dialog/json/singing_v3.json"
+full_name = "Juan"
 
 [node name="FPS" type="Label" parent="."]
 margin_left = 982.02

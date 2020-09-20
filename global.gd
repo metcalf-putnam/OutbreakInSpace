@@ -4,6 +4,9 @@ var littleMouse = 'awesome'
 var exampleVar = true
 var hasItem = false
 var player_can_sing := false
+var player_can_test := false
+var first_lab_visit := true
+var player_helmet := false
 var player_position := Vector2(300, 300)
 
 
@@ -39,6 +42,10 @@ func increment_cookies():
 func singing_lesson():
 	print("singing lesson being called!")
 	player_can_sing = true
+	
+func visit_professor():
+	first_lab_visit = false
+	player_can_test = true
 
 # `export` our functions and documentation about them! 
 var functions = [

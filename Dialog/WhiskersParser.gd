@@ -8,7 +8,7 @@ var base_instance : Object # Object used as a base instance when running express
 
 func _init(base_instance_in : Object = null):
 	default_base_instance = base_instance_in
-	
+	base_instance = base_instance_in
 	if not base_instance:
 		print("[WARN]: no base_instance for calling expressions.")
 

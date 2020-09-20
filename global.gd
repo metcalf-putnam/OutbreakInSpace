@@ -24,6 +24,7 @@ func give_item():
 	hasItem = true
 
 func change_var(name, value):
+	print("var changed")
 	var val = value
 	
 	if(val == "True") or (val == "true"):
@@ -36,15 +37,20 @@ func increment_cookies():
 	pass
 	
 func singing_lesson():
+	print("singing lesson being called!")
 	player_can_sing = true
 
 # `export` our functions and documentation about them! 
 var functions = [
 	'give_item()',
-	'change_var("var", "value")'
+	'change_var("var", "value")',
+	'singing_lesson()',
+	'increment_cookies()'
 ]
 
 var functionDocs = [
 	'Give the player an item!',
-	'Change the variable to a specified value'
+	'Change the variable to a specified value',
+	'give player singing lesson',
+	'give player cookie'
 ]

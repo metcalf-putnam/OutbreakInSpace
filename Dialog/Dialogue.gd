@@ -1,7 +1,6 @@
 extends NinePatchRect
 
 var lastBttnPos = 0
-var buttonFired = false
 var timer = 0
 
 var parser
@@ -11,27 +10,35 @@ var data = {}
 var is_final := false
 export (PackedScene) var ChoiceButton
 
+func _ready():
+	set_process(false)
+	hide()
+	EventHub.connect("new_dialogue", self, "init")
+
 
 func _process(delta):
 	# TODO: get this out of process for speed improvements
 	timer += delta
 	for i in range(0, get_node("Buttons").get_child_count()):
-		if get_node('Buttons').get_child(i).pressed and !buttonFired and timer >= 0.5:
-			block = parser.next(block.options[i].key)
-			next()
-			buttonFired = true
-
-	if buttonFired:
-		timer = 0
-		buttonFired = false
+		if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
+			step_forward(i)
 
 
-func init(file_path : String, name : String):
+func step_forward(i):
+	if i == -1:
+		block = parser.next()
+	else:
+		block = parser.next(block.options[i].key)
+	next()
+	timer = 0
+
+
+func init(file_path : String, name := " "):
 	$Name_NinePatchRect/Name.text = name
 	set_process(true)
 	parser = WhiskersParser.new(Global)
 	dialogue_data = parser.open_whiskers(file_path)
-	block = parser.start_dialogue(dialogue_data, Global)
+	block = parser.start_dialogue(dialogue_data)
 	next()
 
 
@@ -65,7 +72,6 @@ func add_button(button_data):
 
 func reset():
 	data = {}
-	buttonFired = false
 	lastBttnPos = 0
 	clear_buttons()
 	$Name_NinePatchRect.hide()
@@ -78,6 +84,13 @@ func clear_buttons():
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_accept") and is_processing() and is_final:
+	if !is_processing():
+		return
+	if !event.is_action_pressed("ui_accept"):
+		return
+	if is_final:
+		is_final = false
 		set_process(false)
 		hide()
+	elif $Buttons.get_child_count() == 0:
+		step_forward(-1)

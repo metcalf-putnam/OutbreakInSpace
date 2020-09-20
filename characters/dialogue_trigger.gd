@@ -1,4 +1,7 @@
 extends Interactable
+signal dialogue_started
+
 
 func interact():
-	Dialogue.init("res://Dialog/json/singing_lesson", "Juan")
+	.interact()
+	emit_signal("dialogue_started")

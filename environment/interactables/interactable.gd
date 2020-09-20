@@ -6,14 +6,20 @@ var has_new_info := true setget set_new_info
 var is_interactable := true
 
 
+func _ready():
+	$Control.hide()
+	
+
 func _on_Interactable_body_entered(body):
 	if body.is_in_group("player"):
 		player_in_range = true
+		$Control.show()
 
 
 func _on_Interactable_body_exited(body):
 	if body.is_in_group("player"):
 		player_in_range = false
+		$Control.hide()
 
 
 func _unhandled_input(event):
@@ -22,13 +28,15 @@ func _unhandled_input(event):
 
 
 func set_new_info(boolean):
+	# TODO: ugh make this not horrible to read
+	if boolean:
+		$AnimationPlayer.play("blinking")
+	elif !boolean and has_new_info:
+		$AnimationPlayer.play("shrink")
+	
 	has_new_info = boolean
-	if has_new_info:
-		$Exclamation.visible = true
-	else:
-		$Exclamation.visible = false
 
 
 func interact():
-	print("interacting!")
+	$Control.hide()
 	set_new_info(false)

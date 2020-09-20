@@ -12,8 +12,8 @@ func _ready():
 	for npc in CharacterManager.npcs:
 		spawn_npc(npc)
 	spawn_player()
-	$Dialogue.init("res://Dialog/json/singing_lesson.json", "Juan")
-	
+	#$Dialogue.init("res://Dialog/json/singing_v2.json", "Dave")
+
 
 func spawn_npc(npc_data):
 	var npc = NPC.instance()

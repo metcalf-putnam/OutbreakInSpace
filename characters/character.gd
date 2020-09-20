@@ -3,7 +3,6 @@ class_name Character
 
 var screen_size
 var speed = 15
-var has_helmet := false
 var animationState : AnimationNodeStateMachinePlayback
 
 var data
@@ -18,6 +17,9 @@ var speaking_shed := 50
 var coughing_shed := 1500
 var singing_shed := 100
 # TODO: something like outside vs. inside transmission? Or something on size of bubble?
+
+enum State {SINGING, DIALOGUE, ACTIVE}
+var state = State.ACTIVE
 
 
 func _ready():
@@ -34,13 +36,15 @@ func init(data_in):
 
 
 func update_sprite():
-	var sprite_folder_path = "res://characters/" + data["race"] + "/" + data["type"]
-	$Sprite.texture = load(sprite_folder_path + "/base_sprite.png")
-	$Helmet.texture = load(sprite_folder_path + "/helmet.png")
-	if has_helmet: 
+	if data["has_helmet"]: 
 		$Helmet.show()
 	else:
 		$Helmet.hide()
+	if !data.has_all(["race", "type"]):
+		return
+	var sprite_folder_path = "res://characters/" + data["race"] + "/" + data["type"]
+	$Sprite.texture = load(sprite_folder_path + "/base_sprite.png")
+	$Helmet.texture = load(sprite_folder_path + "/helmet.png")
 
 
 func add_viral_particles(particles_in : float):
@@ -131,10 +135,22 @@ func _on_VeryClose_body_exited(body):
 
 
 func sing():
+	state = State.SINGING
+	set_physics_process(false)
+	animationState.travel("sing")
 	for body in close_contacts:
 		body.add_viral_particles(singing_shed)
 	for body in very_close_contacts:
 		body.add_viral_particles(singing_shed)
+
+
+func _on_singing_anim_end():
+	print("singing ended!")
+	if Input.is_action_pressed("ui_accept"):
+		sing()
+	else:
+		state = State.ACTIVE
+		set_physics_process(true)
 
 
 func cough():
@@ -145,6 +161,9 @@ func cough():
 
 
 func animate_sprite(direction : Vector2):
+	if state == State.SINGING:
+		animationState.travel("sing")
+		return
 	$AnimationTree.set("parameters/idle/blend_position", direction)
 	$AnimationTree.set("parameters/walk/blend_position", direction)
 	animationState.travel("walk")

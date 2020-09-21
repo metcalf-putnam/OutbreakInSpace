@@ -1,5 +1,6 @@
 extends Node
 
+var energy := 4 
 var littleMouse = 'awesome'
 var exampleVar = true
 var hasItem = false

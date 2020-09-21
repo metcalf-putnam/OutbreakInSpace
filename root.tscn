@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/core_npc.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://environment/tiles/Test_Tiles.png" type="Texture" id=7]
 [ext_resource path="res://environment/tiles/fences.png" type="Texture" id=8]
 [ext_resource path="res://environment/tiles/bubble.png" type="Texture" id=9]
+[ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -566,4 +567,6 @@ visible = false
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="Overlay" parent="." instance=ExtResource( 10 )]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

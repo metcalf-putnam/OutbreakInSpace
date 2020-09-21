@@ -1,6 +1,12 @@
 extends Node
 
+# Dialogue signals 
 signal new_dialogue
-
-signal player_spoke
 signal dialogue_finished
+signal player_spoke
+
+# Energy use signals
+signal energy_used
+
+# Day signals
+signal day_ended

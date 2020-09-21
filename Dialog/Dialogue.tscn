@@ -1,21 +1,21 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Dialog/Dialogue.gd" type="Script" id=1]
-[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=3]
-[ext_resource path="res://Dialog/ChoiceButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=1]
+[ext_resource path="res://Dialog/Dialogue.gd" type="Script" id=2]
+[ext_resource path="res://Dialog/ChoiceButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
-font_data = ExtResource( 2 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
-font_data = ExtResource( 2 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 32
-font_data = ExtResource( 2 )
+font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=4]
 loop = true
@@ -37,16 +37,16 @@ margin_left = 71.2173
 margin_top = 383.435
 margin_right = 521.217
 margin_bottom = 563.435
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-ChoiceButton = ExtResource( 4 )
+ChoiceButton = ExtResource( 3 )
 
 [node name="Text" type="RichTextLabel" parent="."]
 margin_left = 27.0
@@ -73,7 +73,7 @@ margin_left = -14.1237
 margin_top = -16.0507
 margin_right = 120.876
 margin_bottom = 14.9493
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 patch_margin_left = 2
 patch_margin_top = 2
 patch_margin_right = 2
@@ -100,7 +100,7 @@ margin_left = 296.965
 margin_top = 165.202
 margin_right = 463.965
 margin_bottom = 197.202
-texture = ExtResource( 3 )
+texture = ExtResource( 1 )
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3

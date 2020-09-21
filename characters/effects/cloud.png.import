@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bubble.png-6197049c4a37ef12255c23e24877065f.stex"
+path="res://.import/cloud.png-ca5ee5260e039b934a8b19d8f692e7ec.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://environment/tiles/bubble.png"
-dest_files=[ "res://.import/bubble.png-6197049c4a37ef12255c23e24877065f.stex" ]
+source_file="res://characters/effects/cloud.png"
+dest_files=[ "res://.import/cloud.png-ca5ee5260e039b934a8b19d8f692e7ec.stex" ]
 
 [params]
 

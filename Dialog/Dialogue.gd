@@ -7,6 +7,7 @@ var parser
 var dialogue_data
 var block
 var data = {}
+const action_prefix = "<"
 var is_final := false
 export (PackedScene) var ChoiceButton
 
@@ -21,8 +22,10 @@ func _process(delta):
 	timer += delta
 	for i in range(0, get_node("Buttons").get_child_count()):
 		if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
+			var option_text = $Buttons.get_child(i).get_text()
+			if !option_text.begins_with(action_prefix):
+				EventHub.emit_signal("player_spoke", len(option_text))
 			step_forward(i)
-
 
 func step_forward(i):
 	if i == -1:
@@ -34,6 +37,7 @@ func step_forward(i):
 
 
 func init(file_path : String, name := " "):
+	
 	$Name_NinePatchRect/Name.text = name
 	set_process(true)
 	parser = WhiskersParser.new(Global)
@@ -90,8 +94,10 @@ func _unhandled_input(event):
 	if !event.is_action_pressed("ui_accept"):
 		return
 	if is_final:
+		get_tree().set_input_as_handled()
 		is_final = false
 		set_process(false)
+		EventHub.emit_signal("dialogue_finished")
 		hide()
 	elif $Buttons.get_child_count() == 0:
 		step_forward(-1)

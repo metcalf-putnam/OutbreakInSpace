@@ -13,7 +13,7 @@ var very_close_contacts = []
 
 # Spreading infection
 var breathing_shed := 5
-var speaking_shed := 50
+var speaking_shed := 75
 var coughing_shed := 1500
 var singing_shed := 100
 # TODO: something like outside vs. inside transmission? Or something on size of bubble?
@@ -135,6 +135,8 @@ func _on_VeryClose_body_exited(body):
 
 
 func sing():
+	if !$Sing.playing:
+		$Sing.play()
 	state = State.SINGING
 	set_physics_process(false)
 	animationState.travel("sing")
@@ -151,9 +153,20 @@ func _on_singing_anim_end():
 	else:
 		state = State.ACTIVE
 		set_physics_process(true)
+		$Sing.stop()
+
+
+func speak(_speech_length : int):
+	for body in close_contacts:
+		body.add_viral_particles(speaking_shed)
+	for body in very_close_contacts:
+		body.add_viral_particles(speaking_shed)
 
 
 func cough():
+	animationState.travel("cough")
+	if !data["is_contagious"]:
+		return
 	for body in close_contacts:
 		body.add_viral_particles(coughing_shed)
 	for body in very_close_contacts:

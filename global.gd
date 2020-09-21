@@ -7,7 +7,7 @@ var player_can_sing := false
 var player_can_test := false
 var first_lab_visit := true
 var player_helmet := false
-var player_position := Vector2(300, 300)
+var player_position := Vector2(750, 300)
 
 
 # `export` our variables and quick documentation about them on hover

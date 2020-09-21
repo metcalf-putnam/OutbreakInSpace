@@ -10,6 +10,8 @@ func _ready():
 func set_text(text_in):
 	$Button.text = text_in
 
+func get_text() -> String:
+	return $Button.text
 
 func _on_Button_pressed():
 	pressed = true

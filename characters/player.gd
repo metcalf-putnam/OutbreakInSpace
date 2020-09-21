@@ -4,6 +4,9 @@ var last_direction
 
 func _ready():
 	speed = 100
+	EventHub.connect("player_spoke", self, "speak")
+	EventHub.connect("new_dialogue", self, "_on_new_dialogue")
+	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	print("player position: ", position)
 	
 func _physics_process(_delta):
@@ -27,6 +30,13 @@ func _physics_process(_delta):
 	
 func _unhandled_input(event):
 	# TODO: make this different? maybe they can sing on command?
-	if event.is_action_pressed("ui_accept") and Global.player_can_sing and state != State.SINGING:
+	if event.is_action_pressed("ui_accept") and Global.player_can_sing and state == State.ACTIVE:
 		sing()
 		
+
+func _on_new_dialogue(_file, _full_name):
+	state = State.DIALOGUE
+
+
+func _on_dialogue_finished():
+	state = State.ACTIVE

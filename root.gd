@@ -33,4 +33,12 @@ func get_random_pos() -> Vector2:
 	var x = rng.randf_range(0, screen_size.x)
 	var y = rng.randf_range(0, screen_size.y)
 	var vector = Vector2(x, y)
+	vector = $Navigation2D.get_closest_point(vector)
 	return vector
+
+
+func _on_Timer_timeout():
+	var count = $YSort/npcs.get_child_count()
+	var num = rng.randi_range(0, count-1)
+	var chosen_npc = $YSort/npcs.get_child(num)
+	chosen_npc.cough()

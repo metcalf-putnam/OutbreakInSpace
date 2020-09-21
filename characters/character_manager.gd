@@ -19,6 +19,7 @@ func _ready():
 	create_family("private1", "Blues", 5, 4, 2)
 	create_family("private2", "Blues", 1, 3, 0)
 	create_family("slum1", "Blues", 2, 2, 2)
+	create_family("slum1", "Blues", 2, 2, 2)
 
 
 func get_core_npc(npc_name):

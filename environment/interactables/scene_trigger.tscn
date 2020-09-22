@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://environment/interactables/interactable.tscn" type="PackedScene" id=1]
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://environment/interactables/scene_trigger.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 2 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 65.2381
+
+[node name="Interactable" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="." index="3"]
+margin_left = -50.5679
+margin_top = -9.92628
+margin_right = 64.4321
+margin_bottom = 4.07372
+custom_fonts/font = SubResource( 1 )
+text = "Mini game scene trigger"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="4"]
+shape = SubResource( 2 )

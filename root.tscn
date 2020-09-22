@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/core_npc.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://environment/tiles/GreenTile.png" type="Texture" id=12]
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=13]
 [ext_resource path="res://music/Main_Hub_Theme.ogg" type="AudioStream" id=14]
+[ext_resource path="res://environment/interactables/scene_trigger.tscn" type="PackedScene" id=15]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
@@ -961,7 +962,7 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 45.0
 autostart = true
 
 [node name="Overlay" parent="." instance=ExtResource( 13 )]
@@ -975,4 +976,8 @@ visible = false
 stream = ExtResource( 14 )
 volume_db = -10.0
 autoplay = true
+
+[node name="SceneTrigger" parent="." instance=ExtResource( 15 )]
+position = Vector2( 568.514, 132.936 )
+scene_path = "res://bullet-prototype/test/World.tscn"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

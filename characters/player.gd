@@ -25,8 +25,6 @@ func _physics_process(_delta):
 	elif state == State.ACTIVE:
 		animationState.travel("idle")
 
-	position.x = clamp(position.x, 12, screen_size.x - 12)
-	position.y = clamp(position.y, 12, screen_size.y - 20)
 	
 func _unhandled_input(event):
 	# TODO: make this different? maybe they can sing on command?

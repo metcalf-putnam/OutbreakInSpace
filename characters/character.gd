@@ -186,6 +186,7 @@ func speak(_speech_length : int):
 
 
 func cough():
+	print("coughing")
 	animationState.travel("cough")
 	if !data["is_contagious"]:
 		return

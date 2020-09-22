@@ -542,8 +542,8 @@ stream = ExtResource( 6 )
 volume_db = -10.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-visible = false
 modulate = Color( 1, 1, 1, 0.380392 )
+emitting = false
 amount = 4
 texture = ExtResource( 7 )
 emission_shape = 1

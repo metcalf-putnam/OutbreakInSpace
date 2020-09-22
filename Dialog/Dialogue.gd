@@ -10,7 +10,7 @@ var data = {}
 const action_prefix = "<"
 var is_final := false
 export (PackedScene) var ChoiceButton
-enum State {DIALOGUE, TESTING}
+enum State {DIALOGUE, TESTING, MESSAGE}
 var state = State.DIALOGUE
 const testing_text := "Who do you want to test? (Cost: 1 energy)"
 var characters = []
@@ -21,6 +21,7 @@ func _ready():
 	hide()
 	EventHub.connect("new_dialogue", self, "init")
 	EventHub.connect("testing_character", self, "test_character")
+	EventHub.connect("insufficient_energy", self, "error")
 
 
 func _process(delta):
@@ -72,6 +73,7 @@ func init(file_path : String, name := " "):
 func test_character(character_array):
 	$Name_NinePatchRect.hide()
 	$Space_NinePatchRect.hide()
+	show()
 	characters = character_array
 	state = State.TESTING
 	$Text.bbcode_text = testing_text
@@ -80,13 +82,23 @@ func test_character(character_array):
 		character.show_testing_label(true)
 		add_name_button(character.get_full_name())
 	add_name_button("No one for now")
-	show()
 	set_process(true)
 	# Labels above or below characters with name and last tested day
 
 
+func error():
+	$Name_NinePatchRect.hide()
+	$Space_NinePatchRect.show()
+	show()
+	state = State.MESSAGE
+	$Text.bbcode_text = "Insufficient Energy"
+	set_process(true)
+	is_final = true
+
+
 func confirm_test(name_tested : String):
 	$Text.bbcode_text = name_tested + " has been tested. Results will be posted in four days."
+	Global.decrement_energy()
 	is_final = true
 	get_tree().paused = false
 

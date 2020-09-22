@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bulletin.png-c2f7c0166f92dfa9f675774c07564651.stex"
+path="res://.import/Vegetation.png-3f44e8add8fbe442d129b4418ab6a173.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://environment/interactables/bulletin.png"
-dest_files=[ "res://.import/bulletin.png-c2f7c0166f92dfa9f675774c07564651.stex" ]
+source_file="res://environment/vegetation/Vegetation.png"
+dest_files=[ "res://.import/Vegetation.png-3f44e8add8fbe442d129b4418ab6a173.stex" ]
 
 [params]
 

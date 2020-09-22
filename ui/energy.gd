@@ -2,14 +2,10 @@ extends Node2D
 
 
 func _ready():
-	EventHub.connect("energy_used", self, "decrement_energy")
+	EventHub.connect("energy_used", self, "update_energy")
 	update_sprites()
 
-func decrement_energy():
-	if Global.energy <= 0:
-		print("error: trying to use energy that doesn't exist")
-		return
-	Global.energy -= 1
+func update_energy():
 	update_sprites()
 
 

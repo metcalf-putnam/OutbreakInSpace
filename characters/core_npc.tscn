@@ -16,12 +16,6 @@ radius = 37.2534
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="3"]
-frame = 9
-
-[node name="Helmet" parent="." index="4"]
-frame = 27
-
 [node name="AnimationTree" parent="." index="9"]
 parameters/playback = SubResource( 1 )
 

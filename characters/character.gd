@@ -191,7 +191,6 @@ func speak(_speech_length : int):
 
 
 func cough():
-	print("coughing")
 	animationState.travel("cough")
 	if !data["is_contagious"]:
 		return
@@ -215,7 +214,6 @@ func _on_CoughTimer_timeout():
 
 
 func mask_on():
-	print("calling mask on function")
 	data["has_helmet"] = true
 	update_sprite()
 	mask_multiplier = 1 - Global.mask_effectiveness

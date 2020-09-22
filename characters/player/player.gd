@@ -34,7 +34,11 @@ func _unhandled_input(event):
 		sing()
 		get_tree().set_input_as_handled()
 	if event.is_action_pressed("test") and Global.player_can_test:
-		EventHub.emit_signal("testing_character", close_contacts)
+		if Global.energy >= 1:
+			EventHub.emit_signal("testing_character", close_contacts)
+		else:
+			EventHub.emit_signal("insufficient_energy")
+		get_tree().set_input_as_handled()
 		
 
 func _on_new_dialogue(_file, _full_name):

@@ -25,8 +25,6 @@ func spawn_npc(npc_data):
 
 func spawn_player():
 	$YSort/Player.init(CharacterManager.player)
-	$YSort/Player.position = Global.player_position
-	#$YSort/Player.call_deferred("set_camera_current")
 
 
 func get_random_pos() -> Vector2:

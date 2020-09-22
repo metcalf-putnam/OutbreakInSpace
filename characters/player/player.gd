@@ -1,6 +1,6 @@
 extends Character
 class_name Player
-var last_direction
+var last_direction = Vector2()
 
 func _ready():
 	speed = 100
@@ -28,9 +28,13 @@ func _physics_process(_delta):
 	
 func _unhandled_input(event):
 	# TODO: make this different? maybe they can sing on command?
-	if event.is_action_pressed("ui_accept") and Global.player_can_sing and state == State.ACTIVE:
+	if state != State.ACTIVE:
+		return
+	if event.is_action_pressed("ui_accept") and Global.player_can_sing:
 		sing()
 		get_tree().set_input_as_handled()
+	if event.is_action_pressed("test") and Global.player_can_test:
+		EventHub.emit_signal("testing_character", close_contacts)
 		
 
 func _on_new_dialogue(_file, _full_name):
@@ -40,5 +44,3 @@ func _on_new_dialogue(_file, _full_name):
 func _on_dialogue_finished():
 	state = State.ACTIVE
 
-func set_camera_current():
-	$Camera

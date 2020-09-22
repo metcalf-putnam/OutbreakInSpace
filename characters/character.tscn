@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/circle.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://characters/effects/Cough_1.wav" type="AudioStream" id=5]
 [ext_resource path="res://characters/effects/Singing_One_Note.wav" type="AudioStream" id=6]
 [ext_resource path="res://characters/effects/cloud.png" type="Texture" id=7]
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.9767
@@ -464,6 +465,11 @@ start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=34]
 
+[sub_resource type="DynamicFont" id=35]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
 [node name="Character" type="KinematicBody2D" groups=[
 "susceptible",
 ]]
@@ -504,6 +510,7 @@ position = Vector2( 0, 4.25 )
 shape = SubResource( 3 )
 
 [node name="Label" type="Label" parent="."]
+visible = false
 margin_left = -20.3563
 margin_top = -31.035
 margin_right = 19.6437
@@ -535,7 +542,7 @@ parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="Cough" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-volume_db = -25.0
+volume_db = -15.0
 
 [node name="Sing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
@@ -554,6 +561,18 @@ gravity = Vector2( 0, -1 )
 "character",
 ]]
 wait_time = 20.0
+
+[node name="TestingLabel" type="Label" parent="."]
+margin_left = 3.99426
+margin_top = -5.67605
+margin_right = 43.9943
+margin_bottom = 8.32395
+custom_fonts/font = SubResource( 35 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "Character Name, last tested: Day 3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="body_entered" from="VeryClose" to="." method="_on_VeryClose_body_entered"]
 [connection signal="body_exited" from="VeryClose" to="." method="_on_VeryClose_body_exited"]
 [connection signal="body_entered" from="Close" to="." method="_on_Close_body_entered"]

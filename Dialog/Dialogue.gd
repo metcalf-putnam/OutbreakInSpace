@@ -10,22 +10,43 @@ var data = {}
 const action_prefix = "<"
 var is_final := false
 export (PackedScene) var ChoiceButton
+enum State {DIALOGUE, TESTING}
+var state = State.DIALOGUE
+const testing_text := "Who do you want to test? (Cost: 1 energy)"
+var characters = []
+
 
 func _ready():
 	set_process(false)
 	hide()
 	EventHub.connect("new_dialogue", self, "init")
+	EventHub.connect("testing_character", self, "test_character")
 
 
 func _process(delta):
-	# TODO: get this out of process for speed improvements
+	# TODO: get this out of process for speed improvements?
+	# TODO: add modes
 	timer += delta
-	for i in range(0, get_node("Buttons").get_child_count()):
-		if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
-			var option_text = $Buttons.get_child(i).get_text()
-			if !option_text.begins_with(action_prefix):
-				EventHub.emit_signal("player_spoke", len(option_text))
-			step_forward(i)
+	match state:
+		State.DIALOGUE:
+			for i in range(0, get_node("Buttons").get_child_count()):
+				if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
+					var option_text = $Buttons.get_child(i).get_text()
+					if !option_text.begins_with(action_prefix):
+						EventHub.emit_signal("player_spoke", len(option_text))
+					step_forward(i)
+		State.TESTING:
+			for i in range(0, get_node("Buttons").get_child_count()):
+				if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
+					if len(characters) <= i:
+						cancel_test()
+					else:
+						print("testing")
+						characters[i].test()
+						confirm_test($Buttons.get_child(i).get_text())
+					clear_buttons()
+					$Space_NinePatchRect.show()
+
 
 func step_forward(i):
 	if i == -1:
@@ -37,14 +58,43 @@ func step_forward(i):
 
 
 func init(file_path : String, name := " "):
-	
+	state = State.DIALOGUE
 	$Name_NinePatchRect/Name.text = name
+	$Name_NinePatchRect.show()
 	set_process(true)
 	parser = WhiskersParser.new(Global)
 	parser.set_format_dictionary({"player_name" : "Knuthl"})
 	dialogue_data = parser.open_whiskers(file_path)
 	block = parser.start_dialogue(dialogue_data)
 	next()
+
+
+func test_character(character_array):
+	$Name_NinePatchRect.hide()
+	$Space_NinePatchRect.hide()
+	characters = character_array
+	state = State.TESTING
+	$Text.bbcode_text = testing_text
+	get_tree().paused = true
+	for character in character_array:
+		character.show_testing_label(true)
+		add_name_button(character.get_full_name())
+	add_name_button("No one for now")
+	show()
+	set_process(true)
+	# Labels above or below characters with name and last tested day
+
+
+func confirm_test(name_tested : String):
+	$Text.bbcode_text = name_tested + " has been tested. Results will be posted in four days."
+	is_final = true
+	get_tree().paused = false
+
+
+func cancel_test():
+	$Text.bbcode_text = "no one was been tested"
+	is_final = true
+	get_tree().paused = false
 
 
 func next():
@@ -62,6 +112,15 @@ func next():
 			$Space_NinePatchRect.show()
 		if block.is_final:
 			is_final = true
+
+
+func add_name_button(name : String):
+	var node = ChoiceButton.instance()
+	node.set_text(name)
+	node.rect_position = Vector2($ChoicePos.position.x, $ChoicePos.position.y + lastBttnPos)
+	self.get_node("Buttons").add_child(node)
+	node.show()
+	lastBttnPos -= node.rect_size.y + 3
 
 
 func add_button(button_data):
@@ -88,6 +147,14 @@ func clear_buttons():
 		child.queue_free()
 
 
+func reset_characters():
+	if !characters:
+		print("no characters to reset")
+		return
+	get_tree().call_group("character", "show_testing_label", false)
+	characters = []
+
+
 func _unhandled_input(event):
 	if !is_processing():
 		return
@@ -95,9 +162,12 @@ func _unhandled_input(event):
 		return
 	if is_final:
 		get_tree().set_input_as_handled()
+		reset_characters()
+		clear_buttons()
 		is_final = false
 		set_process(false)
 		EventHub.emit_signal("dialogue_finished")
 		hide()
-	elif $Buttons.get_child_count() == 0:
+	elif $Buttons.get_child_count() == 0 and state == State.DIALOGUE:
 		step_forward(-1)
+		

@@ -10,3 +10,6 @@ signal energy_used
 
 # Day signals
 signal day_ended
+
+# Testing signals
+signal testing_character

@@ -26,9 +26,11 @@ const days_to_symptomatic := 4
 enum State {SINGING, DIALOGUE, ACTIVE}
 var state = State.ACTIVE
 var rng = RandomNumberGenerator.new()
+const testing_suffix_days := ", last tested: Day "
 
 
 func _ready():
+	$TestingLabel.hide()
 	screen_size = get_viewport_rect().size
 	animationState = $AnimationTree["parameters/playback"]
 	rng.randomize()
@@ -50,7 +52,10 @@ func init(data_in):
 		$CoughTimer.start(rng.randf_range(8, 90))
 	if data["has_helmet"]: 
 		mask_multiplier = 1 - Global.mask_effectiveness
-		
+	var testing_text = get_full_name()
+	if data.has("last_tested"):
+		testing_text = testing_text + testing_suffix_days + str(data["last_tested"])
+	$TestingLabel.text = testing_text
 
 
 func update_sprite():
@@ -220,3 +225,25 @@ func mask_off():
 	data["has_helmet"] = false
 	update_sprite()
 	mask_multiplier = 1
+
+
+func show_testing_label(boolean):
+	if boolean:
+		$TestingLabel.show()
+	else:
+		$TestingLabel.hide()
+
+
+func get_full_name():
+	if data.has("name"):
+		return data["name"]
+	else:
+		return "Generic Name"
+
+func test():
+	data["last_tested"] = Global.day
+	var testing_text = get_full_name()
+	testing_text = testing_text + testing_suffix_days + str(data["last_tested"])
+	$TestingLabel.text = testing_text
+	
+	

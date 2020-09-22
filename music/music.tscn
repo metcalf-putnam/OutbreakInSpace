@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://music/Main_Hub_Theme.ogg" type="AudioStream" id=1]
+
+[node name="Music" type="Node"]
+pause_mode = 2
+
+[node name="MainBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -15.0
+autoplay = true

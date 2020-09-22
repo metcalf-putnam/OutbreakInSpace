@@ -7,6 +7,7 @@ var rng = RandomNumberGenerator.new()
 
 
 func _ready():
+	rng.randomize()
 	screen_size = get_viewport_rect().size
 	# TODO: logic for initializing npcs if not already created previously
 	for npc in CharacterManager.npcs:
@@ -23,10 +24,9 @@ func spawn_npc(npc_data):
 
 
 func spawn_player():
-	var player = Player.instance()
-	$YSort.add_child(player)
-	player.init(CharacterManager.player)
-	player.position = Global.player_position
+	$YSort/Player.init(CharacterManager.player)
+	$YSort/Player.position = Global.player_position
+	#$YSort/Player.call_deferred("set_camera_current")
 
 
 func get_random_pos() -> Vector2:

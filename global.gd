@@ -1,41 +1,27 @@
 extends Node
 
+var day := 1
 var energy := 4 
-var littleMouse = 'awesome'
-var exampleVar = true
-var hasItem = false
+const max_energy := 4
+
+var first_lab_visit := true
+var mask_effectiveness := 0.5
+
 var player_can_sing := false
 var player_can_test := false
-var first_lab_visit := true
 var player_helmet := false
 var player_position := Vector2(750, 300)
 
 
-# `export` our variables and quick documentation about them on hover
-var variables = [
-	'littleMouse',
-	'exampleVar',
-	'hasItem',
-]
-var varTooltips = [
-	'What is littleMouse',
-	'An example var!',
-	'Does the user have the item?'
-]
 
-#====> FUNCTIONS
-func give_item():
-	hasItem = true
+func _ready():
+	EventHub.connect("day_ended", self, "_on_day_ended")
 
-func change_var(name, value):
-	print("var changed")
-	var val = value
-	
-	if(val == "True") or (val == "true"):
-		val = true
-	elif(val == "False") or (val == "false"):
-		val = false
-	set(name, val)
+func _on_day_ended():
+	energy = max_energy
+	day += 1
+	get_tree().reload_current_scene()
+
 
 func increment_cookies():
 	pass
@@ -47,18 +33,3 @@ func singing_lesson():
 func visit_professor():
 	first_lab_visit = false
 	player_can_test = true
-
-# `export` our functions and documentation about them! 
-var functions = [
-	'give_item()',
-	'change_var("var", "value")',
-	'singing_lesson()',
-	'increment_cookies()'
-]
-
-var functionDocs = [
-	'Give the player an item!',
-	'Change the variable to a specified value',
-	'give player singing lesson',
-	'give player cookie'
-]

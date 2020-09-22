@@ -25,13 +25,12 @@ func _physics_process(_delta):
 	elif state == State.ACTIVE:
 		animationState.travel("idle")
 
-	position.x = clamp(position.x, 12, screen_size.x - 12)
-	position.y = clamp(position.y, 12, screen_size.y - 20)
 	
 func _unhandled_input(event):
 	# TODO: make this different? maybe they can sing on command?
 	if event.is_action_pressed("ui_accept") and Global.player_can_sing and state == State.ACTIVE:
 		sing()
+		get_tree().set_input_as_handled()
 		
 
 func _on_new_dialogue(_file, _full_name):
@@ -40,3 +39,6 @@ func _on_new_dialogue(_file, _full_name):
 
 func _on_dialogue_finished():
 	state = State.ACTIVE
+
+func set_camera_current():
+	$Camera

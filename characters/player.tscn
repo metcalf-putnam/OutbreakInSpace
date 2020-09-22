@@ -6,15 +6,19 @@
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [node name="Player" groups=[
+"character",
 "player",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="3"]
-frame = 8
-
 [node name="Helmet" parent="." index="4"]
-frame = 26
+frame = 36
+
+[node name="AnimationPlayer" parent="." index="8"]
+playback_speed = 2.0
 
 [node name="AnimationTree" parent="." index="9"]
 parameters/playback = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="." index="13"]
+current = true

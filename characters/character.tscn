@@ -2,8 +2,8 @@
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/circle.png" type="Texture" id=2]
-[ext_resource path="res://characters/Blues/Child/base_sprite.png" type="Texture" id=3]
-[ext_resource path="res://characters/Blues/Child/helmet.png" type="Texture" id=4]
+[ext_resource path="res://characters/Blues/Woman/helmet.png" type="Texture" id=3]
+[ext_resource path="res://characters/Blues/Woman/base_sprite.png" type="Texture" id=4]
 [ext_resource path="res://characters/effects/Cough_1.wav" type="AudioStream" id=5]
 [ext_resource path="res://characters/effects/Singing_One_Note.wav" type="AudioStream" id=6]
 [ext_resource path="res://characters/effects/cloud.png" type="Texture" id=7]
@@ -17,7 +17,7 @@ radius = 45.3409
 [sub_resource type="CircleShape2D" id=3]
 radius = 4.13257
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=4]
 resource_name = "cough"
 length = 2.0
 tracks/0/type = "value"
@@ -39,10 +39,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.5, 0.7, 1.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 36, 37, 36, 37 ]
+"values": [ 36, 37, 36, 37, 36, 37 ]
 }
 tracks/2/type = "audio"
 tracks/2/path = NodePath("Cough")
@@ -91,8 +91,7 @@ tracks/4/keys = {
 "values": [ -25.0 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "idle_down"
+[sub_resource type="Animation" id=5]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -120,8 +119,7 @@ tracks/1/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "idle_left"
+[sub_resource type="Animation" id=6]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -149,8 +147,7 @@ tracks/1/keys = {
 "values": [ 26, 27 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "idle_right"
+[sub_resource type="Animation" id=7]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -178,8 +175,7 @@ tracks/1/keys = {
 "values": [ 8, 9 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "idle_up"
+[sub_resource type="Animation" id=8]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -207,8 +203,7 @@ tracks/1/keys = {
 "values": [ 4, 5 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "sing"
+[sub_resource type="Animation" id=9]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -250,8 +245,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "sing_transition"
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -277,7 +271,7 @@ tracks/1/keys = {
 "values": [ 36 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -305,7 +299,7 @@ tracks/1/keys = {
 "values": [ 17, 18, 19, 16 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -333,7 +327,7 @@ tracks/1/keys = {
 "values": [ 25, 26, 27, 26 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -361,7 +355,7 @@ tracks/1/keys = {
 "values": [ 29, 30, 29, 30 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 1.2
 loop = true
 tracks/0/type = "value"
@@ -389,85 +383,86 @@ tracks/1/keys = {
 "values": [ 21, 22, 21, 22 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=33]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "cough"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "idle_down"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "idle_up"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "idle_right"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "idle_left"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=18]
-blend_point_0/node = SubResource( 14 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+blend_point_0/node = SubResource( 16 )
 blend_point_0/pos = Vector2( 0, 0.7 )
-blend_point_1/node = SubResource( 15 )
+blend_point_1/node = SubResource( 17 )
 blend_point_1/pos = Vector2( 0, -0.7 )
-blend_point_2/node = SubResource( 16 )
+blend_point_2/node = SubResource( 18 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 17 )
+blend_point_3/node = SubResource( 19 )
 blend_point_3/pos = Vector2( -1, 0 )
 min_space = Vector2( -1.2, -1.2 )
 max_space = Vector2( 1.2, 1.2 )
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=21]
 animation = "sing"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=22]
 animation = "walk_down"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "walk_up"
 
-[sub_resource type="AnimationNodeAnimation" id=23]
+[sub_resource type="AnimationNodeAnimation" id=24]
 animation = "walk_right"
 
-[sub_resource type="AnimationNodeAnimation" id=24]
+[sub_resource type="AnimationNodeAnimation" id=25]
 animation = "walk_left"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id=25]
-blend_point_0/node = SubResource( 21 )
+[sub_resource type="AnimationNodeBlendSpace2D" id=26]
+blend_point_0/node = SubResource( 22 )
 blend_point_0/pos = Vector2( 0, 1 )
-blend_point_1/node = SubResource( 22 )
+blend_point_1/node = SubResource( 23 )
 blend_point_1/pos = Vector2( 0, -1 )
-blend_point_2/node = SubResource( 23 )
+blend_point_2/node = SubResource( 24 )
 blend_point_2/pos = Vector2( 1, 0 )
-blend_point_3/node = SubResource( 24 )
+blend_point_3/node = SubResource( 25 )
 blend_point_3/pos = Vector2( -1, 0 )
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=28]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 switch_mode = 2
+auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=30]
-states/cough/node = SubResource( 33 )
+[sub_resource type="AnimationNodeStateMachine" id=33]
+states/cough/node = SubResource( 15 )
 states/cough/position = Vector2( 168, 125 )
-states/idle/node = SubResource( 18 )
+states/idle/node = SubResource( 20 )
 states/idle/position = Vector2( 280, 53 )
-states/sing/node = SubResource( 19 )
+states/sing/node = SubResource( 21 )
 states/sing/position = Vector2( 346, 151 )
-states/walk/node = SubResource( 25 )
+states/walk/node = SubResource( 26 )
 states/walk/position = Vector2( 444, 53 )
-transitions = [ "idle", "walk", SubResource( 26 ), "walk", "idle", SubResource( 27 ), "idle", "sing", SubResource( 28 ), "sing", "idle", SubResource( 29 ), "idle", "cough", SubResource( 34 ), "cough", "idle", SubResource( 35 ) ]
+transitions = [ "idle", "walk", SubResource( 27 ), "walk", "idle", SubResource( 28 ), "idle", "sing", SubResource( 29 ), "sing", "idle", SubResource( 30 ), "idle", "cough", SubResource( 31 ), "cough", "idle", SubResource( 32 ) ]
 start_node = "idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=31]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=34]
 
 [node name="Character" type="KinematicBody2D" groups=[
 "susceptible",
@@ -489,16 +484,18 @@ modulate = Color( 0.77, 0.14, 0.14, 0 )
 texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 3 )
-vframes = 10
-hframes = 4
-frame = 9
-
-[node name="Helmet" type="Sprite" parent="."]
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
-frame = 27
+frame = 8
+
+[node name="Helmet" type="Sprite" parent="." groups=[
+"character",
+]]
+texture = ExtResource( 3 )
+vframes = 10
+hframes = 4
+frame = 26
 
 [node name="ShedTimer" type="Timer" parent="."]
 
@@ -507,7 +504,6 @@ position = Vector2( 0, 4.25 )
 shape = SubResource( 3 )
 
 [node name="Label" type="Label" parent="."]
-visible = false
 margin_left = -20.3563
 margin_top = -31.035
 margin_right = 19.6437
@@ -517,23 +513,23 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/cough = SubResource( 32 )
-anims/idle_down = SubResource( 4 )
-anims/idle_left = SubResource( 5 )
-anims/idle_right = SubResource( 6 )
-anims/idle_up = SubResource( 7 )
-anims/sing = SubResource( 8 )
-anims/sing_transition = SubResource( 9 )
-anims/walk_down = SubResource( 10 )
-anims/walk_left = SubResource( 11 )
-anims/walk_right = SubResource( 12 )
-anims/walk_up = SubResource( 13 )
+anims/cough = SubResource( 4 )
+anims/idle_down = SubResource( 5 )
+anims/idle_left = SubResource( 6 )
+anims/idle_right = SubResource( 7 )
+anims/idle_up = SubResource( 8 )
+anims/sing = SubResource( 9 )
+anims/sing_transition = SubResource( 10 )
+anims/walk_down = SubResource( 11 )
+anims/walk_left = SubResource( 12 )
+anims/walk_right = SubResource( 13 )
+anims/walk_up = SubResource( 14 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 30 )
+tree_root = SubResource( 33 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 31 )
+parameters/playback = SubResource( 34 )
 parameters/idle/blend_position = Vector2( -0.0537678, 0.103448 )
 parameters/walk/blend_position = Vector2( 0, 0 )
 
@@ -546,15 +542,21 @@ stream = ExtResource( 6 )
 volume_db = -10.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.380392 )
-emitting = false
 amount = 4
 texture = ExtResource( 7 )
 emission_shape = 1
 emission_sphere_radius = 13.39
 gravity = Vector2( 0, -1 )
+
+[node name="CoughTimer" type="Timer" parent="." groups=[
+"character",
+]]
+wait_time = 20.0
 [connection signal="body_entered" from="VeryClose" to="." method="_on_VeryClose_body_entered"]
 [connection signal="body_exited" from="VeryClose" to="." method="_on_VeryClose_body_exited"]
 [connection signal="body_entered" from="Close" to="." method="_on_Close_body_entered"]
 [connection signal="body_exited" from="Close" to="." method="_on_Close_body_exited"]
 [connection signal="timeout" from="ShedTimer" to="." method="_on_ShedTimer_timeout"]
+[connection signal="timeout" from="CoughTimer" to="." method="_on_CoughTimer_timeout"]

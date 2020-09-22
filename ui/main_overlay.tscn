@@ -1,29 +1,119 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/energy.png" type="Texture" id=1]
 [ext_resource path="res://ui/energy.gd" type="Script" id=2]
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=4]
-[ext_resource path="res://ui/end_day.gd" type="Script" id=5]
+[ext_resource path="res://ui/main_overlay.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
+[sub_resource type="Animation" id=2]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=3]
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "new_day"
+} ]
+}
+
 [node name="Overlay" type="CanvasLayer"]
+layer = 0
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 11.9385 ]
 }
 
-[node name="ColorRect" type="NinePatchRect" parent="."]
-margin_right = 1024.0
+[node name="EnergyBackground" type="NinePatchRect" parent="."]
+visible = false
+margin_right = 200.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 1024, 0 )
+rect_min_size = Vector2( 220, 60 )
 texture = ExtResource( 4 )
 patch_margin_left = 3
 patch_margin_top = 3
 patch_margin_right = 3
 patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DaysBackground" type="NinePatchRect" parent="."]
+margin_left = 816.0
+margin_right = 1024.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 208, 0 )
+mouse_filter = 1
+texture = ExtResource( 4 )
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Energy" type="Node2D" parent="."]
 modulate = Color( 0.960784, 0.960784, 0.960784, 1 )
@@ -86,14 +176,45 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EndDay" type="Button" parent="."]
-margin_left = 919.842
-margin_top = 17.2291
-margin_right = 1005.84
-margin_bottom = 45.2291
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fade_in"
+anims/fade_in = SubResource( 2 )
+anims/fade_to_black = SubResource( 3 )
+
+[node name="Button" type="Button" parent="."]
+margin_left = 920.399
+margin_top = 16.0576
+margin_right = 1006.4
+margin_bottom = 44.0576
+mouse_filter = 1
 custom_fonts/font = SubResource( 1 )
 text = "End Day"
-script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaskButton" type="Button" parent="."]
+margin_left = 642.058
+margin_top = 18.6877
+margin_right = 782.058
+margin_bottom = 46.6877
+focus_mode = 1
+custom_fonts/font = SubResource( 1 )
+toggle_mode = true
+enabled_focus_mode = 1
+text = "Masks on/off"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="toggled" from="MaskButton" to="." method="_on_MaskButton_toggled"]

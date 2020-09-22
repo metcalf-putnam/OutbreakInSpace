@@ -2,11 +2,9 @@ extends Character
 # TODO: add logic for becoming contagious
 
 var direction : Vector2
-var rng = RandomNumberGenerator.new()
 
 
 func _ready():
-	rng.randomize()
 	get_random_direction()
 	$RandDirTimer.start()
 

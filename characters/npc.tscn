@@ -6,6 +6,7 @@
 [sub_resource type="AnimationNodeStateMachinePlayback" id=1]
 
 [node name="NPC" groups=[
+"character",
 "npc",
 ] instance=ExtResource( 2 )]
 script = ExtResource( 1 )
@@ -23,6 +24,5 @@ position = Vector2( 0, 1.12247 )
 wait_time = 2.0
 
 [node name="AnimationTree" parent="." index="10"]
-active = true
 parameters/playback = SubResource( 1 )
 [connection signal="timeout" from="RandDirTimer" to="." method="_on_RandDirTimer_timeout"]

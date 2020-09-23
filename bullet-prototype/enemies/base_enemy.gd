@@ -1,141 +1,114 @@
 extends Area2D
 
+var patterns = {
+	"fire-1and2": ["1", "2"],
+	"fire-3and4": ["3", "4"],
+	"fire-5": ["5"],
+	"fire-all": ["1", "2", "3", "4", "5"],
+	"rest": []
+}
+
+onready var anim = $AnimationPlayer
+onready var hit_anim = $HitAnimation
+onready var health_bar = $HealthBar
+onready var health_bar_tween = $HealthBar/Tween
+
+const THRESHOLD_DISTANCE = 10
+
 var health = 20
+var speed = 0.3
+var can_take_damage = true
 
-var arms_shoot_delay = [2, 2, 2, 2]
-var arms_current_delay = [0, 0, 0, 0]
+var min_location = Vector2(100, 100)
+var max_location = Vector2(900, 500)
+var desired_location = null
 
-var can_rotate = false
-var can_stretch = false
-var can_move = false
-var can_shoot = true
+var hide = false
 
-# ROTATE
-var rotate_increment = 1
-var rotate_sign = 0
-var rotate_delay = 20
-var rotate_min_chance = 0.8
-var rotate_stop_chance = 0.5
-var is_rotate_complete = false
-var current_rotate_delay = 0
+signal extract
 
-# SCALE
-var scale_increment = 0.01
-var scale_sign = Vector2(0,0)
-var scale_delay = 20
-var scale_min_chance = 0.8
-var is_scale_complete = false
-var current_scale_delay = 0
-
-# MOVE
-var move_increment = 10
-var move_sign = Vector2(0,0)
-var move_delay = 1
-var move_min_chance = 0.8
-var is_move_complete = false
-var current_move_delay = 0
-
-var rng = RandomNumberGenerator.new()
-
-func want_to_rotate():
-	if !can_rotate: return
-	
-	if current_rotate_delay < rotate_delay:
-		current_rotate_delay += 1
-	else:
-		current_rotate_delay = 0
-		if rng.randf() > rotate_min_chance:
-			rotation = deg2rad(rng.randf_range(0.0, 360.0))
-			for arm in get_node("Arms").get_children():
-				for spawner in arm.get_children():
-					spawner.bullet_array_starting_angle += rotation
-
-func want_to_stretch():
-	if !can_stretch: return
-	
-	if current_scale_delay < scale_delay:
-		current_scale_delay += 1
-	else:
-		current_scale_delay = 0
-		if rng.randf() > scale_min_chance:
-			var new_scale = Vector2(rng.randf_range(0.5, 1.5), rng.randf_range(0.5, 1.5))
-			scale = new_scale
-
-func want_to_move():
-	if !can_move: return
-	
-	if current_move_delay < move_delay:
-		current_move_delay += 1
-	else:
-		current_move_delay = 0
-		if rng.randf() > move_min_chance:
-			var new_position = Vector2(rng.randf_range(-1.5, 1.5), rng.randf_range(-1.5, 1.5))
-			position += new_position
+func _ready():
+	stop_all(["1", "2", "3", "4", "5"])
+	set_process(false)
 
 func _process(delta):
-	want_to_rotate()
-	want_to_stretch()
-	want_to_move()
-	pass
-
-func start_stop_spawners(path, arm_no):
-	var has_change = -1
-	for s in get_node(path).get_children():
-		if s is Node2D:
-			if s.is_running:
-				s.stop()
-				has_change = 1
-			else:
-				s.start()
-				has_change = 0
-	
-	if has_change == 1 and arm_no == 1:
-		start_stop_spawners("Arms/3", 3)
-		get_node("Arms/3/TimerArm3").start()
-		start_stop_spawners("Arms/4", 4)
-		get_node("Arms/4/TimerArm4").start()
-	elif has_change == 0 and arm_no == 1:
-		start_stop_spawners("Arms/3", 3)
-		get_node("Arms/3/TimerArm3").stop()
-		start_stop_spawners("Arms/4", 4)
-		get_node("Arms/4/TimerArm4").stop()
+	if desired_location == null or position.distance_to(desired_location) < THRESHOLD_DISTANCE:
+		desired_location = next_location()
+		print("desired", desired_location)
 		
-	if has_change == 1 and arm_no == 3:
-		start_stop_spawners("Arms/5", 5)
-		get_node("Arms/5/TimerArm5").start()
+	position = position.linear_interpolate(desired_location, delta * speed)
 
-func stop_all_spawners():
-	get_node("Arms/1/TimerArm1").stop()
-	get_node("Arms/2/TimerArm2").stop()
-	get_node("Arms/3/TimerArm3").stop()
-	get_node("Arms/4/TimerArm4").stop()
+func start_all(paths):
+	for path in paths:
+		for s in get_node("SpawnerManager/" + str(path)).get_children():
+			if s is Node2D:
+				s.start()
+				
+func stop_all(paths):
+	for path in paths:
+		for s in get_node("SpawnerManager/" + str(path)).get_children():
+			if s is Node2D:
+				s.stop()
 
-func _on_TimerArm1_timeout():
-	start_stop_spawners("Arms/1", 1)
-	pass # Replace with function body.
+func show():
+	anim.play("show")
 
-func _on_TimerArm2_timeout():
-	start_stop_spawners("Arms/2", 2)
-	pass # Replace with function body.
+func hide():
+	stop_all(["1", "2", "3", "4", "5"])
+	set_process(false)
+	hide = true
+	anim.play_backwards("show")
 
-func _on_TimerArm3_timeout():
-	start_stop_spawners("Arms/3", 3)
-	pass # Replace with function body.
+func next_pattern():
+	randomize()
+	return patterns.keys()[randi() % patterns.size()]
 
-func _on_TimerArm4_timeout():
-	start_stop_spawners("Arms/4", 4)
-	pass # Replace with function body.
+func next_location():
+	randomize()
+	return Vector2(rand_range(min_location.x, max_location.x), rand_range(min_location.y, max_location.y))
 
-func _on_TimerArm5_timeout():
-	start_stop_spawners("Arms/5", 5)
-	pass # Replace with function body.
+func update_health():
+	can_take_damage = false
+	health -= 1
+	health_bar_tween.interpolate_property(health_bar, "value", health_bar.value, health, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	health_bar_tween.start()
+	
+	hit_anim.play("hit")
+	emit_signal("extract")
 
 func _on_Easy_body_entered(body):
-	print(body)
 	if body is Bullet:
-		health -= 1
+		if can_take_damage:
+			update_health()
+			
 		body.queue_free()
 		
 		if health < 0:
 			print("Player won!")
 	pass # Replace with function body.d
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	
+	if hide: return
+	
+	if anim_name == "show":
+		set_process(true)
+		anim.play("fire-1and2")
+		start_all(patterns["fire-1and2"])
+	elif anim_name in ["fire-1and2", "fire-3and4", "fire-5", "fire-all"]:
+		stop_all(patterns[anim_name])
+	
+	if anim_name != "show":
+		var pattern = next_pattern()
+		print(pattern)
+		if pattern in ["fire-1and2", "fire-3and4", "fire-5", "fire-all"]:
+			anim.play(pattern)
+			start_all(patterns[pattern])
+		else:
+			anim.play(pattern)
+	pass # Replace with function body.
+
+func _on_HitAnimation_animation_finished(anim_name):
+	if anim_name == "hit":
+		can_take_damage = true
+	pass # Replace with function body.

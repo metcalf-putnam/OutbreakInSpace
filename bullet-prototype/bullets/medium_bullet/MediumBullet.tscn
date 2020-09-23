@@ -9,7 +9,8 @@ radius = 7.0
 load_path = "res://.import/B&W_Explosão_32x32.png-5f5af3ec37d7de8099016991ae82c9e9.stex"
 
 [node name="MediumBullet" type="RigidBody2D"]
-collision_layer = 2
+collision_layer = 16
+collision_mask = 2
 gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true

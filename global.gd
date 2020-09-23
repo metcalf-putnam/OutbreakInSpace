@@ -10,7 +10,7 @@ var mask_effectiveness := 0.5
 var player_can_sing := false
 var player_can_test := true
 var player_helmet := false
-var player_position := Vector2(750, 300)
+var player_position := Vector2(750, 700)
 
 
 func _ready():

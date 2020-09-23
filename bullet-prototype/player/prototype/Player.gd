@@ -26,6 +26,7 @@ func show():
 	anim.play("show")
 
 func hide():
+	is_stage_complete = true
 	anim.play_backwards("show")
 
 func apply_movement():

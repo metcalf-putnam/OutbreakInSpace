@@ -39,10 +39,7 @@ var seconds
 var STAGE_TIMER = 60000
 
 func display_stage_time():	
-	print("stage_time_now: ", stage_time_now)
-	print("STAGE_TIMER: ", STAGE_TIMER)
 	elapsed = STAGE_TIMER - stage_time_now
-	print("elapsed: ", elapsed)
 	
 	var milliseconds = clamp(elapsed % 1000, 0, 999)
 	seconds = clamp(elapsed / 1000 % 60, 0, 59)
@@ -139,7 +136,7 @@ func _input(event):
 	
 	if event is InputEventKey:
 		if event.scancode == KEY_SPACE:
-			get_tree().change_scene("")
+			get_tree().change_scene("res://root.tscn")
 
 func _on_dialogue_finished():
 	state = STATE.BATTLE

@@ -1,26 +1,26 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://characters/core_npc.tscn" type="PackedScene" id=2]
-[ext_resource path="res://characters/npc.tscn" type="PackedScene" id=3]
-[ext_resource path="res://root.gd" type="Script" id=4]
-[ext_resource path="res://fps.gd" type="Script" id=5]
-[ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=6]
-[ext_resource path="res://environment/Map.tscn" type="PackedScene" id=7]
+[ext_resource path="res://root.gd" type="Script" id=1]
+[ext_resource path="res://characters/npc.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/Map.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/core_npc.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://fps.gd" type="Script" id=6]
+[ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=8]
 [ext_resource path="res://environment/interactables/scene_trigger.tscn" type="PackedScene" id=9]
 
 [node name="Root" type="Node2D"]
-script = ExtResource( 4 )
-NPC = ExtResource( 3 )
+script = ExtResource( 1 )
+NPC = ExtResource( 2 )
 
-[node name="Navigation2D" parent="." instance=ExtResource( 7 )]
+[node name="Navigation2D" parent="." instance=ExtResource( 3 )]
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="npcs" type="YSort" parent="YSort"]
 
-[node name="Professor" parent="YSort/npcs" instance=ExtResource( 2 )]
+[node name="Professor" parent="YSort/npcs" instance=ExtResource( 4 )]
 position = Vector2( 543.187, -417.402 )
 dialog_file = "res://Dialog/json/professor.json"
 full_name = "Professor"
@@ -28,7 +28,7 @@ infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 
-[node name="Granny" parent="YSort/npcs" instance=ExtResource( 2 )]
+[node name="Granny" parent="YSort/npcs" instance=ExtResource( 4 )]
 position = Vector2( 857.741, 624.18 )
 dialog_file = "res://Dialog/json/granny_day_1.json"
 full_name = "Granny"
@@ -36,7 +36,7 @@ infective_dose = 350
 sprite_file = "res://characters/corenpcs/Granny Murktuk/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Granny Murktuk/helmet.png"
 
-[node name="Singer" parent="YSort/npcs" instance=ExtResource( 2 )]
+[node name="Singer" parent="YSort/npcs" instance=ExtResource( 4 )]
 position = Vector2( 697.432, 427.914 )
 dialog_file = "res://Dialog/json/singing_v3.json"
 full_name = "Juan"
@@ -44,7 +44,7 @@ infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Singin Coach/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Singin Coach/helmet.png"
 
-[node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 2 )]
+[node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 4 )]
 position = Vector2( 841.37, 161.548 )
 dialog_file = "res://Dialog/json/work_convo.json"
 full_name = "Snitgar"
@@ -52,15 +52,16 @@ infective_dose = 750
 sprite_file = "res://characters/corenpcs/Work Friend/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Work Friend/helmet.png"
 
-[node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 777.088, 703.699 )
+[node name="Player" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 750, 700 )
 
 [node name="FPS" type="Label" parent="."]
+visible = false
 margin_left = 982.02
 margin_top = 1.99774
 margin_right = 1022.02
 margin_bottom = 15.9977
-script = ExtResource( 5 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -71,11 +72,11 @@ autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 6 )]
+[node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 7 )]
 
 [node name="Overlay" parent="." instance=ExtResource( 8 )]
 
 [node name="Interactable" parent="." instance=ExtResource( 9 )]
 position = Vector2( 721.417, -396.962 )
-scene_path = "res://bullet-prototype/test/World.tscn"
+scene_path = "res://bullet-prototype/Gnar.tscn"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

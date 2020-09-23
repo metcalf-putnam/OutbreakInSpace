@@ -45,7 +45,7 @@ sprite_file = "res://characters/corenpcs/Singin Coach/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Singin Coach/helmet.png"
 
 [node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 2 )]
-position = Vector2( 454.121, 214.304 )
+position = Vector2( 841.37, 161.548 )
 dialog_file = "res://Dialog/json/work_convo.json"
 full_name = "Snitgar"
 infective_dose = 750
@@ -76,6 +76,6 @@ autostart = true
 [node name="Overlay" parent="." instance=ExtResource( 8 )]
 
 [node name="Interactable" parent="." instance=ExtResource( 9 )]
-position = Vector2( 858.784, 410.343 )
+position = Vector2( 721.417, -396.962 )
 scene_path = "res://bullet-prototype/test/World.tscn"
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

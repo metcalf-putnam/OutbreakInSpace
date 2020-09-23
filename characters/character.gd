@@ -243,5 +243,11 @@ func test():
 	var testing_text = get_full_name()
 	testing_text = testing_text + testing_suffix_days + str(data["last_tested"])
 	$TestingLabel.text = testing_text
-	
-	
+
+
+func _on_VisibilityNotifier2D_screen_entered():
+	set_physics_process(true)
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	set_physics_process(false)

@@ -16,7 +16,7 @@ func _on_RandDirTimer_timeout():
 func get_random_direction():
 	var x = rng.randf_range(-1.0, 1.0)
 	var y = rng.randf_range(-1.0, 1.0)
-	direction = Vector2(x, y)
+	direction = Vector2(x, y).normalized()
 	animate_sprite(direction)
 
 

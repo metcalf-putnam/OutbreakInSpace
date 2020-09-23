@@ -401,15 +401,16 @@ animation = "idle_left"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id=20]
 blend_point_0/node = SubResource( 16 )
-blend_point_0/pos = Vector2( 0, 0.7 )
+blend_point_0/pos = Vector2( 0, 1 )
 blend_point_1/node = SubResource( 17 )
-blend_point_1/pos = Vector2( 0, -0.7 )
+blend_point_1/pos = Vector2( 0, -1 )
 blend_point_2/node = SubResource( 18 )
-blend_point_2/pos = Vector2( 1, 0 )
+blend_point_2/pos = Vector2( 1.1, 0 )
 blend_point_3/node = SubResource( 19 )
-blend_point_3/pos = Vector2( -1, 0 )
+blend_point_3/pos = Vector2( -1.1, 0 )
 min_space = Vector2( -1.2, -1.2 )
 max_space = Vector2( 1.2, 1.2 )
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id=21]
 animation = "sing"
@@ -493,15 +494,16 @@ texture = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
-frame = 8
+frame = 1
 
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
 ]]
+visible = false
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
-frame = 26
+frame = 1
 
 [node name="ShedTimer" type="Timer" parent="."]
 
@@ -537,12 +539,12 @@ tree_root = SubResource( 33 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 34 )
-parameters/idle/blend_position = Vector2( -0.0537678, 0.103448 )
+parameters/idle/blend_position = Vector2( -0.0257703, 0.181224 )
 parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="Cough" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-volume_db = -15.0
+volume_db = -25.0
 
 [node name="Sing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
@@ -573,9 +575,13 @@ text = "Character Name, last tested: Day 3"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="VisibilityNotifier2D" type="VisibilityEnabler2D" parent="."]
 [connection signal="body_entered" from="VeryClose" to="." method="_on_VeryClose_body_entered"]
 [connection signal="body_exited" from="VeryClose" to="." method="_on_VeryClose_body_exited"]
 [connection signal="body_entered" from="Close" to="." method="_on_Close_body_entered"]
 [connection signal="body_exited" from="Close" to="." method="_on_Close_body_exited"]
 [connection signal="timeout" from="ShedTimer" to="." method="_on_ShedTimer_timeout"]
 [connection signal="timeout" from="CoughTimer" to="." method="_on_CoughTimer_timeout"]
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

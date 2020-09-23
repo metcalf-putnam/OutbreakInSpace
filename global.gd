@@ -39,3 +39,16 @@ func visit_professor():
 func decrement_energy():
 	energy -= 1
 	EventHub.emit_signal("energy_used")
+
+# MINI GAME global - variables and functions
+var player_settings = {
+	"ammo": 40,
+	"shield": 3,
+	"extraction_points": 0,
+}
+var completed_playthrough = true #set to false
+
+func update_playthrough():
+	completed_playthrough = true
+###
+

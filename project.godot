@@ -111,6 +111,13 @@ test={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_2="player"
+2d_physics/layer_3="virus"
+2d_physics/layer_4="player_bullet"
+2d_physics/layer_5="virus_bullet"
+
 [rendering]
 
 quality/driver/driver_name="GLES2"

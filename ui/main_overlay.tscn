@@ -189,16 +189,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-modulate = Color( 0, 0, 0, 1 )
-margin_right = 1024.0
-margin_bottom = 600.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="MaskButton" type="Button" parent="."]
 margin_left = 642.058
 margin_top = 18.6877
@@ -209,6 +199,16 @@ custom_fonts/font = SubResource( 1 )
 toggle_mode = true
 enabled_focus_mode = 1
 text = "Masks on/off"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

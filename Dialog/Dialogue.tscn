@@ -33,6 +33,7 @@ tracks/0/keys = {
 }
 
 [node name="Dialogue" type="NinePatchRect"]
+pause_mode = 2
 margin_left = 71.2173
 margin_top = 383.435
 margin_right = 521.217

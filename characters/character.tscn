@@ -2,8 +2,8 @@
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/circle.png" type="Texture" id=2]
-[ext_resource path="res://characters/Blues/Woman/helmet.png" type="Texture" id=3]
-[ext_resource path="res://characters/Blues/Man/base_sprite.png" type="Texture" id=4]
+[ext_resource path="res://characters/Blues/Elderly/helmet.png" type="Texture" id=3]
+[ext_resource path="res://characters/Blues/Elderly/base_sprite.png" type="Texture" id=4]
 [ext_resource path="res://characters/effects/Cough_1.wav" type="AudioStream" id=5]
 [ext_resource path="res://characters/effects/Singing_One_Note.wav" type="AudioStream" id=6]
 [ext_resource path="res://characters/effects/cloud.png" type="Texture" id=7]
@@ -173,7 +173,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 8, 9 ]
+"values": [ 12, 13 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -498,7 +498,6 @@ hframes = 4
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
 ]]
-visible = false
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
@@ -574,12 +573,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VisibilityNotifier2D" type="VisibilityEnabler2D" parent="."]
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 [connection signal="body_entered" from="VeryClose" to="." method="_on_VeryClose_body_entered"]
 [connection signal="body_exited" from="VeryClose" to="." method="_on_VeryClose_body_exited"]
 [connection signal="body_entered" from="Close" to="." method="_on_Close_body_entered"]
 [connection signal="body_exited" from="Close" to="." method="_on_Close_body_exited"]
 [connection signal="timeout" from="ShedTimer" to="." method="_on_ShedTimer_timeout"]
 [connection signal="timeout" from="CoughTimer" to="." method="_on_CoughTimer_timeout"]
-[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

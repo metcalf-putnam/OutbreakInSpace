@@ -27,6 +27,8 @@ enum State {SINGING, DIALOGUE, ACTIVE}
 var state = State.ACTIVE
 var rng = RandomNumberGenerator.new()
 const testing_suffix_days := ", last tested: Day "
+const cough_min = 10
+const cough_max = 30
 
 
 func _ready():
@@ -49,7 +51,7 @@ func init(data_in):
 	if data["is_contagious"]:
 		$ShedTimer.start()
 	if data["is_symptomatic"]:
-		$CoughTimer.start(rng.randf_range(8, 90))
+		$CoughTimer.start(rng.randf_range(cough_min, cough_max))
 	if data["has_helmet"]: 
 		mask_multiplier = 1 - Global.mask_effectiveness
 	var testing_text = get_full_name()
@@ -211,6 +213,7 @@ func animate_sprite(direction : Vector2):
 
 func _on_CoughTimer_timeout():
 	cough()
+	$CoughTimer.start(rng.randf_range(cough_min, cough_max))
 
 
 func mask_on():
@@ -245,9 +248,3 @@ func test():
 	$TestingLabel.text = testing_text
 
 
-func _on_VisibilityNotifier2D_screen_entered():
-	set_physics_process(true)
-
-
-func _on_VisibilityNotifier2D_screen_exited():
-	set_physics_process(false)

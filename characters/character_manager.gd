@@ -98,7 +98,7 @@ func create_npc(home : String, family_name : String, race : String,
 			dict["type"] = "Man"
 	match type:
 		"adult":
-			dict["work"] = "Work"
+			dict["work"] = "Factory1A"
 		"Child": 
 			dict["work"] = "School"
 		"Elderly":

@@ -14,3 +14,7 @@ signal day_ended
 
 # Testing signals
 signal testing_character
+
+# Building signals
+signal building_entered
+signal building_exited

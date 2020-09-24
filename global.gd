@@ -37,6 +37,9 @@ func visit_professor():
 	player_can_test = true
 	
 func decrement_energy():
+	if energy <= 0:
+		print("error: no energy")
+		return
 	energy -= 1
 	EventHub.emit_signal("energy_used")
 

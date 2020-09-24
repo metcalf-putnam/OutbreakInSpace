@@ -84,7 +84,7 @@ sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 4 )]
-position = Vector2( 857.741, 624.18 )
+position = Vector2( 871.883, 607.209 )
 dialog_file = "res://Dialog/json/granny_day_1.json"
 full_name = "Granny"
 infective_dose = 350

@@ -12,10 +12,10 @@
 script = ExtResource( 1 )
 
 [node name="Sprite" parent="." index="3"]
-frame = 0
+frame = 1
 
 [node name="Helmet" parent="." index="4"]
-frame = 0
+frame = 1
 
 [node name="CollisionShape2D" parent="." index="6"]
 position = Vector2( 0, 1.12247 )

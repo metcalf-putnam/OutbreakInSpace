@@ -41,9 +41,24 @@ func move_along_path(distance : float) -> void:
 		if distance <= distance_to_next and distance >= 0.0:
 			var move_rotation = get_angle_to(path[0])
 			var velocity = Vector2(speed,0).rotated(move_rotation)
-			var collision = move_and_slide(velocity)
-			#velocity = move_and_slide(velocity)
+			#var collision = move_and_collide(velocity)
+			#var time := 0.1
+			#while collision:
+			#	yield(get_tree().create_timer(time), "timeout")
+			#	collision = move_and_collide(velocity)
+			#	time = time * 2
+			var old_velocity = velocity;
+			velocity = move_and_slide(velocity)
 			animate_sprite(velocity)
+			if (velocity.length() < 0.1 * speed):
+				var displace_velocity = Vector2(speed,0).rotated(rng.randf_range(0,2.0*PI))
+				#velocity = move_and_slide(displace_velocity)
+				#animate_sprite(velocity)				
+				set_physics_process(false)				
+				#path[0] = navNode.get_closest_point(displace_velocity + global_position)
+				path = navNode.get_simple_path(navNode.get_closest_point(displace_velocity + global_position), path[-1])
+				yield(get_tree().create_timer(rng.randf_range(0.1, 2.0)), "timeout")
+				set_physics_process(true)
 			break
 		elif path.size() == 1 && distance > distance_to_next:
 			set_physics_process(false)
@@ -52,6 +67,11 @@ func move_along_path(distance : float) -> void:
 		distance -= distance_to_next
 		start_point = path[0]
 		path.remove(0)
+
+#func temporarily_disable_collision():
+#	$CollisionShape2D.disabled = true
+#	yield(get_tree().create_timer(0.1), "timeout")
+#	$CollisionShape2D.disabled = true
 
 
 func set_target_location(new_target : Vector2) -> void:
@@ -62,7 +82,7 @@ func set_target_location(new_target : Vector2) -> void:
 		_on_end_of_path()
 		return
 	target = new_target
-	path = navNode.get_simple_path(global_position, new_target, false)
+	path = navNode.get_simple_path(global_position, new_target)
 	if path.size() == 0:
 		print("you sent me an empty array!")
 		return

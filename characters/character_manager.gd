@@ -14,18 +14,21 @@ func _ready():
 		return
 	rng.randomize()
 	create_player()
+	create_family("B4", "Reptiles", 2, 2, 1)
 	create_family("A1", "Blues", 2, 2, 1)
 	create_family("B1", "Reptiles", 2, 3, 1)
-	create_family("A2", "Blues", 1, 3, 0)
-	create_family("B3", "Reptiles", 1, 5, 3)
-	create_family("A3", "Blues", 2, 2, 2)
-	create_family("B2", "Reptiles", 2, 3, 2)
-	create_family("A4", "Blues", 2, 2, 2)
-	create_family("B4", "Reptiles", 2, 2, 1)
-	# Granny lives in B5
-	create_family("B6", "Reptiles", 2, 2, 1)
 	create_family("A5", "Blues", 2, 2, 2)
 	create_family("B7", "Reptiles", 1, 0, 1)
+	create_family("A2", "Blues", 1, 3, 0)
+	create_family("B2", "Reptiles", 2, 3, 2)
+	create_family("A4", "Blues", 2, 2, 2)
+	create_family("B3", "Reptiles", 1, 5, 3)
+	create_family("A3", "Blues", 2, 2, 2)
+	create_family("B6", "Reptiles", 2, 2, 1)
+
+	# Granny lives in B5
+
+
 
 
 func get_core_npc(npc_name):

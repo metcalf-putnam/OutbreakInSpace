@@ -10,10 +10,10 @@ func _ready():
 	rng.randomize()
 	screen_size = get_viewport_rect().size
 	# TODO: logic for initializing npcs if not already created previously
+	spawn_player()
 	for npc in CharacterManager.npcs:
 		spawn_npc(npc)
 		yield(get_tree().create_timer(.75), "timeout")
-	spawn_player()
 	#$Dialogue.init("res://Dialog/json/singing_v2.json", "Dave")
 
 func spawn_npc(npc_data):

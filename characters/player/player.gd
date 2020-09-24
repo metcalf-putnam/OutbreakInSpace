@@ -4,6 +4,7 @@ var last_direction = Vector2()
 
 func _ready():
 	speed = 100
+	$AnimationPlayer.playback_speed = 1
 	EventHub.connect("player_spoke", self, "speak")
 	EventHub.connect("new_dialogue", self, "_on_new_dialogue")
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")

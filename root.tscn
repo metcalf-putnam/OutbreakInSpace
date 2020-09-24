@@ -16,6 +16,61 @@ NPC = ExtResource( 2 )
 
 [node name="Navigation2D" parent="." instance=ExtResource( 3 )]
 
+[node name="Homes" type="Node2D" parent="Navigation2D"]
+
+[node name="B1" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 393.083, 662.119 )
+
+[node name="B2" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 471.425, 661.543 )
+
+[node name="B3" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 567.539, 662.928 )
+
+[node name="B4" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 673.067, 662.28 )
+
+[node name="B5" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 744.275, 664.563 )
+
+[node name="B6" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 912.474, 663.796 )
+
+[node name="B7" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 866.388, 445.921 )
+
+[node name="B8" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 1048.47, 662.296 )
+
+[node name="B9" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 1113.47, 663.296 )
+
+[node name="A1" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 1418.8, -487.176 )
+
+[node name="A2" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 1422.3, -399.611 )
+
+[node name="A3" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 1434.44, -317.361 )
+
+[node name="A4" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 1434.81, -210.573 )
+
+[node name="A5" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( 1440.24, -96.6265 )
+
+[node name="Locations" type="Node2D" parent="Navigation2D"]
+
+[node name="Work" type="Position2D" parent="Navigation2D/Locations"]
+position = Vector2( 1007.94, 134.812 )
+
+[node name="School" type="Position2D" parent="Navigation2D/Locations"]
+position = Vector2( 153.71, -212.927 )
+
+[node name="Park" type="Position2D" parent="Navigation2D/Locations"]
+position = Vector2( 1065.3, -46.4475 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="npcs" type="YSort" parent="YSort"]
@@ -53,7 +108,7 @@ sprite_file = "res://characters/corenpcs/Work Friend/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Work Friend/helmet.png"
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 750, 700 )
+position = Vector2( 1225.92, -78.9887 )
 
 [node name="FPS" type="Label" parent="."]
 visible = false

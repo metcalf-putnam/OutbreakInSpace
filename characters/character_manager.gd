@@ -14,12 +14,18 @@ func _ready():
 		return
 	rng.randomize()
 	create_player()
-	create_family("slum1", "Reptiles", 2, 3, 1)
-	create_family("slum2", "Reptiles", 10, 15, 3)
-	create_family("private1", "Blues", 5, 4, 2)
-	create_family("private2", "Blues", 1, 3, 0)
-	create_family("slum1", "Blues", 2, 2, 2)
-	create_family("slum1", "Blues", 2, 2, 2)
+	create_family("A1", "Blues", 2, 2, 1)
+	create_family("B1", "Reptiles", 2, 3, 1)
+	create_family("A2", "Blues", 1, 3, 0)
+	create_family("B3", "Reptiles", 1, 5, 3)
+	create_family("A3", "Blues", 2, 2, 2)
+	create_family("B2", "Reptiles", 2, 3, 2)
+	create_family("A4", "Blues", 2, 2, 2)
+	create_family("B4", "Reptiles", 2, 2, 1)
+	# Granny lives in B5
+	create_family("B6", "Reptiles", 2, 2, 1)
+	create_family("A5", "Blues", 2, 2, 2)
+	create_family("B7", "Reptiles", 1, 0, 1)
 
 
 func get_core_npc(npc_name):
@@ -62,7 +68,7 @@ func create_family(location, race, adults, kids, elderly):
 		create_and_add_npc(location, surname, race, "Child", 1000)
 	for _i in range(elderly):
 		create_and_add_npc(location, surname, race, "Elderly", 1000)
-
+	print("total NPCs: ", i)
 
 func create_and_add_npc(home : String, family_name : String, race : String, 
 		type : String, infective_dose_mean):
@@ -87,6 +93,13 @@ func create_npc(home : String, family_name : String, race : String,
 			dict["type"] = "Woman"
 		else:
 			dict["type"] = "Man"
+	match type:
+		"adult":
+			dict["work"] = "Work"
+		"Child": 
+			dict["work"] = "School"
+		"Elderly":
+			dict["work"] = "Park"
 	
 	dict["is_infected"] = false
 	dict["is_contagious"] = false

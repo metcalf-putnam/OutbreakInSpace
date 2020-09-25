@@ -8,8 +8,8 @@ func _ready():
 	EventHub.connect("player_spoke", self, "speak")
 	EventHub.connect("new_dialogue", self, "_on_new_dialogue")
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
-	position = Global.player_position
-	
+
+
 func _physics_process(_delta):
 	if state == State.SINGING or state == State.DIALOGUE:
 		return

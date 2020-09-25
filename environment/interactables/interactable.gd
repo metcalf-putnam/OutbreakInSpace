@@ -14,12 +14,15 @@ func _on_Interactable_body_entered(body):
 	if body.is_in_group("player"):
 		player_in_range = true
 		$Control.show()
+		$Exclamation.hide()
 
 
 func _on_Interactable_body_exited(body):
 	if body.is_in_group("player"):
 		player_in_range = false
 		$Control.hide()
+		if has_new_info:
+			$Exclamation.show()
 
 
 func _unhandled_input(event):

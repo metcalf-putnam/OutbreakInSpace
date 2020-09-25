@@ -70,19 +70,32 @@ func init(file_path : String, name := " "):
 	next()
 
 
-func test_character(character_array):
-	$Name_NinePatchRect.hide()
-	$Space_NinePatchRect.hide()
+func test_character(character_array, location_name = null):
+	if !location_name:
+		$Name_NinePatchRect.hide()
+	else:
+		$Name_NinePatchRect/Name.text = location_name
+		$Name_NinePatchRect.show()
 	show()
 	characters = character_array
 	state = State.TESTING
-	$Text.bbcode_text = testing_text
-	get_tree().paused = true
+	set_process(true)
+	
+	if character_array.size() == 0:
+		$Text.bbcode_text = "No one inside"
+		is_final = true
+		$Space_NinePatchRect.show()
+		return
+	else:
+		$Text.bbcode_text = testing_text
+		$Space_NinePatchRect.hide()
+		get_tree().paused = true
+
 	for character in character_array:
 		character.show_testing_label(true)
 		add_name_button(character.get_full_name())
 	add_name_button("No one for now")
-	set_process(true)
+
 	# Labels above or below characters with name and last tested day
 
 

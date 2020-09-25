@@ -5,6 +5,8 @@ var direction : Vector2
 var path := PoolVector2Array() 
 var target : Vector2
 var navNode : Navigation2D
+var is_wandering := false
+
 
 func _ready():
 	get_random_direction()
@@ -76,7 +78,18 @@ func set_target_location(new_target : Vector2) -> void:
 
 
 func _on_end_of_path() -> void:
-	set_physics_process(false)
-	animationState.travel("idle")
-	EventHub.emit_signal("building_entered", self.data)
-	queue_free()
+	if is_wandering:
+		wander()
+	else:
+		set_physics_process(false)
+		animationState.travel("idle")
+		EventHub.emit_signal("building_entered", self)
+		wander()
+
+
+func wander():
+	is_wandering = true
+	var displace_velocity = Vector2(speed*3,0).rotated(rng.randf_range(0,2.0*PI))
+	var new_temp_dest = navNode.get_closest_point(displace_velocity + global_position)
+	set_target_location(navNode.get_closest_point(new_temp_dest))
+

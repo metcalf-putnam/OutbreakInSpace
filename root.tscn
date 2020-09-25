@@ -61,25 +61,61 @@ position = Vector2( 1434.81, -210.573 )
 [node name="A5" type="Position2D" parent="Navigation2D/Homes"]
 position = Vector2( 1440.24, -96.6265 )
 
+[node name="C1" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( -72, -488 )
+
+[node name="C2" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( -376, -504 )
+
+[node name="C3" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( -376, -376 )
+
+[node name="C4" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( -152, -184 )
+
+[node name="D1" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( -312, -88 )
+
+[node name="D2" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( -312, -8 )
+
+[node name="D3" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( -312, 88 )
+
+[node name="D4" type="Position2D" parent="Navigation2D/Homes"]
+position = Vector2( -312, 184 )
+
 [node name="Locations" type="Node2D" parent="Navigation2D"]
 
-[node name="School" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
-position = Vector2( 136, -32 )
+[node name="Class1" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
+position = Vector2( 56, -24 )
 
-[node name="Park" type="Position2D" parent="Navigation2D/Locations"]
-position = Vector2( 1065.3, -46.4475 )
+[node name="Class2" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
+position = Vector2( 144, -24 )
+
+[node name="Class3" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
+position = Vector2( 232, -24 )
+
+[node name="Park1" type="Position2D" parent="Navigation2D/Locations"]
+position = Vector2( 1016, -280 )
+
+[node name="Park2" type="Position2D" parent="Navigation2D/Locations"]
+position = Vector2( 136, 416 )
+
+[node name="grocery" type="Position2D" parent="Navigation2D/Locations"]
+position = Vector2( 584, -64 )
 
 [node name="Factory1A" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
-position = Vector2( 314, 346 )
+position = Vector2( 314, 354 )
 
 [node name="Factory1B" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
-position = Vector2( 426.15, 345.674 )
+position = Vector2( 426.15, 353.674 )
 
 [node name="Factory1C" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
-position = Vector2( 586, 346 )
+position = Vector2( 586, 354 )
 
 [node name="Factory1D" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
-position = Vector2( 698, 346 )
+position = Vector2( 698, 354 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -94,7 +130,7 @@ sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 4 )]
-position = Vector2( 871.883, 607.209 )
+position = Vector2( -104, -376 )
 dialog_file = "res://Dialog/json/granny_day_1.json"
 full_name = "Granny"
 infective_dose = 350
@@ -102,7 +138,7 @@ sprite_file = "res://characters/corenpcs/Granny Murktuk/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Granny Murktuk/helmet.png"
 
 [node name="Singer" parent="YSort/npcs" instance=ExtResource( 4 )]
-position = Vector2( 697.432, 427.914 )
+position = Vector2( 768, 456 )
 dialog_file = "res://Dialog/json/singing_v3.json"
 full_name = "Juan"
 infective_dose = 1000
@@ -118,7 +154,7 @@ sprite_file = "res://characters/corenpcs/Work Friend/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Work Friend/helmet.png"
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 1225.92, -78.9887 )
+position = Vector2( -376, -504 )
 
 [node name="FPS" type="Label" parent="."]
 visible = false

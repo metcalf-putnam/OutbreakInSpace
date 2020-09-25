@@ -1,7 +1,6 @@
 extends "res://bullet-prototype/enemies/base_enemy.gd"
 
 func _ready():
-	health = 30
 	init()
 	pass # Replace with function body.
 
@@ -24,6 +23,8 @@ func init():
 	first_pattern = "fire-2468"
 	current_pattern = first_pattern
 	
+	health = 30
+	$HealthBar.max_value = health
 	$AnimationPlayer.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 	$HitAnimation.connect("animation_finished", self, "_on_HitAnimation_animation_finished")
 	connect("body_entered", self, "_on_Easy_body_entered")

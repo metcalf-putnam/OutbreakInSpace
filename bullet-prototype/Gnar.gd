@@ -99,6 +99,7 @@ func add_virus(type = "EASY"):
 		
 	v.connect("extract", self, "_on_enemy_extract")
 	v.connect("start_stage", self, "_on_start_stage")
+	v.connect("stage_complete", self, "_on_stage_complete")
 	v.position = Vector2(300, 200)
 	add_child(v)
 	v.show()
@@ -112,12 +113,20 @@ func stage_complete(status, details):
 	status_value.text = "\"" + status + "\""
 	details_value.text = "\"" + details + "\""
 	
+	var value
 	if status == "Extraction Complete!":
-		time_value.text = "\"Gnar extracted a total of 1 minute!\""
+		if details == "Gnar eliminated the virus!":
+			time_value.text = "\"Gnar defeated the virus in " + str(60-seconds) + " seconds!\""
+			value = int(extraction_points.text) * 2 + 60
+			pass
+		elif details == "Fully utilized our machine!":
+			time_value.text = "\"Gnar extracted a total of 1 minute!\""
+			value = int(extraction_points.text) + 60
+			pass
 	else:
 		time_value.text = "Extraction time in seconds: " + str(60-seconds)
-	
-	var value = int(extraction_points.text) + (60-seconds)
+		value = int(extraction_points.text) + (60-seconds)
+		
 	extraction_value.text = str(value)
 	Global.player_settings.extraction_points += value
 	

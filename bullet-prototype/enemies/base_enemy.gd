@@ -29,10 +29,12 @@ var max_location = Vector2(900, 500)
 var desired_location = null
 
 var is_ready = false
+var is_stage_complete = false
 var hide = false
 
 signal extract
 signal start_stage
+signal stage_complete
 
 func init():
 	patterns = {
@@ -47,6 +49,8 @@ func _ready():
 	set_process(false)
 
 func _process(delta):
+	if is_stage_complete: return
+	
 	if desired_location == null or position.distance_to(desired_location) < THRESHOLD_DISTANCE:
 		desired_location = next_location()
 		print("desired", desired_location)
@@ -112,7 +116,9 @@ func _on_Easy_body_entered(body):
 		body.queue_free()
 		
 		if health < 0:
-			print("Player won!")
+			is_stage_complete = true
+			hide()
+			emit_signal("stage_complete", "Extraction Complete!", "Gnar eliminated the virus!")
 	pass # Replace with function body.d
 
 func _on_AnimationPlayer_animation_finished(anim_name):

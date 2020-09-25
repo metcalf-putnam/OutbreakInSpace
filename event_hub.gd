@@ -20,3 +20,6 @@ signal testing_character
 signal building_entered
 signal building_exited
 signal building_occupied
+
+# Infection signals
+signal new_infection

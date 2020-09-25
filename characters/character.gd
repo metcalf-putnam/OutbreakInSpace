@@ -85,6 +85,7 @@ func check_status():
 	# TODO: account for asymptomatic infections
 	if data["viral_load"] >= data["infective_dose"]:
 		data["is_infected"] = true
+		Global.new_infections += 1
 		data["contagious_date"] = Global.day + days_to_contagious
 		data["symptomatic_date"] = Global.day + days_to_symptomatic
 

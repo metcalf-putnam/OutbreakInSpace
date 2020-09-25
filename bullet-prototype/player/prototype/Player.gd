@@ -15,6 +15,7 @@ var can_shoot = false
 var can_move = false
 var can_take_damage = true
 var is_ready = false
+var is_shoot_ready = false
 var is_stage_complete = false
 
 signal fire
@@ -31,7 +32,7 @@ func hide():
 
 func apply_movement():
 	if !can_move: return
-	
+		
 	var direction = Vector2()
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
@@ -44,13 +45,15 @@ func get_mouse_angle():
 	return get_local_mouse_position().angle()
 
 func rotate_aim():
-	rotation += get_mouse_angle() * 0.1
+	if !can_move: return
+	
+	rotation += (get_mouse_angle() + deg2rad(90))* 0.1
 
 func create_bullet():
 	var bullet = bullet_scn.instance()
 	var position = get_node("Aim").global_position
 	var bullet_speed = 250
-	var velocity = Vector2(bullet_speed, 0).rotated(rotation)
+	var velocity = Vector2(bullet_speed, 0).rotated(rotation - deg2rad(90))
 	bullet.setup(position, velocity)
 	get_tree().get_root().add_child(bullet)
 	
@@ -58,6 +61,8 @@ func create_bullet():
 	emit_signal("fire")
 
 func apply_shoot_availability():
+	if !is_shoot_ready: return
+	
 	if current_ammo == 0:
 		return
 		
@@ -105,8 +110,6 @@ func _on_HitAnimation_animation_finished(anim_name):
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "show" and !is_stage_complete:
-		emit_signal("start_stage")
 		is_ready = true
-		can_shoot = true
-		can_move = true
+		emit_signal("start_stage")
 	pass # Replace with function body.

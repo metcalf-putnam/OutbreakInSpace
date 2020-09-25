@@ -88,13 +88,13 @@ position = Vector2( -264, 184 )
 [node name="Locations" type="Node2D" parent="Navigation2D"]
 
 [node name="Class1" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
-position = Vector2( 74, -95 )
+position = Vector2( 74, -93 )
 
 [node name="Class2" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
-position = Vector2( 202, -80 )
+position = Vector2( 202, -77 )
 
 [node name="Class3" parent="Navigation2D/Locations" instance=ExtResource( 10 )]
-position = Vector2( 139, -208 )
+position = Vector2( 139, -205 )
 
 [node name="Park1" type="Position2D" parent="Navigation2D/Locations"]
 position = Vector2( 1016, -280 )

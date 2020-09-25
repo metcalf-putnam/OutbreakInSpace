@@ -247,5 +247,6 @@ func test():
 	var testing_text = get_full_name()
 	testing_text = testing_text + testing_suffix_days + str(data["last_tested"])
 	$TestingLabel.text = testing_text
+	Global.add_test_results(data["name"], data["is_infected"])
 
 

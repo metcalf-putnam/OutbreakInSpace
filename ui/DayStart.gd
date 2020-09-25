@@ -2,7 +2,7 @@ extends CanvasLayer
 var report_title := "[wave]Daily Report[/wave]"
 var new_infections_label := "New infections: "
 var total_infections_label := "Total infections: "
-var test_label := "Test Results:[N/A: not yet implemented]"
+var test_label := "[wave]Test Results:[/wave]"
 
 func _ready():
 	get_tree().paused = true
@@ -18,6 +18,12 @@ func _ready():
 	textbox.newline()
 	textbox.newline()
 	textbox.append_bbcode(test_label)
+	if Global.test_results.has(Global.day):
+		for result in Global.test_results[Global.day]:
+			textbox.newline()
+			textbox.append_bbcode(result)
+	else:
+		textbox.append_bbcode("N/A")
 	
 	Global.new_infections = 0
 

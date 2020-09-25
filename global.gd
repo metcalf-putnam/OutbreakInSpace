@@ -13,6 +13,8 @@ var player_can_sing := false
 var player_can_test := true
 var player_helmet := false
 var player_position := Vector2(750, 700)
+var test_results = {}
+var test_time := 2
 
 
 func _ready():
@@ -28,10 +30,23 @@ func _on_day_ended():
 	get_tree().get_root().add_child(morning_report)
 
 
+func add_test_results(name_tested, result):
+	var result_string = name_tested + ", "
+	if result:
+		result_string = result_string + "positive"
+	else:
+		result_string = result_string + "negative"
+
+	if test_results.has(day + test_time):
+		test_results[day + test_time].append(result_string)
+	else:
+		test_results[day + test_time] = [result_string]
+
+
 func increment_cookies():
 	pass
-	
-	
+
+
 func singing_lesson():
 	print("singing lesson being called!")
 	player_can_sing = true

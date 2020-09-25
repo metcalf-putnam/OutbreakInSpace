@@ -42,12 +42,11 @@ func _process(delta):
 					if len(characters) <= i:
 						cancel_test()
 					else:
-						print("testing")
 						if characters[i] is KinematicBody2D:
 							characters[i].test()
 						else:
 							characters[i]["last_tested"] = Global.day
-							print("NEED TO ADD CALL HERE TO TEST CHARACTERS")
+							Global.add_test_results(characters[i]["name"], characters[i]["is_infected"])
 						confirm_test($Buttons.get_child(i).get_text())
 					clear_buttons()
 					$Space_NinePatchRect.show()
@@ -117,7 +116,7 @@ func error():
 
 
 func confirm_test(name_tested : String):
-	$Text.bbcode_text = name_tested + " has been tested. Results will be posted in four days."
+	$Text.bbcode_text = name_tested + " has been tested. Results will be posted in " + str(Global.test_time) + " days."
 	Global.decrement_energy()
 	is_final = true
 	get_tree().paused = false

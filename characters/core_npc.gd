@@ -11,6 +11,7 @@ func _ready():
 	if infective_dose:
 		data["infective_dose"] = infective_dose
 	init(data)
+	data["name"] = full_name
 
 func _on_Interactable_dialogue_started():
 	EventHub.emit_signal("new_dialogue", dialog_file, full_name)

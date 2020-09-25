@@ -11,6 +11,7 @@ signal insufficient_energy
 
 # Day signals
 signal day_ended
+signal work_ended
 
 # Testing signals
 signal testing_character
@@ -18,3 +19,7 @@ signal testing_character
 # Building signals
 signal building_entered
 signal building_exited
+signal building_occupied
+
+# Infection signals
+signal new_infection

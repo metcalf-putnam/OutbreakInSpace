@@ -8,11 +8,15 @@
 extents = Vector2( 35.2642, 21.2146 )
 
 [node name="BuildingSign" instance=ExtResource( 1 )]
+position = Vector2( 0, 8 )
 script = ExtResource( 2 )
+
+[node name="Exclamation" parent="." index="0"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 shape = SubResource( 1 )
 
 [node name="Sign" type="Sprite" parent="." index="4"]
-position = Vector2( 13, 0 )
+position = Vector2( 13, -8 )
 texture = ExtResource( 3 )

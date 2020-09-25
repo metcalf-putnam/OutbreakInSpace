@@ -4,27 +4,52 @@ export (PackedScene) var NPC
 export (PackedScene) var Player
 var screen_size
 var rng = RandomNumberGenerator.new()
-
+var lower_energy_limit := 0
 
 func _ready():
 	rng.randomize()
 	screen_size = get_viewport_rect().size
+	EventHub.connect("energy_used", self, "_on_energy_used")
+	EventHub.connect("building_exited", self, "on_building_exited")
 	# TODO: logic for initializing npcs if not already created previously
 	spawn_player()
-	for npc in CharacterManager.npcs:
-		spawn_npc(npc)
-		yield(get_tree().create_timer(.75), "timeout")
-	#$Dialogue.init("res://Dialog/json/singing_v2.json", "Dave")
+	if Global.energy <= lower_energy_limit:
+		return
+	if Global.energy > lower_energy_limit and Global.energy < Global.max_energy:
+		for npc in CharacterManager.npcs:
+			if $Navigation2D/Locations.find_node(npc["work"]) is Area2D:
+				EventHub.emit_signal("building_occupied", npc)
+			else:
+				spawn_npc(npc, "wander")
+	if Global.energy == Global.max_energy:
+		for npc in CharacterManager.npcs:
+			spawn_npc(npc, "home")
+			yield(get_tree().create_timer(rng.randf_range(0.75, 1.5)), "timeout")
 
-func spawn_npc(npc_data):
+
+func send_npcs_home():
+	for npc in $YSort/npcs.get_children():
+		if !npc.is_in_group("core_npc"):
+			var home_loc = get_home(npc.data)
+			npc.set_target_location(home_loc)
+	EventHub.emit_signal("work_ended")
+
+
+func spawn_npc(npc_data, location : String):
 	var npc = NPC.instance()
 	$YSort/npcs.add_child(npc)
 	npc.init(npc_data)
 	npc.set_nav_node($Navigation2D)
-	#npc.global_position = $Navigation2D.get_closest_point(get_home(npc_data))
-	npc.position = get_home(npc_data)
-	#npc.set_target_location(get_random_pos())
-	npc.set_target_location(get_work(npc_data))
+	match location:
+		"home":
+			npc.position = get_home(npc_data)
+			npc.set_target_location(get_work(npc_data))
+		"work":
+			npc.position = get_work(npc_data)
+			npc.set_target_location(get_home(npc_data))
+		"wander":
+			npc.position = get_work(npc_data)
+			npc.wander()
 
 
 func spawn_player():
@@ -44,16 +69,30 @@ func _on_Timer_timeout():
 	var num = rng.randi_range(0, count-1)
 	var chosen_npc = $YSort/npcs.get_child(num)
 	chosen_npc.cough()
-	
-	
+
+
 func get_home(data) -> Vector2:
 	var home_loc = Vector2()
 	if data.has("home") and $Navigation2D/Homes.has_node(data["home"]):
 		home_loc = $Navigation2D/Homes.get_node(data["home"]).global_position
+	else:
+		return get_random_pos()
 	return home_loc
-	
+
+
 func get_work(data) -> Vector2:
 	var work_loc = Vector2()
 	if data.has("work") and $Navigation2D/Locations.has_node(data["work"]):
 		work_loc = $Navigation2D/Locations.get_node(data["work"]).global_position
+	else:
+		return get_random_pos()
 	return work_loc
+
+
+func on_building_exited(npc_data):
+	spawn_npc(npc_data, "work")
+
+
+func _on_energy_used():
+	if Global.energy <= lower_energy_limit:
+		send_npcs_home()

@@ -533,6 +533,7 @@ margin_right = 917.0
 visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
 visible = false
@@ -548,7 +549,6 @@ margin_right = 1023.37
 margin_bottom = 605.0
 
 [node name="ExtractionPoints" type="Label" parent="CanvasLayer/HUD"]
-editor/display_folded = true
 margin_left = 33.4965
 margin_top = 511.595
 margin_right = 209.496

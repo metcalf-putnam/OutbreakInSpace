@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://bullet-prototype/player/prototype/Player.gd" type="Script" id=1]
-[ext_resource path="res://bullet-prototype/assets/B&W_Explosão_32x32.png" type="Texture" id=2]
+[ext_resource path="res://bullet-prototype/assets/Leukocyte_32x32.png" type="Texture" id=2]
+[ext_resource path="res://bullet-prototype/assets/B&W_Explosão_32x32.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 1.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 8.0
+radius = 13.0
 
 [sub_resource type="Animation" id=3]
 resource_name = "show"
@@ -34,7 +35,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.7 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0.2, 0.376471, 0.745098, 1 ) ]
+"values": [ Color( 0.227451, 0.160784, 0.823529, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Aim:visible")
@@ -94,7 +95,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 1.9, 2.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 360.0, 0.0 ]
+"values": [ 450.0, 90.0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -114,6 +115,7 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
+rotation = 1.5708
 collision_layer = 2
 collision_mask = 21
 script = ExtResource( 1 )
@@ -123,18 +125,17 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1e-005, 1e-005 )
 texture = ExtResource( 2 )
-hframes = 4
 
 [node name="Aim" type="Sprite" parent="."]
-visible = false
-position = Vector2( 12, 0 )
-scale = Vector2( 1e-005, 1e-005 )
-texture = ExtResource( 2 )
+self_modulate = Color( 0.109804, 0.690196, 0.866667, 1 )
+position = Vector2( -0.149227, -18.7908 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
 hframes = 4
 
 [node name="Detection" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 0
 

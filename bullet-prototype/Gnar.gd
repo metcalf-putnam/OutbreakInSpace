@@ -3,7 +3,8 @@ extends Node2D
 export(String, FILE, "*.json") var dialog_file
 
 onready var extract_scn = preload("res://bullet-prototype/misc/Extract.tscn")
-onready var easy_virus_scn = preload("res://bullet-prototype/enemies/easy/Easy.tscn")
+onready var easy_virus_scn = preload("res://bullet-prototype/enemies/bearus/Bearus.tscn")
+#onready var easy_virus_scn = preload("res://bullet-prototype/enemies/easy/Easy.tscn")
 onready var player_scn = preload("res://bullet-prototype/player/prototype/Player.tscn")
 
 onready var HUD = $CanvasLayer/HUD
@@ -20,7 +21,6 @@ onready var details_value = $CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxC
 onready var time_value = $CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/TimeValue
 onready var extraction_value = $CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/ExtractionValue
 onready var anim = $AnimationPlayer
-onready var tween = $Tween
 onready var timer = $Timer
 
 var current_player_settings
@@ -98,6 +98,8 @@ func add_virus(type = "EASY"):
 		v = easy_virus_scn.instance()
 		
 	v.connect("extract", self, "_on_enemy_extract")
+	v.connect("start_stage", self, "_on_start_stage")
+	v.connect("stage_complete", self, "_on_stage_complete")
 	v.position = Vector2(300, 200)
 	add_child(v)
 	v.show()
@@ -111,12 +113,20 @@ func stage_complete(status, details):
 	status_value.text = "\"" + status + "\""
 	details_value.text = "\"" + details + "\""
 	
+	var value
 	if status == "Extraction Complete!":
-		time_value.text = "\"Gnar extracted a total of 1 minute!\""
+		if details == "Gnar eliminated the virus!":
+			time_value.text = "\"Gnar defeated the virus in " + str(60-seconds) + " seconds!\""
+			value = int(extraction_points.text) * 2 + 60
+			pass
+		elif details == "Fully utilized our machine!":
+			time_value.text = "\"Gnar extracted a total of 1 minute!\""
+			value = int(extraction_points.text) + 60
+			pass
 	else:
 		time_value.text = "Extraction time in seconds: " + str(60-seconds)
-	
-	var value = int(extraction_points.text) + (60-seconds)
+		value = int(extraction_points.text) + (60-seconds)
+		
 	extraction_value.text = str(value)
 	Global.player_settings.extraction_points += value
 	
@@ -171,7 +181,7 @@ func _on_enemy_extract(type = "EASY"):
 		extract.position = virus.position
 		add_child(extract)
 		
-		var target_pos = virus.position + Vector2(rand_range(50, 50), rand_range(50, 50))
+		var target_pos = virus.position + Vector2(rand_range(-50, 50), rand_range(-50, 50))
 		var tween = Tween.new()
 		tween.interpolate_property(extract, "position", target_pos, Vector2(240, 522), 0.5, Tween.TRANS_LINEAR,Tween.EASE_IN)
 		add_child(tween)
@@ -189,9 +199,14 @@ func _on_extract_tween_completed(object, key):
 	extraction_points_tween.start()
 
 func _on_start_stage():
-	started = true
-	display_stage_time()
-	timer.start()
+	if player.is_ready and virus.is_ready:
+		player.can_move = true
+		player.is_shoot_ready = true
+		player.can_shoot = true
+		
+		started = true
+		display_stage_time()
+		timer.start()
 
 func _on_Timer_timeout():
 	if !started: return

@@ -1,12 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://bullet-prototype/bullets/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://bullet-prototype/assets/details/pore.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.0
-
-[sub_resource type="StreamTexture" id=2]
-load_path = "res://.import/B&W_Explosão_32x32.png-5f5af3ec37d7de8099016991ae82c9e9.stex"
 
 [node name="MediumBullet" type="RigidBody2D"]
 collision_layer = 16
@@ -21,8 +19,8 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = SubResource( 2 )
-region_enabled = true
+scale = Vector2( 2.5, 2.5 )
+texture = ExtResource( 2 )
 region_rect = Rect2( 32, 0, 32, 32 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]

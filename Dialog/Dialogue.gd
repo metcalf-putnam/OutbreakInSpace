@@ -34,7 +34,7 @@ func _process(delta):
 				if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
 					var option_text = $Buttons.get_child(i).get_text()
 					if !option_text.begins_with(action_prefix):
-						EventHub.emit_signal("player_spoke", len(option_text))
+						EventHub.emit_signal("player_spoke")
 					step_forward(i)
 		State.TESTING:
 			for i in range(0, get_node("Buttons").get_child_count()):
@@ -62,6 +62,7 @@ func step_forward(i):
 
 
 func init(file_path : String, name := " "):
+	EventHub.emit_signal("npc_dialogue")
 	state = State.DIALOGUE
 	$Name_NinePatchRect/Name.text = name
 	$Name_NinePatchRect.show()
@@ -143,7 +144,7 @@ func next():
 			$Space_NinePatchRect.show()
 		if block.is_final:
 			is_final = true
-
+	EventHub.emit_signal("npc_dialogue")
 
 func add_name_button(name : String):
 	var node = ChoiceButton.instance()

@@ -128,6 +128,8 @@ full_name = "Professor"
 infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
+is_infected = false
+is_contagious = false
 
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 4 )]
 position = Vector2( -104, -376 )
@@ -136,6 +138,8 @@ full_name = "Granny"
 infective_dose = 350
 sprite_file = "res://characters/corenpcs/Granny Murktuk/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Granny Murktuk/helmet.png"
+is_infected = false
+is_contagious = false
 
 [node name="Singer" parent="YSort/npcs" instance=ExtResource( 4 )]
 position = Vector2( 768, 456 )
@@ -144,6 +148,8 @@ full_name = "Juan"
 infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Singin Coach/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Singin Coach/helmet.png"
+is_infected = false
+is_contagious = false
 
 [node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 4 )]
 position = Vector2( 841.37, 161.548 )
@@ -155,6 +161,8 @@ helmet_file = "res://characters/corenpcs/Work Friend/helmet.png"
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( -344, -528 )
+is_contagious = false
+is_infected = false
 
 [node name="FPS" type="Label" parent="."]
 visible = false

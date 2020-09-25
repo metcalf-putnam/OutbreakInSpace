@@ -2067,7 +2067,7 @@ points = PoolVector2Array( 16, 16, 12, 16, 12, 12, 16, 12 )
 [node name="Navigation2D" type="Navigation2D"]
 
 [node name="PathFinding" type="TileMap" parent="."]
-z_index = 5
+z_index = -10
 tile_set = SubResource( 10 )
 cell_size = Vector2( 16, 16 )
 format = 1

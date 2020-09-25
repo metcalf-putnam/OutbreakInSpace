@@ -21,3 +21,7 @@ func _on_MaskButton_toggled(button_pressed):
 		get_tree().call_group("character", "mask_on")
 	else:
 		get_tree().call_group("character", "mask_off")
+
+
+func _on_Visuals_Debug_toggled(button_pressed):
+	get_tree().call_group("character", "infection_visual", button_pressed)

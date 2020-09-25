@@ -4,6 +4,7 @@ var day := 1
 var energy := 4
 const max_energy := 4
 var new_infections := 0
+var total_infections := 1
 
 var first_lab_visit := true
 var mask_effectiveness := 0.5
@@ -19,6 +20,7 @@ func _ready():
 
 
 func _on_day_ended():
+	total_infections += new_infections
 	energy = max_energy
 	day += 1
 	get_tree().reload_current_scene()

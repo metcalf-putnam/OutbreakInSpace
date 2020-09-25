@@ -43,7 +43,11 @@ func _process(delta):
 						cancel_test()
 					else:
 						print("testing")
-						characters[i].test()
+						if characters[i] is KinematicBody2D:
+							characters[i].test()
+						else:
+							characters[i]["last_tested"] = Global.day
+							print("NEED TO ADD CALL HERE TO TEST CHARACTERS")
 						confirm_test($Buttons.get_child(i).get_text())
 					clear_buttons()
 					$Space_NinePatchRect.show()
@@ -92,8 +96,11 @@ func test_character(character_array, location_name = null):
 		get_tree().paused = true
 
 	for character in character_array:
-		character.show_testing_label(true)
-		add_name_button(character.get_full_name())
+		if character is KinematicBody2D:
+			character.show_testing_label(true)
+			add_name_button(character.get_full_name())
+		else:
+			add_name_button(character["name"])
 	add_name_button("No one for now")
 
 	# Labels above or below characters with name and last tested day

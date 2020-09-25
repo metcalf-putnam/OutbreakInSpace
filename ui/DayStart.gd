@@ -14,6 +14,9 @@ func _ready():
 	textbox.append_bbcode(new_infections_label + str(Global.new_infections))
 	textbox.newline()
 	textbox.newline()
+	textbox.append_bbcode(total_infections_label + str(Global.total_infections))
+	textbox.newline()
+	textbox.newline()
 	textbox.append_bbcode(test_label)
 	
 	Global.new_infections = 0

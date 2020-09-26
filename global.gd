@@ -31,17 +31,12 @@ func _on_day_ended():
 	get_tree().get_root().add_child(morning_report)
 
 
-func add_test_results(id, name_tested, result):
-	var result_string = "ID: " + str(id) + " - " + name_tested + ", "
-	if result:
-		result_string = result_string + "positive"
-	else:
-		result_string = result_string + "negative"
-
+func add_test_results(data, result):
+	var test_dic = {"data": data, "result": result}
 	if test_results.has(day + test_time):
-		test_results[day + test_time].append(result_string)
+		test_results[day + test_time].append(test_dic)
 	else:
-		test_results[day + test_time] = [result_string]
+		test_results[day + test_time] = [test_dic]
 
 
 func increment_cookies():

@@ -9,7 +9,7 @@ signal play_mini_game
 
 var character_id = 0
 
-func init(data, path):
+func init(data, _path):
 	character_id = data["id"]
 	character_name.text = "Name: " + data["name"]
 	health.text = "Health: " + str(data["health"])

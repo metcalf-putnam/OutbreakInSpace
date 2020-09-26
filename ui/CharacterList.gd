@@ -18,20 +18,11 @@ func show_positive_characters():
 		nothing.show()
 		return
 	
-	for id in Global.positive_ids:
+	for data in Global.positive_ids:
 		
 		# Get character details
-		var details
-		var path
-		if int(id) == CharacterManager.player_id:
-			var player = get_tree().root.get_node("Root/YSort/Player")
-			details = player.data
-			path = player.get_path()
-		else:
-			for npc in get_tree().root.get_node("Root/YSort/npcs").get_children():
-				if int(id) == npc.data["id"]:
-					details = npc.data
-					path = npc.get_path()
+		var details = data
+		var path = data["portrait_path"]
 		
 		# Create profile
 		var character_details = character_details_scn.instance()

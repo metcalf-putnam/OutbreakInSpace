@@ -65,6 +65,7 @@ func get_core_npc(npc_name):
 		dict["done_test"] = false
 		dict["health"] = 100.0
 		dict["is_alive"] = true
+		dict["portrait_path"] = ""
 		core_npcs[npc_name] = dict
 		return dict
 
@@ -86,6 +87,7 @@ func create_player():
 	player["done_test"] = false
 	player["health"] = 100.0
 	player["is_alive"] = true
+	player["portrait_path"] = ""
 	print("created player")
 
 
@@ -129,7 +131,7 @@ func create_npc(home : String, family_name : String, race : String,
 			dict["work"] = get_random(["Class1", "Class2", "Class3"])
 		"Elderly":
 			dict["work"] = get_random(eld_places)
-
+	dict["portrait_path"] = ""
 	dict["is_infected"] = false
 	dict["is_contagious"] = false
 	dict["is_symptomatic"] = false

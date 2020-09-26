@@ -255,7 +255,7 @@ func test():
 	testing_text = testing_text + testing_suffix_days + str(data["last_tested"])
 	$TestingLabel.text = testing_text
 	print(data["name"], "+", data["is_infected"])
-	Global.add_test_results(data["id"], data["name"], data["is_infected"])
+	Global.add_test_results(data, data["is_infected"])
 
 func done_test():
 	return data["done_test"]

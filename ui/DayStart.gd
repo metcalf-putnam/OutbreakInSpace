@@ -19,16 +19,14 @@ func _ready():
 	textbox.newline()
 	textbox.append_bbcode(test_label)
 	if Global.test_results.has(Global.day):
-		for result in Global.test_results[Global.day]:
+		for test_dic in Global.test_results[Global.day]:
+			if test_dic["result"]:
+				if not Global.positive_ids.has(test_dic["data"]):
+					Global.positive_ids.append(test_dic["data"])
 			
-			var id = get_id_from_result(result)
-			# add the character to list of positives in day report
-			if result.ends_with("positive"):
-				if not Global.positive_ids.has(id):
-					Global.positive_ids.append(id)
-			set_test_status(id, false)
+			test_dic["data"]["done_test"] = false
 			textbox.newline()
-			textbox.append_bbcode(result)
+			textbox.append_bbcode(format_result(test_dic))
 	else:
 		textbox.append_bbcode("N/A")
 		
@@ -51,17 +49,11 @@ func compute_new_health(health, viral_load, infective_dose, cap = 0):
 
 
 func update_characters_health():
-	for id in Global.positive_ids:
-		if int(id) == CharacterManager.player_id:
-			var player_node = get_tree().root.get_node("Root/YSort/Player")
-			var data = player_node.data
+	for data in Global.positive_ids:
+		if data["id"] == CharacterManager.player_id:
 			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"], 3000)
 		else:
-			var npcs_node = get_tree().root.get_node("Root/YSort/npcs")
-			for npc in npcs_node.get_children():
-				if int(id) == npc.data["id"]:
-					var data = npc.data
-					data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
+			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
 
 
 func set_test_status(id, status):
@@ -76,3 +68,12 @@ func set_test_status(id, status):
 func get_id_from_result(result):
 	var texts = result.split(" ")
 	return texts[1]
+
+
+func format_result(test_dic):
+	var result_string = "ID: " + str(test_dic["data"]["id"]) + " - " + test_dic["data"]["name"] + ", "
+	if test_dic["result"]:
+		result_string = result_string + "positive"
+	else:
+		result_string = result_string + "negative"
+	return result_string

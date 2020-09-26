@@ -51,7 +51,7 @@ func _process(delta):
 							characters[i].test()
 						else:
 							characters[i]["last_tested"] = Global.day
-							Global.add_test_results(characters[i]["id"], characters[i]["name"], characters[i]["is_infected"])
+							Global.add_test_results(characters[i], characters[i]["is_infected"])
 						confirm_test($Buttons.get_child(i).get_text())
 					clear_buttons()
 					$Space_NinePatchRect.show()

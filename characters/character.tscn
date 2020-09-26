@@ -18,6 +18,11 @@ radius = 45.3409
 [sub_resource type="CircleShape2D" id=3]
 radius = 4.13257
 
+[sub_resource type="DynamicFont" id=35]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
+
 [sub_resource type="Animation" id=4]
 resource_name = "cough"
 length = 2.0
@@ -466,11 +471,6 @@ start_node = "idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=34]
 
-[sub_resource type="DynamicFont" id=35]
-outline_size = 1
-outline_color = Color( 0, 0, 0, 1 )
-font_data = ExtResource( 8 )
-
 [node name="Character" type="KinematicBody2D" groups=[
 "susceptible",
 ]]
@@ -494,6 +494,7 @@ texture = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
+frame = 1
 
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
@@ -501,6 +502,7 @@ hframes = 4
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
+frame = 1
 
 [node name="ShedTimer" type="Timer" parent="."]
 
@@ -509,11 +511,12 @@ position = Vector2( 0, 4.25 )
 shape = SubResource( 3 )
 
 [node name="Label" type="Label" parent="."]
-visible = false
 margin_left = -20.3563
 margin_top = -31.035
 margin_right = 19.6437
 margin_bottom = -17.035
+custom_fonts/font = SubResource( 35 )
+text = "asdf"
 __meta__ = {
 "_edit_use_anchors_": false
 }

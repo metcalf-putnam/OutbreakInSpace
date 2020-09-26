@@ -189,16 +189,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MaskButton" type="Button" parent="."]
-margin_left = 642.058
-margin_top = 18.6877
-margin_right = 782.058
-margin_bottom = 46.6877
+[node name="Debug" type="Label" parent="."]
+margin_left = 232.693
+margin_top = 15.7847
+margin_right = 374.693
+margin_bottom = 55.7847
+custom_fonts/font = SubResource( 1 )
+text = "Debug Options:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaskButton" type="Button" parent="Debug"]
+margin_left = 432.488
+margin_top = -2.66971
+margin_right = 572.488
+margin_bottom = 25.3303
 focus_mode = 1
 custom_fonts/font = SubResource( 1 )
 toggle_mode = true
 enabled_focus_mode = 1
 text = "Masks on/off"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Visuals_Debug" type="Button" parent="Debug"]
+margin_left = 161.515
+margin_top = -2.0045
+margin_right = 403.515
+margin_bottom = 25.9955
+custom_fonts/font = SubResource( 1 )
+toggle_mode = true
+text = "Infection Visual on/off"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -213,4 +236,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
-[connection signal="toggled" from="MaskButton" to="." method="_on_MaskButton_toggled"]
+[connection signal="toggled" from="Debug/MaskButton" to="." method="_on_MaskButton_toggled"]
+[connection signal="toggled" from="Debug/Visuals_Debug" to="." method="_on_Visuals_Debug_toggled"]

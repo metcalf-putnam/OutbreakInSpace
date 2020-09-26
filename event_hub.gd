@@ -4,6 +4,7 @@ extends Node
 signal new_dialogue
 signal dialogue_finished
 signal player_spoke
+signal npc_dialogue
 
 # Energy use signals
 signal energy_used

@@ -1,5 +1,7 @@
 extends Character
 class_name Player
+export var is_contagious = true
+export var is_infected = true
 var last_direction = Vector2()
 
 func _ready():
@@ -8,6 +10,13 @@ func _ready():
 	EventHub.connect("player_spoke", self, "speak")
 	EventHub.connect("new_dialogue", self, "_on_new_dialogue")
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
+
+func init(data):
+	.init(data)
+	data["is_infected"] = is_infected
+	set_contagious(is_contagious)
+	if !is_infected:
+		add_to_group("susceptible")
 
 
 func _physics_process(_delta):
@@ -40,7 +49,7 @@ func _unhandled_input(event):
 		else:
 			EventHub.emit_signal("insufficient_energy")
 		get_tree().set_input_as_handled()
-		
+
 
 func _on_new_dialogue(_file, _full_name):
 	state = State.DIALOGUE

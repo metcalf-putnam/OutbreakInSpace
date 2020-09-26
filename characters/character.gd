@@ -91,6 +91,7 @@ func check_status():
 
 
 func update_label():
+	$Label.show()
 	if data["is_contagious"] and data["is_symptomatic"]:
 		$Label.text = "Contagious and Symptomatic"
 		$InfectionVisual.modulate.a = 1
@@ -101,6 +102,8 @@ func update_label():
 		$Label.text = "Infected"
 		$InfectionVisual.modulate.a = 1
 	else:
+		$Label.text = ""
+		$Label.hide()
 #		$Label.text = str(data["viral_load"]) + "/" + str(data["infective_dose"])
 		$InfectionVisual.modulate.a = float(data["viral_load"]/data["infective_dose"])
 
@@ -112,21 +115,23 @@ func _on_ShedTimer_timeout():
 
 func shed_particles():
 	for body in close_contacts:
-		body.add_viral_particles(breathing_shed * mask_multiplier)
+		if body.is_in_group("susceptible"):
+			body.add_viral_particles(breathing_shed * mask_multiplier)
 	for body in very_close_contacts:
-		body.add_viral_particles(breathing_shed * mask_multiplier)
+		if body.is_in_group("susceptible"):
+			body.add_viral_particles(breathing_shed * mask_multiplier)
 	
 
 func set_contagious(boolean):
 	data["is_contagious"] = boolean
 	remove_from_group("susceptible")
-	
+	update_label()
 	if data["is_contagious"]:
 		connect_area_signals()
 		$ShedTimer.start()
 		
 	else:
-		disconnect_area_signals()
+		#disconnect_area_signals()
 		$ShedTimer.stop()
 	update_label()
 
@@ -146,12 +151,12 @@ func disconnect_area_signals():
 
 
 func _on_Close_body_entered(body):
-	if !close_contacts.has(body) and body.is_in_group("susceptible"):
+	if !close_contacts.has(body) and body.is_in_group("character"):
 		close_contacts.append(body)
 
 
 func _on_VeryClose_body_entered(body):
-	if !very_close_contacts.has(body) and body.is_in_group("susceptible"):
+	if !very_close_contacts.has(body) and body.is_in_group("character"):
 		very_close_contacts.append(body)
 
 
@@ -186,7 +191,9 @@ func _on_singing_anim_end():
 		$Sing.stop()
 
 
-func speak(_speech_length : int):
+func speak():
+	if !data["is_contagious"]:
+		return
 	for body in close_contacts:
 		body.add_viral_particles(speaking_shed * mask_multiplier)
 	for body in very_close_contacts:
@@ -242,11 +249,21 @@ func get_full_name():
 	else:
 		return "Generic Name"
 
+
 func test():
 	data["last_tested"] = Global.day
 	var testing_text = get_full_name()
 	testing_text = testing_text + testing_suffix_days + str(data["last_tested"])
 	$TestingLabel.text = testing_text
 	Global.add_test_results(data["name"], data["is_infected"])
+
+
+func infection_visual(boolean):
+	if boolean:
+		$InfectionVisual.hide()
+		$Label.hide()
+	else:
+		$InfectionVisual.show()
+		$Label.show()
 
 

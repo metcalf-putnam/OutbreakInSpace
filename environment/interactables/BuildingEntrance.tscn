@@ -5,7 +5,7 @@
 [ext_resource path="res://environment/interactables/sign.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 35.2642, 21.2146 )
+extents = Vector2( 30.1184, 21.2146 )
 
 [node name="BuildingSign" instance=ExtResource( 1 )]
 position = Vector2( 0, 8 )

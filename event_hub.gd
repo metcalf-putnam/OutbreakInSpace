@@ -13,6 +13,7 @@ signal insufficient_energy
 # Day signals
 signal day_ended
 signal work_ended
+signal leave_building
 
 # Testing signals
 signal testing_character

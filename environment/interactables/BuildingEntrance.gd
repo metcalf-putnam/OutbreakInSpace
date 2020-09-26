@@ -1,14 +1,18 @@
 extends Interactable
 var characters_inside = []
+export var type := "work"
+var rng = RandomNumberGenerator.new()
 
 
 func _ready():
 	._ready()
+	rng.randomize()
 	has_new_info = false
 	$Exclamation.hide()
 	EventHub.connect("building_entered", self, "enter")
-	EventHub.connect("work_ended", self, "exit")
 	EventHub.connect("building_occupied", self, "occupy")
+	EventHub.connect("energy_used", self, "_on_energy_used")
+	EventHub.connect("leave_building", self, "_on_leave_building")
 
 
 func interact():
@@ -23,15 +27,17 @@ func interact():
 			EventHub.emit_signal("insufficient_energy")
 
 
-func occupy(npc_dic):
-	if npc_dic.has("work") and npc_dic["work"] == name:
+func occupy(npc_dic, type_in):
+	if type != type_in:
+		return
+	if npc_dic.has(type) and npc_dic[type] == name:
 		if !characters_inside.has(npc_dic):
 			characters_inside.append(npc_dic)
 
 
 func enter(npc):
 	var npc_dic = npc.data
-	if npc_dic.has("work") and npc_dic["work"] == name:
+	if npc_dic.has(type) and npc_dic[type] == name:
 		if !characters_inside.has(npc_dic):
 			characters_inside.append(npc_dic)
 		npc.queue_free()
@@ -40,6 +46,16 @@ func enter(npc):
 func exit():
 	while len(characters_inside) > 0:
 		var npc = characters_inside.pop_front()
-		EventHub.emit_signal("building_exited", npc)
+		EventHub.emit_signal("building_exited", npc, type)
 		characters_inside.erase(npc)
-		yield(get_tree().create_timer(1), "timeout")
+		yield(get_tree().create_timer(rng.randf_range(1, 15)), "timeout")
+
+
+func _on_leave_building(building_type):
+	if type != building_type:
+		return
+	exit()
+	
+
+func _on_energy_used():
+	pass

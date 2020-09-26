@@ -19,71 +19,98 @@ NPC = ExtResource( 2 )
 
 [node name="Homes" type="Node2D" parent="Navigation2D"]
 
-[node name="B1" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 393.083, 662.119 )
+[node name="C1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( -70, -493 )
+type = "home"
 
-[node name="B2" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 471.425, 661.543 )
+[node name="C2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( -342, -525 )
+type = "home"
 
-[node name="B3" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 567.539, 662.928 )
+[node name="C3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( -342, -397 )
+type = "home"
 
-[node name="B4" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 673.067, 662.28 )
+[node name="C4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( -150, -189 )
+type = "home"
 
-[node name="B5" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 744.275, 664.563 )
+[node name="D1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( -262, -93 )
+type = "home"
 
-[node name="B6" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 912.474, 663.796 )
+[node name="D2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( -262, -13 )
+type = "home"
 
-[node name="B7" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 983.966, 660.815 )
+[node name="D3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( -262, 83 )
+type = "home"
 
-[node name="B8" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 1048.47, 662.296 )
+[node name="D4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( -262, 179 )
+type = "home"
 
-[node name="B9" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 1113.47, 663.296 )
+[node name="A1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 1430, -509 )
+scale = Vector2( -1, 1 )
+type = "home"
 
-[node name="A1" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 1432, -504 )
+[node name="A2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 1446, -413 )
+scale = Vector2( -1, 1 )
+type = "home"
 
-[node name="A2" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 1448, -408 )
+[node name="A3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 1446, -333 )
+scale = Vector2( -1, 1 )
+type = "home"
 
-[node name="A3" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 1448, -328 )
+[node name="A4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 1446, -237 )
+scale = Vector2( -1, 1 )
+type = "home"
 
-[node name="A4" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 1448, -232 )
+[node name="A5" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 1446, -125 )
+scale = Vector2( -1, 1 )
+type = "home"
 
-[node name="A5" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( 1480, -104 )
+[node name="B1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 395, 659 )
+type = "home"
 
-[node name="C1" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( -72, -488 )
+[node name="B2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 474, 659 )
+type = "home"
 
-[node name="C2" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( -376, -504 )
+[node name="B3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 602, 659 )
+type = "home"
 
-[node name="C3" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( -376, -376 )
+[node name="B4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 682, 659 )
+type = "home"
 
-[node name="C4" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( -152, -184 )
+[node name="B5" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 747, 659 )
+type = "home"
 
-[node name="D1" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( -344, -88 )
+[node name="B6" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 922, 659 )
+type = "home"
 
-[node name="D2" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( -296, -8 )
+[node name="B7" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 986, 659 )
+type = "home"
 
-[node name="D3" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( -328, 88 )
+[node name="B8" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 1050, 659 )
+type = "home"
 
-[node name="D4" type="Position2D" parent="Navigation2D/Homes"]
-position = Vector2( -264, 184 )
+[node name="B9" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 1114, 659 )
+type = "home"
 
 [node name="Locations" type="Node2D" parent="Navigation2D"]
 
@@ -174,7 +201,7 @@ is_infected = false
 is_contagious = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 669.059, -329.22 )
+position = Vector2( -340, -528 )
 
 [node name="FPS" type="Label" parent="."]
 visible = false

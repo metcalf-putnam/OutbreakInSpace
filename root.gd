@@ -14,20 +14,32 @@ func _ready():
 	
 	if Global.player_settings.help_character_id != 0:
 		update_character_health(Global.player_settings.help_character_id)
-	# TODO: logic for initializing npcs if not already created previously
+
 	spawn_player()
 	if Global.energy <= lower_energy_limit:
 		return
+	
+	var building_occupy_type
+	
+	# Middle of day, everyone at work (if applicable)
 	if Global.energy > lower_energy_limit and Global.energy < Global.max_energy:
-		for npc in CharacterManager.npcs:
-			if $Navigation2D/Locations.find_node(npc["work"]) is Area2D:
-				EventHub.emit_signal("building_occupied", npc)
-			else:
-				spawn_npc(npc, "wander")
-	if Global.energy == Global.max_energy:
-		for npc in CharacterManager.npcs:
-			spawn_npc(npc, "home")
-			yield(get_tree().create_timer(rng.randf_range(0.75, 1.5)), "timeout")
+		building_occupy_type = "work"
+	# Start of day, everyone at home
+	elif Global.energy == Global.max_energy:
+		building_occupy_type = "home"
+		
+	for npc in CharacterManager.npcs:
+		match building_occupy_type:
+			"home":
+				if $Navigation2D/Homes.find_node(npc[building_occupy_type]) is Area2D:
+					EventHub.emit_signal("building_occupied", npc, building_occupy_type)
+			"work":
+				if $Navigation2D/Locations.find_node(npc[building_occupy_type]) is Area2D:
+					EventHub.emit_signal("building_occupied", npc, building_occupy_type)
+				else:
+					spawn_npc(npc, "wander")
+
+	EventHub.emit_signal("leave_building", building_occupy_type)
 
 
 func validate_character_status(data):
@@ -53,6 +65,7 @@ func update_character_health(id):
 	
 	Global.player_settings.extraction_points = 0
 	Global.player_settings.character_id = 0
+
 
 func send_npcs_home():
 	for npc in $YSort/npcs.get_children():
@@ -116,8 +129,8 @@ func get_work(data) -> Vector2:
 	return work_loc
 
 
-func on_building_exited(npc_data):
-	spawn_npc(npc_data, "work")
+func on_building_exited(npc_data, type):
+	spawn_npc(npc_data, type)
 
 
 func _on_energy_used():

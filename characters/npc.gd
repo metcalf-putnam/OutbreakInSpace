@@ -6,6 +6,7 @@ var path := PoolVector2Array()
 var target : Vector2
 var navNode : Navigation2D
 var is_wandering := false
+var target_type
 
 
 func _ready():

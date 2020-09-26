@@ -16,7 +16,7 @@ func _on_Button_pressed():
 
 
 func _on_MaskButton_toggled(button_pressed):
-	$MaskButton.release_focus()
+	$Debug/MaskButton.release_focus()
 	if button_pressed:
 		get_tree().call_group("character", "mask_on")
 	else:

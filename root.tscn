@@ -158,11 +158,11 @@ full_name = "Snitgar"
 infective_dose = 750
 sprite_file = "res://characters/corenpcs/Work Friend/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Work Friend/helmet.png"
+is_infected = false
+is_contagious = false
 
 [node name="Player" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( -344, -528 )
-is_contagious = false
-is_infected = false
 
 [node name="FPS" type="Label" parent="."]
 visible = false

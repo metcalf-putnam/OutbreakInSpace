@@ -22,13 +22,12 @@ func show_positive_characters():
 		
 		# Get character details
 		var details = data
-		var path = data["portrait_path"]
 		
 		# Create profile
 		var character_details = character_details_scn.instance()
 		character_details.connect("play_mini_game", self, "_on_play_mini_game")
 		list_container.add_child(character_details)
-		character_details.init(details, path)
+		character_details.init(details)
 	
 	scroll_container.show()
 

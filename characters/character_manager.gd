@@ -65,7 +65,6 @@ func get_core_npc(npc_name):
 		dict["done_test"] = false
 		dict["health"] = 100.0
 		dict["is_alive"] = true
-		dict["portrait_path"] = ""
 		core_npcs[npc_name] = dict
 		return dict
 
@@ -87,7 +86,6 @@ func create_player():
 	player["done_test"] = false
 	player["health"] = 100.0
 	player["is_alive"] = true
-	player["portrait_path"] = ""
 	print("created player")
 
 
@@ -108,7 +106,7 @@ func create_and_add_npc(home : String, family_name : String, race : String,
 
 
 func create_npc(home : String, family_name : String, race : String, 
-		type : String, infective_dose_mean, first_name = null):
+		type : String, infective_dose_mean, _first_name = null):
 	var dict = {}
 	dict["id"] = i
 	i += 1
@@ -131,7 +129,6 @@ func create_npc(home : String, family_name : String, race : String,
 			dict["work"] = get_random(["Class1", "Class2", "Class3"])
 		"Elderly":
 			dict["work"] = get_random(eld_places)
-	dict["portrait_path"] = ""
 	dict["is_infected"] = false
 	dict["is_contagious"] = false
 	dict["is_symptomatic"] = false
@@ -149,7 +146,7 @@ func create_npc(home : String, family_name : String, race : String,
 func get_random_name() -> String:
 	var num_syl = rng.randi_range(2, 3)
 	var first_name = ""
-	for i in range(num_syl):
+	for _x in range(num_syl):
 		first_name = first_name + get_random(syllables)
 	return first_name.capitalize()
 

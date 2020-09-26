@@ -8,5 +8,5 @@ func _ready():
 func update_pivot_angle():
 	rotation = parent.last_direction.angle()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	update_pivot_angle()

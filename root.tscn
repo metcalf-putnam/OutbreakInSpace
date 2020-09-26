@@ -18,7 +18,6 @@ NPC = ExtResource( 2 )
 [node name="Navigation2D" parent="." instance=ExtResource( 3 )]
 
 [node name="Homes" type="Node2D" parent="Navigation2D"]
-editor/display_folded = true
 
 [node name="B1" type="Position2D" parent="Navigation2D/Homes"]
 position = Vector2( 393.083, 662.119 )
@@ -87,7 +86,6 @@ position = Vector2( -328, 88 )
 position = Vector2( -264, 184 )
 
 [node name="Locations" type="Node2D" parent="Navigation2D"]
-editor/display_folded = true
 
 [node name="Class1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 74, -93 )

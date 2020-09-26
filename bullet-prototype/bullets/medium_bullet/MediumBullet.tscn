@@ -1,10 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://bullet-prototype/bullets/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://bullet-prototype/assets/details/pore.png" type="Texture" id=2]
+[ext_resource path="res://bullet-prototype/bullets/virus_32x32-Sheet.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "bullet"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
 
 [node name="MediumBullet" type="RigidBody2D"]
 collision_layer = 16
@@ -19,9 +36,13 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 2.5, 2.5 )
 texture = ExtResource( 2 )
+hframes = 4
 region_rect = Rect2( 32, 0, 32, 32 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "bullet"
+anims/bullet = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 

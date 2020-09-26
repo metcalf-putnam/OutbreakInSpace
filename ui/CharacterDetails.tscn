@@ -9,6 +9,9 @@ margin_bottom = 186.0
 size_flags_horizontal = 5
 size_flags_vertical = 5
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 190.0

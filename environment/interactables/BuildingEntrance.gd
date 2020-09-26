@@ -45,9 +45,10 @@ func enter(npc):
 
 func exit():
 	while len(characters_inside) > 0:
-		var npc = characters_inside.pop_front()
-		EventHub.emit_signal("building_exited", npc, type)
-		characters_inside.erase(npc)
+		if !get_tree().paused:
+			var npc = characters_inside.pop_front()
+			EventHub.emit_signal("building_exited", npc, type)
+			characters_inside.erase(npc)
 		yield(get_tree().create_timer(rng.randf_range(1, 15)), "timeout")
 
 

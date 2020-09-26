@@ -52,6 +52,10 @@ func init(data_in):
 		$CoughTimer.start(rng.randf_range(cough_min, cough_max))
 	if data["has_helmet"]: 
 		mask_multiplier = 1 - Global.mask_effectiveness
+	update_testing_label()
+
+
+func update_testing_label():
 	var testing_text = get_full_name()
 	if data.has("last_tested"):
 		testing_text = testing_text + testing_suffix_days + str(data["last_tested"])

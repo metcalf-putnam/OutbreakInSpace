@@ -18,6 +18,7 @@ NPC = ExtResource( 2 )
 [node name="Navigation2D" parent="." instance=ExtResource( 3 )]
 
 [node name="Homes" type="Node2D" parent="Navigation2D"]
+pause_mode = 1
 
 [node name="C1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
 position = Vector2( -70, -493 )
@@ -113,6 +114,7 @@ position = Vector2( 1114, 659 )
 type = "home"
 
 [node name="Locations" type="Node2D" parent="Navigation2D"]
+pause_mode = 1
 
 [node name="Class1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 74, -93 )

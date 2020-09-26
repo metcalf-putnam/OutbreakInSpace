@@ -16,6 +16,7 @@ func _ready():
 #	data["is_contagious"] = is_contagious
 	init(data)
 	data["name"] = full_name
+	update_testing_label()
 
 
 func _on_Interactable_dialogue_started():

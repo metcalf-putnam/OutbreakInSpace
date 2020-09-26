@@ -79,7 +79,7 @@ func create_player():
 	player["viral_load"] = 10000
 	player["viral_acceptance_rate"] = 0.5
 	player["home"] = "player_house"
-	player["name"] = "Player McGee"
+	player["name"] = "Knuthl"
 	player["race"] = "Blues"
 	player["type"] = "Woman"
 	player["has_helmet"] = false

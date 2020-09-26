@@ -155,10 +155,10 @@ func get_random_shed() -> float:
 	return 1.0
 
 
-func get_random_infective_dose(infective_dose_mean) -> float:
+func get_random_infective_dose(mean) -> float:
 	# TODO: make this matter
 	# Limit += 200
-	return rand_range(1000.0 - 200.0, 1000.0 + 200.0)
+	return rand_range(mean - 200.0, mean + 200.0)
 
 
 func get_random_surname():

@@ -42,10 +42,8 @@ func init(data_in):
 	data = data_in
 	if data.has("contagious_date") and data["contagious_date"] == Global.day:
 		data["is_contagious"] = true
-		print("now contagious")
 	if data.has("symptomatic_date") and data["symptomatic_date"] == Global.day:
 		data["is_symptomatic"] = true
-		print("now symptomatic")
 	update_label()
 	update_sprite()
 	if data["is_contagious"]:

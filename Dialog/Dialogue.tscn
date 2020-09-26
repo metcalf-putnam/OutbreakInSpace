@@ -83,4 +83,4 @@ __meta__ = {
 [node name="Space_NinePatchRect" parent="." instance=ExtResource( 5 )]
 
 [node name="ChoicePos" type="Position2D" parent="."]
-position = Vector2( 428.484, 90.7691 )
+position = Vector2( 428.484, 146.769 )

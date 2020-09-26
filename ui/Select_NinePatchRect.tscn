@@ -22,11 +22,11 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
 }
 
-[node name="Space_NinePatchRect" type="NinePatchRect"]
-margin_left = 296.965
-margin_top = 165.202
-margin_right = 463.965
-margin_bottom = 197.202
+[node name="Select_NinePatchRect" type="NinePatchRect"]
+margin_left = 297.0
+margin_top = 165.0
+margin_right = 380.0
+margin_bottom = 197.0
 texture = ExtResource( 1 )
 patch_margin_left = 3
 patch_margin_top = 3
@@ -38,11 +38,11 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 margin_left = 7.94592
-margin_top = 4.64868
+margin_top = 6.64868
 margin_right = 157.946
-margin_bottom = 26.6487
+margin_bottom = 28.6487
 custom_fonts/font = SubResource( 1 )
-text = "Press Spacebar"
+text = "SELECT"
 __meta__ = {
 "_edit_use_anchors_": false
 }

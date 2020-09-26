@@ -115,7 +115,7 @@ func _on_Easy_body_entered(body):
 			
 		body.queue_free()
 		
-		if health < 0:
+		if health <= 0:
 			is_stage_complete = true
 			hide()
 			emit_signal("stage_complete", "Extraction Complete!", "Gnar eliminated the virus!")

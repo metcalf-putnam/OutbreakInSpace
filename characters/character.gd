@@ -122,14 +122,12 @@ func shed_particles():
 			body.add_viral_particles(breathing_shed * mask_multiplier)
 	
 
-func set_contagious(boolean):
-	data["is_contagious"] = boolean
+func set_contagious(is_contagious):
 	remove_from_group("susceptible")
 	update_label()
-	if data["is_contagious"]:
+	if is_contagious:
 		connect_area_signals()
 		$ShedTimer.start()
-		
 	else:
 		#disconnect_area_signals()
 		$ShedTimer.stop()
@@ -252,11 +250,15 @@ func get_full_name():
 
 func test():
 	data["last_tested"] = Global.day
+	data["done_test"] = true
 	var testing_text = get_full_name()
 	testing_text = testing_text + testing_suffix_days + str(data["last_tested"])
 	$TestingLabel.text = testing_text
-	Global.add_test_results(data["name"], data["is_infected"])
+	print(data["name"], "+", data["is_infected"])
+	Global.add_test_results(data["id"], data["name"], data["is_infected"])
 
+func done_test():
+	return data["done_test"]
 
 func infection_visual(boolean):
 	if boolean:

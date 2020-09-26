@@ -11,6 +11,9 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	EventHub.connect("energy_used", self, "_on_energy_used")
 	EventHub.connect("building_exited", self, "on_building_exited")
+	
+	if Global.player_settings.help_character_id != 0:
+		update_character_health(Global.player_settings.help_character_id)
 	# TODO: logic for initializing npcs if not already created previously
 	spawn_player()
 	if Global.energy <= lower_energy_limit:
@@ -26,6 +29,30 @@ func _ready():
 			spawn_npc(npc, "home")
 			yield(get_tree().create_timer(rng.randf_range(0.75, 1.5)), "timeout")
 
+
+func validate_character_status(data):
+	if data["viral_load"] <= 0:
+		data["viral_load"] = 0
+		data["is_infected"] = false
+		data["is_contagious"] = false
+		Global.total_infections -= 1
+
+
+func update_character_health(id):
+	if id == CharacterManager.player_id:
+		CharacterManager.player["viral_load"] -= Global.player_settings.extraction_points
+		if CharacterManager.player["viral_load"] <= 0:
+			CharacterManager.player["viral_load"] = 0
+		CharacterManager.player["is_infected"] = false
+		CharacterManager.player["is_contagious"] = false
+	else:
+		for npc in CharacterManager.npcs:
+			if id == npc["id"]:
+				npc["viral_load"] -= Global.player_settings.extraction_points
+				validate_character_status(npc)
+	
+	Global.player_settings.extraction_points = 0
+	Global.player_settings.character_id = 0
 
 func send_npcs_home():
 	for npc in $YSort/npcs.get_children():

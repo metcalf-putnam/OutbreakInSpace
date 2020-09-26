@@ -38,6 +38,11 @@ var elapsed
 var seconds
 var STAGE_TIMER = 60000
 
+var viral_deduction = 0
+
+func init(mode):
+	pass
+
 func display_stage_time():	
 	elapsed = STAGE_TIMER - stage_time_now
 	
@@ -128,7 +133,7 @@ func stage_complete(status, details):
 		value = int(extraction_points.text) + (60-seconds)
 		
 	extraction_value.text = str(value)
-	Global.player_settings.extraction_points += value
+	Global.player_settings.total_extraction_points += value
 	
 	player.hide()
 	virus.hide()
@@ -137,6 +142,7 @@ func stage_complete(status, details):
 
 func _ready():
 	current_player_settings = Global.player_settings
+	current_player_settings.extraction_points = 0
 	EventHub.emit_signal("new_dialogue", dialog_file, "Assistant")
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	pass # Replace with function body.
@@ -174,7 +180,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_enemy_extract(type = "EASY"):
 	var extraction_points = 0
 	if type == "EASY":
-		extraction_points += ceil(rand_range(0,3))
+		extraction_points += ceil(rand_range(0,7))
 		
 	for i in extraction_points:
 		var extract = extract_scn.instance()
@@ -192,7 +198,7 @@ func _on_enemy_extract(type = "EASY"):
 func _on_extract_tween_completed(object, key):
 	object.queue_free()
 	
-	current_player_settings.extraction_points += 1
+	current_player_settings.extraction_points += 200
 	extraction_points.text = str(current_player_settings.extraction_points)
 	extraction_points_tween.interpolate_property(extraction_points, "rect_scale", Vector2(1,1), Vector2(2,2), 1, Tween.TRANS_BOUNCE, Tween.EASE_IN)
 	extraction_points_tween.interpolate_property(extraction_points, "rect_scale", Vector2(2,2), Vector2(1,1), 1, Tween.TRANS_BOUNCE, Tween.EASE_IN)

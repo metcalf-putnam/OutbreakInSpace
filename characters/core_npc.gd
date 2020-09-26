@@ -12,8 +12,8 @@ func _ready():
 	data = CharacterManager.get_core_npc(full_name)
 	if infective_dose:
 		data["infective_dose"] = infective_dose
-	data["is_infected"] = is_infected
-	data["is_contagious"] = is_contagious
+#	data["is_infected"] = is_infected
+#	data["is_contagious"] = is_contagious
 	init(data)
 	data["name"] = full_name
 

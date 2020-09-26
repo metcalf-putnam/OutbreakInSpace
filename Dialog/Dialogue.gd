@@ -14,7 +14,7 @@ enum State {DIALOGUE, TESTING, MESSAGE}
 var state = State.DIALOGUE
 const testing_text := "Who do you want to test? (Cost: 1 energy)"
 var characters = []
-
+var is_mini_game = false
 
 func _ready():
 	set_process(false)
@@ -33,6 +33,11 @@ func _process(delta):
 			for i in range(0, get_node("Buttons").get_child_count()):
 				if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
 					var option_text = $Buttons.get_child(i).get_text()
+					
+					if option_text == "Show Positives":
+						end_dialogue()
+						Global.show_positives()
+						
 					if !option_text.begins_with(action_prefix):
 						EventHub.emit_signal("player_spoke")
 					step_forward(i)
@@ -46,11 +51,10 @@ func _process(delta):
 							characters[i].test()
 						else:
 							characters[i]["last_tested"] = Global.day
-							Global.add_test_results(characters[i]["name"], characters[i]["is_infected"])
+							Global.add_test_results(characters[i]["id"], characters[i]["name"], characters[i]["is_infected"])
 						confirm_test($Buttons.get_child(i).get_text())
 					clear_buttons()
 					$Space_NinePatchRect.show()
-
 
 func step_forward(i):
 	if i == -1:
@@ -62,6 +66,7 @@ func step_forward(i):
 
 
 func init(file_path : String, name := " "):
+	
 	EventHub.emit_signal("npc_dialogue")
 	state = State.DIALOGUE
 	$Name_NinePatchRect/Name.text = name
@@ -85,7 +90,7 @@ func test_character(character_array, location_name = null):
 	state = State.TESTING
 	set_process(true)
 	
-	if character_array.size() == 0:
+	if characters.size() == 0:
 		$Text.bbcode_text = "No one inside"
 		is_final = true
 		$Space_NinePatchRect.show()
@@ -94,13 +99,24 @@ func test_character(character_array, location_name = null):
 		$Text.bbcode_text = testing_text
 		$Space_NinePatchRect.hide()
 		get_tree().paused = true
-
-	for character in character_array:
+	
+	var to_remove = []
+	for character in characters:
 		if character is KinematicBody2D:
-			character.show_testing_label(true)
-			add_name_button(character.get_full_name())
-		else:
+			if not character.data["done_test"]:
+				character.show_testing_label(true)
+				add_name_button(character.get_full_name())
+			else:
+				to_remove.append(characters.find(character, 0))
+		elif not character["done_test"]:
 			add_name_button(character["name"])
+	
+	for character in to_remove:
+		characters.remove(character)
+	
+	if get_node("Buttons").get_child_count() == 0:
+		characters = []
+		
 	add_name_button("No one for now")
 
 	# Labels above or below characters with name and last tested day
@@ -193,13 +209,16 @@ func _unhandled_input(event):
 	if !event.is_action_pressed("ui_accept"):
 		return
 	if is_final:
-		get_tree().set_input_as_handled()
-		reset_characters()
-		clear_buttons()
-		is_final = false
-		set_process(false)
-		EventHub.emit_signal("dialogue_finished")
-		hide()
+		end_dialogue()
 	elif $Buttons.get_child_count() == 0 and state == State.DIALOGUE:
 		step_forward(-1)
-		
+
+
+func end_dialogue():
+	get_tree().set_input_as_handled()
+	reset_characters()
+	clear_buttons()
+	is_final = false
+	set_process(false)
+	EventHub.emit_signal("dialogue_finished")
+	hide()

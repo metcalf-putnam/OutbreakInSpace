@@ -10,7 +10,7 @@ font_data = ExtResource( 2 )
 [sub_resource type="Animation" id=2]
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../../Select_NinePatchRect:rect_scale")
+tracks/0/path = NodePath(".:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -19,14 +19,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.09952, 1.09952 ), Vector2( 1, 1 ) ]
 }
 
-[node name="Space_NinePatchRect" type="NinePatchRect"]
-margin_left = 296.965
-margin_top = 165.202
-margin_right = 463.965
-margin_bottom = 197.202
+[node name="Close_NinePatchRect" type="NinePatchRect"]
+margin_left = 297.0
+margin_top = 165.0
+margin_right = 543.0
+margin_bottom = 197.0
 texture = ExtResource( 1 )
 patch_margin_left = 3
 patch_margin_top = 3
@@ -42,7 +42,7 @@ margin_top = 4.64868
 margin_right = 157.946
 margin_bottom = 26.6487
 custom_fonts/font = SubResource( 1 )
-text = "Press Spacebar"
+text = "Press Spacebar to Close"
 __meta__ = {
 "_edit_use_anchors_": false
 }

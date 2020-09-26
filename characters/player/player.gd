@@ -13,11 +13,10 @@ func _ready():
 
 func init(data):
 	.init(data)
-	data["is_infected"] = is_infected
-	set_contagious(is_contagious)
+	is_infected = data["is_infected"]
+	set_contagious(data["is_contagious"])
 	if !is_infected:
 		add_to_group("susceptible")
-
 
 func _physics_process(_delta):
 	if state == State.SINGING or state == State.DIALOGUE:

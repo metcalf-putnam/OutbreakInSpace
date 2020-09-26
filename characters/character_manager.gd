@@ -2,7 +2,11 @@ extends Node
 
 var npcs = []
 var core_npcs = {}
+var core_starting_id = 300
+
 var player = {}
+var player_id = 200
+
 var num_npcs := 100
 var i := 0
 enum Infective{NORMAL, LOW, HIGH}
@@ -49,6 +53,8 @@ func get_core_npc(npc_name):
 		return core_npcs[npc_name]
 	else:
 		var dict = {}
+		dict["id"] = core_starting_id
+		core_starting_id += 1
 		dict["is_infected"] = false
 		dict["is_contagious"] = false
 		dict["is_symptomatic"] = false
@@ -56,23 +62,30 @@ func get_core_npc(npc_name):
 		dict["viral_load"] = 0.0
 		dict["viral_acceptance_rate"] = 0.5
 		dict["has_helmet"] = false
+		dict["done_test"] = false
+		dict["health"] = 100.0
+		dict["is_alive"] = true
 		core_npcs[npc_name] = dict
 		return dict
 
 
 func create_player():
+	player["id"] = player_id
 	player["is_infected"] = true
 	player["is_contagious"] = true
 	player["is_symptomatic"] = false
 	player["shed_multiplier"] = get_random_shed()
 	player["infective_dose"] = 1000
-	player["viral_load"] = 0.0
+	player["viral_load"] = 10000
 	player["viral_acceptance_rate"] = 0.5
 	player["home"] = "player_house"
 	player["name"] = "Player McGee"
 	player["race"] = "Blues"
 	player["type"] = "Woman"
 	player["has_helmet"] = false
+	player["done_test"] = false
+	player["health"] = 100.0
+	player["is_alive"] = true
 	print("created player")
 
 
@@ -125,6 +138,9 @@ func create_npc(home : String, family_name : String, race : String,
 	dict["viral_load"] = 0.0
 	dict["viral_acceptance_rate"] = 0.5
 	dict["has_helmet"] = false
+	dict["done_test"] = false
+	dict["health"] = 100.0
+	dict["is_alive"] = true
 	return dict
 
 
@@ -142,12 +158,12 @@ func get_random_shed() -> float:
 
 func get_random_infective_dose(infective_dose_mean) -> float:
 	# TODO: make this matter
-	return 1000.0
+	# Limit += 200
+	return rand_range(1000.0 - 200.0, 1000.0 + 200.0)
 
 
 func get_random_surname():
 	return "Smith"
-
 
 func get_random(array):
 	var rand = rng.randi_range(0, array.size()-1)

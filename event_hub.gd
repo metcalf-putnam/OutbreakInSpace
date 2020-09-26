@@ -24,3 +24,6 @@ signal building_occupied
 
 # Infection signals
 signal new_infection
+
+# Mini game
+signal start_mini_game

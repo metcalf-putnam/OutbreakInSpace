@@ -268,5 +268,3 @@ func infection_visual(boolean):
 		$InfectionVisual.show()
 		$Label.show()
 
-func _exit_tree():
-	disconnect_area_signals()

@@ -13,20 +13,20 @@ margin_right = 306.8
 margin_bottom = 27.0
 rect_min_size = Vector2( 52, 27 )
 texture = ExtResource( 1 )
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 4.0
-margin_right = 254.0
+margin_right = 307.0
 margin_bottom = 28.0
 custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nice to see you again, Granny!"
 flat = true
 align = 0

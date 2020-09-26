@@ -92,10 +92,10 @@ margin_right = 200.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 220, 60 )
 texture = ExtResource( 2 )
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -107,10 +107,10 @@ margin_bottom = 60.0
 rect_min_size = Vector2( 208, 0 )
 mouse_filter = 1
 texture = ExtResource( 2 )
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }

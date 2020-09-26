@@ -23,10 +23,10 @@ margin_top = -175.0
 margin_right = 237.5
 margin_bottom = 175.0
 texture = ExtResource( 2 )
-patch_margin_left = 3
-patch_margin_top = 3
-patch_margin_right = 3
-patch_margin_bottom = 3
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -44,7 +44,7 @@ New infections:  2
 
 Test Results:
 [N/A: not yet implemented]"
-text = "[wave]Daily Report[/wave]
+text = "Daily Report
 
 New infections:  2
 

@@ -13,12 +13,6 @@
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Sprite" parent="." index="3"]
-frame = 0
-
-[node name="Helmet" parent="." index="4"]
-frame = 0
-
 [node name="AnimationPlayer" parent="." index="8"]
 playback_speed = 2.0
 
@@ -35,7 +29,6 @@ script = ExtResource( 4 )
 position = Vector2( 66.297, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="18"]
-position = Vector2( 42.297, 0 )
 current = true
 zoom = Vector2( 0.5, 0.5 )
 smoothing_speed = 6.0

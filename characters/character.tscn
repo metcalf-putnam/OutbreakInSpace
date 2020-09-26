@@ -513,7 +513,6 @@ margin_top = -31.035
 margin_right = 19.6437
 margin_bottom = -17.035
 custom_fonts/font = SubResource( 4 )
-text = "asdf"
 __meta__ = {
 "_edit_use_anchors_": false
 }

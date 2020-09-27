@@ -79,7 +79,6 @@ func create_player():
 	player["infective_dose"] = 1000
 	player["viral_load"] = 10000
 	player["viral_acceptance_rate"] = 0.5
-	player["home"] = "player_house"
 	player["name"] = "Knuthl"
 	player["race"] = "Blues"
 	player["type"] = "Woman"

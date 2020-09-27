@@ -66,10 +66,10 @@ func step_forward(i):
 
 
 func init(file_path : String, name := " "):
-	
 	EventHub.emit_signal("npc_dialogue")
 	state = State.DIALOGUE
 	$Name_NinePatchRect/Name.text = name
+	$Name_NinePatchRect.rect_size.x = $Name_NinePatchRect/Name.get_font("font").get_string_size(name).x + 23
 	$Name_NinePatchRect.show()
 	set_process(true)
 	parser = WhiskersParser.new(Global)
@@ -83,7 +83,9 @@ func test_character(character_array, location_name = null):
 	if !location_name:
 		$Name_NinePatchRect.hide()
 	else:
-		$Name_NinePatchRect/Name.text = location_name
+		var location_text = "Building " + location_name
+		$Name_NinePatchRect/Name.text = location_text
+		$Name_NinePatchRect.rect_size.x = $Name_NinePatchRect/Name.get_font("font").get_string_size(location_text).x + 23
 		$Name_NinePatchRect.show()
 	show()
 	characters = character_array
@@ -103,16 +105,23 @@ func test_character(character_array, location_name = null):
 	for character in characters:
 		if character is KinematicBody2D:
 			character.show_testing_label(true)
-			add_name_button(character.get_full_name())
+			add_name_button(format_name_button(character.data))
 		else:
-			add_name_button(character["name"])
+			add_name_button(format_name_button(character))
 	
 	if get_node("Buttons").get_child_count() == 0:
 		characters = []
 		
 	add_name_button("No one for now")
 
-	# Labels above or below characters with name and last tested day
+
+func format_name_button(data):
+	var label_text = data["name"]
+	if data.has("home"):
+		label_text = label_text + ", home: " + data["home"]
+	if data.has("work"):
+		label_text = label_text + ", work: " + data["work"]
+	return label_text
 
 
 func error():
@@ -154,6 +163,7 @@ func next():
 		if block.is_final:
 			is_final = true
 	EventHub.emit_signal("npc_dialogue")
+
 
 func add_name_button(name : String):
 	var node = ChoiceButton.instance()

@@ -4,8 +4,8 @@ export var full_name : String
 export var infective_dose : int
 export (String, FILE, "*.png") var sprite_file
 export (String, FILE, "*.png") var helmet_file
-export var is_infected = true
-export var is_contagious = true
+export var home : String
+export var work : String
 
 
 func _ready():
@@ -16,6 +16,10 @@ func _ready():
 #	data["is_contagious"] = is_contagious
 	init(data)
 	data["name"] = full_name
+	if home:
+		data["home"] = home
+	if work:
+		data["work"] = work
 	update_testing_label()
 
 

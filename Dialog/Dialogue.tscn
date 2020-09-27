@@ -55,7 +55,7 @@ __meta__ = {
 [node name="Name_NinePatchRect" type="NinePatchRect" parent="."]
 margin_left = -14.1237
 margin_top = -16.0507
-margin_right = 120.876
+margin_right = 135.876
 margin_bottom = 14.9493
 texture = ExtResource( 1 )
 patch_margin_left = 5
@@ -67,14 +67,13 @@ __meta__ = {
 }
 
 [node name="Name" type="Label" parent="Name_NinePatchRect"]
-margin_left = 5.36514
+margin_left = 12.3651
 margin_top = 5.08832
-margin_right = 130.365
+margin_right = 137.365
 margin_bottom = 27.0883
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Christopher"
-align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false

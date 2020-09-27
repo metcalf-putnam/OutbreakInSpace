@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WorkerFriend.png-079fad870f86bd1efa3ff44ab6942d0e.stex"
+path="res://.import/surprise_11x10.png-9f11bcce2c859a2f93227e492a3512f8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/portraits/WorkerFriend.png"
-dest_files=[ "res://.import/WorkerFriend.png-079fad870f86bd1efa3ff44ab6942d0e.stex" ]
+source_file="res://characters/effects/surprise_11x10.png"
+dest_files=[ "res://.import/surprise_11x10.png-9f11bcce2c859a2f93227e492a3512f8.stex" ]
 
 [params]
 

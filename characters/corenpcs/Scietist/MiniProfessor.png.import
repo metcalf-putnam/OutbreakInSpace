@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WorkerFriend.png-079fad870f86bd1efa3ff44ab6942d0e.stex"
+path="res://.import/MiniProfessor.png-a8dfa2e30f1f26757ac8b75ad56a46b6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/portraits/WorkerFriend.png"
-dest_files=[ "res://.import/WorkerFriend.png-079fad870f86bd1efa3ff44ab6942d0e.stex" ]
+source_file="res://characters/corenpcs/Scietist/MiniProfessor.png"
+dest_files=[ "res://.import/MiniProfessor.png-a8dfa2e30f1f26757ac8b75ad56a46b6.stex" ]
 
 [params]
 

@@ -15,6 +15,7 @@ var workplaces = ["Factory1A", "Factory1B", "Factory1C", "Factory1D", "unemploye
 var eld_places = ["grocery", "Park1", "Park2"]
 var syllables = 	["jack", "nu", "cu", "mo", "knuk", "sus", "ca", "shmu", "bo", "abod", "thl", "mo", "tuk", "foos"]
 
+signal viral_shedding_computed
 
 func _ready():
 	if npcs.size() > 0:
@@ -164,6 +165,51 @@ func get_random_infective_dose(mean) -> float:
 func get_random_surname():
 	return "Smith"
 
+
 func get_random(array):
 	var rand = rng.randi_range(0, array.size()-1)
 	return array[rand]
+
+
+func compute_daily_viral_shedding():
+	var work_locs = {}
+	var home_locs = {}
+	for npc in npcs:
+		if !npc["is_infected"] and npc["viral_load"] > npc["infective_dose"]:
+			npc["is_infected"] = true
+			Global.new_infections += 1
+			npc["contagious_date"] = Global.day + Global.test_time
+		if npc.has("contagious_date") and npc["contagious_date"] == Global.day:
+			npc["is_contagious"] = true
+		if work_locs.has(npc["work"] and !Global.positive_ids.has(npc)):
+			work_locs[npc["work"]].append(npc)
+		else:
+			work_locs[npc["work"]] = [npc]
+		
+		if home_locs.has(npc["home"]):
+			home_locs[npc["home"]].append(npc)
+		else:
+			home_locs[npc["home"]] = [npc]
+	building_shed(work_locs)
+	building_shed(home_locs)
+	emit_signal("viral_shedding_computed")
+
+
+func building_shed(dict_in):
+	for location in dict_in:
+		var list = dict_in[location]
+		for npc in list:
+			if npc["is_contagious"]:
+				simulate_contagious_person(list, npc)
+	
+
+func simulate_contagious_person(people, contagious_person):
+	# ten seconds of breathing nearby
+	var breathing_shed = 5 * 10 * contagious_person["shed_multiplier"]
+	var speaking_shed = 75 
+	people.erase(contagious_person)
+	for npc in people:
+		if !npc["is_contagious"]:
+			npc["viral_load"] = npc["viral_load"] +  breathing_shed
+			var times_spoken = rng.randf_range(0, 50)
+			npc["viral_load"] = npc["viral_load"] + (times_spoken * speaking_shed)

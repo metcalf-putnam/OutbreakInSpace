@@ -44,12 +44,19 @@ func enter(npc):
 
 
 func exit():
-	while len(characters_inside) > 0:
+	if len(characters_inside) > 0:
 		if !get_tree().paused:
-			var npc = characters_inside.pop_front()
-			EventHub.emit_signal("building_exited", npc, type)
-			characters_inside.erase(npc)
-		yield(get_tree().create_timer(rng.randf_range(1, 15)), "timeout")
+			spawn_npc()
+	$Timer.start(rng.randf_range(1, 15))
+
+
+func spawn_npc():
+	# Stay home if tested positive (all should occupants stay home instead)?
+	if characters_inside[0] in Global.positive_ids and characters_inside[0]["is_infected"]:
+		return
+	var npc = characters_inside.pop_front()
+	EventHub.emit_signal("building_exited", npc, type)
+	characters_inside.erase(npc)
 
 
 func _on_leave_building(building_type):
@@ -60,3 +67,7 @@ func _on_leave_building(building_type):
 
 func _on_energy_used():
 	pass
+
+
+func _on_Timer_timeout():
+	exit()

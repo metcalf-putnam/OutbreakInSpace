@@ -19,7 +19,6 @@ func show_positive_characters():
 		return
 	
 	for data in Global.positive_ids:
-		
 		# Get character details
 		var details = data
 		

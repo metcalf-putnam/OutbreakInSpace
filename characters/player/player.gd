@@ -47,6 +47,7 @@ func _unhandled_input(event):
 			EventHub.emit_signal("testing_character", close_contacts)
 		else:
 			EventHub.emit_signal("insufficient_energy")
+			state = State.DIALOGUE
 		get_tree().set_input_as_handled()
 
 

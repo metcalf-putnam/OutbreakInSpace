@@ -99,20 +99,13 @@ func test_character(character_array, location_name = null):
 		$Text.bbcode_text = testing_text
 		$Space_NinePatchRect.hide()
 		get_tree().paused = true
-	
-	var to_remove = []
+
 	for character in characters:
 		if character is KinematicBody2D:
-			if not character.data["done_test"]:
-				character.show_testing_label(true)
-				add_name_button(character.get_full_name())
-			else:
-				to_remove.append(characters.find(character, 0))
-		elif not character["done_test"]:
+			character.show_testing_label(true)
+			add_name_button(character.get_full_name())
+		else:
 			add_name_button(character["name"])
-	
-	for character in to_remove:
-		characters.remove(character)
 	
 	if get_node("Buttons").get_child_count() == 0:
 		characters = []
@@ -219,6 +212,7 @@ func end_dialogue():
 	reset_characters()
 	clear_buttons()
 	is_final = false
+	set_process(false)
 	set_process(false)
 	EventHub.emit_signal("dialogue_finished")
 	hide()

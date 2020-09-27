@@ -17,13 +17,19 @@ var test_results = {}
 var test_time := 2
 var positive_ids = []
 
+
 func _ready():
 	EventHub.connect("day_ended", self, "_on_day_ended")
 	EventHub.connect("start_mini_game", self, "_on_start_mini_game")
+	CharacterManager.connect("viral_shedding_computed", self, "_on_viral_shedding_computed")
 
 
 func _on_day_ended():
-	total_infections += new_infections
+	CharacterManager.compute_daily_viral_shedding()
+
+
+func _on_viral_shedding_computed():
+	total_infections = total_infections + new_infections
 	energy = max_energy
 	day += 1
 	get_tree().reload_current_scene()

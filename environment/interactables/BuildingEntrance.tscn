@@ -20,3 +20,7 @@ shape = SubResource( 1 )
 [node name="Sign" type="Sprite" parent="." index="4"]
 position = Vector2( 13, -8 )
 texture = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="." index="5"]
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

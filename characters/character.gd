@@ -33,6 +33,8 @@ const cough_max = 30
 
 func _ready():
 	$TestingLabel.hide()
+	$InfectionVisual.hide()
+	$Label.hide()
 	screen_size = get_viewport_rect().size
 	animationState = $AnimationTree["parameters/playback"]
 	rng.randomize()
@@ -42,8 +44,11 @@ func init(data_in):
 	data = data_in
 	if data.has("contagious_date") and data["contagious_date"] == Global.day:
 		data["is_contagious"] = true
+		print("now contagious")
 	if data.has("symptomatic_date") and data["symptomatic_date"] == Global.day:
 		data["is_symptomatic"] = true
+	if !data["is_infected"]:
+		check_status()
 	update_label()
 	update_sprite()
 	if data["is_contagious"]:
@@ -90,10 +95,11 @@ func check_status():
 		Global.new_infections += 1
 		data["contagious_date"] = Global.day + days_to_contagious
 		data["symptomatic_date"] = Global.day + days_to_symptomatic
+		print("new contagious date: ", data["contagious_date"] )
 
 
 func update_label():
-	$Label.show()
+	#$Label.show()
 	if data["is_contagious"] and data["is_symptomatic"]:
 		$Label.text = "Contagious and Symptomatic"
 		$InfectionVisual.modulate.a = 1

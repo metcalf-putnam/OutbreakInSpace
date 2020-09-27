@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://fps.gd" type="Script" id=7]
 [ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=9]
-[ext_resource path="res://environment/interactables/scene_trigger.tscn" type="PackedScene" id=10]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,6 +18,7 @@ NPC = ExtResource( 2 )
 
 [node name="Homes" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
+editor/display_folded = true
 
 [node name="C1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
 position = Vector2( -70, -493 )
@@ -171,7 +171,7 @@ npc_handle = "mayor"
 
 [node name="Mini Professor" parent="YSort/npcs" instance=ExtResource( 5 )]
 self_modulate = Color( 0.419608, 0.172549, 0.172549, 1 )
-position = Vector2( 713.689, -400.902 )
+position = Vector2( 700, -400 )
 scale = Vector2( 0.7, 0.7 )
 dialog_file = "res://Dialog/json/mini_professor.json"
 full_name = "Mini Professor"
@@ -232,11 +232,6 @@ autostart = true
 [node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 8 )]
 
 [node name="Overlay" parent="." instance=ExtResource( 9 )]
-
-[node name="Interactable" parent="." instance=ExtResource( 10 )]
-visible = false
-position = Vector2( 854.065, -472.022 )
-scene_path = "res://bullet-prototype/Gnar.tscn"
 
 [node name="DayTimer" type="Timer" parent="."]
 wait_time = 200.0

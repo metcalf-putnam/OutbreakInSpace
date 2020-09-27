@@ -32,6 +32,7 @@ func _ready():
 		
 	Global.new_infections = 0
 	update_characters_health()
+	Global.player_position = Global.player_initial_position
 
 func _input(event):
 	if !event.is_action_pressed("ui_accept"):

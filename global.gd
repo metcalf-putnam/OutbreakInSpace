@@ -13,7 +13,9 @@ var mask_effectiveness := 0.5
 var player_can_sing := false
 var player_can_test := false
 var player_helmet := false
-var player_position := Vector2(750, 700)
+const player_initial_position := Vector2(-340, -528)
+const mini_professor_position := Vector2(700, -380)
+var player_position := player_initial_position
 var test_results = {}
 var test_time := 2
 var positive_characters = []
@@ -95,6 +97,8 @@ func update_playthrough():
 func _on_start_mini_game(data):
 	player_settings.character_to_help_data = data
 	player_settings["mode"] = "EASY"
+	decrement_energy()
+	player_position = mini_professor_position
 	get_tree().change_scene("res://bullet-prototype/Gnar.tscn")
 
 

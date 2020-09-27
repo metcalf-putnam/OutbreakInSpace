@@ -5,6 +5,7 @@ export var is_infected = true
 var last_direction = Vector2()
 
 func _ready():
+	position = Global.player_position
 	speed = 100
 	$AnimationPlayer.playback_speed = 1
 	EventHub.connect("player_spoke", self, "speak")

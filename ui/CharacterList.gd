@@ -14,11 +14,11 @@ func _ready():
 
 func show_positive_characters():
 	
-	if Global.positive_ids.size() == 0:
+	if Global.positive_characters.size() == 0:
 		nothing.show()
 		return
 	
-	for data in Global.positive_ids:
+	for data in Global.positive_characters:
 		# Get character details
 		var details = data
 		
@@ -37,5 +37,5 @@ func _unhandled_input(event):
 
 
 func _on_play_mini_game(settings):
-	EventHub.emit_signal("start_mini_game")
+	EventHub.emit_signal("start_mini_game", settings)
 	queue_free()

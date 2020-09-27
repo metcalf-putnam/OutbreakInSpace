@@ -52,7 +52,7 @@ func exit():
 
 func spawn_npc():
 	# Stay home if tested positive (all should occupants stay home instead)?
-	if characters_inside[0] in Global.positive_ids and characters_inside[0]["is_infected"]:
+	if characters_inside[0] in Global.positive_characters and characters_inside[0]["is_infected"]:
 		return
 	var npc = characters_inside.pop_front()
 	EventHub.emit_signal("building_exited", npc, type)

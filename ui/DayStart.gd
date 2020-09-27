@@ -21,8 +21,8 @@ func _ready():
 	if Global.test_results.has(Global.day):
 		for test_dic in Global.test_results[Global.day]:
 			if test_dic["result"]:
-				if not Global.positive_ids.has(test_dic["data"]):
-					Global.positive_ids.append(test_dic["data"])
+				if not Global.positive_characters.has(test_dic["data"]):
+					Global.positive_characters.append(test_dic["data"])
 			
 			test_dic["data"]["done_test"] = false
 			textbox.newline()
@@ -49,7 +49,7 @@ func compute_new_health(health, viral_load, infective_dose, cap = 0):
 
 
 func update_characters_health():
-	for data in Global.positive_ids:
+	for data in Global.positive_characters:
 		if data["id"] == CharacterManager.player_id:
 			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"], 3000)
 		else:

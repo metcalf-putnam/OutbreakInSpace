@@ -66,6 +66,7 @@ func get_core_npc(npc_name):
 		dict["done_test"] = false
 		dict["health"] = 100.0
 		dict["is_alive"] = true
+		dict["portrait_path"] = ""
 		core_npcs[npc_name] = dict
 		return dict
 
@@ -86,6 +87,7 @@ func create_player():
 	player["done_test"] = false
 	player["health"] = 100.0
 	player["is_alive"] = true
+	player["portrait_path"] = ""
 
 
 func create_family(location, race, adults, kids, elderly, surname):
@@ -139,6 +141,7 @@ func create_npc(home : String, family_name : String, race : String,
 	dict["done_test"] = false
 	dict["health"] = 100.0
 	dict["is_alive"] = true
+	dict["portrait_path"] = ""
 	return dict
 
 
@@ -179,7 +182,7 @@ func compute_daily_viral_shedding():
 			npc["contagious_date"] = Global.day + Global.test_time
 		if npc.has("contagious_date") and npc["contagious_date"] == Global.day:
 			npc["is_contagious"] = true
-		if work_locs.has(npc["work"] and !Global.positive_ids.has(npc)):
+		if work_locs.has(npc["work"] and !Global.positive_characters.has(npc)):
 			work_locs[npc["work"]].append(npc)
 		else:
 			work_locs[npc["work"]] = [npc]

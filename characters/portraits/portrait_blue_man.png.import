@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/zedobar.png-13de95d152644def4b7b9dfc03d78090.stex"
+path="res://.import/portrait_blue_man.png-92158663fb4d9a86afe93c2391690bb1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/portraits/zedobar.png"
-dest_files=[ "res://.import/zedobar.png-13de95d152644def4b7b9dfc03d78090.stex" ]
+source_file="res://characters/portraits/portrait_blue_man.png"
+dest_files=[ "res://.import/portrait_blue_man.png-92158663fb4d9a86afe93c2391690bb1.stex" ]
 
 [params]
 

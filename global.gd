@@ -16,7 +16,8 @@ var player_helmet := false
 var player_position := Vector2(750, 700)
 var test_results = {}
 var test_time := 2
-var positive_ids = []
+var positive_characters = []
+var healed_characters = []
 var overlord_days := 10
 
 
@@ -83,7 +84,7 @@ var player_settings = {
 	"shield": 3,
 	"extraction_points": 0,
 	"total_extraction_points": 0,
-	"help_character_id": 0
+	"character_to_help_data": null
 }
 var completed_playthrough = true #set to false
 
@@ -91,8 +92,9 @@ func update_playthrough():
 	completed_playthrough = true
 
 
-func _on_start_mini_game(mode = "EASY"):
-	player_settings["mode"] = mode
+func _on_start_mini_game(data):
+	player_settings.character_to_help_data = data
+	player_settings["mode"] = "EASY"
 	get_tree().change_scene("res://bullet-prototype/Gnar.tscn")
 
 

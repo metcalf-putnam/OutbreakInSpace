@@ -18,9 +18,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -477.5
-margin_top = -110.0
+margin_top = -149.5
 margin_right = 477.5
-margin_bottom = 140.0
+margin_bottom = 149.5
 texture = ExtResource( 2 )
 patch_margin_left = 5
 patch_margin_top = 5
@@ -46,21 +46,20 @@ text = "NOTHING TO SHOW..."
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect"]
-visible = false
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = 12.0
-margin_top = -110.0
+margin_top = -137.0
 margin_right = 12.0
-margin_bottom = 99.0
+margin_bottom = 133.0
 scroll_vertical_enabled = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/ScrollContainer"]
 alignment = 1
 
 [node name="Close_NinePatchRect" parent="NinePatchRect" instance=ExtResource( 4 )]
-margin_left = 714.984
-margin_top = 229.478
-margin_right = 960.984
-margin_bottom = 261.478
+margin_left = 693.218
+margin_top = 281.172
+margin_right = 939.218
+margin_bottom = 313.172

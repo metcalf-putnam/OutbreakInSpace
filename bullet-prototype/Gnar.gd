@@ -16,10 +16,10 @@ onready var extraction_points = $CanvasLayer/HUD/ExtractionPoints/ExtractionPoin
 onready var extraction_points_tween = $CanvasLayer/HUD/ExtractionPoints/Tween
 onready var time = $CanvasLayer/HUD/TimeValue
 
-onready var status_value = $CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/StatusValue
-onready var details_value = $CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/DetailsValue
-onready var time_value = $CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/TimeValue
-onready var extraction_value = $CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/ExtractionValue
+onready var status_value = $CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/StatusValue
+onready var details_value = $CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/DetailsValue
+onready var time_value = $CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/TimeValue
+onready var extraction_value = $CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/ExtractionValue
 onready var anim = $AnimationPlayer
 onready var timer = $Timer
 

@@ -11,8 +11,8 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	EventHub.connect("building_exited", self, "on_building_exited")
 	
-	if Global.player_settings.help_character_id != 0:
-		update_character_health(Global.player_settings.help_character_id)
+	if Global.player_settings.character_to_help_data != null:
+		update_character_health(Global.player_settings.character_to_help_data)
 
 	spawn_player()
 	if Global.energy <= lower_energy_limit:
@@ -49,21 +49,24 @@ func validate_character_status(data):
 		Global.total_infections -= 1
 
 
-func update_character_health(id):
-	if id == CharacterManager.player_id:
+func update_character_health(data):
+	if data["id"] == CharacterManager.player_id:
 		CharacterManager.player["viral_load"] -= Global.player_settings.extraction_points
 		if CharacterManager.player["viral_load"] <= 0:
 			CharacterManager.player["viral_load"] = 0
-		CharacterManager.player["is_infected"] = false
-		CharacterManager.player["is_contagious"] = false
+			CharacterManager.player["is_infected"] = false
+			CharacterManager.player["is_contagious"] = false
+			Global.healed_characters.append(data)
+			Global.positive_characters.erase(data)
+			Global.total_infections -= 1
 	else:
 		for npc in CharacterManager.npcs:
-			if id == npc["id"]:
+			if data["id"] == npc["id"]:
 				npc["viral_load"] -= Global.player_settings.extraction_points
 				validate_character_status(npc)
 	
 	Global.player_settings.extraction_points = 0
-	Global.player_settings.character_id = 0
+	Global.player_settings.character_to_help_data = null
 
 
 func send_npcs_home():

@@ -65,11 +65,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 0/tile_mode = 0
 0/occluder_offset = Vector2( 0, 0 )
 0/navigation_offset = Vector2( 0, 0 )
-0/shape_offset = Vector2( 0, 0 )
-0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-0/shape = SubResource( 1 )
-0/shape_one_way = false
-0/shape_one_way_margin = 1.0
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -86,11 +81,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 1/tile_mode = 0
 1/occluder_offset = Vector2( 0, 0 )
 1/navigation_offset = Vector2( 0, 0 )
-1/shape_offset = Vector2( 0, 0 )
-1/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-1/shape = SubResource( 2 )
-1/shape_one_way = false
-1/shape_one_way_margin = 1.0
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -107,11 +97,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 2/tile_mode = 0
 2/occluder_offset = Vector2( 0, 0 )
 2/navigation_offset = Vector2( 0, 0 )
-2/shape_offset = Vector2( 0, 0 )
-2/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-2/shape = SubResource( 10 )
-2/shape_one_way = false
-2/shape_one_way_margin = 1.0
 2/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -128,11 +113,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 3/tile_mode = 0
 3/occluder_offset = Vector2( 0, 0 )
 3/navigation_offset = Vector2( 0, 0 )
-3/shape_offset = Vector2( 0, 0 )
-3/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-3/shape = SubResource( 11 )
-3/shape_one_way = false
-3/shape_one_way_margin = 1.0
 3/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -149,10 +129,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 4/tile_mode = 0
 4/occluder_offset = Vector2( 0, 0 )
 4/navigation_offset = Vector2( 0, 0 )
-4/shape_offset = Vector2( 0, 0 )
-4/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-4/shape_one_way = false
-4/shape_one_way_margin = 0.0
 4/shapes = [  ]
 4/z_index = 0
 5/name = "Tube.png 5"
@@ -163,11 +139,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 5/tile_mode = 0
 5/occluder_offset = Vector2( 0, 0 )
 5/navigation_offset = Vector2( 0, 0 )
-5/shape_offset = Vector2( 0, 0 )
-5/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-5/shape = SubResource( 12 )
-5/shape_one_way = false
-5/shape_one_way_margin = 1.0
 5/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -184,11 +155,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 6/tile_mode = 0
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
-6/shape_offset = Vector2( 0, 0 )
-6/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-6/shape = SubResource( 13 )
-6/shape_one_way = false
-6/shape_one_way_margin = 1.0
 6/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -205,11 +171,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 7/tile_mode = 0
 7/occluder_offset = Vector2( 0, 0 )
 7/navigation_offset = Vector2( 0, 0 )
-7/shape_offset = Vector2( 0, 0 )
-7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-7/shape = SubResource( 14 )
-7/shape_one_way = false
-7/shape_one_way_margin = 1.0
 7/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -226,11 +187,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 8/tile_mode = 0
 8/occluder_offset = Vector2( 0, 0 )
 8/navigation_offset = Vector2( 0, 0 )
-8/shape_offset = Vector2( 0, 0 )
-8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-8/shape = SubResource( 15 )
-8/shape_one_way = false
-8/shape_one_way_margin = 1.0
 8/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -247,11 +203,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 9/tile_mode = 0
 9/occluder_offset = Vector2( 0, 0 )
 9/navigation_offset = Vector2( 0, 0 )
-9/shape_offset = Vector2( 0, 0 )
-9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-9/shape = SubResource( 16 )
-9/shape_one_way = false
-9/shape_one_way_margin = 1.0
 9/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -268,11 +219,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 10/tile_mode = 0
 10/occluder_offset = Vector2( 0, 0 )
 10/navigation_offset = Vector2( 0, 0 )
-10/shape_offset = Vector2( 0, 0 )
-10/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-10/shape = SubResource( 3 )
-10/shape_one_way = false
-10/shape_one_way_margin = 1.0
 10/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -289,11 +235,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 11/tile_mode = 0
 11/occluder_offset = Vector2( 0, 0 )
 11/navigation_offset = Vector2( 0, 0 )
-11/shape_offset = Vector2( 0, 0 )
-11/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-11/shape = SubResource( 4 )
-11/shape_one_way = false
-11/shape_one_way_margin = 1.0
 11/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -310,11 +251,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 12/tile_mode = 0
 12/occluder_offset = Vector2( 0, 0 )
 12/navigation_offset = Vector2( 0, 0 )
-12/shape_offset = Vector2( 0, 0 )
-12/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-12/shape = SubResource( 5 )
-12/shape_one_way = false
-12/shape_one_way_margin = 1.0
 12/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -331,11 +267,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 13/tile_mode = 0
 13/occluder_offset = Vector2( 0, 0 )
 13/navigation_offset = Vector2( 0, 0 )
-13/shape_offset = Vector2( 0, 0 )
-13/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-13/shape = SubResource( 6 )
-13/shape_one_way = false
-13/shape_one_way_margin = 1.0
 13/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -352,11 +283,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 14/tile_mode = 0
 14/occluder_offset = Vector2( 0, 0 )
 14/navigation_offset = Vector2( 0, 0 )
-14/shape_offset = Vector2( 0, 0 )
-14/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-14/shape = SubResource( 7 )
-14/shape_one_way = false
-14/shape_one_way_margin = 1.0
 14/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -373,11 +299,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 15/tile_mode = 0
 15/occluder_offset = Vector2( 0, 0 )
 15/navigation_offset = Vector2( 0, 0 )
-15/shape_offset = Vector2( 0, 0 )
-15/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-15/shape = SubResource( 8 )
-15/shape_one_way = false
-15/shape_one_way_margin = 1.0
 15/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -394,11 +315,6 @@ points = PoolVector2Array( 12, 12, 16, 12, 16, 16, 12, 16 )
 16/tile_mode = 0
 16/occluder_offset = Vector2( 0, 0 )
 16/navigation_offset = Vector2( 0, 0 )
-16/shape_offset = Vector2( 0, 0 )
-16/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-16/shape = SubResource( 9 )
-16/shape_one_way = false
-16/shape_one_way_margin = 1.0
 16/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
@@ -462,7 +378,7 @@ tracks/0/keys = {
 "values": [ false, true ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/Status:visible")
+tracks/1/path = NodePath("CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/Status:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -474,7 +390,7 @@ tracks/1/keys = {
 "values": [ false, true ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/StatusValue:visible")
+tracks/2/path = NodePath("CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/StatusValue:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -486,7 +402,7 @@ tracks/2/keys = {
 "values": [ false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/Details:visible")
+tracks/3/path = NodePath("CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/Details:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -498,7 +414,7 @@ tracks/3/keys = {
 "values": [ false, true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/DetailsValue:visible")
+tracks/4/path = NodePath("CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/DetailsValue:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -510,7 +426,7 @@ tracks/4/keys = {
 "values": [ false, true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/Time:visible")
+tracks/5/path = NodePath("CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/Time:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -522,7 +438,7 @@ tracks/5/keys = {
 "values": [ false, true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/TimeValue:visible")
+tracks/6/path = NodePath("CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/TimeValue:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -534,7 +450,7 @@ tracks/6/keys = {
 "values": [ false, true ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/ExtractionPoints:visible")
+tracks/7/path = NodePath("CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/ExtractionPoints:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -546,7 +462,7 @@ tracks/7/keys = {
 "values": [ false, true ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer/ExtractionValue:visible")
+tracks/8/path = NodePath("CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer/ExtractionValue:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -614,6 +530,7 @@ visible = false
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
+editor/display_folded = true
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
@@ -627,6 +544,7 @@ margin_right = 1023.37
 margin_bottom = 605.0
 
 [node name="ExtractionPoints" type="Label" parent="CanvasLayer/HUD"]
+editor/display_folded = true
 margin_left = 33.4965
 margin_top = 511.595
 margin_right = 209.496
@@ -680,6 +598,7 @@ custom_fonts/font = SubResource( 20 )
 text = "00:00"
 
 [node name="StageComplete" type="Control" parent="CanvasLayer"]
+editor/display_folded = true
 visible = false
 margin_left = 290.0
 margin_top = 160.0
@@ -697,79 +616,96 @@ margin_top = -63.7498
 margin_right = 439.201
 margin_bottom = 187.25
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/StageComplete/Panel"]
+[node name="Contents" type="NinePatchRect" parent="CanvasLayer/StageComplete/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/StageComplete/Panel/Contents"]
 margin_right = 468.0
 margin_bottom = 252.0
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StageComplete/Panel/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StageComplete/Panel/Contents/HBoxContainer"]
 margin_left = 95.0
 margin_right = 373.0
 margin_bottom = 252.0
 custom_constants/separation = 10
 alignment = 1
 
-[node name="Status" type="Label" parent="CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer"]
+[node name="Status" type="Label" parent="CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer"]
 margin_top = 13.0
 margin_right = 278.0
 margin_bottom = 30.0
 custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "STATUS"
 align = 1
 
-[node name="StatusValue" type="Label" parent="CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer"]
+[node name="StatusValue" type="Label" parent="CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer"]
 margin_top = 40.0
 margin_right = 278.0
 margin_bottom = 62.0
 custom_fonts/font = SubResource( 22 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "\"Extraction Incomplete\""
 align = 1
 
-[node name="Details" type="Label" parent="CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer"]
+[node name="Details" type="Label" parent="CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer"]
 margin_top = 72.0
 margin_right = 278.0
 margin_bottom = 89.0
 custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "DETAILS"
 align = 1
 
-[node name="DetailsValue" type="Label" parent="CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer"]
+[node name="DetailsValue" type="Label" parent="CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer"]
 margin_top = 99.0
 margin_right = 278.0
 margin_bottom = 121.0
 custom_fonts/font = SubResource( 22 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "\"Gnar ran out of shield!\""
 align = 1
 
-[node name="Time" type="Label" parent="CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer"]
+[node name="Time" type="Label" parent="CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer"]
 margin_top = 131.0
 margin_right = 278.0
 margin_bottom = 148.0
 custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "TIME"
 align = 1
 
-[node name="TimeValue" type="Label" parent="CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer"]
+[node name="TimeValue" type="Label" parent="CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer"]
 margin_top = 158.0
 margin_right = 278.0
 margin_bottom = 180.0
 custom_fonts/font = SubResource( 22 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "\"34 seconds\""
 align = 1
 
-[node name="ExtractionPoints" type="Label" parent="CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer"]
+[node name="ExtractionPoints" type="Label" parent="CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer"]
 margin_top = 190.0
 margin_right = 278.0
 margin_bottom = 207.0
 custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Extraction Points"
 align = 1
 
-[node name="ExtractionValue" type="Label" parent="CanvasLayer/StageComplete/Panel/HBoxContainer/VBoxContainer"]
+[node name="ExtractionValue" type="Label" parent="CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer"]
 margin_top = 217.0
 margin_right = 278.0
 margin_bottom = 239.0
 custom_fonts/font = SubResource( 22 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "\"123 information fragments\""
 align = 1
 
@@ -795,6 +731,7 @@ margin_top = 4.64868
 margin_right = 157.946
 margin_bottom = 26.6487
 custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Press Spacebar"
 __meta__ = {
 "_edit_use_anchors_": false

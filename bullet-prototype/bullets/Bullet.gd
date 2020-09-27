@@ -8,6 +8,9 @@ func setup(position, velocity, turnaround = 0, lifetime = 0):
 	linear_velocity = velocity
 	
 	if turnaround != 0:
+		get_node("VisibilityNotifier").disconnect("screen_exited", self, "_on_VisibilityNotifier2D_screen_exited")
+		get_node("VisibilityNotifier").queue_free()
+		
 		var n_turnaround = get_node("Turnaround")
 		n_turnaround.wait_time = turnaround / 2.0
 		n_turnaround.start()

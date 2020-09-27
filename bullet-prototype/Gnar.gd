@@ -3,8 +3,26 @@ extends Node2D
 export(String, FILE, "*.json") var dialog_file
 
 onready var extract_scn = preload("res://bullet-prototype/misc/Extract.tscn")
-onready var easy_virus_scn = preload("res://bullet-prototype/enemies/bearus/Bearus.tscn")
-#onready var easy_virus_scn = preload("res://bullet-prototype/enemies/easy/Easy.tscn")
+onready var viruses = {
+	"EASY": {
+		"scene": preload("res://bullet-prototype/enemies/bearus/Bearus.tscn"),
+		"extraction_points": 2,
+		"extraction_multiplier": 1,
+		"bonus_completed_time": 100
+	},
+	"MEDIUM": {
+		"scene": preload("res://bullet-prototype/enemies/knuk/Knuk.tscn"),
+		"extraction_points": 15,
+		"extraction_multiplier": 2,
+		"bonus_completed_time": 200
+	},
+	"HARD": {
+		"scene": preload("res://bullet-prototype/enemies/shmu/Shmu.tscn"),
+		"extraction_points": 30,
+		"extraction_multiplier": 3,
+		"bonus_completed_time": 300
+	},
+}
 onready var player_scn = preload("res://bullet-prototype/player/prototype/Player.tscn")
 
 onready var HUD = $CanvasLayer/HUD
@@ -31,17 +49,16 @@ var state = STATE.DIALOGUE
 
 var player
 var virus
+var virus_type
 
 var started = false
 var stage_time_now = 0
 var elapsed
 var seconds
-var STAGE_TIMER = 60000
+const STAGE_TIMER = 30000
+const STAGE_TIME_IN_SECONDS = 30
 
 var viral_deduction = 0
-
-func init(mode):
-	pass
 
 func display_stage_time():	
 	elapsed = STAGE_TIMER - stage_time_now
@@ -94,49 +111,52 @@ func add_player():
 	p.connect("start_stage", self, "_on_start_stage")
 	p.position = Vector2(750, 350)
 	add_child(p)
-	p.show()
+	p.show_player()
 	player = p
 
 func add_virus(type = "EASY"):
-	var v
-	if type == "EASY":
-		v = easy_virus_scn.instance()
-		
+	
+	# Change type to EASY, MEDIUM, HARD - like the one below
+	# var v = viruses["HARD"]["scene"].instance()
+	virus_type = type
+	var v = viruses[virus_type]["scene"].instance() 
+	
 	v.connect("extract", self, "_on_enemy_extract")
 	v.connect("start_stage", self, "_on_start_stage")
 	v.connect("stage_complete", self, "_on_stage_complete")
 	v.position = Vector2(300, 200)
 	add_child(v)
-	v.show()
+	v.show_virus()
 	virus = v
 	
 	yield(get_tree().create_timer(1), "timeout")
 
 func stage_complete(status, details):
 	started = false
+	virus.stop_audio()
 	
 	status_value.text = "\"" + status + "\""
 	details_value.text = "\"" + details + "\""
 	
+	var bonus_completed_time = viruses[virus_type]["bonus_completed_time"]
+	var extraction_multiplier = viruses[virus_type]["extraction_multiplier"]
+	
 	var value
 	if status == "Extraction Complete!":
+		value = int(extraction_points.text) * extraction_multiplier + bonus_completed_time
 		if details == "Gnar eliminated the virus!":
-			time_value.text = "\"Gnar defeated the virus in " + str(60-seconds) + " seconds!\""
-			value = int(extraction_points.text) * 2 + 60
-			pass
+			time_value.text = "\"Gnar defeated the virus in " + str(STAGE_TIME_IN_SECONDS-seconds) + " seconds!\""
 		elif details == "Fully utilized our machine!":
-			time_value.text = "\"Gnar extracted a total of 1 minute!\""
-			value = int(extraction_points.text) + 60
-			pass
+			time_value.text = "\"Gnar extracted a total of " + str(STAGE_TIME_IN_SECONDS) +  " seconds!\""
 	else:
-		time_value.text = "Extraction time in seconds: " + str(60-seconds)
-		value = int(extraction_points.text) + (60-seconds)
+		time_value.text = "Extraction time in seconds: " + str(STAGE_TIME_IN_SECONDS-seconds)
+		value = int(extraction_points.text) + (STAGE_TIME_IN_SECONDS-seconds)
 		
 	extraction_value.text = str(value)
 	Global.player_settings.total_extraction_points += value
 	
-	player.hide()
-	virus.hide()
+	player.hide_player()
+	virus.hide_virus()
 	
 	anim.play("stage_complete")
 
@@ -178,9 +198,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	pass # Replace with function body.
 
 func _on_enemy_extract(type = "EASY"):
-	var extraction_points = 0
-	if type == "EASY":
-		extraction_points += ceil(rand_range(0,7))
+	var extraction_points = ceil(rand_range(0,5))
 		
 	for i in extraction_points:
 		var extract = extract_scn.instance()
@@ -198,7 +216,7 @@ func _on_enemy_extract(type = "EASY"):
 func _on_extract_tween_completed(object, key):
 	object.queue_free()
 	
-	current_player_settings.extraction_points += 200
+	current_player_settings.extraction_points += viruses[virus_type]["extraction_points"]
 	extraction_points.text = str(current_player_settings.extraction_points)
 	extraction_points_tween.interpolate_property(extraction_points, "rect_scale", Vector2(1,1), Vector2(2,2), 1, Tween.TRANS_BOUNCE, Tween.EASE_IN)
 	extraction_points_tween.interpolate_property(extraction_points, "rect_scale", Vector2(2,2), Vector2(1,1), 1, Tween.TRANS_BOUNCE, Tween.EASE_IN)

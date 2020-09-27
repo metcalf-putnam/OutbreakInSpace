@@ -14,7 +14,16 @@ func init():
 		"fire-678": ["6", "7", "8"],
 		"fire-234678": ["2", "3", "4", "6", "7", "8"],
 		"fire-159": ["1", "5", "9"],
-		"fire-888": ["2", "6"],
+		"rest": []
+	}
+	audios = {
+		"fire-all": "VirusAttack",
+		"fire-13579": "VirusAttack",
+		"fire-2468": "VirusAttack",
+		"fire-234": "VirusAttack",
+		"fire-678": "VirusAttack",
+		"fire-234678": "VirusAttack",
+		"fire-159": "VirusAttack",
 		"rest": []
 	}
 	shoot_patterns = patterns.keys() 
@@ -24,8 +33,8 @@ func init():
 	first_pattern = "fire-2468"
 	current_pattern = first_pattern
 	
-	health = 30
+	health = 50
 	$HealthBar.max_value = health
 	$AnimationPlayer.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 	$HitAnimation.connect("animation_finished", self, "_on_HitAnimation_animation_finished")
-	connect("body_entered", self, "_on_Easy_body_entered")
+	connect("body_entered", self, "_on_body_entered")

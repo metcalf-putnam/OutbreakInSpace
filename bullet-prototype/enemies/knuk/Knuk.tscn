@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://bullet-prototype/enemies/bearus/Bearus.gd" type="Script" id=1]
-[ext_resource path="res://bullet-prototype/assets/Virus_64x64.png" type="Texture" id=2]
+[ext_resource path="res://bullet-prototype/enemies/knuk/Knuk.gd" type="Script" id=1]
+[ext_resource path="res://bullet-prototype/assets/Virus_medium_64x64.png" type="Texture" id=2]
 [ext_resource path="res://bullet-prototype/assets/details/arm.png" type="Texture" id=3]
 [ext_resource path="res://bullet-prototype/assets/details/pore.png" type="Texture" id=4]
 [ext_resource path="res://bullet-prototype/assets/details/pore_front.png" type="Texture" id=5]
@@ -521,7 +521,7 @@ tracks/1/keys = {
 [sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 9 )
 
-[node name="Bearus" type="Area2D"]
+[node name="Knuk" type="Area2D"]
 collision_layer = 4
 collision_mask = 14
 script = ExtResource( 1 )
@@ -761,6 +761,39 @@ bullet_scn = ExtResource( 7 )
 bullet_array_starting_angle = 105
 spin_speed = 0
 fire_rate = 20
+is_running = false
+
+[node name="10" parent="SpawnerManager" instance=ExtResource( 6 )]
+position = Vector2( 0, 0 )
+bullet_scn = ExtResource( 7 )
+total_bullet_ammo = 200
+bullets_per_array = 4
+individual_array_spread = 270.0
+fire_rate = 30
+turnaround_in_seconds = 2
+bullet_lifetime = 4
+is_running = false
+
+[node name="11" parent="SpawnerManager" instance=ExtResource( 6 )]
+position = Vector2( 0, 0 )
+bullet_scn = ExtResource( 7 )
+bullets_per_array = 4
+individual_array_spread = 270.0
+spin_reversal = 1
+max_spin_reversal = 15
+fire_rate = 5
+is_running = false
+
+[node name="12" parent="SpawnerManager" instance=ExtResource( 6 )]
+position = Vector2( 0, 0 )
+bullet_scn = ExtResource( 7 )
+bullets_per_array = 4
+individual_array_spread = 270.0
+spin_speed = 1
+spin_reversal = 1
+max_spin_reversal = 15
+fire_rate = 10
+bullet_speed = 600
 is_running = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

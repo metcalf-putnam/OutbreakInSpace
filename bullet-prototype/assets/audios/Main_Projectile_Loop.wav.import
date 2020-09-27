@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Main_Projectile_Loop.wav-24a52a26b88117c5f7b442741cacba63.sample"
+
+[deps]
+
+source_file="res://bullet-prototype/assets/audios/Main_Projectile_Loop.wav"
+dest_files=[ "res://.import/Main_Projectile_Loop.wav-24a52a26b88117c5f7b442741cacba63.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

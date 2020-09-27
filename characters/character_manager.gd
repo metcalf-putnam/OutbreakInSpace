@@ -22,31 +22,34 @@ func _ready():
 		return
 	rng.randomize()
 	create_player()
-	create_family("C1", "Blues", 2, 1, 0, "Parsho")
+	create_family("A1", "Blues", 2, 2, 1, "Fuzzlebee")
+	create_family("A2", "Blues", 1, 0, 0, "Fallshtuck")
+	create_family("A3", "Blues", 2, 1, 2, "Snucksno")
+	create_family("A4", "Blues", 2, 1, 2, "Bashface")
+	create_family("A5", "Blues", 2, 1, 2, "Gnostnoct")
+	
+	create_family("B1", "Reptiles", 2, 1, 1, "Albeback")
+	create_family("B2", "Reptiles", 2, 0, 2, "Smushl")
+	create_family("B3", "Reptiles", 1, 2, 3, "Tanyl")
 	create_family("B4", "Reptiles", 2, 1, 1, "Shnooson")
+	create_family("B6", "Reptiles", 2, 0, 1, "Beesl")
+	create_family("B7", "Reptiles", 1, 0, 1, "Knutl")
+	
+	create_family("C1", "Blues", 2, 1, 0, "Parsho")
+	create_family("C3", "Blues", 2, 2, 1, "Murktuk")
 	create_family("C4", "Blues", 2, 1, 1, "Raotao")
+	
 	create_family("D1", "Reptiles", 2, 0, 0, "Flarf")
-	create_family("D2", "Reptiles", 1, 0, 0, "Klarmore")
 	create_family("D1", "Reptiles", 2, 0, 0, "Snuktuk")
+	create_family("D1", "Reptiles", 4, 0, 1, "Grurf")
+	create_family("D2", "Reptiles", 1, 0, 0, "Klarmore")
 	create_family("D2", "Reptiles", 1, 0, 0, "Narkto")
 	create_family("D3", "Reptiles", 3, 1, 0, "Shmortl")
-	create_family("D1", "Reptiles", 4, 0, 1, "Grurf")
-	create_family("D4", "Reptiles", 2, 0, 0, "Duckto")
 	create_family("D3", "Reptiles", 1, 0, 0, "Shmortl")
+	create_family("D4", "Reptiles", 2, 0, 0, "Duckto")
 	create_family("D4", "Reptiles", 1, 0, 0, "Duckto")
-	create_family("A1", "Blues", 2, 2, 1, "Fuzzlebee")
-	create_family("B1", "Reptiles", 2, 1, 1, "Albeback")
-	create_family("A5", "Blues", 2, 1, 2, "Gnostnoct")
-	create_family("B7", "Reptiles", 1, 0, 1, "Knutl")
-	create_family("A2", "Blues", 1, 0, 0, "Fallshtuck")
-	create_family("B2", "Reptiles", 2, 0, 2, "Smushl")
-	create_family("A4", "Blues", 2, 1, 2, "Bashface")
-	create_family("B3", "Reptiles", 1, 2, 3, "Tanyl")
-	create_family("A3", "Blues", 2, 1, 2, "Snucksno")
-	create_family("B6", "Reptiles", 2, 0, 1, "Beesl")
 	
-
-	# Granny lives in B5
+	create_family("S1", "Blues", 1, 2, 1, "Snorgyl")
 
 
 func get_core_npc(npc_name):
@@ -76,7 +79,7 @@ func create_player():
 	player["is_infected"] = true
 	player["is_contagious"] = true
 	player["is_symptomatic"] = false
-	player["shed_multiplier"] = get_random_shed()
+	player["shed_multiplier"] = 1.5
 	player["infective_dose"] = 1000
 	player["viral_load"] = 10000
 	player["viral_acceptance_rate"] = 0.5
@@ -154,12 +157,10 @@ func get_random_name() -> String:
 
 
 func get_random_shed() -> float:
-	return 1.0
+	return rng.randf_range(.5, 2)
 
 
 func get_random_infective_dose(mean) -> float:
-	# TODO: make this matter
-	# Limit += 200
 	return rand_range(mean - 200.0, mean + 200.0)
 
 
@@ -208,9 +209,16 @@ func simulate_contagious_person(people, contagious_person):
 	# ten seconds of breathing nearby
 	var breathing_shed = 5 * 10 * contagious_person["shed_multiplier"]
 	var speaking_shed = 75 
+	var coughing_shed = rng.randf_range(0, 1500)
 	people.erase(contagious_person)
+	
+	# TODO: account for people not being able to be reinfected
 	for npc in people:
 		if !npc["is_contagious"]:
 			npc["viral_load"] = npc["viral_load"] +  breathing_shed
 			var times_spoken = rng.randf_range(0, 50)
 			npc["viral_load"] = npc["viral_load"] + (times_spoken * speaking_shed)
+		if contagious_person["is_symptomatic"]:
+			var coughing = rng.randf_range(0, 2)
+			npc["viral_load"] = npc["viral_load"] + coughing * coughing_shed
+

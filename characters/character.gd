@@ -127,10 +127,10 @@ func _on_ShedTimer_timeout():
 func shed_particles():
 	for body in close_contacts:
 		if body.is_in_group("susceptible"):
-			body.add_viral_particles(breathing_shed * mask_multiplier)
+			body.add_viral_particles(breathing_shed * mask_multiplier * data["shed_multiplier"])
 	for body in very_close_contacts:
 		if body.is_in_group("susceptible"):
-			body.add_viral_particles(breathing_shed * mask_multiplier)
+			body.add_viral_particles(breathing_shed * mask_multiplier * data["shed_multiplier"])
 	
 
 func set_contagious(is_contagious):
@@ -204,9 +204,9 @@ func speak():
 	if !data["is_contagious"]:
 		return
 	for body in close_contacts:
-		body.add_viral_particles(speaking_shed * mask_multiplier)
+		body.add_viral_particles(speaking_shed * mask_multiplier * data["shed_multiplier"])
 	for body in very_close_contacts:
-		body.add_viral_particles(speaking_shed * mask_multiplier)
+		body.add_viral_particles(speaking_shed * mask_multiplier * data["shed_multiplier"])
 
 
 func cough():
@@ -214,9 +214,9 @@ func cough():
 	if !data["is_contagious"]:
 		return
 	for body in close_contacts:
-		body.add_viral_particles(coughing_shed * mask_multiplier)
+		body.add_viral_particles(coughing_shed * mask_multiplier * data["shed_multiplier"])
 	for body in very_close_contacts:
-		body.add_viral_particles(coughing_shed * mask_multiplier)
+		body.add_viral_particles(coughing_shed * mask_multiplier * data["shed_multiplier"])
 
 
 func animate_sprite(direction : Vector2):

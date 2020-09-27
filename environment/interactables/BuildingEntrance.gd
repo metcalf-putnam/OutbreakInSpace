@@ -20,11 +20,7 @@ func interact():
 	print("NPCs in ", name)
 	for character in characters_inside:
 		print(character["name"])
-	if Global.player_can_test:
-		if Global.energy >= 1:
-			EventHub.emit_signal("testing_character", characters_inside, name)
-		else:
-			EventHub.emit_signal("insufficient_energy")
+	EventHub.emit_signal("testing_character", characters_inside, name)
 
 
 func occupy(npc_dic, type_in):

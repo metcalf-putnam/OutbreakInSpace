@@ -11,12 +11,13 @@ var first_lab_visit := true
 var mask_effectiveness := 0.5
 
 var player_can_sing := false
-var player_can_test := true
+var player_can_test := false
 var player_helmet := false
 var player_position := Vector2(750, 700)
 var test_results = {}
 var test_time := 2
 var positive_ids = []
+var overlord_days := 10
 
 
 func _ready():
@@ -99,5 +100,27 @@ func show_positives():
 	var character_list = character_list_scn.instance()
 	get_tree().root.add_child(character_list)
 	pass
-###
 
+
+func convince_npc(npc_string):
+	pass
+#	for npc in CharacterManager.core_npcs:
+#		print(CharacterManager.core_npcs[npc])
+		# TODO: fix this
+#		if CharacterManager.core_npcs[npc]["npc_handle"] == npc_string:
+#			CharacterManager.core_npcs[npc]["has_helmet"] = true
+
+
+func fade_away_explanation():
+	# TODO: fix this
+#	for npc in CharacterManager.core_npcs:
+#		print(npc)
+#		if CharacterManager.core_npcs[npc]["npc_handle"] == "work_friend":
+#			CharacterManager.core_npcs[npc]["viral_load"] = 900
+#		if npc["npc_handle"] == "work_friend":
+#			npc["viral_load"] = npc["viral_load"] + 600
+	CharacterManager.player["has_helmet"] = true
+	
+
+func work_party_accepted():
+	pass

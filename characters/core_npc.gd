@@ -6,6 +6,7 @@ export (String, FILE, "*.png") var sprite_file
 export (String, FILE, "*.png") var helmet_file
 export var home : String
 export var work : String
+export var npc_handle : String
 
 
 func _ready():
@@ -20,6 +21,8 @@ func _ready():
 		data["home"] = home
 	if work:
 		data["work"] = work
+	if npc_handle:
+		data["npc_handle"] = npc_handle
 	update_testing_label()
 
 

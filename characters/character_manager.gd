@@ -86,7 +86,6 @@ func create_player():
 	player["done_test"] = false
 	player["health"] = 100.0
 	player["is_alive"] = true
-	print("created player")
 
 
 func create_family(location, race, adults, kids, elderly, surname):

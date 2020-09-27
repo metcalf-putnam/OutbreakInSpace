@@ -12,7 +12,7 @@ var is_final := false
 export (PackedScene) var ChoiceButton
 enum State {DIALOGUE, TESTING, MESSAGE}
 var state = State.DIALOGUE
-const testing_text := "Who do you want to test? (Cost: 1 energy)"
+const testing_text := "Who do you want to test? Home addresses, workplaces, and day of last test shown when applicable (Cost: 1 energy)"
 var characters = []
 var is_mini_game = false
 
@@ -71,6 +71,7 @@ func init(file_path : String, name := " "):
 	$Name_NinePatchRect/Name.text = name
 	$Name_NinePatchRect.rect_size.x = $Name_NinePatchRect/Name.get_font("font").get_string_size(name).x + 23
 	$Name_NinePatchRect.show()
+	$Text.show()
 	set_process(true)
 	parser = WhiskersParser.new(Global)
 	parser.set_format_dictionary({"player_name" : CharacterManager.player["name"], "overlord_days" : Global.overlord_days})
@@ -80,6 +81,7 @@ func init(file_path : String, name := " "):
 
 
 func test_character(character_array, location_name = null):
+	$Text.show()
 	if !location_name:
 		$Name_NinePatchRect.hide()
 	else:
@@ -92,8 +94,18 @@ func test_character(character_array, location_name = null):
 	state = State.TESTING
 	set_process(true)
 	
-	if characters.size() == 0:
+	if characters.size() == 0 and Global.player_can_test:
 		$Text.bbcode_text = "No one inside"
+		is_final = true
+		$Space_NinePatchRect.show()
+		return
+	elif !Global.player_can_test:
+		$Text.hide()
+		is_final = true
+		$Space_NinePatchRect.show()
+		return
+	elif Global.player_can_test and Global.energy <= 0:
+		$Text.bbcode_text = "Insufficient energy to test"
 		is_final = true
 		$Space_NinePatchRect.show()
 		return
@@ -118,9 +130,11 @@ func test_character(character_array, location_name = null):
 func format_name_button(data):
 	var label_text = data["name"]
 	if data.has("home"):
-		label_text = label_text + ", home: " + data["home"]
+		label_text = label_text + ", h: " + data["home"]
 	if data.has("work"):
-		label_text = label_text + ", work: " + data["work"]
+		label_text = label_text + ", w: " + data["work"]
+	if data.has("last_tested"):
+		label_text = label_text + ", lt: Day " + str(data["last_tested"])
 	return label_text
 
 

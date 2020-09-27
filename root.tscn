@@ -157,15 +157,17 @@ full_name = "Professor"
 infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
+npc_handle = "professor"
 
-[node name="Professor2" parent="YSort/npcs" instance=ExtResource( 5 )]
+[node name="Mayor" parent="YSort/npcs" instance=ExtResource( 5 )]
 position = Vector2( 1240, 200 )
-dialog_file = "res://Dialog/json/professor.json"
+dialog_file = "res://Dialog/json/mayor.json"
 full_name = "Mayor Snorgyl"
 infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Mayor/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Mayor/helmet.png"
 home = "S1"
+npc_handle = "mayor"
 
 [node name="Mini Professor" parent="YSort/npcs" instance=ExtResource( 5 )]
 self_modulate = Color( 0.419608, 0.172549, 0.172549, 1 )
@@ -185,6 +187,7 @@ infective_dose = 350
 sprite_file = "res://characters/corenpcs/Granny Murktuk/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Granny Murktuk/helmet.png"
 home = "C2"
+npc_handle = "granny"
 
 [node name="Singer" parent="YSort/npcs" instance=ExtResource( 5 )]
 position = Vector2( 189, -364 )
@@ -195,6 +198,7 @@ sprite_file = "res://characters/corenpcs/Singin Coach/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Singin Coach/helmet.png"
 home = "???"
 work = "Idol"
+npc_handle = "singer"
 
 [node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 5 )]
 position = Vector2( 841.37, 161.548 )
@@ -203,6 +207,7 @@ full_name = "Snitgar"
 infective_dose = 750
 sprite_file = "res://characters/corenpcs/Work Friend/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Work Friend/helmet.png"
+npc_handle = "work_friend"
 
 [node name="Player" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( -340, -528 )

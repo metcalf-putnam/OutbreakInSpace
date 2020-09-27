@@ -44,11 +44,11 @@ region_rect = Rect2( 32, 0, 32, 32 )
 autoplay = "bullet"
 anims/bullet = SubResource( 2 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
 
 [node name="Lifetime" type="Timer" parent="."]
 
 [node name="Turnaround" type="Timer" parent="."]
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]
 [connection signal="timeout" from="Turnaround" to="." method="_on_Turnaround_timeout"]

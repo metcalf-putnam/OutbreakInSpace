@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://bullet-prototype/player/prototype/Player.gd" type="Script" id=1]
 [ext_resource path="res://bullet-prototype/assets/Leukocyte_32x32.png" type="Texture" id=2]
 [ext_resource path="res://bullet-prototype/assets/B&W_Explosão_32x32.png" type="Texture" id=3]
+[ext_resource path="res://bullet-prototype/assets/audios/player_shoot.wav" type="AudioStream" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 1.0
@@ -147,6 +148,10 @@ anims/show = SubResource( 3 )
 
 [node name="HitAnimation" type="AnimationPlayer" parent="."]
 anims/hit = SubResource( 4 )
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -21.0
 [connection signal="body_entered" from="Detection" to="." method="_on_Detection_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="animation_finished" from="HitAnimation" to="." method="_on_HitAnimation_animation_finished"]

@@ -2,7 +2,7 @@ extends Node2D
 
 export(PackedScene) var bullet_scn = preload("res://bullet-prototype/bullets/small_bullet/SmallBullet.tscn")
 
-export(int, 500, 1) var total_bullet_ammo = 500
+export(int, 10, 2000) var total_bullet_ammo = 2000
 var current_bullet_ammo = 0
 
 export(int, 1, 5) var total_bullet_arrays = 1

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Falling_Spread_Loop.wav-deaf36505475bda504fed29ab839b9a0.sample"
+
+[deps]
+
+source_file="res://bullet-prototype/assets/audios/Falling_Spread_Loop.wav"
+dest_files=[ "res://.import/Falling_Spread_Loop.wav-deaf36505475bda504fed29ab839b9a0.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

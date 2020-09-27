@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 onready var anim = $AnimationPlayer
 onready var hit_anim = $HitAnimation
+onready var shoot = $shoot
 
 export(int) var speed = 250
 export(PackedScene) var bullet_scn = preload("res://bullet-prototype/bullets/small_bullet/SmallBullet.tscn")
@@ -23,10 +24,10 @@ signal damage
 signal stage_complete
 signal start_stage
 
-func show():
+func show_player():
 	anim.play("show")
 
-func hide():
+func hide_player():
 	is_stage_complete = true
 	anim.play_backwards("show")
 
@@ -81,6 +82,7 @@ func update_health():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.get_action_strength("fire") and can_shoot:
+			shoot.play()
 			create_bullet()
 			can_shoot = false
 

@@ -2,6 +2,8 @@ extends Area2D
 
 var first_pattern = "fire-1and2"
 var current_pattern = first_pattern
+var audios = {}
+var current_audio = null
 var patterns = {
 	"fire-1and2": ["1", "2"],
 	"fire-3and4": ["3", "4"],
@@ -18,7 +20,7 @@ onready var hit_anim = $HitAnimation
 onready var health_bar = $HealthBar
 onready var health_bar_tween = $HealthBar/Tween
 
-const THRESHOLD_DISTANCE = 10
+var threshold_distance = 10
 
 var health = 20
 var speed = 0.3
@@ -51,9 +53,8 @@ func _ready():
 func _process(delta):
 	if is_stage_complete: return
 	
-	if desired_location == null or position.distance_to(desired_location) < THRESHOLD_DISTANCE:
+	if desired_location == null or position.distance_to(desired_location) < threshold_distance:
 		desired_location = next_location()
-		print("desired", desired_location)
 		
 	position = position.linear_interpolate(desired_location, delta * speed)
 
@@ -77,10 +78,10 @@ func stop_all(paths):
 			get_node("SpawnerManager/" + str(path)).stop()
 	pass
 
-func show():
+func show_virus():
 	anim.play("show")
 
-func hide():
+func hide_virus():
 	stop_all(spawners)
 	set_process(false)
 	hide = true
@@ -108,7 +109,7 @@ func update_health():
 	hit_anim.play("hit")
 	emit_signal("extract")
 
-func _on_Easy_body_entered(body):
+func _on_body_entered(body):
 	if body is Bullet:
 		if can_take_damage:
 			update_health()
@@ -131,12 +132,14 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		emit_signal("start_stage")
 		
 		if has_shoot_animations:
-			anim.play(first_pattern)
+			anim.play(current_pattern)
 		else:
 			anim.play("no_shoot")
-			
-		start_all(patterns[first_pattern])
+		
+		play_audio(current_pattern)
+		start_all(patterns[current_pattern])
 	elif anim_name in shoot_patterns:
+		stop_audio()
 		stop_all(patterns[current_pattern])
 	
 	if anim_name != "show":
@@ -148,6 +151,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 				anim.play(pattern)
 			else:
 				anim.play("no_shoot")
+				
+			play_audio(current_pattern)
 			start_all(patterns[current_pattern])
 		else:
 			anim.play(pattern)
@@ -157,3 +162,12 @@ func _on_HitAnimation_animation_finished(anim_name):
 	if anim_name == "hit":
 		can_take_damage = true
 	pass # Replace with function body.
+
+func play_audio(pattern):
+	var to_play = "Audios/" + audios[pattern]
+	get_node(to_play).play()
+	current_audio = to_play
+	pass
+
+func stop_audio():
+	get_node(current_audio).stop()

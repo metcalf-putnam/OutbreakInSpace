@@ -4,12 +4,10 @@
 [ext_resource path="res://bullet-prototype/bullets/medium_bullet/MediumBullet.tscn" type="PackedScene" id=2]
 
 [node name="Spawner" type="Node2D"]
-position = Vector2( 500.067, 271.223 )
+position = Vector2( 517.648, 313.417 )
 script = ExtResource( 1 )
 bullet_scn = ExtResource( 2 )
 bullets_per_array = 1
-spin_speed = 1
-bullet_speed = 250
 
 [node name="Lifetime" type="Timer" parent="."]
 [connection signal="timeout" from="Lifetime" to="." method="_on_Lifetime_timeout"]

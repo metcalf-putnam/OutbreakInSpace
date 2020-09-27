@@ -5,6 +5,7 @@ var energy := 4
 const max_energy := 4
 var new_infections := 0
 var total_infections := 1
+var visuals_on := true
 
 var first_lab_visit := true
 var mask_effectiveness := 0.5

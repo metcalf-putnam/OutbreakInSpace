@@ -9,7 +9,6 @@ var lower_energy_limit := 0
 func _ready():
 	rng.randomize()
 	screen_size = get_viewport_rect().size
-	EventHub.connect("energy_used", self, "_on_energy_used")
 	EventHub.connect("building_exited", self, "on_building_exited")
 	
 	if Global.player_settings.help_character_id != 0:
@@ -133,6 +132,5 @@ func on_building_exited(npc_data, type):
 	spawn_npc(npc_data, type)
 
 
-func _on_energy_used():
-	if Global.energy <= lower_energy_limit:
-		send_npcs_home()
+func _on_DayTimer_timeout():
+	send_npcs_home()

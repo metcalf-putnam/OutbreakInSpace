@@ -158,6 +158,15 @@ infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 
+[node name="Professor2" parent="YSort/npcs" instance=ExtResource( 5 )]
+position = Vector2( 1240, 200 )
+dialog_file = "res://Dialog/json/professor.json"
+full_name = "Mayor Snorgyl"
+infective_dose = 1000
+sprite_file = "res://characters/corenpcs/Mayor/base_sprite.png"
+helmet_file = "res://characters/corenpcs/Mayor/helmet.png"
+home = "S1"
+
 [node name="Mini Professor" parent="YSort/npcs" instance=ExtResource( 5 )]
 self_modulate = Color( 0.419608, 0.172549, 0.172549, 1 )
 position = Vector2( 713.689, -400.902 )
@@ -170,7 +179,7 @@ helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 5 )]
 position = Vector2( -104, -376 )
-dialog_file = "res://Dialog/json/granny_day_1.json"
+dialog_file = "res://Dialog/json/granny_v2.json"
 full_name = "Granny Murktuk"
 infective_dose = 350
 sprite_file = "res://characters/corenpcs/Granny Murktuk/base_sprite.png"
@@ -209,7 +218,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Timer" type="Timer" parent="."]
+[node name="CoughTimer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
 
@@ -223,4 +232,10 @@ autostart = true
 visible = false
 position = Vector2( 854.065, -472.022 )
 scene_path = "res://bullet-prototype/Gnar.tscn"
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[node name="DayTimer" type="Timer" parent="."]
+wait_time = 200.0
+one_shot = true
+autostart = true
+[connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="DayTimer" to="." method="_on_DayTimer_timeout"]

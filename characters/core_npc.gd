@@ -10,7 +10,7 @@ export var npc_handle : String
 
 
 func _ready():
-	data = CharacterManager.get_core_npc(full_name)
+	data = CharacterManager.get_core_npc(npc_handle)
 	if infective_dose:
 		data["infective_dose"] = infective_dose
 #	data["is_infected"] = is_infected

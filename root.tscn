@@ -190,7 +190,7 @@ full_name = "Granny Murktuk"
 infective_dose = 350
 sprite_file = "res://characters/corenpcs/Granny Murktuk/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Granny Murktuk/helmet.png"
-home = "C2"
+home = "C3"
 npc_handle = "granny"
 
 [node name="Singer" parent="YSort/npcs" instance=ExtResource( 5 )]

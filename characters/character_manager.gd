@@ -1,7 +1,7 @@
 extends Node
 
 var npcs = []
-var core_npcs = {}
+var core_npcs = []
 var core_starting_id = 300
 
 var player = {}
@@ -53,25 +53,26 @@ func _ready():
 
 
 func get_core_npc(npc_name):
-	if npc_name in core_npcs:
-		return core_npcs[npc_name]
-	else:
-		var dict = {}
-		dict["id"] = core_starting_id
-		core_starting_id += 1
-		dict["is_infected"] = false
-		dict["is_contagious"] = false
-		dict["is_symptomatic"] = false
-		dict["shed_multiplier"] = get_random_shed()
-		dict["viral_load"] = 0.0
-		dict["viral_acceptance_rate"] = 0.5
-		dict["has_helmet"] = false
-		dict["done_test"] = false
-		dict["health"] = 100.0
-		dict["is_alive"] = true
-		dict["portrait_path"] = ""
-		core_npcs[npc_name] = dict
-		return dict
+	for npc in core_npcs:
+		if npc.has("npc_handle") and npc["npc_handle"] == npc_name:
+			return npc
+
+	var dict = {}
+	dict["id"] = core_starting_id
+	core_starting_id += 1
+	dict["is_infected"] = false
+	dict["is_contagious"] = false
+	dict["is_symptomatic"] = false
+	dict["shed_multiplier"] = get_random_shed()
+	dict["viral_load"] = 0.0
+	dict["viral_acceptance_rate"] = 0.5
+	dict["has_helmet"] = false
+	dict["done_test"] = false
+	dict["health"] = 100.0
+	dict["is_alive"] = true
+	dict["portrait_path"] = ""
+	core_npcs.append(dict)
+	return dict
 
 
 func create_player():
@@ -176,6 +177,17 @@ func get_random(array):
 func compute_daily_viral_shedding():
 	var work_locs = {}
 	var home_locs = {}
+	check_infections()
+	work_locs = sort_npcs(npcs, "work", work_locs)
+	work_locs = sort_npcs(core_npcs, "work", work_locs)
+	home_locs = sort_npcs(npcs, "home", home_locs)
+	home_locs = sort_npcs(core_npcs, "home", home_locs)
+	building_shed(work_locs)
+	building_shed(home_locs)
+	emit_signal("viral_shedding_computed")
+
+
+func check_infections():
 	for npc in npcs:
 		if !npc["is_infected"] and npc["viral_load"] > npc["infective_dose"]:
 			npc["is_infected"] = true
@@ -183,18 +195,19 @@ func compute_daily_viral_shedding():
 			npc["contagious_date"] = Global.day + Global.test_time
 		if npc.has("contagious_date") and npc["contagious_date"] == Global.day:
 			npc["is_contagious"] = true
-		if work_locs.has(npc["work"] and !Global.positive_characters.has(npc)):
-			work_locs[npc["work"]].append(npc)
+
+
+func sort_npcs(list, type, dict) -> Dictionary:
+	for npc in list:
+		if type == "work" and Global.positive_characters.has(npc):
+			continue
+		if !npc.has(type):
+			continue
+		if dict.has(npc[type]):
+			dict[npc[type]].append(npc)
 		else:
-			work_locs[npc["work"]] = [npc]
-		
-		if home_locs.has(npc["home"]):
-			home_locs[npc["home"]].append(npc)
-		else:
-			home_locs[npc["home"]] = [npc]
-	building_shed(work_locs)
-	building_shed(home_locs)
-	emit_signal("viral_shedding_computed")
+			dict[npc[type]] = [npc]
+	return dict
 
 
 func building_shed(dict_in):
@@ -207,6 +220,7 @@ func building_shed(dict_in):
 
 func simulate_contagious_person(people, contagious_person):
 	# ten seconds of breathing nearby
+	print("simulating contagious")
 	var breathing_shed = 5 * 10 * contagious_person["shed_multiplier"]
 	var speaking_shed = 75 
 	var coughing_shed = rng.randf_range(0, 1500)

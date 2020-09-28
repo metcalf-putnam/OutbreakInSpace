@@ -28,6 +28,8 @@ func init(data_in):
 	var health_percentage = (health_value / 100.0)
 	
 	var dose_status = CharacterManager.get_infective_dose_status(data)
+	if health_value == 0:
+		dose_status = "Dead"
 	health.text = "Health: " + str(health_value)
 	status.text = "Status: " + dose_status
 	
@@ -52,6 +54,8 @@ func init(data_in):
 		base_drain = 3
 	reduction += base_drain
 	
+	if dose_status == "Dead":
+		reduction = 0
 	health_reduction.text = "Health Reduction / Day: " + str(reduction)
 	
 	portrait.self_modulate = Color(1.0, health_percentage, health_percentage, 1.0)

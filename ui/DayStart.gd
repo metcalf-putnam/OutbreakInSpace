@@ -32,6 +32,7 @@ func _ready():
 		
 	Global.new_infections = 0
 	update_characters_health()
+	check_new_positives()
 	Global.player_position = Global.player_initial_position
 
 func _input(event):
@@ -56,15 +57,32 @@ func compute_new_health(health, viral_load, infective_dose, cap = 0):
 	print("base_drain: ", base_drain)
 	var health_drain =  (viral / infective_dose) + base_drain
 	print("health_drain: ", health_drain)
-	return health - health_drain
+	return clamp(health - health_drain, 0, 100)
 
 
 func update_characters_health():
-	for data in Global.positive_characters:
-		if data["id"] == CharacterManager.player_id:
-			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"], 3000)
-		else:
+	if CharacterManager.player["is_symptomatic"]:
+		var data = CharacterManager.player
+		var health = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
+		CharacterManager.player["health"] = health
+	
+	for data in CharacterManager.core_npcs:
+		if data["is_symptomatic"]:
 			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
+	
+	for data in CharacterManager.npcs:
+		if data["is_symptomatic"]:
+			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
+
+
+func check_new_positives():
+	for data in CharacterManager.core_npcs:
+		if data["health"] < 50 and not Global.positive_characters.has(data):
+			Global.positive_characters.append(data)
+	
+	for data in CharacterManager.npcs:
+		if data["health"] < 50 and not Global.positive_characters.has(data):
+			Global.positive_characters.append(data)
 
 
 func set_test_status(id, status):
@@ -74,11 +92,6 @@ func set_test_status(id, status):
 		for npc in get_tree().root.get_node("Root/YSort/npcs").get_children():
 			if int(id) == npc.data["id"]:
 				npc.data["done_test"] = status
-
-
-func get_id_from_result(result):
-	var texts = result.split(" ")
-	return texts[1]
 
 
 func format_result(test_dic):

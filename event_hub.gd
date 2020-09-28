@@ -28,3 +28,7 @@ signal new_infection
 
 # Mini game
 signal start_mini_game
+
+# Onscreen control signals
+signal sing_button_toggled
+signal test_button_pressed

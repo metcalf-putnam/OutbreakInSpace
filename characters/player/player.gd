@@ -4,6 +4,7 @@ export var is_contagious = true
 export var is_infected = true
 var last_direction = Vector2()
 
+
 func _ready():
 	position = Global.player_position
 	speed = 100
@@ -11,6 +12,9 @@ func _ready():
 	EventHub.connect("player_spoke", self, "speak")
 	EventHub.connect("new_dialogue", self, "_on_new_dialogue")
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
+	EventHub.connect("sing_button_toggled", self, "_on_sing_button_toggled")
+	EventHub.connect("test_button_pressed", self, "_on_test_button_pressed")
+	
 
 func init(data):
 	.init(data)
@@ -44,12 +48,12 @@ func _unhandled_input(event):
 		sing()
 		get_tree().set_input_as_handled()
 	if event.is_action_pressed("test") and Global.player_can_test:
-		if Global.energy >= 1:
-			EventHub.emit_signal("testing_character", close_contacts)
-		else:
-			EventHub.emit_signal("insufficient_energy")
-			state = State.DIALOGUE
+		test()
 		get_tree().set_input_as_handled()
+
+
+func test():
+	EventHub.emit_signal("testing_character", close_contacts)
 
 
 func _on_new_dialogue(_file, _full_name):
@@ -59,3 +63,14 @@ func _on_new_dialogue(_file, _full_name):
 func _on_dialogue_finished():
 	state = State.ACTIVE
 
+
+func _on_sing_button_toggled(boolean):
+	sing_toggled = boolean
+	if state != State.ACTIVE or !boolean:
+		return
+	sing()
+
+
+func _on_test_button_pressed():
+	if state == State.ACTIVE:
+		test()

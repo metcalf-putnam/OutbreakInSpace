@@ -29,6 +29,7 @@ var rng = RandomNumberGenerator.new()
 const testing_suffix_days := ", last tested: Day "
 const cough_min = 10
 const cough_max = 30
+var sing_toggled := false
 
 
 func _ready():
@@ -192,7 +193,7 @@ func sing():
 
 
 func _on_singing_anim_end():
-	if Input.is_action_pressed("ui_accept"):
+	if Input.is_action_pressed("ui_accept") or sing_toggled:
 		sing()
 	else:
 		state = State.ACTIVE

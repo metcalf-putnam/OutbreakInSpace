@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://ui/main_overlay.gd" type="Script" id=1]
 [ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://ui/energy.png" type="Texture" id=5]
 [ext_resource path="res://fps.gd" type="Script" id=6]
+[ext_resource path="res://ui/player_controls.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -227,16 +228,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-modulate = Color( 0, 0, 0, 1 )
-margin_right = 1024.0
-margin_bottom = 600.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="FPS" type="Label" parent="."]
 margin_left = 957.376
 margin_top = 64.2751
@@ -247,6 +238,57 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PlayerControls" type="HBoxContainer" parent="."]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -123.0
+margin_top = -45.0
+margin_right = 123.0
+margin_bottom = -5.0
+custom_constants/separation = 26
+alignment = 1
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestButton" type="Button" parent="PlayerControls"]
+margin_right = 90.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 50, 0 )
+custom_fonts/font = SubResource( 1 )
+action_mode = 0
+text = "Test (T)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SingButton" type="Button" parent="PlayerControls"]
+margin_left = 116.0
+margin_right = 246.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 1 )
+toggle_mode = true
+text = "Sing (SPACE)"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="toggled" from="Debug/MaskButton" to="." method="_on_MaskButton_toggled"]
 [connection signal="toggled" from="Debug/Visuals_Debug" to="." method="_on_Visuals_Debug_toggled"]
+[connection signal="pressed" from="PlayerControls/TestButton" to="PlayerControls" method="_on_TestButton_pressed"]
+[connection signal="toggled" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_toggled"]

@@ -797,15 +797,19 @@ value = 20.0
 [node name="Bass140" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 10 )
 volume_db = -2.0
+bus = "Virus SFX"
 
 [node name="FallingSpread" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 11 )
 volume_db = -4.0
+bus = "Virus SFX"
 
 [node name="VirusAttack" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 12 )
 volume_db = -4.0
+bus = "Virus SFX"
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 13 )
 volume_db = -1.0
+bus = "Drum Bus"

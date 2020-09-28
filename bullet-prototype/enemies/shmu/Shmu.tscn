@@ -834,3 +834,4 @@ bus = "Virus SFX"
 [node name="Hit" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 13 )
 volume_db = -1.0
+bus = "Drum Bus"

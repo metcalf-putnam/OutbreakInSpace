@@ -18,7 +18,6 @@ NPC = ExtResource( 2 )
 
 [node name="Homes" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
-editor/display_folded = true
 
 [node name="C1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
 position = Vector2( -70, -493 )
@@ -115,7 +114,6 @@ type = "home"
 
 [node name="Locations" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
-editor/display_folded = true
 
 [node name="Class1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 74, -93 )
@@ -150,7 +148,6 @@ position = Vector2( 698, 354 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="npcs" type="YSort" parent="YSort"]
-editor/display_folded = true
 
 [node name="Professor" parent="YSort/npcs" instance=ExtResource( 5 )]
 position = Vector2( 543.187, -417.402 )
@@ -247,5 +244,8 @@ autostart = true
 wait_time = 400.0
 one_shot = true
 autostart = true
+
+[node name="GoHomeTimer" type="Timer" parent="."]
 [connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_DayTimer_timeout"]
+[connection signal="timeout" from="GoHomeTimer" to="." method="_on_GoHomeTimer_timeout"]

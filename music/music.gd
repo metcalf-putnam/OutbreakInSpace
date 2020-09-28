@@ -44,15 +44,13 @@ func fade_current():
 
 
 func _on_MainIntro_finished():
-	if state == "normal":
-		$Players/MainLoop.volume_db = normal_db
-		$MainLoop.play()
+	$MainLoop.play()
+	$Players/MainLoop.volume_db = normal_db
 
 
 func _on_FightingIntro_finished():
-	if state == "fighting":
-		$Players/FightingLoop.volume_db = fighting_db
-		$FightingLoop.play()
+	$Players/FightingLoop.volume_db = fighting_db
+	$FightingLoop.play()
 
 
 func _set_fade_out(audio_player : AudioStreamPlayer):

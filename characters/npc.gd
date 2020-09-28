@@ -63,10 +63,11 @@ func move_along_path(distance : float) -> void:
 		path.remove(0)
 
 
-func set_target_location(new_target : Vector2) -> void:
+func set_target_location(new_target : Vector2, target_type_in) -> void:
 	if !navNode:
 		print("no nav2D to navigate with!")
 		return
+	target_type = target_type_in
 	if new_target.distance_to(global_position) < 2: 
 		_on_end_of_path()
 		return
@@ -84,7 +85,7 @@ func _on_end_of_path() -> void:
 	else:
 		set_physics_process(false)
 		animationState.travel("idle")
-		EventHub.emit_signal("building_entered", self)
+		EventHub.emit_signal("building_entered", self, target_type)
 		wander()
 
 
@@ -92,5 +93,5 @@ func wander():
 	is_wandering = true
 	var displace_velocity = Vector2(speed*3,0).rotated(rng.randf_range(0,2.0*PI))
 	var new_temp_dest = navNode.get_closest_point(displace_velocity + global_position)
-	set_target_location(navNode.get_closest_point(new_temp_dest))
+	set_target_location(navNode.get_closest_point(new_temp_dest), "wandering")
 

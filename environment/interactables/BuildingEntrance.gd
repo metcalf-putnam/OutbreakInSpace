@@ -31,7 +31,9 @@ func occupy(npc_dic, type_in):
 			characters_inside.append(npc_dic)
 
 
-func enter(npc):
+func enter(npc, building_type):
+	if building_type != type:
+		return
 	var npc_dic = npc.data
 	if npc_dic.has(type) and npc_dic[type] == name:
 		if !characters_inside.has(npc_dic):

@@ -71,11 +71,8 @@ func update_character_health(data):
 
 
 func send_npcs_home():
-	for npc in $YSort/npcs.get_children():
-		if !npc.is_in_group("core_npc"):
-			var home_loc = get_home(npc.data)
-			npc.set_target_location(home_loc)
 	EventHub.emit_signal("work_ended")
+	$GoHomeTimer.start()
 
 
 func spawn_npc(npc_data, location : String):
@@ -86,10 +83,10 @@ func spawn_npc(npc_data, location : String):
 	match location:
 		"home":
 			npc.position = get_home(npc_data)
-			npc.set_target_location(get_work(npc_data))
+			npc.set_target_location(get_work(npc_data), "work")
 		"work":
 			npc.position = get_work(npc_data)
-			npc.set_target_location(get_home(npc_data))
+			npc.set_target_location(get_home(npc_data), "home")
 		"wander":
 			npc.position = get_work(npc_data)
 			npc.wander()
@@ -138,3 +135,10 @@ func on_building_exited(npc_data, type):
 
 func _on_DayTimer_timeout():
 	send_npcs_home()
+
+
+func _on_GoHomeTimer_timeout():
+	var count = $YSort/npcs.get_child_count()
+	var num = rng.randi_range(0, count-1)
+	var chosen_npc = $YSort/npcs.get_child(num)
+	chosen_npc.set_target_location(get_home(chosen_npc.data), "home")

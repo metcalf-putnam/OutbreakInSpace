@@ -6,6 +6,7 @@ const max_energy := 4
 var new_infections := 0
 var total_infections := 1
 var visuals_on := true
+var cookies := 0
 
 var first_lab_visit := true
 var mask_effectiveness := 0.5
@@ -51,7 +52,7 @@ func add_test_results(data, result):
 
 
 func increment_cookies():
-	pass
+	cookies += 1
 
 
 func singing_lesson():

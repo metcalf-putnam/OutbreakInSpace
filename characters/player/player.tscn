@@ -17,6 +17,9 @@ playback_speed = 2.0
 [node name="AnimationTree" parent="." index="9"]
 parameters/playback = SubResource( 1 )
 
+[node name="Sing" parent="." index="11"]
+volume_db = -1.0
+
 [node name="Camera2D" type="Camera2D" parent="." index="16"]
 position = Vector2( 0, 20 )
 current = true

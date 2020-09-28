@@ -8,7 +8,7 @@ soft_clip_ratio = 3.0
 
 [sub_resource type="AudioEffectCompressor" id=2]
 resource_name = "Compressor"
-threshold = -30.0
+threshold = -35.0
 ratio = 2.0
 release_ms = 40.0
 mix = 0.8

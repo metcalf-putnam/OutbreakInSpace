@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://bullet-prototype/enemies/bearus/Bearus.gd" type="Script" id=1]
 [ext_resource path="res://bullet-prototype/assets/Virus_64x64.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://bullet-prototype/assets/audios/Bass_140bpm_loop.wav" type="AudioStream" id=10]
 [ext_resource path="res://bullet-prototype/assets/audios/Falling_Spread_Loop.wav" type="AudioStream" id=11]
 [ext_resource path="res://bullet-prototype/assets/audios/Virus_Attack.wav" type="AudioStream" id=12]
+[ext_resource path="res://bullet-prototype/assets/audios/Boss_Gets_Hit_V2.wav" type="AudioStream" id=13]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 25.0
@@ -691,6 +692,7 @@ position = Vector2( 0, -0.225937 )
 shape = SubResource( 1 )
 
 [node name="SpawnerManager" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="1" parent="SpawnerManager" instance=ExtResource( 6 )]
 position = Vector2( 5.71985, -18.6793 )
@@ -805,3 +807,7 @@ volume_db = -21.0
 [node name="VirusAttack" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 12 )
 volume_db = -21.0
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource( 13 )
+volume_db = -15.0

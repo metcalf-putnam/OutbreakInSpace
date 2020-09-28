@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://bullet-prototype/enemies/knuk/Knuk.gd" type="Script" id=1]
 [ext_resource path="res://bullet-prototype/assets/Virus_medium_64x64.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://bullet-prototype/assets/audios/Bass_140bpm_loop.wav" type="AudioStream" id=10]
 [ext_resource path="res://bullet-prototype/assets/audios/Falling_Spread_Loop.wav" type="AudioStream" id=11]
 [ext_resource path="res://bullet-prototype/assets/audios/Virus_Attack.wav" type="AudioStream" id=12]
+[ext_resource path="res://bullet-prototype/assets/audios/Boss_Gets_Hit_V2.wav" type="AudioStream" id=13]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 25.0
@@ -770,8 +771,9 @@ total_bullet_ammo = 200
 bullets_per_array = 4
 individual_array_spread = 270.0
 fire_rate = 30
-turnaround_in_seconds = 2
-bullet_lifetime = 4
+bullet_speed = 400
+turnaround_in_seconds = 6
+bullet_lifetime = 6
 is_running = false
 
 [node name="11" parent="SpawnerManager" instance=ExtResource( 6 )]
@@ -780,7 +782,7 @@ bullet_scn = ExtResource( 7 )
 bullets_per_array = 4
 individual_array_spread = 270.0
 spin_reversal = 1
-max_spin_reversal = 15
+max_spin_reversal = 20
 fire_rate = 5
 is_running = false
 
@@ -838,3 +840,7 @@ volume_db = -21.0
 [node name="VirusAttack" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 12 )
 volume_db = -21.0
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource( 13 )
+volume_db = -15.0

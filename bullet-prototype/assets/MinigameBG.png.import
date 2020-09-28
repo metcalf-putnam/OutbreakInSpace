@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ReptileChild.png-3ec274e511196b8cdff3548443ff8361.stex"
+path="res://.import/MinigameBG.png-f26132f709de5cd4be42a30b05a362d7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/portraits/ReptileChild.png"
-dest_files=[ "res://.import/ReptileChild.png-3ec274e511196b8cdff3548443ff8361.stex" ]
+source_file="res://bullet-prototype/assets/MinigameBG.png"
+dest_files=[ "res://.import/MinigameBG.png-f26132f709de5cd4be42a30b05a362d7.stex" ]
 
 [params]
 

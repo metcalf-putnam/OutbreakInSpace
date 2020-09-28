@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BlueChild.png-ef1c27770f5db2074708ae20f3fb3366.stex"
+path="res://.import/ReptilesChild.png-2d1bf688eafb71b829f0346597085e62.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/portraits/BlueChild.png"
-dest_files=[ "res://.import/BlueChild.png-ef1c27770f5db2074708ae20f3fb3366.stex" ]
+source_file="res://characters/portraits/ReptilesChild.png"
+dest_files=[ "res://.import/ReptilesChild.png-2d1bf688eafb71b829f0346597085e62.stex" ]
 
 [params]
 
@@ -21,7 +21,6 @@ compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
-
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ReptileWoman.png-9e14e65d90980791d668574de2e366b9.stex"
+path="res://.import/BluesMan.png-c3268ab52da0fa4562e0ef92d0c1d6a0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/portraits/ReptileWoman.png"
-dest_files=[ "res://.import/ReptileWoman.png-9e14e65d90980791d668574de2e366b9.stex" ]
+source_file="res://characters/portraits/BluesMan.png"
+dest_files=[ "res://.import/BluesMan.png-c3268ab52da0fa4562e0ef92d0c1d6a0.stex" ]
 
 [params]
 

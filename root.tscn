@@ -18,6 +18,7 @@ NPC = ExtResource( 2 )
 
 [node name="Homes" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
+editor/display_folded = true
 
 [node name="C1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
 position = Vector2( -70, -493 )
@@ -114,6 +115,7 @@ type = "home"
 
 [node name="Locations" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
+editor/display_folded = true
 
 [node name="Class1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 74, -93 )
@@ -148,6 +150,7 @@ position = Vector2( 698, 354 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="npcs" type="YSort" parent="YSort"]
+editor/display_folded = true
 
 [node name="Professor" parent="YSort/npcs" instance=ExtResource( 5 )]
 position = Vector2( 543.187, -417.402 )
@@ -157,6 +160,7 @@ infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 npc_handle = "professor"
+portrait_file = "res://characters/portraits/Professor.png"
 
 [node name="Mayor" parent="YSort/npcs" instance=ExtResource( 5 )]
 position = Vector2( 1288, 176 )
@@ -167,6 +171,7 @@ sprite_file = "res://characters/corenpcs/Mayor/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Mayor/helmet.png"
 home = "S1"
 npc_handle = "mayor"
+portrait_file = "res://characters/portraits/Mayor.png"
 
 [node name="Mini Professor" parent="YSort/npcs" instance=ExtResource( 5 )]
 self_modulate = Color( 0.419608, 0.172549, 0.172549, 1 )
@@ -177,6 +182,7 @@ full_name = "Mini Professor"
 infective_dose = 5000
 sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
+portrait_file = "res://characters/portraits/Professor.png"
 
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 5 )]
 position = Vector2( -104, -376 )
@@ -187,6 +193,7 @@ sprite_file = "res://characters/corenpcs/Granny Murktuk/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Granny Murktuk/helmet.png"
 home = "C3"
 npc_handle = "granny"
+portrait_file = "res://characters/portraits/Granny.png"
 
 [node name="Singer" parent="YSort/npcs" instance=ExtResource( 5 )]
 position = Vector2( 189, -364 )
@@ -198,6 +205,7 @@ helmet_file = "res://characters/corenpcs/Singin Coach/helmet.png"
 home = "C4"
 work = "Idol"
 npc_handle = "singer"
+portrait_file = "res://characters/portraits/SingingCoach.png"
 
 [node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 5 )]
 position = Vector2( 841.37, 161.548 )
@@ -209,6 +217,7 @@ helmet_file = "res://characters/corenpcs/Work Friend/helmet.png"
 home = "B3"
 work = "Factory1D"
 npc_handle = "work_friend"
+portrait_file = "res://characters/portraits/WorkerFriend.png"
 
 [node name="Player" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( -340, -528 )

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ReptileMan.png-4784f2c68f6fea572b2ee6fe2a8662cf.stex"
+path="res://.import/ReptilesElderly.png-e687be675936948a60f8448b737cd9be.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/portraits/ReptileMan.png"
-dest_files=[ "res://.import/ReptileMan.png-4784f2c68f6fea572b2ee6fe2a8662cf.stex" ]
+source_file="res://characters/portraits/ReptilesElderly.png"
+dest_files=[ "res://.import/ReptilesElderly.png-e687be675936948a60f8448b737cd9be.stex" ]
 
 [params]
 

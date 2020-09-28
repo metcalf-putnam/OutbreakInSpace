@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Player_Damaged.wav-e86d83a951155de0469c3c14201ab5eb.sample"
+
+[deps]
+
+source_file="res://bullet-prototype/assets/audios/Player_Damaged.wav"
+dest_files=[ "res://.import/Player_Damaged.wav-e86d83a951155de0469c3c14201ab5eb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

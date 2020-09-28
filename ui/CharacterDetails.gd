@@ -3,33 +3,54 @@ extends VBoxContainer
 onready var portrait = $MarginContainer/VBoxContainer/Portrait
 onready var character_name = $MarginContainer/VBoxContainer/Name
 onready var health = $MarginContainer/VBoxContainer/Health
-onready var viral_load = $MarginContainer/VBoxContainer/ViralLoad
-onready var infective_dose = $MarginContainer/VBoxContainer/InfectiveDose
+onready var status = $MarginContainer/VBoxContainer/Status
 onready var health_reduction = $MarginContainer/VBoxContainer/HealthReductionPerDay
 onready var select_btn = $MarginContainer/VBoxContainer/Button
+onready var auto_battle_btn = $MarginContainer/VBoxContainer/AutoBattle
 
 signal play_mini_game
-var data 
+signal auto_battle
+signal insufficient_energy
+var data
+var game_mode
 var character_id = 0
 
 func init(data_in):
+	
+	if Global.energy < 1:
+		select_btn.hide()
+		auto_battle_btn.hide()
+	
 	data = data_in
+	
 	character_name.text = "Name: " + data["name"]
 	var health_value = stepify(data["health"], 0.01)
 	var health_percentage = (health_value / 100.0)
 	
+	var dose_status = CharacterManager.get_infective_dose_status(data)
 	health.text = "Health: " + str(health_value)
+	status.text = "Status: " + dose_status
+	
+	if dose_status == "Moderate":
+		game_mode = "EASY"
+	elif dose_status == "Severe":
+		game_mode = "MEDIUM"
+	else:
+		game_mode = "HARD"
 	
 	var viralload = data["viral_load"]
 	var infectivedose = data["infective_dose"]
-	viral_load.text = "Viral Load: " + str(viralload)
-	infective_dose.text = "Infective Dose: " + str(infectivedose)
-	
 	if data["id"] == 200 and viralload > 3000:
 		viralload = 3000
 	
-	print(viralload, infectivedose)
 	var reduction = stepify(viralload / infectivedose, 0.01)
+	
+	var base_drain = 1 # Moderate
+	if dose_status == "Severe":
+		base_drain = 2
+	elif dose_status == "Critical":
+		base_drain = 3
+	reduction += base_drain
 	
 	health_reduction.text = "Health Reduction / Day: " + str(reduction)
 	
@@ -37,10 +58,23 @@ func init(data_in):
 	if data["portrait_path"] != "":
 		portrait.set_texture(load(data["portrait_path"]))
 	else:
-		portrait.set_texture(load("res://characters/portraits/portrait_blue_man.png"))
-	
-	# TODO take path if data dictionary has "portrait_path",
-	# else look up appropriate portrait based on race, etc.
+		var type = data["type"]
+		var race = data["race"]
+		var portrait_path = "res://characters/portraits/" + race + type + ".png"
+		if ResourceLoader.exists(portrait_path):
+			portrait.set_texture(load(portrait_path))
+		else:
+			portrait.set_texture(load("res://characters/portraits/portrait_blue_man.png"))
+
 
 func _on_Button_pressed():
-	emit_signal("play_mini_game", data)
+	emit_signal("play_mini_game", data, game_mode)
+
+
+func _on_AutoBattle_pressed():
+	if Global.energy >= 1:
+		Global.decrement_energy()
+		emit_signal("auto_battle", data)
+	else:
+		emit_signal("insufficient_energy")
+	pass # Replace with function body.

@@ -52,7 +52,7 @@ func _ready():
 	create_family("S1", "Blues", 1, 2, 1, "Snorgyl")
 
 
-func get_core_npc(npc_name):
+func get_core_npc(npc_name, portrait_file):
 	for npc in core_npcs:
 		if npc.has("npc_handle") and npc["npc_handle"] == npc_name:
 			return npc
@@ -70,7 +70,7 @@ func get_core_npc(npc_name):
 	dict["done_test"] = false
 	dict["health"] = 100.0
 	dict["is_alive"] = true
-	dict["portrait_path"] = ""
+	dict["portrait_path"] = portrait_file
 	core_npcs.append(dict)
 	return dict
 
@@ -236,3 +236,68 @@ func simulate_contagious_person(people, contagious_person):
 			var coughing = rng.randf_range(0, 2)
 			npc["viral_load"] = npc["viral_load"] + coughing * coughing_shed
 
+
+func get_additional_health(game_settings):
+	var is_skip = game_settings["is_skip"]
+	var mode = game_settings["mode"]
+	var modifier = 0
+	var points = game_settings["extraction_points"]
+	
+	var minimum_health = 0
+	if mode == "EASY":
+		modifier = 100.0
+		minimum_health = 1
+	elif mode == "MEDIUM":
+		modifier = 150.0
+		minimum_health = 1
+	elif mode == "HARD":
+		modifier = 200.0
+		minimum_health = 2
+	
+	if is_skip:
+		minimum_health -= 1
+		minimum_health = clamp(minimum_health, 1, 3)
+		return minimum_health
+	
+	var additional_health = points / modifier
+	print("additional_health: ", additional_health)
+	return minimum_health + additional_health
+
+
+func update_character_health(data):
+	var additional_health = get_additional_health(Global.player_settings)
+	if data["id"] == CharacterManager.player_id:
+		var health = CharacterManager.player["health"]
+		health += additional_health
+		CharacterManager.player["health"] = clamp(health, 0, 100)
+	else:
+		var found = false
+		for npc in CharacterManager.core_npcs:
+			if data["id"] == npc["id"]:
+				var health = npc["health"]
+				health += additional_health
+				npc["health"] = clamp(health, 0, 100)
+				found = true
+		
+		if not found:
+			for npc in CharacterManager.npcs:
+				if data["id"] == npc["id"]:
+					var health = npc["health"]
+					health += additional_health
+					npc["health"] = clamp(health, 0, 100)
+				
+	Global.player_settings.extraction_points = 0
+	Global.player_settings.character_to_help_data = null
+	Global.player_settings.is_skip = false
+
+
+func get_infective_dose_status(data):
+	var dose 
+	if typeof(data) == TYPE_DICTIONARY:
+		dose = data["infective_dose"]
+	else:
+		dose = data
+	
+	if dose > 1000: return "Moderate"
+	if dose > 600: return "Severe"
+	return "Critical"

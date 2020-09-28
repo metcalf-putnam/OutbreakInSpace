@@ -106,6 +106,7 @@ func update_health():
 	health_bar_tween.interpolate_property(health_bar, "value", health_bar.value, health, 1, Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	health_bar_tween.start()
 	
+	get_node("Audios/Hit").play()
 	hit_anim.play("hit")
 	emit_signal("extract")
 

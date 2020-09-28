@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/BlueWoman.png-f2ff7b7d14b5f500c7e57e9c9d4e515a.stex"
+path="res://.import/BluesChild.png-8a9cca9def01a636dce2ded106e9c674.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/portraits/BlueWoman.png"
-dest_files=[ "res://.import/BlueWoman.png-f2ff7b7d14b5f500c7e57e9c9d4e515a.stex" ]
+source_file="res://characters/portraits/BluesChild.png"
+dest_files=[ "res://.import/BluesChild.png-8a9cca9def01a636dce2ded106e9c674.stex" ]
 
 [params]
 

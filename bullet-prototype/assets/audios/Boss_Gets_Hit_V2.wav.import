@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Boss_Gets_Hit_V2.wav-527befdccee0d2a4d1d3dbaa4ee1da2c.sample"
+
+[deps]
+
+source_file="res://bullet-prototype/assets/audios/Boss_Gets_Hit_V2.wav"
+dest_files=[ "res://.import/Boss_Gets_Hit_V2.wav-527befdccee0d2a4d1d3dbaa4ee1da2c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

@@ -81,6 +81,7 @@ func get_character_by_id(id):
 var character_list_scn = preload("res://ui/CharacterList.tscn")
 var mini_game_scn = preload("res://bullet-prototype/Gnar.tscn")
 var player_settings = {
+	"is_skip": false,
 	"mode": "EASY",
 	"ammo": 40,
 	"shield": 3,
@@ -94,10 +95,10 @@ func update_playthrough():
 	completed_playthrough = true
 
 
-func _on_start_mini_game(data):
+func _on_start_mini_game(data, game_mode):
 	Music.fade_current()
-	player_settings.character_to_help_data = data
-	player_settings["mode"] = "EASY"
+	player_settings["character_to_help_data"] = data
+	player_settings["mode"] = game_mode
 	decrement_energy()
 	player_position = mini_professor_position
 	get_tree().change_scene("res://bullet-prototype/Gnar.tscn")

@@ -12,13 +12,13 @@ onready var viruses = {
 	},
 	"MEDIUM": {
 		"scene": preload("res://bullet-prototype/enemies/knuk/Knuk.tscn"),
-		"extraction_points": 15,
+		"extraction_points": 6,
 		"extraction_multiplier": 2,
 		"bonus_completed_time": 200
 	},
 	"HARD": {
 		"scene": preload("res://bullet-prototype/enemies/shmu/Shmu.tscn"),
-		"extraction_points": 30,
+		"extraction_points": 8,
 		"extraction_multiplier": 3,
 		"bonus_completed_time": 300
 	},
@@ -114,11 +114,7 @@ func add_player():
 	p.show_player()
 	player = p
 
-func add_virus(type = "EASY"):
-	
-	# Change type to EASY, MEDIUM, HARD - like the one below
-	# var v = viruses["HARD"]["scene"].instance()
-	virus_type = type
+func add_virus():
 	var v = viruses[virus_type]["scene"].instance() 
 	
 	v.connect("extract", self, "_on_enemy_extract")
@@ -178,6 +174,7 @@ func _input(event):
 func _on_dialogue_finished():
 	state = STATE.BATTLE
 	
+	virus_type = Global.player_settings["mode"]
 	show_HUD()
 	add_virus()
 	add_player()

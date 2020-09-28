@@ -45,8 +45,18 @@ func compute_new_health(health, viral_load, infective_dose, cap = 0):
 	var viral = viral_load
 	if cap != 0 and viral_load > cap:
 		viral = cap
-		
-	return health - (viral / infective_dose)
+	
+	var status = CharacterManager.get_infective_dose_status(infective_dose)
+	var base_drain = 1 # Moderate
+	if status == "Severe":
+		base_drain = 2
+	elif status == "Critical":
+		base_drain = 3
+	
+	print("base_drain: ", base_drain)
+	var health_drain =  (viral / infective_dose) + base_drain
+	print("health_drain: ", health_drain)
+	return health - health_drain
 
 
 func update_characters_health():

@@ -7,10 +7,11 @@ export (String, FILE, "*.png") var helmet_file
 export var home : String
 export var work : String
 export var npc_handle : String
+export (String, FILE, "*.png") var portrait_file
 
 
 func _ready():
-	data = CharacterManager.get_core_npc(npc_handle)
+	data = CharacterManager.get_core_npc(npc_handle, portrait_file)
 	if infective_dose:
 		data["infective_dose"] = infective_dose
 #	data["is_infected"] = is_infected

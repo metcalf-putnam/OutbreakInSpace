@@ -13,7 +13,7 @@ func _ready():
 	EventHub.connect("building_exited", self, "on_building_exited")
 	
 	if Global.player_settings.character_to_help_data != null:
-		update_character_health(Global.player_settings.character_to_help_data)
+		CharacterManager.update_character_health(Global.player_settings.character_to_help_data)
 
 	spawn_player()
 	if Global.energy <= lower_energy_limit:

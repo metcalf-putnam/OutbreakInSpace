@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var anim = $AnimationPlayer
 onready var hit_anim = $HitAnimation
 onready var shoot = $shoot
+onready var hit = $hit
 
 export(int) var speed = 250
 export(PackedScene) var bullet_scn = preload("res://bullet-prototype/bullets/small_bullet/SmallBullet.tscn")
@@ -76,6 +77,7 @@ func update_health():
 	can_take_damage = false
 	health -= 1
 	
+	hit.play()
 	hit_anim.play("hit")
 	emit_signal("damage")
 

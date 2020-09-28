@@ -88,8 +88,7 @@ position = Vector2( 428.484, 146.769 )
 
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -15.0
+volume_db = -6.5
 
 [node name="PopUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-volume_db = -10.0

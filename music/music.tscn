@@ -24,12 +24,12 @@ volume_db = -8.0
 
 [node name="FightingIntro" type="AudioStreamPlayer" parent="Players"]
 stream = ExtResource( 1 )
-volume_db = -9.0
+volume_db = -8.0
 bus = "Drum Bus"
 
 [node name="FightingLoop" type="AudioStreamPlayer" parent="Players"]
 stream = ExtResource( 5 )
-volume_db = -9.0
+volume_db = -8.0
 bus = "Drum Bus"
 [connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]
 [connection signal="finished" from="Players/MainIntro" to="." method="_on_MainIntro_finished"]

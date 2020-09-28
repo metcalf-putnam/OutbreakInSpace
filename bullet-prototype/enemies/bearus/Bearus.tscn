@@ -33,7 +33,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprite:self_modulate")
@@ -531,7 +531,6 @@ __meta__ = {
 }
 
 [node name="Sprite" type="Sprite" parent="."]
-editor/display_folded = true
 texture = ExtResource( 2 )
 
 [node name="Arms" type="Node2D" parent="Sprite"]
@@ -692,7 +691,6 @@ position = Vector2( 0, -0.225937 )
 shape = SubResource( 1 )
 
 [node name="SpawnerManager" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="1" parent="SpawnerManager" instance=ExtResource( 6 )]
 position = Vector2( 5.71985, -18.6793 )
@@ -798,16 +796,16 @@ value = 20.0
 
 [node name="Bass140" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 10 )
-volume_db = -21.0
+volume_db = -2.0
 
 [node name="FallingSpread" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 11 )
-volume_db = -21.0
+volume_db = -4.0
 
 [node name="VirusAttack" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 12 )
-volume_db = -21.0
+volume_db = -4.0
 
 [node name="Hit" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 13 )
-volume_db = -15.0
+volume_db = -1.0

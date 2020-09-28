@@ -16,11 +16,11 @@ script = ExtResource( 2 )
 
 [node name="MainIntro" type="AudioStreamPlayer" parent="Players"]
 stream = ExtResource( 4 )
-volume_db = -7.0
+volume_db = -8.0
 
 [node name="MainLoop" type="AudioStreamPlayer" parent="Players"]
 stream = ExtResource( 3 )
-volume_db = -7.0
+volume_db = -8.0
 
 [node name="FightingIntro" type="AudioStreamPlayer" parent="Players"]
 stream = ExtResource( 1 )

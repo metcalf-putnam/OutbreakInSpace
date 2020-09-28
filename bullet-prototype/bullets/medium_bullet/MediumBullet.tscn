@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://bullet-prototype/bullets/Bullet.gd" type="Script" id=1]
-[ext_resource path="res://bullet-prototype/bullets/virus_32x32-Sheet.png" type="Texture" id=2]
+[ext_resource path="res://bullet-prototype/bullets/virus_16x16-Sheet.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.0
@@ -45,6 +45,8 @@ autoplay = "bullet"
 anims/bullet = SubResource( 2 )
 
 [node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
+scale = Vector2( 1, 1.48462 )
+rect = Rect2( -7.5, -5, 15, 10 )
 
 [node name="Lifetime" type="Timer" parent="."]
 

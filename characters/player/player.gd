@@ -48,12 +48,8 @@ func _unhandled_input(event):
 		sing()
 		get_tree().set_input_as_handled()
 	if event.is_action_pressed("test") and Global.player_can_test:
-		test()
+		EventHub.emit_signal("testing_character", close_contacts)
 		get_tree().set_input_as_handled()
-
-
-func test():
-	EventHub.emit_signal("testing_character", close_contacts)
 
 
 func _on_new_dialogue(_file, _full_name):
@@ -73,4 +69,4 @@ func _on_sing_button_toggled(boolean):
 
 func _on_test_button_pressed():
 	if state == State.ACTIVE:
-		test()
+		EventHub.emit_signal("testing_character", close_contacts)

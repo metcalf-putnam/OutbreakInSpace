@@ -157,6 +157,7 @@ func stage_complete(status, details):
 	
 	player.hide_player()
 	virus.hide_virus()
+	Music.fade_current()
 	
 	anim.play("stage_complete")
 
@@ -180,6 +181,7 @@ func _on_dialogue_finished():
 	show_HUD()
 	add_virus()
 	add_player()
+	Music.change_state("fighting")
 
 func _on_player_fire():
 	var index = ammo_container.get_child_count() - 1

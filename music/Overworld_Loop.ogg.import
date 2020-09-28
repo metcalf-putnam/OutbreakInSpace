@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Overworld_Loop.ogg-67358543f51e36cc9433c8a5d0a2796a.oggstr"
+
+[deps]
+
+source_file="res://music/Overworld_Loop.ogg"
+dest_files=[ "res://.import/Overworld_Loop.ogg-67358543f51e36cc9433c8a5d0a2796a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -7,6 +7,7 @@ var rng = RandomNumberGenerator.new()
 var lower_energy_limit := 0
 
 func _ready():
+	Music.change_state("normal")
 	rng.randomize()
 	screen_size = get_viewport_rect().size
 	EventHub.connect("building_exited", self, "on_building_exited")

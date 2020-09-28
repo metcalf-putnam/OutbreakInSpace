@@ -485,7 +485,7 @@ texture = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
-frame = 37
+frame = 1
 
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
@@ -493,7 +493,7 @@ frame = 37
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
-frame = 37
+frame = 1
 
 [node name="ShedTimer" type="Timer" parent="."]
 
@@ -527,6 +527,7 @@ anims/walk_up = SubResource( 15 )
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 34 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/playback = SubResource( 35 )
 parameters/idle/blend_position = Vector2( -0.0257703, 0.181224 )
 parameters/walk/blend_position = Vector2( 0, 0 )

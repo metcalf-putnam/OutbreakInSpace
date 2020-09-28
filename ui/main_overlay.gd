@@ -13,6 +13,7 @@ func new_day():
 
 func _on_Button_pressed():
 	$AnimationPlayer.play("fade_to_black")
+	Music.fade_current() 
 
 
 func _on_MaskButton_toggled(button_pressed):

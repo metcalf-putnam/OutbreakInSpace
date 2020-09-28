@@ -95,6 +95,7 @@ func update_playthrough():
 
 
 func _on_start_mini_game(data):
+	Music.fade_current()
 	player_settings.character_to_help_data = data
 	player_settings["mode"] = "EASY"
 	decrement_energy()

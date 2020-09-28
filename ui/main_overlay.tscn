@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/main_overlay.gd" type="Script" id=1]
 [ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=2]
 [ext_resource path="res://ui/energy.gd" type="Script" id=3]
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://ui/energy.png" type="Texture" id=5]
+[ext_resource path="res://fps.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -232,6 +233,17 @@ modulate = Color( 0, 0, 0, 1 )
 margin_right = 1024.0
 margin_bottom = 600.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FPS" type="Label" parent="."]
+margin_left = 957.376
+margin_top = 64.2751
+margin_right = 997.376
+margin_bottom = 104.275
+custom_fonts/font = SubResource( 1 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

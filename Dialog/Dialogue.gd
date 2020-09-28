@@ -12,7 +12,7 @@ var is_final := false
 export (PackedScene) var ChoiceButton
 enum State {DIALOGUE, TESTING, MESSAGE}
 var state = State.DIALOGUE
-const testing_text := "Who do you want to test? Home addresses, workplaces, and day of last test shown when applicable (Cost: 1 energy)"
+const testing_text := "Who do you want to test (must be nearby)? Home addresses, workplaces, and day of last test shown when applicable (Cost: 1 energy)"
 var characters = []
 var is_mini_game = false
 

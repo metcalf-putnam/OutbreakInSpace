@@ -160,8 +160,8 @@ npc_handle = "professor"
 portrait_file = "res://characters/portraits/Professor.png"
 
 [node name="Mayor" parent="YSort/npcs" instance=ExtResource( 5 )]
-position = Vector2( 1288, 176 )
-dialog_file = "res://Dialog/json/mayor.json"
+position = Vector2( 1392, 176 )
+dialog_file = "res://Dialog/json/mayor_steady_state.json"
 full_name = "Mayor Snorgyl"
 infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Mayor/base_sprite.png"

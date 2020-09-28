@@ -11,6 +11,12 @@
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Sprite" parent="." index="3"]
+frame = 0
+
+[node name="Helmet" parent="." index="4"]
+frame = 0
+
 [node name="CollisionShape2D" parent="." index="6"]
 position = Vector2( 0, 1.12247 )
 
@@ -19,7 +25,4 @@ wait_time = 2.0
 
 [node name="AnimationTree" parent="." index="10"]
 parameters/playback = SubResource( 1 )
-
-[node name="Cough" parent="." index="11"]
-volume_db = -5.0
 [connection signal="timeout" from="RandDirTimer" to="." method="_on_RandDirTimer_timeout"]

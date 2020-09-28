@@ -9,6 +9,8 @@ export var work : String
 export var npc_handle : String
 export (String, FILE, "*.png") var portrait_file
 
+var Events = ["virus_detected", "first_results", "first_positive", "first_death"]
+var event
 
 func _ready():
 	data = CharacterManager.get_core_npc(npc_handle, portrait_file)
@@ -24,11 +26,56 @@ func _ready():
 		data["work"] = work
 	if npc_handle:
 		data["npc_handle"] = npc_handle
+	if !data.has("event_checks"):
+		data["event_checks"] = {}
+		for event in Events:
+			data["event_checks"][event] = false
+	check_special_dialog()
 	update_testing_label()
+	if Global.first_lab_visit and npc_handle == "granny":
+		$Interactable.set_new_info(true)
+
+
+func get_dialog_file():
+	var file2check = File.new()
+	var file_path = ""
+	if !Global.first_lab_visit and !data["event_checks"]["virus_detected"]:
+		event = "virus_detected"
+		file_path = get_file_path(event)
+		if file2check.file_exists(file_path):
+			return file_path
+	elif Global.first_results and !data["event_checks"]["first_results"]:
+		event = "first_results"
+		file_path = get_file_path(event)
+		if file2check.file_exists(file_path):
+			return file_path
+	elif Global.first_positive and !data["event_checks"]["first_positive"]:
+		event = "first_positive"
+		file_path = get_file_path(event)
+		if file2check.file_exists(file_path):
+			return file_path
+	elif Global.first_death and !data["event_checks"]["first_death"]:
+		event = "first_death"
+		file_path = get_file_path(event)
+		if file2check.file_exists(file_path):
+			return file_path
+	else:
+		event = null
+		return null
+
+
+func get_file_path(event_name):
+	return "res://Dialog/" + "json/"  + npc_handle + "_" + event_name + ".json"
 
 
 func _on_Interactable_dialogue_started():
-	EventHub.emit_signal("new_dialogue", dialog_file, full_name)
+	var event_dialogue = get_dialog_file()
+	if event_dialogue:
+		EventHub.emit_signal("new_dialogue", event_dialogue, full_name)
+		data["event_checks"][event] = true
+		event = null
+	else:
+		EventHub.emit_signal("new_dialogue", dialog_file, full_name)
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.connect("npc_dialogue", self, "_on_dialog")
 
@@ -50,3 +97,16 @@ func update_sprite():
 
 	$Sprite.texture = load(sprite_file)
 	$Helmet.texture = load(helmet_file)
+
+
+func check_special_dialog():
+	if Global.first_lab_visit and npc_handle == "professor":
+		$Interactable.set_new_info(true)
+		return
+	if !Global.player_can_sing and npc_handle == "singer":
+		$Interactable.set_new_info(true)
+		return
+	if get_dialog_file():
+		$Interactable.set_new_info(true)
+	else:
+		$Interactable.set_new_info(false)

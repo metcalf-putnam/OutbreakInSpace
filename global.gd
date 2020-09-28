@@ -8,7 +8,12 @@ var total_infections := 1
 var visuals_on := true
 var cookies := 0
 
+# Event flags
 var first_lab_visit := true
+var first_results := false
+var first_positive := false
+var first_death := false
+
 var mask_effectiveness := 0.5
 
 var player_can_sing := false

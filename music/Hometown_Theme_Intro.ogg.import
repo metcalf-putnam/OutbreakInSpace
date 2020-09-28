@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Hometown_Theme_Intro.ogg-3bb1f2fbf8bfda3260d97c391c3
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

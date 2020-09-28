@@ -11,5 +11,5 @@ dest_files=[ "res://.import/Virus_Fight_Drums_Intro.ogg-a054f11151e1d6760df37a65
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

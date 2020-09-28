@@ -18,3 +18,7 @@ func get_text() -> String:
 
 func _on_Button_pressed():
 	pressed = true
+
+
+func _on_Button_mouse_entered():
+	$MouseOver.play()

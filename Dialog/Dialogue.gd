@@ -32,8 +32,8 @@ func _process(delta):
 		State.DIALOGUE:
 			for i in range(0, get_node("Buttons").get_child_count()):
 				if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
+					$Select.play()
 					var option_text = $Buttons.get_child(i).get_text()
-					
 					if option_text == "Show Positives":
 						end_dialogue()
 						Global.show_positives()
@@ -66,6 +66,7 @@ func step_forward(i):
 
 
 func init(file_path : String, name := " "):
+	$PopUp.play()
 	EventHub.emit_signal("npc_dialogue")
 	state = State.DIALOGUE
 	$Name_NinePatchRect/Name.text = name
@@ -81,11 +82,16 @@ func init(file_path : String, name := " "):
 
 
 func test_character(character_array, location_name = null):
+	$PopUp.play()
 	$Text.show()
 	if !location_name:
 		$Name_NinePatchRect.hide()
 	else:
-		var location_text = "Building " + location_name
+		var location_text = ""
+		if location_name.begins_with("Class"):
+			location_text = "School, " + location_name
+		else:
+			location_text = "Building " + location_name
 		$Name_NinePatchRect/Name.text = location_text
 		$Name_NinePatchRect.rect_size.x = $Name_NinePatchRect/Name.get_font("font").get_string_size(location_text).x + 23
 		$Name_NinePatchRect.show()
@@ -229,6 +235,7 @@ func _unhandled_input(event):
 		end_dialogue()
 	elif $Buttons.get_child_count() == 0 and state == State.DIALOGUE:
 		step_forward(-1)
+		$Select.play()
 
 
 func end_dialogue():

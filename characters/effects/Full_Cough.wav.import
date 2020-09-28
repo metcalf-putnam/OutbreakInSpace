@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Full_Cough.wav-3886c45781ed8779264774e86d368dd5.sample"
+
+[deps]
+
+source_file="res://characters/effects/Full_Cough.wav"
+dest_files=[ "res://.import/Full_Cough.wav-3886c45781ed8779264774e86d368dd5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

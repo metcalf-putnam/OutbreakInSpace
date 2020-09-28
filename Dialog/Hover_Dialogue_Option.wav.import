@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Hover_Dialogue_Option.wav-8f1b537cb80ac4b0eb392b3d03f403c2.sample"
+
+[deps]
+
+source_file="res://Dialog/Hover_Dialogue_Option.wav"
+dest_files=[ "res://.import/Hover_Dialogue_Option.wav-8f1b537cb80ac4b0eb392b3d03f403c2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

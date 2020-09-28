@@ -53,28 +53,23 @@ position = Vector2( -262, 179 )
 type = "home"
 
 [node name="A1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1430, -509 )
-scale = Vector2( -1, 1 )
+position = Vector2( 1435, -498 )
 type = "home"
 
 [node name="A2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1446, -413 )
-scale = Vector2( -1, 1 )
+position = Vector2( 1451, -397 )
 type = "home"
 
 [node name="A3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1446, -333 )
-scale = Vector2( -1, 1 )
+position = Vector2( 1451, -317 )
 type = "home"
 
 [node name="A4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1446, -237 )
-scale = Vector2( -1, 1 )
+position = Vector2( 1451, -226 )
 type = "home"
 
 [node name="A5" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1446, -125 )
-scale = Vector2( -1, 1 )
+position = Vector2( 1451, -109 )
 type = "home"
 
 [node name="S1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]

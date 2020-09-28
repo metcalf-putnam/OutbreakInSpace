@@ -2,8 +2,8 @@
 
 [ext_resource path="res://music/Virus_Fight_Drums_Intro.ogg" type="AudioStream" id=1]
 [ext_resource path="res://music/music.gd" type="Script" id=2]
-[ext_resource path="res://music/Overworld_Intro.ogg" type="AudioStream" id=3]
-[ext_resource path="res://music/Overworld_Loop.ogg" type="AudioStream" id=4]
+[ext_resource path="res://music/Hometown_Theme_Loop.ogg" type="AudioStream" id=3]
+[ext_resource path="res://music/Hometown_Theme_Intro.ogg" type="AudioStream" id=4]
 [ext_resource path="res://music/Virus_Fight_Drums_Loop.ogg" type="AudioStream" id=5]
 
 [node name="Music" type="Node"]
@@ -15,11 +15,11 @@ script = ExtResource( 2 )
 [node name="Players" type="Node" parent="."]
 
 [node name="MainIntro" type="AudioStreamPlayer" parent="Players"]
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 volume_db = -21.0
 
 [node name="MainLoop" type="AudioStreamPlayer" parent="Players"]
-stream = ExtResource( 4 )
+stream = ExtResource( 3 )
 volume_db = -21.0
 
 [node name="FightingIntro" type="AudioStreamPlayer" parent="Players"]

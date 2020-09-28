@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Hometown_Theme_Loop.ogg-eccaba9d9cf189e1e84dcea1b468246c.oggstr"
+
+[deps]
+
+source_file="res://music/Hometown_Theme_Loop.ogg"
+dest_files=[ "res://.import/Hometown_Theme_Loop.ogg-eccaba9d9cf189e1e84dcea1b468246c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

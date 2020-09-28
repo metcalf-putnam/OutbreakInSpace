@@ -16,6 +16,12 @@ radius = 37.2534
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Sprite" parent="." index="3"]
+frame = 0
+
+[node name="Helmet" parent="." index="4"]
+frame = 0
+
 [node name="AnimationTree" parent="." index="9"]
 parameters/playback = SubResource( 1 )
 
@@ -24,4 +30,7 @@ script = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" index="1"]
 shape = SubResource( 2 )
+
+[node name="Cough" parent="." index="11"]
+volume_db = -5.0
 [connection signal="dialogue_started" from="Interactable" to="." method="_on_Interactable_dialogue_started"]

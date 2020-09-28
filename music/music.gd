@@ -3,7 +3,7 @@ extends Node
 var state
 var normal_db
 var fighting_db
-var fade_time = 5
+var fade_time = 3
 
 func _ready():
 	print("in music ready function")
@@ -44,13 +44,15 @@ func fade_current():
 
 
 func _on_MainIntro_finished():
-	$MainLoop.play()
+	print("main finished")
+	$Players/MainLoop.play()
 	$Players/MainLoop.volume_db = normal_db
 
 
 func _on_FightingIntro_finished():
+	print("fighting intro finished")
 	$Players/FightingLoop.volume_db = fighting_db
-	$FightingLoop.play()
+	$Players/FightingLoop.play()
 
 
 func _set_fade_out(audio_player : AudioStreamPlayer):
@@ -59,11 +61,12 @@ func _set_fade_out(audio_player : AudioStreamPlayer):
 	if !audio_player.is_playing():
 		return # Do nothing because that audio stream is not playing anything / can't fade out
 	
-	$Tween.interpolate_property(audio_player, "volume_db", audio_player.volume_db, -60, fade_time,
+	$Tween.interpolate_property(audio_player, "volume_db", audio_player.volume_db, -70, fade_time,
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 
 
 func _on_Tween_tween_all_completed():
+	print("music fading tween completed")
 	if state == "normal":
 		$Players/FightingIntro.stop()
 		$Players/FightingLoop.stop()

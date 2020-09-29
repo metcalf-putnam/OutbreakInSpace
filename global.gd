@@ -138,11 +138,6 @@ func show_positives():
 
 func convince_npc(_npc_string):
 	convinced = true
-#	for npc in CharacterManager.core_npcs:
-#		print(CharacterManager.core_npcs[npc])
-		# TODO: fix this
-#		if CharacterManager.core_npcs[npc]["npc_handle"] == npc_string:
-#			CharacterManager.core_npcs[npc]["has_helmet"] = true
 
 
 func fade_away_explanation():

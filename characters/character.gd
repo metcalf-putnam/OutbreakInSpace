@@ -127,10 +127,10 @@ func _on_ShedTimer_timeout():
 
 func shed_particles():
 	for body in close_contacts:
-		if body.is_in_group("susceptible"):
+		if body.is_in_group("susceptible") and not body.data["is_immune"]:
 			body.add_viral_particles(breathing_shed * mask_multiplier * data["shed_multiplier"])
 	for body in very_close_contacts:
-		if body.is_in_group("susceptible"):
+		if body.is_in_group("susceptible") and not body.data["is_immune"]:
 			body.add_viral_particles(breathing_shed * mask_multiplier * data["shed_multiplier"])
 	
 
@@ -187,9 +187,11 @@ func sing():
 	set_physics_process(false)
 	animationState.travel("sing")
 	for body in close_contacts:
-		body.add_viral_particles(singing_shed * mask_multiplier)
+		if not body.data["is_immune"]:
+			body.add_viral_particles(singing_shed * mask_multiplier)
 	for body in very_close_contacts:
-		body.add_viral_particles(singing_shed * mask_multiplier)
+		if not body.data["is_immune"]:
+			body.add_viral_particles(singing_shed * mask_multiplier)
 
 
 func _on_singing_anim_end():
@@ -205,9 +207,11 @@ func speak():
 	if !data["is_contagious"]:
 		return
 	for body in close_contacts:
-		body.add_viral_particles(speaking_shed * mask_multiplier * data["shed_multiplier"])
+		if not body.data["is_immune"]:
+			body.add_viral_particles(speaking_shed * mask_multiplier * data["shed_multiplier"])
 	for body in very_close_contacts:
-		body.add_viral_particles(speaking_shed * mask_multiplier * data["shed_multiplier"])
+		if not body.data["is_immune"]:
+			body.add_viral_particles(speaking_shed * mask_multiplier * data["shed_multiplier"])
 
 
 func cough():
@@ -215,9 +219,11 @@ func cough():
 	if !data["is_contagious"]:
 		return
 	for body in close_contacts:
-		body.add_viral_particles(coughing_shed * mask_multiplier * data["shed_multiplier"])
+		if not body.data["is_immune"]:
+			body.add_viral_particles(coughing_shed * mask_multiplier * data["shed_multiplier"])
 	for body in very_close_contacts:
-		body.add_viral_particles(coughing_shed * mask_multiplier * data["shed_multiplier"])
+		if not body.data["is_immune"]:
+			body.add_viral_particles(coughing_shed * mask_multiplier * data["shed_multiplier"])
 
 
 func animate_sprite(direction : Vector2):

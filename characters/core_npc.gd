@@ -2,6 +2,7 @@ extends Character
 export(String, FILE, "*.json") var dialog_file
 export var full_name : String
 export var infective_dose : int
+export var is_immune : bool
 export (String, FILE, "*.png") var sprite_file
 export (String, FILE, "*.png") var helmet_file
 export var home : String
@@ -13,7 +14,7 @@ var Events = ["virus_detected", "first_results", "first_positive", "first_death"
 var event
 
 func _ready():
-	data = CharacterManager.get_core_npc(npc_handle, portrait_file)
+	data = CharacterManager.get_core_npc(npc_handle, portrait_file, is_immune)
 	if infective_dose:
 		data["infective_dose"] = infective_dose
 #	data["is_infected"] = is_infected

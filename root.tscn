@@ -18,6 +18,7 @@ NPC = ExtResource( 2 )
 
 [node name="Homes" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
+editor/display_folded = true
 
 [node name="C1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
 position = Vector2( -70, -493 )
@@ -154,6 +155,7 @@ position = Vector2( 543.187, -417.402 )
 dialog_file = "res://Dialog/json/professor.json"
 full_name = "Professor"
 infective_dose = 1000
+is_immune = true
 sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 npc_handle = "professor"
@@ -177,6 +179,7 @@ scale = Vector2( 0.7, 0.7 )
 dialog_file = "res://Dialog/json/mini_professor.json"
 full_name = "Mini Professor"
 infective_dose = 5000
+is_immune = true
 sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 portrait_file = "res://characters/portraits/Professor.png"

@@ -52,7 +52,7 @@ func _ready():
 	create_family("S1", "Blues", 1, 2, 1, "Snorgyl")
 
 
-func get_core_npc(npc_name, portrait_file):
+func get_core_npc(npc_name, portrait_file, is_immune):
 	for npc in core_npcs:
 		if npc.has("npc_handle") and npc["npc_handle"] == npc_name:
 			return npc
@@ -71,6 +71,7 @@ func get_core_npc(npc_name, portrait_file):
 	dict["health"] = 100.0
 	dict["is_alive"] = true
 	dict["portrait_path"] = portrait_file
+	dict["is_immune"] = is_immune
 	core_npcs.append(dict)
 	return dict
 
@@ -92,6 +93,7 @@ func create_player():
 	player["health"] = 100.0
 	player["is_alive"] = true
 	player["portrait_path"] = "res://characters/portraits/Player.png"
+	player["is_immune"] = false
 
 
 func create_family(location, race, adults, kids, elderly, surname):
@@ -146,6 +148,7 @@ func create_npc(home : String, family_name : String, race : String,
 	dict["health"] = 100.0
 	dict["is_alive"] = true
 	dict["portrait_path"] = ""
+	dict["is_immune"] = false
 	return dict
 
 

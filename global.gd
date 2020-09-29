@@ -27,6 +27,10 @@ var test_time := 3
 var positive_characters = []
 var healed_characters = []
 var overlord_days := 10
+var convinced := false
+var npcs_convinced := 0
+
+signal singing_lesson
 
 
 func _ready():
@@ -61,8 +65,9 @@ func increment_cookies():
 
 
 func singing_lesson():
-	print("singing lesson being called!")
+	emit_signal("singing_lesson")
 	player_can_sing = true
+	
 
 
 func visit_professor():
@@ -116,8 +121,8 @@ func show_positives():
 	pass
 
 
-func convince_npc(npc_string):
-	pass
+func convince_npc(_npc_string):
+	convinced = true
 #	for npc in CharacterManager.core_npcs:
 #		print(CharacterManager.core_npcs[npc])
 		# TODO: fix this
@@ -137,4 +142,8 @@ func fade_away_explanation():
 	
 
 func work_party_accepted():
+	pass
+	
+
+func overlord_discovery():
 	pass

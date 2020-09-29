@@ -91,7 +91,7 @@ func _on_end_of_path() -> void:
 
 func wander():
 	is_wandering = true
-	var displace_velocity = Vector2(speed*3,0).rotated(rng.randf_range(0,2.0*PI))
+	var displace_velocity = Vector2(speed*5,0).rotated(rng.randf_range(0,2.0*PI))
 	var new_temp_dest = navNode.get_closest_point(displace_velocity + global_position)
 	set_target_location(navNode.get_closest_point(new_temp_dest), "wandering")
 

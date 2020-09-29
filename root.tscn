@@ -134,7 +134,7 @@ position = Vector2( 136, 416 )
 position = Vector2( 584, -64 )
 
 [node name="Factory1A" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 314, 354 )
+position = Vector2( 314, 211 )
 
 [node name="Factory1B" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 426.15, 353.674 )
@@ -143,7 +143,7 @@ position = Vector2( 426.15, 353.674 )
 position = Vector2( 586, 354 )
 
 [node name="Factory1D" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 698, 354 )
+position = Vector2( 779, 227 )
 
 [node name="YSort" type="YSort" parent="."]
 

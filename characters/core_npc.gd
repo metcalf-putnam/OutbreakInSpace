@@ -28,8 +28,8 @@ func _ready():
 		data["npc_handle"] = npc_handle
 	if !data.has("event_checks"):
 		data["event_checks"] = {}
-		for event in Events:
-			data["event_checks"][event] = false
+		for e in Events:
+			data["event_checks"][e] = false
 	check_special_dialog()
 	update_testing_label()
 	if Global.first_lab_visit and npc_handle == "granny":
@@ -83,6 +83,11 @@ func _on_Interactable_dialogue_started():
 func _on_dialogue_finished():
 	EventHub.disconnect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.disconnect("npc_dialogue", self, "_on_dialog")
+	if Global.convinced and !data["has_helmet"]:
+		data["has_helmet"] = true
+		Global.convinced = false
+		Global.npcs_convinced += 1
+		
 	
 	
 func _on_dialog():

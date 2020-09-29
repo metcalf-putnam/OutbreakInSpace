@@ -247,3 +247,9 @@ func end_dialogue():
 	set_process(false)
 	EventHub.emit_signal("dialogue_finished")
 	hide()
+
+
+func update_name(name_in):
+	$Name_NinePatchRect/Name.text = name_in
+	$Name_NinePatchRect.rect_size.x = $Name_NinePatchRect/Name.get_font("font").get_string_size(name_in).x + 23
+	

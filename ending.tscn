@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://environment/Map.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ending.gd" type="Script" id=3]
+[ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "opening"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RichTextLabel:percent_visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("RichTextLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="Ending" type="Node2D"]
+script = ExtResource( 3 )
+failure_dialog_file = "res://Dialog/json/overlord_failure.json"
+
+[node name="Navigation2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 232.087, 240.496 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0.556863, 0.521569, 0.521569, 0.839216 )
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 226.348
+margin_top = 155.477
+margin_right = 826.348
+margin_bottom = 455.477
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "The festival did not happen.
+
+More text will go here to summarize what happened: infections, deaths, cookies eaten, npcs convinced to take precautions, gnar heals, etc.
+"
+visible_characters = 0
+percent_visible = 0.0
+text = "The festival did not happen.
+
+More text will go here to summarize what happened: infections, deaths, cookies eaten, npcs convinced to take precautions, gnar heals, etc.
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/opening = SubResource( 2 )
+
+[node name="Dialogue" parent="." instance=ExtResource( 4 )]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

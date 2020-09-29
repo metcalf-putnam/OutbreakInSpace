@@ -19,6 +19,8 @@ func _ready():
 #	data["is_infected"] = is_infected
 #	data["is_contagious"] = is_contagious
 	init(data)
+	if data["health"] <= 0:
+		queue_free()
 	data["name"] = full_name
 	if home:
 		data["home"] = home

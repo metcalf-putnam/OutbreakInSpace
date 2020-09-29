@@ -31,6 +31,7 @@ var convinced := false
 var npcs_convinced := 0
 
 signal singing_lesson
+signal overlord_discovery
 
 
 func _ready():
@@ -47,6 +48,9 @@ func _on_viral_shedding_computed():
 	total_infections = total_infections + new_infections
 	energy = max_energy
 	day += 1
+	if day == overlord_days:
+		assert(get_tree().change_scene("res://ending.tscn") == OK)
+		return
 	get_tree().reload_current_scene()
 	var morning_report = preload("res://ui/DayStart.tscn").instance()
 	get_tree().get_root().add_child(morning_report)
@@ -146,4 +150,4 @@ func work_party_accepted():
 	
 
 func overlord_discovery():
-	pass
+	emit_signal("overlord_discovery")

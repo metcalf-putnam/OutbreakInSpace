@@ -199,6 +199,7 @@ func _on_singing_anim_end():
 		sing()
 	else:
 		state = State.ACTIVE
+		animationState.travel("idle")
 		set_physics_process(true)
 		$Sing.stop()
 

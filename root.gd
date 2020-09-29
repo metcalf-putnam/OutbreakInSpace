@@ -30,6 +30,8 @@ func _ready():
 		building_occupy_type = "home"
 		
 	for npc in CharacterManager.npcs:
+		if npc["health"] <= 0:
+			continue
 		match building_occupy_type:
 			"home":
 				if $Navigation2D/Homes.find_node(npc[building_occupy_type]) is Area2D:
@@ -77,6 +79,8 @@ func send_npcs_home():
 
 
 func spawn_npc(npc_data, location : String):
+	if npc_data["health"] <= 0:
+		return
 	var npc = NPC.instance()
 	$YSort/npcs.add_child(npc)
 	npc.init(npc_data)

@@ -27,6 +27,11 @@ var test_time := 3
 var positive_characters = []
 var healed_characters = []
 var overlord_days := 10
+var convinced := false
+var npcs_convinced := 0
+
+signal singing_lesson
+signal overlord_discovery
 
 
 func _ready():
@@ -43,6 +48,9 @@ func _on_viral_shedding_computed():
 	total_infections = total_infections + new_infections
 	energy = max_energy
 	day += 1
+	if day == overlord_days:
+		assert(get_tree().change_scene("res://ending.tscn") == OK)
+		return
 	get_tree().reload_current_scene()
 	var morning_report = preload("res://ui/DayStart.tscn").instance()
 	get_tree().get_root().add_child(morning_report)
@@ -61,8 +69,9 @@ func increment_cookies():
 
 
 func singing_lesson():
-	print("singing lesson being called!")
+	emit_signal("singing_lesson")
 	player_can_sing = true
+	
 
 
 func visit_professor():
@@ -116,8 +125,8 @@ func show_positives():
 	pass
 
 
-func convince_npc(npc_string):
-	pass
+func convince_npc(_npc_string):
+	convinced = true
 #	for npc in CharacterManager.core_npcs:
 #		print(CharacterManager.core_npcs[npc])
 		# TODO: fix this
@@ -138,3 +147,7 @@ func fade_away_explanation():
 
 func work_party_accepted():
 	pass
+	
+
+func overlord_discovery():
+	emit_signal("overlord_discovery")

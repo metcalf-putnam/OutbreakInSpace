@@ -1,11 +1,17 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/DayStart.gd" type="Script" id=1]
 [ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=2]
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://ui/Space_NinePatchRect.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Dialog/ChoiceButton.gd" type="Script" id=5]
+[ext_resource path="res://Dialog/Hover_Dialogue_Option.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 3 )
 
@@ -18,10 +24,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -237.5
-margin_top = -175.0
-margin_right = 237.5
-margin_bottom = 175.0
+margin_left = -237.0
+margin_top = -287.0
+margin_right = 238.0
+margin_bottom = 271.0
 texture = ExtResource( 2 )
 patch_margin_left = 5
 patch_margin_top = 5
@@ -45,7 +51,7 @@ New infections:  2
 
 Test Results:
 [N/A: not yet implemented]"
-text = "Daily Report
+text = "[wave]Daily Report[/wave]
 
 New infections:  2
 
@@ -56,7 +62,85 @@ __meta__ = {
 }
 
 [node name="Space_NinePatchRect" parent="NinePatchRect" instance=ExtResource( 4 )]
-margin_left = 250.0
-margin_top = 331.0
-margin_right = 417.0
-margin_bottom = 363.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 39.4611
+margin_top = -19.0766
+margin_right = 206.461
+margin_bottom = 12.9234
+
+[node name="PrevButton" type="NinePatchRect" parent="NinePatchRect"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 6.85892
+margin_top = -14.9967
+margin_right = 58.8589
+margin_bottom = 12.0033
+rect_min_size = Vector2( 52, 27 )
+texture = ExtResource( 2 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="PrevButton" type="Button" parent="NinePatchRect/PrevButton"]
+margin_right = 32.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "   <"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseOver" type="AudioStreamPlayer" parent="NinePatchRect/PrevButton"]
+stream = ExtResource( 6 )
+volume_db = -19.0
+
+[node name="NextButton" type="NinePatchRect" parent="NinePatchRect"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 67.9577
+margin_top = -14.8993
+margin_right = 119.958
+margin_bottom = 12.1007
+rect_min_size = Vector2( 52, 27 )
+texture = ExtResource( 2 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="NinePatchRect/NextButton"]
+margin_right = 32.0
+margin_bottom = 28.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "    >"
+flat = true
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MouseOver" type="AudioStreamPlayer" parent="NinePatchRect/NextButton"]
+stream = ExtResource( 6 )
+volume_db = -19.0
+[connection signal="mouse_entered" from="NinePatchRect/PrevButton/PrevButton" to="NinePatchRect/PrevButton" method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="NinePatchRect/PrevButton/PrevButton" to="." method="_on_PrevButton_pressed"]
+[connection signal="mouse_entered" from="NinePatchRect/NextButton/NextButton" to="NinePatchRect/NextButton" method="_on_Button_mouse_entered"]
+[connection signal="pressed" from="NinePatchRect/NextButton/NextButton" to="." method="_on_NextButton_pressed"]

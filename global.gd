@@ -33,10 +33,13 @@ var npcs_convinced := 0
 signal singing_lesson
 signal overlord_discovery
 
+var daily_reports = [] 
 
 func _ready():
 	EventHub.connect("day_ended", self, "_on_day_ended")
 	EventHub.connect("start_mini_game", self, "_on_start_mini_game")
+	EventHub.connect("house_entered", self, "_on_house_entered")
+	EventHub.connect("house_exited", self, "_on_house_exited")
 	CharacterManager.connect("viral_shedding_computed", self, "_on_viral_shedding_computed")
 
 
@@ -45,15 +48,23 @@ func _on_day_ended():
 
 
 func _on_viral_shedding_computed():
+	
 	total_infections = total_infections + new_infections
+	var new_positives = check_new_positives()
+	generate_report(new_positives)
+	update_characters_health()
+	
+	new_infections = 0
 	energy = max_energy
 	day += 1
+	
 	if day == overlord_days:
 		assert(get_tree().change_scene("res://ending.tscn") == OK)
 		return
+	
 	get_tree().reload_current_scene()
-	var morning_report = preload("res://ui/DayStart.tscn").instance()
-	get_tree().get_root().add_child(morning_report)
+#    var morning_report = preload("res://ui/DayStart.tscn").instance()
+#    get_tree().get_root().add_child(morning_report)
 
 
 func add_test_results(data, result):
@@ -151,3 +162,105 @@ func work_party_accepted():
 
 func overlord_discovery():
 	emit_signal("overlord_discovery")
+
+
+func _on_house_entered():
+	get_tree().change_scene("res://interiors/Housescene.tscn")
+
+
+func _on_house_exited():
+	#Global.player_position
+	get_tree().change_scene("res://root.tscn")
+
+
+func generate_report(add_new_positives):
+	var textbox = RichTextLabel.new()
+	textbox.clear()
+	textbox.append_bbcode("[wave]Daily Report - Day " + str(day) + "[/wave]") 
+	textbox.newline()
+	textbox.newline()
+	textbox.append_bbcode("New infections: " + str(new_infections))
+	textbox.newline()
+	textbox.newline()
+	textbox.append_bbcode("Total infections: " + str(total_infections))
+	textbox.newline()
+	textbox.newline()
+	textbox.append_bbcode("[wave]Test Results:[/wave]")
+	if test_results.has(day):
+		for test_dic in test_results[day]:
+			if test_dic["result"]:
+				if not positive_characters.has(test_dic["data"]):
+					positive_characters.append(test_dic["data"])
+			
+			test_dic["data"]["done_test"] = false
+			textbox.newline()
+			textbox.append_bbcode(format_result(test_dic))
+	
+	var new_positives_not_tested_by_player = add_new_positives.size() > 0
+	if new_positives_not_tested_by_player:
+		for positive in add_new_positives:
+			var test_dic = {"data": positive, "result": true}
+			if not positive_characters.has(test_dic["data"]):
+			        positive_characters.append(test_dic["data"])
+			textbox.newline()
+			textbox.append_bbcode(format_result(test_dic))
+	
+	if !new_positives_not_tested_by_player and !test_results.has(day):
+		textbox.append_bbcode("N/A")
+	
+	# TODO: List dead characters
+	daily_reports.append(textbox.text)
+
+
+func compute_new_health(health, viral_load, infective_dose, cap = 0):
+	var viral = viral_load
+	if cap != 0 and viral_load > cap:
+		viral = cap
+    
+	var status = CharacterManager.get_infective_dose_status(infective_dose)
+	var base_drain = 1 # Moderate
+	if status == "Severe":
+		base_drain = 2
+	elif status == "Critical":
+		base_drain = 3
+		
+	print("base_drain: ", base_drain)
+	var health_drain =  (viral / infective_dose) + base_drain
+	print("health_drain: ", health_drain)
+	return clamp(health - health_drain, 0, 100)
+
+
+func update_characters_health():
+	if CharacterManager.player["is_symptomatic"]:
+		var data = CharacterManager.player
+		var health = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
+		CharacterManager.player["health"] = health
+		
+	for data in CharacterManager.core_npcs:
+		if data["is_symptomatic"]:
+			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
+			
+	for data in CharacterManager.npcs:
+		if data["is_symptomatic"]:
+			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
+
+
+func check_new_positives():
+	var new_positives = []
+	for data in CharacterManager.core_npcs:
+		if data["health"] < 50 and not Global.positive_characters.has(data):
+			new_positives.append(data)
+			
+	for data in CharacterManager.npcs:
+		if data["health"] < 50 and not Global.positive_characters.has(data):
+			new_positives.append(data)
+	return new_positives
+
+
+func format_result(test_dic):
+	var result_string = "ID: " + str(test_dic["data"]["id"]) + " - " + test_dic["data"]["name"] + ", "
+	if test_dic["result"]:
+		result_string = result_string + "positive"
+	else:
+		result_string = result_string + "negative"
+	return result_string

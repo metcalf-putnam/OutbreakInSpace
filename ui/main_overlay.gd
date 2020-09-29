@@ -9,14 +9,17 @@ func _ready():
 	$DayCount.text = day_label + str(Global.day)
 
 
+func fade_day():
+	$AnimationPlayer.play("fade_to_black")
+	Music.fade_current() 
+
 
 func new_day():
 	EventHub.emit_signal("day_ended")
 
 
 func _on_Button_pressed():
-	$AnimationPlayer.play("fade_to_black")
-	Music.fade_current() 
+	fade_day()
 
 
 func _on_MaskButton_toggled(button_pressed):

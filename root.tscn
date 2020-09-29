@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environment/Map.tscn" type="PackedScene" id=3]
 [ext_resource path="res://environment/interactables/BuildingEntrance.tscn" type="PackedScene" id=4]
-[ext_resource path="res://characters/core_npc.tscn" type="PackedScene" id=5]
-[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://fps.gd" type="Script" id=7]
-[ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=8]
-[ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=9]
+[ext_resource path="res://environment/interactables/PlayerHouse.gd" type="Script" id=5]
+[ext_resource path="res://characters/core_npc.tscn" type="PackedScene" id=6]
+[ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://fps.gd" type="Script" id=8]
+[ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=10]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,6 +20,10 @@ NPC = ExtResource( 2 )
 [node name="Homes" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
 editor/display_folded = true
+
+[node name="PlayerHouse" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( -182.117, -523.517 )
+script = ExtResource( 5 )
 
 [node name="C1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
 position = Vector2( -70, -493 )
@@ -115,6 +120,7 @@ type = "home"
 
 [node name="Locations" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
+editor/display_folded = true
 
 [node name="Class1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 74, -93 )
@@ -150,7 +156,7 @@ position = Vector2( 698, 354 )
 
 [node name="npcs" type="YSort" parent="YSort"]
 
-[node name="Professor" parent="YSort/npcs" instance=ExtResource( 5 )]
+[node name="Professor" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 543.187, -417.402 )
 dialog_file = "res://Dialog/json/professor.json"
 full_name = "Professor"
@@ -161,7 +167,7 @@ helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 npc_handle = "professor"
 portrait_file = "res://characters/portraits/Professor.png"
 
-[node name="Mayor" parent="YSort/npcs" instance=ExtResource( 5 )]
+[node name="Mayor" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 1392, 176 )
 dialog_file = "res://Dialog/json/mayor_steady_state.json"
 full_name = "Mayor Snorgyl"
@@ -172,7 +178,7 @@ home = "S1"
 npc_handle = "mayor"
 portrait_file = "res://characters/portraits/Mayor.png"
 
-[node name="Mini Professor" parent="YSort/npcs" instance=ExtResource( 5 )]
+[node name="Mini Professor" parent="YSort/npcs" instance=ExtResource( 6 )]
 self_modulate = Color( 0.419608, 0.172549, 0.172549, 1 )
 position = Vector2( 700, -400 )
 scale = Vector2( 0.7, 0.7 )
@@ -184,7 +190,7 @@ sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 portrait_file = "res://characters/portraits/Professor.png"
 
-[node name="Granny" parent="YSort/npcs" instance=ExtResource( 5 )]
+[node name="Granny" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( -104, -376 )
 dialog_file = "res://Dialog/json/granny_v2.json"
 full_name = "Granny Murktuk"
@@ -195,7 +201,7 @@ home = "C3"
 npc_handle = "granny"
 portrait_file = "res://characters/portraits/Granny.png"
 
-[node name="Singer" parent="YSort/npcs" instance=ExtResource( 5 )]
+[node name="Singer" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 189, -364 )
 dialog_file = "res://Dialog/json/singing_v3.json"
 full_name = "Kortuk the Magnificent"
@@ -207,7 +213,7 @@ work = "Idol"
 npc_handle = "singer"
 portrait_file = "res://characters/portraits/SingingCoach.png"
 
-[node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 5 )]
+[node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 841.37, 161.548 )
 dialog_file = "res://Dialog/json/work_convo.json"
 full_name = "Snitgar"
@@ -219,7 +225,7 @@ work = "Factory1D"
 npc_handle = "work_friend"
 portrait_file = "res://characters/portraits/WorkerFriend.png"
 
-[node name="Player" parent="YSort" instance=ExtResource( 6 )]
+[node name="Player" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( -340, -528 )
 
 [node name="FPS" type="Label" parent="."]
@@ -228,7 +234,7 @@ margin_left = 982.02
 margin_top = 1.99774
 margin_right = 1022.02
 margin_bottom = 15.9977
-script = ExtResource( 7 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -239,9 +245,9 @@ autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 8 )]
+[node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 9 )]
 
-[node name="Overlay" parent="." instance=ExtResource( 9 )]
+[node name="Overlay" parent="." instance=ExtResource( 10 )]
 
 [node name="DayTimer" type="Timer" parent="."]
 wait_time = 400.0

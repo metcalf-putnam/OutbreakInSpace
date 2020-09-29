@@ -70,3 +70,7 @@ func _on_sing_button_toggled(boolean):
 func _on_test_button_pressed():
 	if state == State.ACTIVE:
 		EventHub.emit_signal("testing_character", close_contacts)
+
+
+func deactivate_camaera():
+	$Camera2D.current = false

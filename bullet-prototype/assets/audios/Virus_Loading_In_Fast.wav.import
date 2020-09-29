@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Virus_Loading_In_Fast.wav-a54f6732e901e179bc5dc48bba4c55b4.sample"
+
+[deps]
+
+source_file="res://bullet-prototype/assets/audios/Virus_Loading_In_Fast.wav"
+dest_files=[ "res://.import/Virus_Loading_In_Fast.wav-a54f6732e901e179bc5dc48bba4c55b4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

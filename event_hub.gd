@@ -5,6 +5,12 @@ signal new_dialogue
 signal dialogue_finished
 signal player_spoke
 signal npc_dialogue
+signal going_in_house_dialogue
+signal going_out_house_dialogue
+signal tv_dialogue
+signal bed_dialogue
+signal computer_dialogue
+signal pet_dialogue
 
 # Energy use signals
 signal energy_used
@@ -32,3 +38,11 @@ signal start_mini_game
 # Onscreen control signals
 signal sing_button_toggled
 signal test_button_pressed
+
+# Player house
+signal house_entered
+signal house_exited
+signal tv_interaction
+signal bed_interaction
+signal computer_interaction
+signal pet_interaction

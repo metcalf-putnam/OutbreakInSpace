@@ -10,11 +10,10 @@ var data = {}
 const action_prefix = "<"
 var is_final := false
 export (PackedScene) var ChoiceButton
-enum State {DIALOGUE, TESTING, MESSAGE}
+enum State {DIALOGUE, TESTING, MESSAGE, HOUSE}
 var state = State.DIALOGUE
 const testing_text := "Who do you want to test (must be nearby)? Home addresses, workplaces, and day of last test shown when applicable (Cost: 1 energy)"
 var characters = []
-var is_mini_game = false
 
 func _ready():
 	set_process(false)
@@ -22,6 +21,12 @@ func _ready():
 	EventHub.connect("new_dialogue", self, "init")
 	EventHub.connect("testing_character", self, "test_character")
 	EventHub.connect("insufficient_energy", self, "error")
+	EventHub.connect("going_in_house_dialogue", self, "_on_going_in_house_dialogue")
+	EventHub.connect("going_out_house_dialogue", self, "_on_going_out_house_dialogue")
+	EventHub.connect("tv_dialogue", self, "_on_tv_dialogue")
+	EventHub.connect("bed_dialogue", self, "_on_bed_dialogue")
+	EventHub.connect("computer_dialogue", self, "_on_computer_dialogue")
+	EventHub.connect("pet_dialogue", self, "_on_pet_dialogue")
 
 
 func _process(delta):
@@ -55,6 +60,27 @@ func _process(delta):
 						confirm_test($Buttons.get_child(i).get_text())
 					clear_buttons()
 					$Space_NinePatchRect.show()
+		State.HOUSE:
+			for i in range(0, get_node("Buttons").get_child_count()):
+				if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
+					$Select.play()
+					
+					var option_text = $Buttons.get_child(i).get_text()
+					if option_text == "Enter":
+						EventHub.emit_signal("house_entered")
+					elif option_text == "Exit":
+						EventHub.emit_signal("house_exited")
+						
+					if option_text == "On" or option_text == "Off":
+						EventHub.emit_signal("tv_interaction", option_text)
+						
+					if option_text == "Check reports":
+						EventHub.emit_signal("computer_interaction")
+						
+					if option_text == "Take a rest":
+						EventHub.emit_signal("bed_interaction")
+						
+					end_dialogue()
 
 func step_forward(i):
 	if i == -1:
@@ -252,4 +278,85 @@ func end_dialogue():
 func update_name(name_in):
 	$Name_NinePatchRect/Name.text = name_in
 	$Name_NinePatchRect.rect_size.x = $Name_NinePatchRect/Name.get_font("font").get_string_size(name_in).x + 23
-	
+
+
+func _on_going_in_house_dialogue():
+	$PopUp.play()
+	$Text.show()
+	update_name("Home")
+	$Name_NinePatchRect.show()
+	$Text.bbcode_text = "Do you want to go inside your house?"
+	show()
+	$Space_NinePatchRect.hide()
+	add_name_button("I have other things to do")
+	add_name_button("Enter")
+	state = State.HOUSE
+	set_process(true)
+
+
+func _on_going_out_house_dialogue():
+	$PopUp.play()
+	$Text.show()
+	update_name("Home")
+	$Name_NinePatchRect.show()
+	$Text.bbcode_text = "Do you want to go outside?"
+	show()
+	$Space_NinePatchRect.hide()
+	add_name_button("Better safe than sorry")
+	add_name_button("Exit")
+	state = State.HOUSE
+	set_process(true)
+
+
+func _on_tv_dialogue(is_on):
+	$PopUp.play()
+	$Text.show()
+	update_name("TV")
+	$Name_NinePatchRect.show()
+	$Text.bbcode_text = "Hmmm?"
+	show()
+	$Space_NinePatchRect.hide()
+	if is_on:
+		$Text.bbcode_text = "Got carried away by that scene."
+		add_name_button("Off")
+	else:
+		add_name_button("On")
+	add_name_button("Do nothing.")
+	state = State.HOUSE
+	set_process(true)
+
+func _on_bed_dialogue():
+	$PopUp.play()
+	$Text.show()
+	update_name("Bed")
+	$Name_NinePatchRect.show()
+	$Text.bbcode_text = "Do you want to take a rest?"
+	if Global.energy > 0:
+		$Text.bbcode_text = "Do you want to take a rest? You still have " + str(Global.energy) + " energy left."
+	show()
+	$Space_NinePatchRect.hide()
+	add_name_button("Take a rest")
+	add_name_button("Let me think.")
+	state = State.HOUSE
+	set_process(true)
+	pass
+
+
+func _on_computer_dialogue():
+	$PopUp.play()
+	$Text.show()
+	update_name("Computer")
+	$Name_NinePatchRect.show()
+	$Text.bbcode_text = "What do you want to do?"
+	show()
+	$Space_NinePatchRect.hide()
+	if Global.daily_reports.size() != 0:
+		add_name_button("Check reports")
+	add_name_button("Do nothing.")
+	state = State.HOUSE
+	set_process(true)
+	pass
+
+func _on_pet_dialogue():
+	print("pet")
+	pass

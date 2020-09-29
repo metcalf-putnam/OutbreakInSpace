@@ -15,12 +15,7 @@ var data
 var game_mode
 var character_id = 0
 
-func init(data_in):
-	
-	if Global.energy < 1:
-		select_btn.hide()
-		auto_battle_btn.hide()
-	
+func init(data_in):	
 	data = data_in
 	
 	character_name.text = "Name: " + data["name"]
@@ -69,6 +64,10 @@ func init(data_in):
 			portrait.set_texture(load(portrait_path))
 		else:
 			portrait.set_texture(load("res://characters/portraits/portrait_blue_man.png"))
+	
+	if Global.energy < 1 or dose_status == "Dead":
+		select_btn.hide()
+		auto_battle_btn.hide()
 
 
 func _on_Button_pressed():

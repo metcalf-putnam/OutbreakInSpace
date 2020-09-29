@@ -145,7 +145,7 @@ func show_positives():
 	pass
 
 
-func convince_npc(_npc_string):
+func convince_npc():
 	convinced = true
 
 

@@ -90,6 +90,7 @@ func _on_dialogue_finished():
 	EventHub.disconnect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.disconnect("npc_dialogue", self, "_on_dialog")
 	if Global.convinced and !data["has_helmet"]:
+		print("well I'm convinced!")
 		data["has_helmet"] = true
 		Global.convinced = false
 		Global.npcs_convinced += 1

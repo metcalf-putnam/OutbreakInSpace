@@ -29,6 +29,7 @@ func _on_TestButton_pressed():
 
 
 func _on_SingButton_toggled(button_pressed):
+	$SingButton.release_focus()
 	EventHub.emit_signal("sing_button_toggled", button_pressed)
 
 

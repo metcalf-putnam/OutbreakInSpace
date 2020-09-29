@@ -37,6 +37,9 @@ func _ready():
 	update_testing_label()
 	if Global.first_lab_visit and npc_handle == "granny":
 		$Interactable.set_new_info(true)
+	
+	if npc_handle == "singer":
+		Global.connect("singing_lesson", self, "_on_singing_lesson")
 
 
 func get_dialog_file():
@@ -47,17 +50,17 @@ func get_dialog_file():
 		file_path = get_file_path(event)
 		if file2check.file_exists(file_path):
 			return file_path
-	elif Global.first_results and !data["event_checks"]["first_results"]:
+	if Global.first_results and !data["event_checks"]["first_results"]:
 		event = "first_results"
 		file_path = get_file_path(event)
 		if file2check.file_exists(file_path):
 			return file_path
-	elif Global.first_positive and !data["event_checks"]["first_positive"]:
+	if Global.first_positive and !data["event_checks"]["first_positive"]:
 		event = "first_positive"
 		file_path = get_file_path(event)
 		if file2check.file_exists(file_path):
 			return file_path
-	elif Global.first_death and !data["event_checks"]["first_death"]:
+	if Global.first_death and !data["event_checks"]["first_death"]:
 		event = "first_death"
 		file_path = get_file_path(event)
 		if file2check.file_exists(file_path):
@@ -90,6 +93,7 @@ func _on_dialogue_finished():
 		data["has_helmet"] = true
 		Global.convinced = false
 		Global.npcs_convinced += 1
+		update_sprite()
 		
 	
 	
@@ -118,3 +122,8 @@ func check_special_dialog():
 		$Interactable.set_new_info(true)
 	else:
 		$Interactable.set_new_info(false)
+
+
+func _on_singing_lesson():
+	print("giving singing lesson")
+	sing()

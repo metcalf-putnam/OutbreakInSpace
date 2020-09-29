@@ -44,9 +44,6 @@ func _unhandled_input(event):
 	# TODO: make this different? maybe they can sing on command?
 	if state != State.ACTIVE:
 		return
-	if event.is_action_pressed("ui_accept") and Global.player_can_sing:
-		sing()
-		get_tree().set_input_as_handled()
 	if event.is_action_pressed("test") and Global.player_can_test:
 		EventHub.emit_signal("testing_character", close_contacts)
 		get_tree().set_input_as_handled()

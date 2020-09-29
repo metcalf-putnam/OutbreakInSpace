@@ -283,7 +283,7 @@ func update_name(name_in):
 func _on_going_in_house_dialogue():
 	$PopUp.play()
 	$Text.show()
-	update_name("Home")
+	update_name("C2 (Home)")
 	$Name_NinePatchRect.show()
 	$Text.bbcode_text = "Do you want to go inside your house?"
 	show()
@@ -302,7 +302,7 @@ func _on_going_out_house_dialogue():
 	$Text.bbcode_text = "Do you want to go outside?"
 	show()
 	$Space_NinePatchRect.hide()
-	add_name_button("Better safe than sorry")
+	add_name_button("Not yet")
 	add_name_button("Exit")
 	state = State.HOUSE
 	set_process(true)
@@ -321,7 +321,7 @@ func _on_tv_dialogue(is_on):
 		add_name_button("Off")
 	else:
 		add_name_button("On")
-	add_name_button("Do nothing.")
+	add_name_button("Do nothing")
 	state = State.HOUSE
 	set_process(true)
 
@@ -336,7 +336,7 @@ func _on_bed_dialogue():
 	show()
 	$Space_NinePatchRect.hide()
 	add_name_button("Take a rest")
-	add_name_button("Let me think.")
+	add_name_button("Let me think")
 	state = State.HOUSE
 	set_process(true)
 	pass
@@ -352,7 +352,7 @@ func _on_computer_dialogue():
 	$Space_NinePatchRect.hide()
 	if Global.daily_reports.size() != 0:
 		add_name_button("Check reports")
-	add_name_button("Do nothing.")
+	add_name_button("Do nothing")
 	state = State.HOUSE
 	set_process(true)
 	pass

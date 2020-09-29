@@ -195,7 +195,7 @@ func sing():
 
 
 func _on_singing_anim_end():
-	if Input.is_action_pressed("ui_accept") or sing_toggled:
+	if sing_toggled:
 		sing()
 	else:
 		state = State.ACTIVE

@@ -10,6 +10,7 @@ func _ready():
 	EventHub.connect("bed_interaction", self, "_on_bed_interaction")
 	EventHub.connect("computer_interaction", self, "_on_computer_interaction")
 	EventHub.connect("pet_interaction", self, "_on_pet_interaction")
+	$Player.speed = 50
 
 func _on_tv_interaction(status):
 	if status == "On":

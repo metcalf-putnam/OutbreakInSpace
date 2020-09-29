@@ -88,22 +88,8 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 11.9385 ]
 }
 
-[node name="EnergyBackground" type="NinePatchRect" parent="."]
-visible = false
-margin_right = 200.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 220, 60 )
-texture = ExtResource( 2 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="DaysBackground" type="NinePatchRect" parent="."]
-margin_left = 816.0
+margin_left = 724.0
 margin_right = 1024.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 208, 0 )
@@ -118,9 +104,8 @@ __meta__ = {
 }
 
 [node name="Energy" type="Node2D" parent="."]
-editor/display_folded = true
 modulate = Color( 0.960784, 0.960784, 0.960784, 1 )
-position = Vector2( 63.4266, 26.3357 )
+position = Vector2( 883.427, 26.3357 )
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="Energy"]
@@ -164,9 +149,9 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="DayCount" type="Label" parent="."]
-margin_left = 847.068
+margin_left = 751.068
 margin_top = 21.0524
-margin_right = 895.068
+margin_right = 799.068
 margin_bottom = 43.0524
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
@@ -181,6 +166,7 @@ anims/fade_in = SubResource( 2 )
 anims/fade_to_black = SubResource( 3 )
 
 [node name="Button" type="Button" parent="."]
+visible = false
 margin_left = 920.399
 margin_top = 16.0576
 margin_right = 1006.4
@@ -193,20 +179,21 @@ __meta__ = {
 }
 
 [node name="Debug" type="Label" parent="."]
-margin_left = 232.693
+visible = false
+margin_left = 56.693
 margin_top = 15.7847
-margin_right = 374.693
-margin_bottom = 55.7847
+margin_right = 224.693
+margin_bottom = 37.7847
 custom_fonts/font = SubResource( 1 )
-text = "Debug Options:"
+text = "Overlord Options:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MaskButton" type="Button" parent="Debug"]
-margin_left = 432.488
+margin_left = 472.488
 margin_top = -2.66971
-margin_right = 572.488
+margin_right = 612.488
 margin_bottom = 25.3303
 focus_mode = 1
 custom_fonts/font = SubResource( 1 )
@@ -218,9 +205,9 @@ __meta__ = {
 }
 
 [node name="Visuals_Debug" type="Button" parent="Debug"]
-margin_left = 161.515
+margin_left = 201.515
 margin_top = -2.0045
-margin_right = 403.515
+margin_right = 443.515
 margin_bottom = 25.9955
 custom_fonts/font = SubResource( 1 )
 toggle_mode = true
@@ -230,6 +217,7 @@ __meta__ = {
 }
 
 [node name="FPS" type="Label" parent="."]
+visible = false
 margin_left = 957.376
 margin_top = 64.2751
 margin_right = 997.376
@@ -258,7 +246,8 @@ __meta__ = {
 }
 
 [node name="TestButton" type="Button" parent="PlayerControls"]
-margin_right = 90.0
+margin_left = 39.0
+margin_right = 129.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 50, 0 )
 custom_fonts/font = SubResource( 1 )
@@ -269,22 +258,28 @@ __meta__ = {
 }
 
 [node name="SingButton" type="Button" parent="PlayerControls"]
-margin_left = 116.0
-margin_right = 246.0
+margin_left = 155.0
+margin_right = 207.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 1 )
 toggle_mode = true
-text = "Sing (SPACE)"
+text = "Sing"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 0, 0, 0, 0 )
 margin_right = 1024.0
 margin_bottom = 600.0
 mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

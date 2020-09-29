@@ -1,8 +1,8 @@
 extends Node
 
 var day := 1
-var energy := 4
-const max_energy := 4
+var energy := 5
+const max_energy := 5
 var new_infections := 0
 var total_infections := 1
 var visuals_on := true
@@ -19,6 +19,11 @@ var mask_effectiveness := 0.5
 var player_can_sing := false
 var player_can_test := false
 var player_helmet := false
+
+# Home flags
+var report_read := true # (no report on day 1)
+var tv_watched := false
+
 const player_initial_position := Vector2(-340, -528)
 const mini_professor_position := Vector2(700, -380)
 var player_position := player_initial_position
@@ -26,7 +31,7 @@ var test_results = {}
 var test_time := 3
 var positive_characters = []
 var healed_characters = []
-var overlord_days := 10
+var overlord_day := 11
 var convinced := false
 var npcs_convinced := 0
 
@@ -44,11 +49,11 @@ func _ready():
 
 
 func _on_day_ended():
+	print("computing infection spread")
 	CharacterManager.compute_daily_viral_shedding()
 
 
-func _on_viral_shedding_computed():
-	
+func reset_daily_values():
 	total_infections = total_infections + new_infections
 	var new_positives = check_new_positives()
 	generate_report(new_positives)
@@ -57,14 +62,18 @@ func _on_viral_shedding_computed():
 	new_infections = 0
 	energy = max_energy
 	day += 1
+	report_read = false
+	tv_watched = false
+
+
+func _on_viral_shedding_computed():
+	reset_daily_values()
 	
-	if day == overlord_days:
+	if day == overlord_day:
 		assert(get_tree().change_scene("res://ending.tscn") == OK)
 		return
 	
 	get_tree().reload_current_scene()
-#    var morning_report = preload("res://ui/DayStart.tscn").instance()
-#    get_tree().get_root().add_child(morning_report)
 
 
 func add_test_results(data, result):
@@ -196,7 +205,7 @@ func generate_report(add_new_positives):
 		for positive in add_new_positives:
 			var test_dic = {"data": positive, "result": true}
 			if not positive_characters.has(test_dic["data"]):
-			        positive_characters.append(test_dic["data"])
+					positive_characters.append(test_dic["data"])
 			textbox.newline()
 			textbox.append_bbcode(format_result(test_dic))
 	
@@ -211,7 +220,7 @@ func compute_new_health(health, viral_load, infective_dose, cap = 0):
 	var viral = viral_load
 	if cap != 0 and viral_load > cap:
 		viral = cap
-    
+	
 	var status = CharacterManager.get_infective_dose_status(infective_dose)
 	var base_drain = 1 # Moderate
 	if status == "Severe":

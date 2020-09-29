@@ -94,6 +94,7 @@ func _on_dialogue_finished():
 		Global.convinced = false
 		Global.npcs_convinced += 1
 		update_sprite()
+		get_tree().call_deferred("player", "update_sprite")
 		
 	
 	

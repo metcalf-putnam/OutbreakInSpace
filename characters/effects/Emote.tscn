@@ -73,3 +73,4 @@ animation = "grumbly"
 frame = 7
 playing = true
 script = ExtResource( 3 )
+[connection signal="animation_finished" from="." to="." method="_on_Emote_animation_finished"]

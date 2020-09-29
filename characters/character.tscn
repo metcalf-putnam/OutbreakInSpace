@@ -486,6 +486,7 @@ texture = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
+frame = 1
 
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
@@ -493,6 +494,7 @@ hframes = 4
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
+frame = 1
 
 [node name="ShedTimer" type="Timer" parent="."]
 

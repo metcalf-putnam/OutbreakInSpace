@@ -132,6 +132,12 @@ visible = false
 [node name="Close" parent="Player" index="1"]
 visible = false
 
+[node name="Sprite" parent="Player" index="3"]
+frame = 1
+
+[node name="Helmet" parent="Player" index="4"]
+frame = 1
+
 [node name="CollisionShape2D" parent="Player" index="6"]
 visible = false
 

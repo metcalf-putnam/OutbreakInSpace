@@ -249,6 +249,13 @@ one_shot = true
 autostart = true
 
 [node name="GoHomeTimer" type="Timer" parent="."]
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_DayTimer_timeout"]
 [connection signal="timeout" from="GoHomeTimer" to="." method="_on_GoHomeTimer_timeout"]

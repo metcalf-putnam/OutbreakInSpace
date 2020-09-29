@@ -187,6 +187,8 @@ func sing():
 	set_physics_process(false)
 	animationState.travel("sing")
 	for body in close_contacts:
+		if body != self:
+			body.react_to_singing()
 		if not body.data["is_immune"]:
 			body.add_viral_particles(singing_shed * mask_multiplier)
 	for body in very_close_contacts:
@@ -202,6 +204,10 @@ func _on_singing_anim_end():
 		animationState.travel("idle")
 		set_physics_process(true)
 		$Sing.stop()
+
+
+func react_to_singing():
+	$Emote.emote("happy")
 
 
 func speak():

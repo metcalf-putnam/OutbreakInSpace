@@ -128,3 +128,13 @@ func check_special_dialog():
 func _on_singing_lesson():
 	print("giving singing lesson")
 	sing()
+	
+	
+func react_to_singing():
+	match npc_handle:
+		"singer":
+			sing()
+		"professor":
+			$Emote.emote("mad")
+		_:
+			$Emote.emote("happy")

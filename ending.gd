@@ -1,6 +1,6 @@
 extends Node2D
 export(String, FILE, "*.json") var failure_dialog_file
-var good_ending := false
+var bad_ending := true
 
 
 func _ready():
@@ -23,9 +23,9 @@ func _on_overlord_discovery():
 
 
 func _on_dialogue_finished():
-	Global.debug_on = true
-	assert(get_tree().change_scene("res://interiors/Housescene.tscn") == OK)
+		Global.restart_game(bad_ending)
 
 
 func determine_ending():
 	pass
+	# TODO: fill this in

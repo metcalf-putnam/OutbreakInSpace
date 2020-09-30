@@ -66,7 +66,7 @@ func restart_game(boolean):
 	reset_daily_values()
 	total_infections = 1
 	day = 1
-	assert(get_tree().change_scene("res://ending.tscn") == OK)
+	assert(get_tree().change_scene("res://interiors/Housescene.tscn") == OK)
 
 
 func reset_daily_values():

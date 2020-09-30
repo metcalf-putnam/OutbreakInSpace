@@ -66,13 +66,15 @@ bbcode_enabled = true
 bbcode_text = "The festival did not happen.
 
 More text will go here to summarize what happened: infections, deaths, cookies eaten, npcs convinced to take precautions, gnar heals, etc.
-"
+
+Also currently this is the only ending. This will change shortly.                                                                        ..."
 visible_characters = 0
 percent_visible = 0.0
 text = "The festival did not happen.
 
 More text will go here to summarize what happened: infections, deaths, cookies eaten, npcs convinced to take precautions, gnar heals, etc.
-"
+
+Also currently this is the only ending. This will change shortly.                                                                        ..."
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -83,7 +85,7 @@ anims/opening = SubResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 134.356, 316.892 )
 texture = ExtResource( 5 )
-hframes = 4
+hframes = 5
 frame = 1
 
 [node name="Dialogue" parent="." instance=ExtResource( 4 )]

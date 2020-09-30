@@ -1,6 +1,7 @@
 extends Node
 
 var active := true
+var essential_workers := false
 var debug_on := false
 var day := 1
 var energy := 5

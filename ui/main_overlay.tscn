@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://ui/main_overlay.gd" type="Script" id=1]
 [ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://ui/button.png" type="Texture" id=8]
 [ext_resource path="res://ui/ButtonPressed.png" type="Texture" id=9]
 [ext_resource path="res://ui/ButtonHover.png" type="Texture" id=10]
+[ext_resource path="res://ui/Check_Reports.png" type="Texture" id=11]
+[ext_resource path="res://ui/Check_Reports_Hover.png" type="Texture" id=12]
+[ext_resource path="res://ui/Check_Reports_Pressed.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -265,8 +268,7 @@ __meta__ = {
 }
 
 [node name="TestButton" type="TextureButton" parent="PlayerControls"]
-margin_left = 52.0
-margin_right = 110.0
+margin_right = 58.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 50, 0 )
 action_mode = 0
@@ -286,8 +288,8 @@ __meta__ = {
 }
 
 [node name="SingButton" type="TextureButton" parent="PlayerControls"]
-margin_left = 136.0
-margin_right = 194.0
+margin_left = 84.0
+margin_right = 142.0
 margin_bottom = 40.0
 toggle_mode = true
 texture_normal = ExtResource( 8 )
@@ -301,6 +303,25 @@ margin_right = 48.909
 margin_bottom = 48.5
 custom_fonts/font = SubResource( 1 )
 text = "Sing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReportButton" type="TextureButton" parent="PlayerControls"]
+margin_left = 168.0
+margin_right = 320.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="PlayerControls/ReportButton"]
+margin_left = 6.0
+margin_top = 8.5
+margin_right = 146.0
+margin_bottom = 48.5
+custom_fonts/font = SubResource( 1 )
+text = "Check Reports"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -325,3 +346,4 @@ __meta__ = {
 [connection signal="toggled" from="Debug/Visuals_Debug" to="." method="_on_Visuals_Debug_toggled"]
 [connection signal="pressed" from="PlayerControls/TestButton" to="PlayerControls" method="_on_TestButton_pressed"]
 [connection signal="toggled" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_toggled"]
+[connection signal="pressed" from="PlayerControls/ReportButton" to="PlayerControls" method="_on_ReportButton_pressed"]

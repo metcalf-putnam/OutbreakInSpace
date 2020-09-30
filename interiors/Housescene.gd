@@ -11,6 +11,9 @@ func _ready():
 	EventHub.connect("computer_interaction", self, "_on_computer_interaction")
 	EventHub.connect("pet_interaction", self, "_on_pet_interaction")
 	$Player.speed = 50
+	#$Overlay.disable_player_controls()  #for some reason this bugs out 
+	# in the main scene if this is used in home scene
+
 
 func _on_tv_interaction(status):
 	if status == "On":

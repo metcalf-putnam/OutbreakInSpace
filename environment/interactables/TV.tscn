@@ -5,7 +5,7 @@
 [ext_resource path="res://environment/interactables/exclamation mark.png" type="Texture" id=3]
 [ext_resource path="res://environment/interactables/E_Button_9x10.png" type="Texture" id=4]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -21,11 +21,10 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8.20517, 9.18918 )
 
-[sub_resource type="Animation" id=1]
-resource_name = "blinking"
+[sub_resource type="Animation" id=3]
 length = 1.4
 loop = true
 tracks/0/type = "value"
@@ -53,11 +52,9 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=4]
 
-[sub_resource type="Animation" id=3]
-resource_name = "shrink"
+[sub_resource type="Animation" id=5]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("Exclamation:scale")
@@ -69,7 +66,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 1e-005, 1e-005 ) ]
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 1e-05, 1e-05 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Exclamation:modulate")
@@ -95,7 +92,7 @@ hframes = 4
 frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-anims/Tv = SubResource( 9 )
+anims/Tv = SubResource( 1 )
 
 [node name="Exclamation" type="Sprite" parent="."]
 visible = false
@@ -106,17 +103,16 @@ texture = ExtResource( 3 )
 [node name="Control" type="Sprite" parent="."]
 visible = false
 position = Vector2( -0.146194, -10.0731 )
-scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.23035, 2.01727 )
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "blinking"
-anims/blinking = SubResource( 1 )
-anims/idle = SubResource( 2 )
-anims/shrink = SubResource( 3 )
+anims/blinking = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/shrink = SubResource( 5 )
 [connection signal="body_entered" from="." to="." method="_on_Interactable_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Interactable_body_exited"]

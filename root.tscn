@@ -180,7 +180,7 @@ dialog_file = "res://Dialog/json/mini_professor.json"
 full_name = "Mini Professor"
 infective_dose = 5000
 is_immune = true
-sprite_file = "res://characters/corenpcs/Scietist/base_sprite.png"
+sprite_file = "res://characters/corenpcs/Scietist/MiniProfessor.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
 portrait_file = "res://characters/portraits/Professor.png"
 

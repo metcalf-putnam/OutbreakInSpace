@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://interiors/Housescene.gd" type="Script" id=1]
 [ext_resource path="res://interiors/Player_Indoor_House_Tiles.png" type="Texture" id=2]
@@ -11,6 +11,8 @@
 [ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://characters/pet/pet.tscn" type="PackedScene" id=11]
+[ext_resource path="res://characters/Blues/Elderly/base_sprite.png" type="Texture" id=12]
+[ext_resource path="res://characters/Blues/Elderly/helmet.png" type="Texture" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -133,6 +135,12 @@ visible = false
 [node name="Close" parent="Player" index="1"]
 visible = false
 
+[node name="Sprite" parent="Player" index="3"]
+texture = ExtResource( 12 )
+
+[node name="Helmet" parent="Player" index="4"]
+texture = ExtResource( 13 )
+
 [node name="CollisionShape2D" parent="Player" index="6"]
 visible = false
 
@@ -147,6 +155,5 @@ parameters/playback = SubResource( 5 )
 
 [node name="Pet" parent="." instance=ExtResource( 11 )]
 position = Vector2( 86, 73 )
-scale = Vector2( 0.5, 0.5 )
 
 [editable path="Player"]

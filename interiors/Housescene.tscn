@@ -129,6 +129,15 @@ shape = SubResource( 5 )
 [node name="Computer" parent="." instance=ExtResource( 5 )]
 position = Vector2( 88.514, 69.4821 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 9 )]
+
+[node name="Overlay" parent="." instance=ExtResource( 10 )]
+
+[node name="Pet" parent="." instance=ExtResource( 11 )]
+position = Vector2( 123.093, 54.3453 )
+
 [node name="Player" parent="." instance=ExtResource( 8 )]
 position = Vector2( 107.389, 33.253 )
 
@@ -140,23 +149,16 @@ visible = false
 
 [node name="Sprite" parent="Player" index="3"]
 texture = ExtResource( 12 )
+frame = 1
 
 [node name="Helmet" parent="Player" index="4"]
 texture = ExtResource( 13 )
+frame = 1
 
 [node name="CollisionShape2D" parent="Player" index="6"]
 visible = false
 
 [node name="AnimationTree" parent="Player" index="9"]
 parameters/playback = SubResource( 6 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 9 )]
-
-[node name="Overlay" parent="." instance=ExtResource( 10 )]
-
-[node name="Pet" parent="." instance=ExtResource( 11 )]
-position = Vector2( 123.093, 54.3453 )
 
 [editable path="Player"]

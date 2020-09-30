@@ -1,5 +1,7 @@
 extends Node
 
+
+var debug_on := false
 var day := 1
 var energy := 5
 const max_energy := 5
@@ -48,11 +50,23 @@ func _ready():
 	EventHub.connect("house_entered", self, "_on_house_entered")
 	EventHub.connect("house_exited", self, "_on_house_exited")
 	CharacterManager.connect("viral_shedding_computed", self, "_on_viral_shedding_computed")
-
+	EventHub.connect("restart_game", self, "restart_game")
 
 func _on_day_ended():
 	print("computing infection spread")
 	CharacterManager.compute_daily_viral_shedding()
+
+
+func restart_game(boolean):
+	if boolean:
+		debug_on = true
+	else:
+		debug_on = false
+	CharacterManager.generate_characters()
+	reset_daily_values()
+	total_infections = 1
+	day = 1
+	assert(get_tree().change_scene("res://interiors/Housescene.tscn") == OK)
 
 
 func reset_daily_values():

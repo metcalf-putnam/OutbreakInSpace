@@ -21,6 +21,13 @@ func _ready():
 	if npcs.size() > 0:
 		return
 	rng.randomize()
+	generate_characters()
+
+
+func generate_characters():
+	npcs = []
+	core_npcs = []
+	player = {}
 	create_player()
 	create_family("A1", "Blues", 2, 2, 1, "Fuzzlebee")
 	create_family("A2", "Blues", 1, 0, 0, "Fallshtuck")

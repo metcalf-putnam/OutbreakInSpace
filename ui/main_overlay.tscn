@@ -17,7 +17,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "fade_away_explanation"
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
@@ -32,8 +32,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "fade_in"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
@@ -59,7 +58,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
@@ -181,9 +180,9 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade_in"
-anims/fade_away_explanation = SubResource( 4 )
-anims/fade_in = SubResource( 2 )
-anims/fade_to_black = SubResource( 3 )
+anims/fade_away_explanation = SubResource( 2 )
+anims/fade_in = SubResource( 3 )
+anims/fade_to_black = SubResource( 4 )
 
 [node name="Button" type="Button" parent="."]
 visible = false

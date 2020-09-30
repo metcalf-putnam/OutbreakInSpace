@@ -71,3 +71,9 @@ func _on_test_button_pressed():
 
 func deactivate_camaera():
 	$Camera2D.current = false
+
+
+func update_sprite():
+	.update_sprite()
+	if data["has_helmet"] == true:
+		Global.player_helmet = true

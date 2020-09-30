@@ -46,3 +46,6 @@ signal tv_interaction
 signal bed_interaction
 signal computer_interaction
 signal pet_interaction
+
+# Ending signal
+signal restart_game

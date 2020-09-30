@@ -492,18 +492,6 @@ tracks/38/keys = {
 "update": 0,
 "values": [ 0.0, 100.0 ]
 }
-tracks/39/type = "value"
-tracks/39/path = NodePath("Audios/Entrance:playing")
-tracks/39/interp = 1
-tracks/39/loop_wrap = true
-tracks/39/imported = false
-tracks/39/enabled = true
-tracks/39/keys = {
-"times": PoolRealArray( 0, 4.99931 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "hit"

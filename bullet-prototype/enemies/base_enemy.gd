@@ -79,6 +79,7 @@ func stop_all(paths):
 	pass
 
 func show_virus():
+	get_node("Audios/Entrance").play()
 	anim.play("show")
 
 func hide_virus():

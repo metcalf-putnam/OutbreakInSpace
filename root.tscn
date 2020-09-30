@@ -24,6 +24,7 @@ NPC = ExtResource( 2 )
 
 [node name="Homes" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
+editor/display_folded = true
 
 [node name="PlayerHome" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
 position = Vector2( -342, -525 )
@@ -180,7 +181,6 @@ portrait_file = "res://characters/portraits/Mayor.png"
 [node name="Mini Professor" parent="YSort/npcs" instance=ExtResource( 6 )]
 self_modulate = Color( 0.419608, 0.172549, 0.172549, 1 )
 position = Vector2( 700, -400 )
-scale = Vector2( 0.7, 0.7 )
 dialog_file = "res://Dialog/json/mini_professor.json"
 full_name = "Mini Professor"
 infective_dose = 5000

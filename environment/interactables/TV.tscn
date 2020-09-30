@@ -117,5 +117,6 @@ anims/shrink = SubResource( 5 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = 10.0
 [connection signal="body_entered" from="." to="." method="_on_Interactable_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Interactable_body_exited"]

@@ -7,6 +7,7 @@ func _ready():
 	$ColorRect.visible = true
 	$ColorRect.modulate = Color(0,0,0,1)
 	$DayCount.text = day_label + str(Global.day)
+	Global.connect("fade_away_explanation", self, "_on_fade_away_explanation")
 
 
 func fade_day():
@@ -34,4 +35,8 @@ func _on_Visuals_Debug_toggled(button_pressed):
 	$Debug/Visuals_Debug.release_focus()
 	get_tree().call_group("character", "infection_visual", !button_pressed)
 	Global.visuals_on = !button_pressed
+
+
+func _on_fade_away_explanation():
+	$AnimationPlayer.play("fade_away_explanation")
 	

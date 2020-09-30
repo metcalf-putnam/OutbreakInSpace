@@ -38,6 +38,7 @@ var npcs_convinced := 0
 
 signal singing_lesson
 signal overlord_discovery
+signal fade_away_explanation
 
 var daily_reports = [] 
 
@@ -152,13 +153,7 @@ func convince_npc():
 
 
 func fade_away_explanation():
-	# TODO: fix this
-#	for npc in CharacterManager.core_npcs:
-#		print(npc)
-#		if CharacterManager.core_npcs[npc]["npc_handle"] == "work_friend":
-#			CharacterManager.core_npcs[npc]["viral_load"] = 900
-#		if npc["npc_handle"] == "work_friend":
-#			npc["viral_load"] = npc["viral_load"] + 600
+	emit_signal("fade_away_explanation")
 	CharacterManager.player["has_helmet"] = true
 	
 

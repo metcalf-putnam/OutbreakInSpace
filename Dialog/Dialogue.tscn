@@ -94,3 +94,4 @@ volume_db = -6.5
 stream = ExtResource( 7 )
 
 [node name="Speech" type="AudioStreamPlayer" parent="."]
+volume_db = -8.5

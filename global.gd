@@ -13,6 +13,7 @@ var first_lab_visit := true
 var first_results := false
 var first_positive := false
 var first_death := false
+var player_test_results := false
 
 var mask_effectiveness := 0.5
 

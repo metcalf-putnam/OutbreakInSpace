@@ -49,6 +49,7 @@ texture = SubResource( 1 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 position = Vector2( 0, -5 )
 frames = SubResource( 5 )
+frame = 2
 playing = true
 
 [node name="Emote" parent="." index="4" instance=ExtResource( 3 )]

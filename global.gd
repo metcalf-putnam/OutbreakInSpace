@@ -262,7 +262,7 @@ func check_new_positives():
 
 
 func format_result(test_dic):
-	var result_string = "ID: " + str(test_dic["data"]["id"]) + " - " + test_dic["data"]["name"] + ", "
+	var result_string = test_dic["data"]["name"] + ", "  + test_dic["data"]["home"] + ", "
 	if test_dic["result"]:
 		result_string = result_string + "positive"
 	else:

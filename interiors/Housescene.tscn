@@ -1,18 +1,15 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://interiors/Housescene.gd" type="Script" id=1]
 [ext_resource path="res://interiors/Player_Indoor_House_Tiles.png" type="Texture" id=2]
 [ext_resource path="res://interiors/House_Objects.png" type="Texture" id=3]
 [ext_resource path="res://environment/interactables/Bed.tscn" type="PackedScene" id=4]
-[ext_resource path="res://environment/interactables/Computer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://environment/interactables/TV.tscn" type="PackedScene" id=6]
 [ext_resource path="res://environment/interactables/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://characters/pet/pet.tscn" type="PackedScene" id=11]
-[ext_resource path="res://characters/Blues/Elderly/base_sprite.png" type="Texture" id=12]
-[ext_resource path="res://characters/Blues/Elderly/helmet.png" type="Texture" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -84,8 +81,6 @@ extents = Vector2( 7.03738, 3.14548 )
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 2.88547, 3.04037 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
-
 [node name="House" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -123,40 +118,23 @@ shape = SubResource( 4 )
 position = Vector2( -4.8877, 2.31246 )
 shape = SubResource( 5 )
 
-[node name="Computer" parent="." instance=ExtResource( 5 )]
-position = Vector2( 94.514, 70.4821 )
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 9 )]
 
 [node name="Overlay" parent="." instance=ExtResource( 10 )]
 
-[node name="Pet" parent="." instance=ExtResource( 11 )]
-position = Vector2( 123.093, 54.3453 )
-
-[node name="Player" parent="." instance=ExtResource( 8 )]
-position = Vector2( 107.389, 33.253 )
-
-[node name="VeryClose" parent="Player" index="0"]
-visible = false
-
-[node name="Close" parent="Player" index="1"]
-visible = false
-
-[node name="Sprite" parent="Player" index="3"]
-texture = ExtResource( 12 )
-
-[node name="Helmet" parent="Player" index="4"]
-texture = ExtResource( 13 )
-
-[node name="CollisionShape2D" parent="Player" index="6"]
-visible = false
-
-[node name="AnimationTree" parent="Player" index="9"]
-parameters/playback = SubResource( 6 )
+[node name="Carpet" type="Sprite" parent="."]
+position = Vector2( 88.2173, 75.2687 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 15.6048, 0.127572, 15.7105, 7.75638 )
 
 [node name="Door" parent="." instance=ExtResource( 7 )]
 position = Vector2( 120.61, 72.7896 )
 
-[editable path="Player"]
+[node name="Player" parent="." instance=ExtResource( 8 )]
+position = Vector2( 107.389, 33.253 )
+
+[node name="Pet" parent="." instance=ExtResource( 11 )]
+position = Vector2( 87.601, 75.5345 )

@@ -88,14 +88,16 @@ region_rect = Rect2( 0, 0, 16, 16 )
 shape = SubResource( 2 )
 
 [node name="Exclamation" type="Sprite" parent="."]
-visible = false
 position = Vector2( -0.535748, -16.57 )
 scale = Vector2( 0.5, 0.5 )
+z_index = 2
+z_as_relative = false
 texture = ExtResource( 3 )
 
 [node name="Control" type="Sprite" parent="."]
-visible = false
 position = Vector2( -0.307003, -14.7184 )
+z_index = 2
+z_as_relative = false
 texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

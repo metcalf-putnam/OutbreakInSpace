@@ -12,3 +12,4 @@ func _ready():
 func interact():
 	EventHub.emit_signal("computer_dialogue")
 	Global.report_read = true
+	set_new_info(false)

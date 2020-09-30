@@ -14,6 +14,7 @@ func _ready():
 func interact():
 	EventHub.emit_signal("tv_dialogue", is_on)
 	Global.tv_watched = true
+	set_new_info(false)
 
 
 func On():

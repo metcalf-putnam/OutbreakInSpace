@@ -2,8 +2,8 @@
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/circle.png" type="Texture" id=2]
-[ext_resource path="res://characters/Blues/Elderly/helmet.png" type="Texture" id=3]
-[ext_resource path="res://characters/Blues/Elderly/base_sprite.png" type="Texture" id=4]
+[ext_resource path="res://characters/corenpcs/Scietist/helmet.png" type="Texture" id=3]
+[ext_resource path="res://characters/corenpcs/Scietist/base_sprite.png" type="Texture" id=4]
 [ext_resource path="res://characters/effects/Full_Cough.wav" type="AudioStream" id=5]
 [ext_resource path="res://characters/effects/Singing_One_Note.wav" type="AudioStream" id=6]
 [ext_resource path="res://characters/effects/cloud.png" type="Texture" id=7]

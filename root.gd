@@ -41,6 +41,7 @@ func _ready():
 					EventHub.emit_signal("building_occupied", npc, building_occupy_type)
 				else:
 					spawn_npc(npc, "wander")
+					yield(get_tree().create_timer(0.75), "timeout")
 
 	EventHub.emit_signal("leave_building", building_occupy_type)
 

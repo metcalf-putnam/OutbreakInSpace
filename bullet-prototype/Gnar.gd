@@ -156,7 +156,6 @@ func stage_complete(status, details):
 	
 	player.hide_player()
 	virus.hide_virus()
-	Music.fade_current()
 	
 	anim.play("stage_complete")
 
@@ -172,6 +171,7 @@ func _input(event):
 	
 	if event is InputEventKey:
 		if event.scancode == KEY_SPACE:
+			Music.fade_current()
 			get_tree().change_scene("res://root.tscn")
 
 func _on_dialogue_finished():

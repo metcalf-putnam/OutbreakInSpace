@@ -146,7 +146,8 @@ func _on_GoHomeTimer_timeout():
 	var count = $YSort/npcs.get_child_count()
 	var num = rng.randi_range(0, count-1)
 	var chosen_npc = $YSort/npcs.get_child(num)
-	chosen_npc.set_target_location(get_home(chosen_npc.data), "home")
+	if chosen_npc.has_method("set_target_location"):
+		chosen_npc.set_target_location(get_home(chosen_npc.data), "home")
 
 
 func _on_dialog_finished():

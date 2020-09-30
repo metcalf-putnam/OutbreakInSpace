@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://fps.gd" type="Script" id=8]
 [ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=10]
+[ext_resource path="res://characters/corenpcs/Scietist/glass_32x32.png" type="Texture" id=11]
 
 [node name="Root" type="Node2D"]
 script = ExtResource( 1 )
@@ -256,6 +257,10 @@ margin_bottom = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="glass_32x32" type="Sprite" parent="."]
+position = Vector2( 543, -417 )
+texture = ExtResource( 11 )
 [connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_DayTimer_timeout"]
 [connection signal="timeout" from="GoHomeTimer" to="." method="_on_GoHomeTimer_timeout"]

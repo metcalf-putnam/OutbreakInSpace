@@ -192,10 +192,14 @@ func generate_report(add_new_positives):
 	textbox.newline()
 	textbox.append_bbcode("[wave]Test Results:[/wave]")
 	if test_results.has(day):
+		first_results = true
 		for test_dic in test_results[day]:
 			if test_dic["result"]:
 				if not positive_characters.has(test_dic["data"]):
 					positive_characters.append(test_dic["data"])
+					first_positive = true
+				if test_dic == CharacterManager.player:
+					player_test_results = true
 			
 			test_dic["data"]["done_test"] = false
 			textbox.newline()

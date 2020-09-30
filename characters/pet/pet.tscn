@@ -38,6 +38,9 @@ height = 2.12431
 [node name="Pet" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Exclamation" parent="." index="0"]
+visible = false
+
 [node name="Control" parent="." index="2"]
 scale = Vector2( 1, 1 )
 texture = SubResource( 6 )

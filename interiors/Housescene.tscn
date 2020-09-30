@@ -102,9 +102,6 @@ current = true
 [node name="Bed" parent="." instance=ExtResource( 4 )]
 position = Vector2( 120.628, 43.1814 )
 
-[node name="Computer" parent="." instance=ExtResource( 5 )]
-position = Vector2( 120.012, 54.7876 )
-
 [node name="TV" parent="." instance=ExtResource( 6 )]
 position = Vector2( 88.1994, 26.1081 )
 
@@ -129,7 +126,11 @@ shape = SubResource( 6 )
 position = Vector2( -4.8877, 2.31246 )
 shape = SubResource( 7 )
 
+[node name="Computer" parent="." instance=ExtResource( 5 )]
+position = Vector2( 120.012, 54.7876 )
+
 [node name="Player" parent="." instance=ExtResource( 8 )]
+position = Vector2( 107.389, 33.253 )
 
 [node name="VeryClose" parent="Player" index="0"]
 visible = false

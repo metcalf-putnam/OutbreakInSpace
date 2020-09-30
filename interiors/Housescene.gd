@@ -3,7 +3,7 @@ extends Node2D
 func _ready():
 	$Player.init(CharacterManager.player)
 	$Player.deactivate_camaera()
-	$Player.position = Vector2(100, 67)
+	$Player.position = Vector2(107, 33)
 	$Camera2D.zoom = Vector2(0.2, 0.2)
 	
 	EventHub.connect("tv_interaction", self, "_on_tv_interaction")

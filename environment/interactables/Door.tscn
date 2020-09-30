@@ -77,10 +77,14 @@ shape = SubResource( 1 )
 visible = false
 position = Vector2( -6.00494, -16.2717 )
 scale = Vector2( 0.5, 0.5 )
+z_index = 2
+z_as_relative = false
 texture = ExtResource( 2 )
 
 [node name="Control" type="Sprite" parent="."]
 position = Vector2( -0.648033, -6.27793 )
+z_index = 2
+z_as_relative = false
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -90,6 +94,7 @@ anims/idle = SubResource( 3 )
 anims/shrink = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="."]
+z_as_relative = false
 texture = ExtResource( 4 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 16, 16 )

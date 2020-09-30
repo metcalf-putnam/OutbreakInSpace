@@ -78,13 +78,13 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 2/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 7.03738, 3.14548 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 2.88547, 3.04037 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=6]
 
 [node name="House" type="Node2D"]
 script = ExtResource( 1 )
@@ -103,13 +103,13 @@ current = true
 position = Vector2( 120.628, 43.1814 )
 
 [node name="TV" parent="." instance=ExtResource( 6 )]
-position = Vector2( 88.1994, 26.1081 )
+position = Vector2( 88.3244, 27.2331 )
 
 [node name="Door" parent="." instance=ExtResource( 7 )]
 position = Vector2( 120.61, 72.7896 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 88, 48 )
+position = Vector2( 87.9951, 48.5569 )
 texture = ExtResource( 3 )
 region_enabled = true
 region_rect = Rect2( 31.0145, -0.439835, 16.1187, 13.1046 )
@@ -118,16 +118,16 @@ region_rect = Rect2( 31.0145, -0.439835, 16.1187, 13.1046 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
 position = Vector2( -0.0525513, -3.78404 )
-shape = SubResource( 6 )
+shape = SubResource( 4 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="Sprite"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D2"]
 position = Vector2( -4.8877, 2.31246 )
-shape = SubResource( 7 )
+shape = SubResource( 5 )
 
 [node name="Computer" parent="." instance=ExtResource( 5 )]
-position = Vector2( 120.012, 54.7876 )
+position = Vector2( 88.514, 69.4821 )
 
 [node name="Player" parent="." instance=ExtResource( 8 )]
 position = Vector2( 107.389, 33.253 )
@@ -148,7 +148,7 @@ texture = ExtResource( 13 )
 visible = false
 
 [node name="AnimationTree" parent="Player" index="9"]
-parameters/playback = SubResource( 5 )
+parameters/playback = SubResource( 6 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -157,6 +157,6 @@ parameters/playback = SubResource( 5 )
 [node name="Overlay" parent="." instance=ExtResource( 10 )]
 
 [node name="Pet" parent="." instance=ExtResource( 11 )]
-position = Vector2( 86, 78 )
+position = Vector2( 123.093, 54.3453 )
 
 [editable path="Player"]

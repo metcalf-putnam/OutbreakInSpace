@@ -70,7 +70,7 @@ func fade_current():
 	for child in $Players.get_children():
 		_set_fade_out(child)
 	$Tween.start() # Actually starts fading out
-
+	state = "none"
 
 func _on_MainIntro_finished():
 	print("main finished")
@@ -95,10 +95,16 @@ func _set_fade_out(audio_player : AudioStreamPlayer):
 
 
 func _on_Tween_tween_all_completed():
-	print("music fading tween completed")
-	if state == "normal":
-		$Players/FightingIntro.stop()
-		$Players/FightingLoop.stop()
-	if state == "fighting":
-		$Players/MainIntro.stop()
-		$Players/MainLoop.stop()
+	match state:
+		"normal":
+			$Players/FightingIntro.stop()
+			$Players/FightingLoop.stop()
+		"fighting":
+			$Players/MainIntro.stop()
+			$Players/MainLoop.stop()
+		"none":
+			$Players/FightingIntro.stop()
+			$Players/FightingLoop.stop()
+			$Players/MainIntro.stop()
+			$Players/MainLoop.stop()
+	

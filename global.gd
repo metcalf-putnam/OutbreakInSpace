@@ -191,7 +191,7 @@ func _on_house_exited():
 func generate_report(add_new_positives):
 	var textbox = RichTextLabel.new()
 	textbox.clear()
-	textbox.append_bbcode("[wave]Daily Report - Day " + str(day) + "[/wave]") 
+	textbox.append_bbcode("[wave]Podtown CX-6 Virus Report - Day " + str(day) + "[/wave]") 
 	textbox.newline()
 	textbox.newline()
 	textbox.append_bbcode("New infections: " + str(new_infections))

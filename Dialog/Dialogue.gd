@@ -331,7 +331,7 @@ func _on_tv_dialogue(is_on):
 	show()
 	$Space_NinePatchRect.hide()
 	if is_on:
-		$Text.bbcode_text = "Got carried away by that scene."
+		$Text.bbcode_text = " "
 		add_name_button("Off")
 	else:
 		add_name_button("On")

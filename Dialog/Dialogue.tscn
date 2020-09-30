@@ -92,3 +92,5 @@ volume_db = -6.5
 
 [node name="PopUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+
+[node name="Speech" type="AudioStreamPlayer" parent="."]

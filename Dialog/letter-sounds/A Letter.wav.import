@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/A Letter.wav-a78e976ac937f8d6d57675ba5c314cb7.sample"
+
+[deps]
+
+source_file="res://Dialog/letter-sounds/A Letter.wav"
+dest_files=[ "res://.import/A Letter.wav-a78e976ac937f8d6d57675ba5c314cb7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

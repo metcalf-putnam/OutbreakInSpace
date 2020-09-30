@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/X Letter.wav-e83ec6f903074212d12c4300cf23b9a6.sample"
+
+[deps]
+
+source_file="res://Dialog/letter-sounds/X Letter.wav"
+dest_files=[ "res://.import/X Letter.wav-e83ec6f903074212d12c4300cf23b9a6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

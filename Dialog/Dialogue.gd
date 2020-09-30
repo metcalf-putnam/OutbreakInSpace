@@ -15,6 +15,13 @@ var state = State.DIALOGUE
 const testing_text := "Who do you want to test (must be nearby)? Home addresses, workplaces, and day of last test shown when applicable (Cost: 1 energy)"
 var characters = []
 
+# Voice
+enum TEXT_STATE { NA, READY, INPROGRESS, COMPLETE }
+var text_state = TEXT_STATE.NA
+var ticks_before_next_letter = 5
+var current_tick = 0
+var text_length = 0
+
 func _ready():
 	set_process(false)
 	hide()
@@ -33,54 +40,64 @@ func _process(delta):
 	# TODO: get this out of process for speed improvements?
 	# TODO: add modes
 	timer += delta
-	match state:
-		State.DIALOGUE:
-			for i in range(0, get_node("Buttons").get_child_count()):
-				if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
-					$Select.play()
-					var option_text = $Buttons.get_child(i).get_text()
-					if option_text == "Show Positives":
-						end_dialogue()
-						Global.show_positives()
-						
-					if !option_text.begins_with(action_prefix):
-						EventHub.emit_signal("player_spoke")
-					step_forward(i)
-		State.TESTING:
-			for i in range(0, get_node("Buttons").get_child_count()):
-				if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
-					if len(characters) <= i:
-						cancel_test()
-					else:
-						if characters[i] is KinematicBody2D:
-							characters[i].test()
+	if text_state == TEXT_STATE.INPROGRESS:
+		current_tick += 1
+		if current_tick == ticks_before_next_letter:
+			current_tick = 0
+			get_node("Text").visible_characters += 1
+			speech()
+			if get_node("Text").visible_characters == get_node("Text").text.length():
+				text_state = TEXT_STATE.COMPLETE
+				show_buttons()
+	else:
+		match state:
+			State.DIALOGUE:
+				for i in range(0, get_node("Buttons").get_child_count()):
+					if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
+						$Select.play()
+						var option_text = $Buttons.get_child(i).get_text()
+						if option_text == "Show Positives":
+							end_dialogue()
+							Global.show_positives()
+							
+						if !option_text.begins_with(action_prefix):
+							EventHub.emit_signal("player_spoke")
+						step_forward(i)
+			State.TESTING:
+				for i in range(0, get_node("Buttons").get_child_count()):
+					if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
+						if len(characters) <= i:
+							cancel_test()
 						else:
-							characters[i]["last_tested"] = Global.day
-							Global.add_test_results(characters[i], characters[i]["is_infected"])
-						confirm_test($Buttons.get_child(i).get_text())
-					clear_buttons()
-					$Space_NinePatchRect.show()
-		State.HOUSE:
-			for i in range(0, get_node("Buttons").get_child_count()):
-				if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
-					$Select.play()
-					
-					var option_text = $Buttons.get_child(i).get_text()
-					if option_text == "Enter":
-						EventHub.emit_signal("house_entered")
-					elif option_text == "Exit":
-						EventHub.emit_signal("house_exited")
+							if characters[i] is KinematicBody2D:
+								characters[i].test()
+							else:
+								characters[i]["last_tested"] = Global.day
+								Global.add_test_results(characters[i], characters[i]["is_infected"])
+							confirm_test($Buttons.get_child(i).get_text())
+						clear_buttons()
+						$Space_NinePatchRect.show()
+			State.HOUSE:
+				for i in range(0, get_node("Buttons").get_child_count()):
+					if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
+						$Select.play()
 						
-					if option_text == "On" or option_text == "Off":
-						EventHub.emit_signal("tv_interaction", option_text)
-						
-					if option_text == "Check reports":
-						EventHub.emit_signal("computer_interaction")
-						
-					if option_text == "Take a rest":
-						EventHub.emit_signal("bed_interaction")
-						
-					end_dialogue()
+						var option_text = $Buttons.get_child(i).get_text()
+						if option_text == "Enter":
+							EventHub.emit_signal("house_entered")
+						elif option_text == "Exit":
+							EventHub.emit_signal("house_exited")
+							
+						if option_text == "On" or option_text == "Off":
+							EventHub.emit_signal("tv_interaction", option_text)
+							
+						if option_text == "Check reports":
+							EventHub.emit_signal("computer_interaction")
+							
+						if option_text == "Take a rest":
+							EventHub.emit_signal("bed_interaction")
+							
+						end_dialogue()
 
 func step_forward(i):
 	if i == -1:
@@ -92,6 +109,7 @@ func step_forward(i):
 
 
 func init(file_path : String, name := " "):
+	text_state = TEXT_STATE.READY
 	$PopUp.play()
 	EventHub.emit_signal("npc_dialogue")
 	state = State.DIALOGUE
@@ -197,18 +215,8 @@ func next():
 	clear_buttons()
 	if block:
 		show()
-		get_node("Text").parse_bbcode(block.text)
-		var count = 0
-		for option in block.options:
-			add_button(option)
-			count += 1
-		if count > 0:
-			$Space_NinePatchRect.hide()
-		else:
-			$Space_NinePatchRect.show()
-		if block.is_final:
-			is_final = true
-	EventHub.emit_signal("npc_dialogue")
+		text_state = TEXT_STATE.INPROGRESS
+		animate_letters()
 
 
 func add_name_button(name : String):
@@ -257,11 +265,17 @@ func _unhandled_input(event):
 		return
 	if !event.is_action_pressed("ui_accept"):
 		return
-	if is_final:
-		end_dialogue()
-	elif $Buttons.get_child_count() == 0 and state == State.DIALOGUE:
-		step_forward(-1)
-		$Select.play()
+	
+	if text_state == TEXT_STATE.INPROGRESS:
+		text_state = TEXT_STATE.COMPLETE
+		get_node("Text").visible_characters = -1
+		show_buttons()
+	else:
+		if is_final:
+			end_dialogue()
+		elif $Buttons.get_child_count() == 0 and state == State.DIALOGUE:
+			step_forward(-1)
+			$Select.play()
 
 
 func end_dialogue():
@@ -360,3 +374,35 @@ func _on_computer_dialogue():
 func _on_pet_dialogue():
 	print("pet")
 	pass
+
+
+func animate_letters():
+	get_node("Text").parse_bbcode(block.text)
+	get_node("Text").visible_characters = 0
+	current_tick = 0
+
+
+func show_buttons():
+	var count = 0
+	for option in block.options:
+		add_button(option)
+		count += 1
+	if count > 0:
+		$Space_NinePatchRect.hide()
+	else:
+		$Space_NinePatchRect.show()
+	if block.is_final:
+		is_final = true
+	EventHub.emit_signal("npc_dialogue")
+
+
+func speech():
+	var index = get_node("Text").visible_characters - 1
+	var character = get_node("Text").text[index].to_upper()
+	if character in ["A", "B", "C","D","E","F","G","H","I","J","K","L","M","N","O","P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]:
+		var file_number = character.ord_at(0) - 65 - 1
+		var sound_file = Music.letters_sounds[file_number]
+		get_node("Speech").stream = sound_file
+		get_node("Speech").play()
+	
+	

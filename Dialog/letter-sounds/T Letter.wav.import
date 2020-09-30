@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/T Letter.wav-f61f0eb81650e76a1a200328ef391c55.sample"
+
+[deps]
+
+source_file="res://Dialog/letter-sounds/T Letter.wav"
+dest_files=[ "res://.import/T Letter.wav-f61f0eb81650e76a1a200328ef391c55.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

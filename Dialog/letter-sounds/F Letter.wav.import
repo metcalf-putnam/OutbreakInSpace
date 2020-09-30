@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/F Letter.wav-c88987b62c9542049b5c51e60ab64176.sample"
+
+[deps]
+
+source_file="res://Dialog/letter-sounds/F Letter.wav"
+dest_files=[ "res://.import/F Letter.wav-c88987b62c9542049b5c51e60ab64176.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

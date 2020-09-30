@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/D Letter.wav-7ff284880a394db8055994b42421a8e4.sample"
+
+[deps]
+
+source_file="res://Dialog/letter-sounds/D Letter.wav"
+dest_files=[ "res://.import/D Letter.wav-7ff284880a394db8055994b42421a8e4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

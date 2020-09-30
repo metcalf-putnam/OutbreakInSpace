@@ -486,7 +486,6 @@ texture = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
-frame = 1
 
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
@@ -494,7 +493,6 @@ frame = 1
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
-frame = 1
 
 [node name="ShedTimer" type="Timer" parent="."]
 
@@ -535,16 +533,11 @@ parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="Cough" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-<<<<<<< Updated upstream
-volume_db = -12.0
-=======
-volume_db = -8.0
-max_distance = 500.0
->>>>>>> Stashed changes
+volume_db = -25.0
 
 [node name="Sing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
-volume_db = -9.0
+volume_db = -10.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color( 1, 1, 1, 0.380392 )

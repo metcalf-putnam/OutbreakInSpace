@@ -109,6 +109,7 @@ func step_forward(i):
 
 
 func init(file_path : String, name := " "):
+	Global.active = false
 	text_state = TEXT_STATE.READY
 	$PopUp.play()
 	EventHub.emit_signal("npc_dialogue")
@@ -126,6 +127,7 @@ func init(file_path : String, name := " "):
 
 
 func test_character(character_array, location_name = null):
+	Global.active = false
 	$PopUp.play()
 	$Text.show()
 	if !location_name:
@@ -287,6 +289,7 @@ func end_dialogue():
 	set_process(false)
 	EventHub.emit_signal("dialogue_finished")
 	hide()
+	Global.active = true
 
 
 func update_name(name_in):
@@ -295,6 +298,7 @@ func update_name(name_in):
 
 
 func _on_going_in_house_dialogue():
+	Global.active = false
 	$PopUp.play()
 	$Text.show()
 	update_name("C2 (Home)")
@@ -309,6 +313,7 @@ func _on_going_in_house_dialogue():
 
 
 func _on_going_out_house_dialogue():
+	Global.active = false
 	$PopUp.play()
 	$Text.show()
 	update_name("Home")
@@ -323,6 +328,7 @@ func _on_going_out_house_dialogue():
 
 
 func _on_tv_dialogue(is_on):
+	Global.active = false
 	$PopUp.play()
 	$Text.show()
 	update_name("TV")
@@ -331,7 +337,7 @@ func _on_tv_dialogue(is_on):
 	show()
 	$Space_NinePatchRect.hide()
 	if is_on:
-		$Text.bbcode_text = "Got carried away by that scene."
+		$Text.bbcode_text = " "
 		add_name_button("Off")
 	else:
 		add_name_button("On")
@@ -340,6 +346,7 @@ func _on_tv_dialogue(is_on):
 	set_process(true)
 
 func _on_bed_dialogue():
+	Global.active = false
 	$PopUp.play()
 	$Text.show()
 	update_name("Bed")
@@ -353,10 +360,11 @@ func _on_bed_dialogue():
 	add_name_button("Let me think")
 	state = State.HOUSE
 	set_process(true)
-	pass
+
 
 
 func _on_computer_dialogue():
+	Global.active = false
 	$PopUp.play()
 	$Text.show()
 	update_name("Computer")
@@ -369,11 +377,11 @@ func _on_computer_dialogue():
 	add_name_button("Do nothing")
 	state = State.HOUSE
 	set_process(true)
-	pass
+
 
 func _on_pet_dialogue():
 	print("pet")
-	pass
+
 
 
 func animate_letters():
@@ -405,5 +413,4 @@ func speech():
 		var sound_file = Music.letters_sounds[file_number]
 		get_node("Speech").stream = sound_file
 		get_node("Speech").play()
-	
-	
+

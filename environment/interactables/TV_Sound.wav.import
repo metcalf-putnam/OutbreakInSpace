@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/TV_Sound.wav-b5680f206e03527d2ce39dc11d2cb882.sample"
+
+[deps]
+
+source_file="res://environment/interactables/TV_Sound.wav"
+dest_files=[ "res://.import/TV_Sound.wav-b5680f206e03527d2ce39dc11d2cb882.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

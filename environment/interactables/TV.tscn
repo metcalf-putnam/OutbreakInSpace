@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://environment/interactables/TV.gd" type="Script" id=1]
 [ext_resource path="res://interiors/TV_16x8.png" type="Texture" id=2]
 [ext_resource path="res://environment/interactables/exclamation mark.png" type="Texture" id=3]
 [ext_resource path="res://environment/interactables/E_Button_9x10.png" type="Texture" id=4]
+[ext_resource path="res://environment/interactables/TV_Sound.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 length = 0.4
@@ -113,5 +114,8 @@ autoplay = "blinking"
 anims/blinking = SubResource( 3 )
 anims/idle = SubResource( 4 )
 anims/shrink = SubResource( 5 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 [connection signal="body_entered" from="." to="." method="_on_Interactable_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Interactable_body_exited"]

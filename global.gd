@@ -277,13 +277,13 @@ func check_new_positives():
 
 
 func format_result(test_dic):
-	var result_string = test_dic["data"]["name"]
+	var result_string = "*" + test_dic["data"]["name"]
 	if test_dic["data"].has("home"):
 		result_string = result_string + ", home: " + test_dic["data"]["home"]
 	if test_dic["data"].has("work"):
 		result_string = result_string + ", work: " + test_dic["data"]["work"]
 	if test_dic["result"]:
-		result_string = result_string + ", result: " + "positive"
+		result_string = result_string + ", " + "positive *"
 	else:
-		result_string = result_string + ", " + "negative"
+		result_string = result_string + ", " + "negative *"
 	return result_string

@@ -5,37 +5,38 @@
 [ext_resource path="res://characters/effects/Emote.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/pet/Pet_14x10.png" type="Texture" id=4]
 
-[sub_resource type="StreamTexture" id=6]
+[sub_resource type="StreamTexture" id=1]
 load_path = "res://.import/E_Button_9x10.png-056bf42633ec35bafed6f776b4c77fda.stex"
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 4 )
-region = Rect2( 0, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 4 )
-region = Rect2( 14, 0, 14, 10 )
+region = Rect2( 0, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 4 )
+region = Rect2( 14, 0, 14, 10 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 4 )
 region = Rect2( 28, 0, 14, 10 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=6]
 radius = 8.43381
 
 [sub_resource type="CapsuleShape2D" id=7]
-radius = 2.64208
-height = 2.12431
+radius = 2.24874
+height = 4.98537
 
 [node name="Pet" instance=ExtResource( 1 )]
+z_index = 1
 script = ExtResource( 2 )
 
 [node name="Exclamation" parent="." index="0"]
@@ -43,11 +44,11 @@ visible = false
 
 [node name="Control" parent="." index="2"]
 scale = Vector2( 1, 1 )
-texture = SubResource( 6 )
+texture = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 position = Vector2( 0, -5 )
-frames = SubResource( 4 )
+frames = SubResource( 5 )
 playing = true
 
 [node name="Emote" parent="." index="4" instance=ExtResource( 3 )]
@@ -56,11 +57,11 @@ animation = "BeatingHeart"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
 position = Vector2( 0, -5 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="6"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
-position = Vector2( 0.0787468, -2.4411 )
+position = Vector2( 1.60173, -1.50732 )
 rotation = 1.5708
 shape = SubResource( 7 )

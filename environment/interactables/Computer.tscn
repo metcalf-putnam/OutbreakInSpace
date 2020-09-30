@@ -92,10 +92,14 @@ shape = SubResource( 2 )
 [node name="Exclamation" type="Sprite" parent="."]
 position = Vector2( -6.00494, -16.2717 )
 scale = Vector2( 0.5, 0.5 )
+z_index = 2
+z_as_relative = false
 texture = ExtResource( 3 )
 
 [node name="Control" type="Sprite" parent="."]
 position = Vector2( -5.42382, -14.8646 )
+z_index = 2
+z_as_relative = false
 texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

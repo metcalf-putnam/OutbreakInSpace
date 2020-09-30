@@ -8,3 +8,4 @@ func _ready():
 
 func interact():
 	$Emote.emote("happy")
+	$Control.hide()

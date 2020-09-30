@@ -128,6 +128,9 @@ func add_virus():
 	yield(get_tree().create_timer(1), "timeout")
 
 func stage_complete(status, details):
+	player.can_move = false
+	player.is_shoot_ready = false
+	player.can_shoot = false
 	started = false
 	virus.stop_audio()
 	
@@ -153,7 +156,6 @@ func stage_complete(status, details):
 	
 	player.hide_player()
 	virus.hide_virus()
-	Music.fade_current()
 	
 	anim.play("stage_complete")
 
@@ -169,16 +171,17 @@ func _input(event):
 	
 	if event is InputEventKey:
 		if event.scancode == KEY_SPACE:
+			Music.fade_current()
 			get_tree().change_scene("res://root.tscn")
 
 func _on_dialogue_finished():
-	state = STATE.BATTLE
-	
-	virus_type = Global.player_settings["mode"]
-	show_HUD()
-	add_virus()
-	add_player()
-	Music.change_state("fighting")
+	if state != STATE.BATTLE:
+		state = STATE.BATTLE
+		virus_type = Global.player_settings["mode"]
+		show_HUD()
+		add_virus()
+		add_player()
+		Music.change_state("fighting")
 
 func _on_player_fire():
 	var index = ammo_container.get_child_count() - 1

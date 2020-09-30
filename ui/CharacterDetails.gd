@@ -65,7 +65,7 @@ func init(data_in):
 		else:
 			portrait.set_texture(load("res://characters/portraits/portrait_blue_man.png"))
 	
-	if Global.energy < 1 or dose_status == "Dead":
+	if Global.energy < 1 or dose_status == "Dead" or health_value == 100:
 		select_btn.hide()
 		auto_battle_btn.hide()
 

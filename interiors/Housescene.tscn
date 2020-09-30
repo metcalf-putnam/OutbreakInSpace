@@ -159,7 +159,4 @@ visible = false
 [node name="AnimationTree" parent="Player" index="9"]
 parameters/playback = SubResource( 6 )
 
-[node name="Cough" parent="Player" index="10"]
-volume_db = -25.0
-
 [editable path="Player"]

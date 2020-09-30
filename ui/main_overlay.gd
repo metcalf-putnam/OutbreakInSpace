@@ -3,6 +3,10 @@ const day_label = "Day "
 
 
 func _ready():
+	if Global.debug_on:
+		$Debug.show()
+	else:
+		$Debug.hide()
 	$PlayerControls.update_controls()
 	$ColorRect.visible = true
 	$ColorRect.modulate = Color(0,0,0,1)

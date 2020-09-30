@@ -7,6 +7,11 @@ func _ready():
 		$Debug.show()
 	else:
 		$Debug.hide()
+	if Global.day > 1:
+		$PlayerControls/ReportButton.show()
+	else:
+		$PlayerControls/ReportButton.hide()
+
 	$PlayerControls.update_controls()
 	$ColorRect.visible = true
 	$ColorRect.modulate = Color(0,0,0,1)
@@ -43,4 +48,8 @@ func _on_Visuals_Debug_toggled(button_pressed):
 
 func _on_fade_away_explanation():
 	$AnimationPlayer.play("fade_away_explanation")
-	
+
+
+func disable_player_controls():
+	$PlayerControls.hide()
+

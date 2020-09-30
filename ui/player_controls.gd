@@ -43,3 +43,9 @@ func update_controls():
 		$TestButton.show()
 	else:
 		$TestButton.hide()
+
+
+func _on_ReportButton_pressed():
+	print("report pressed!")
+	$ReportButton.release_focus()
+	EventHub.emit_signal("computer_interaction")

@@ -24,7 +24,6 @@ NPC = ExtResource( 2 )
 
 [node name="Homes" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
-editor/display_folded = true
 
 [node name="PlayerHome" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
 position = Vector2( -342, -525 )

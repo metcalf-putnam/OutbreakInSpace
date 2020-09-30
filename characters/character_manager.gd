@@ -3,11 +3,9 @@ extends Node
 var npcs = []
 var core_npcs = []
 var core_starting_id = 300
-
 var player = {}
 var player_id = 200
 
-var num_npcs := 100
 var i := 0
 enum Infective{NORMAL, LOW, HIGH}
 var rng = RandomNumberGenerator.new()
@@ -209,9 +207,13 @@ func check_infections():
 
 func sort_npcs(list, type, dict) -> Dictionary:
 	for npc in list:
-		if type == "work" and Global.positive_characters.has(npc):
+		if npc["health"] <= 0:
 			continue
 		if !npc.has(type):
+			continue
+		if type == "work" and (Global.positive_characters.has(npc) or npc["health"] < 50):
+			continue
+		if type == "work" and Global.essential_workers and npc["race"] == "Blues":
 			continue
 		if dict.has(npc[type]):
 			dict[npc[type]].append(npc)
@@ -235,16 +237,18 @@ func simulate_contagious_person(people, contagious_person):
 	var speaking_shed = 75 
 	var coughing_shed = rng.randf_range(0, 1500)
 	people.erase(contagious_person)
+	var mask_factor = Global.mask_effectiveness
+	if !contagious_person["has_helmet"]:
+		mask_factor = 1
 	
-	# TODO: account for people not being able to be reinfected
 	for npc in people:
 		if !npc["is_contagious"]:
 			npc["viral_load"] = npc["viral_load"] +  breathing_shed
-			var times_spoken = rng.randf_range(0, 50)
-			npc["viral_load"] = npc["viral_load"] + (times_spoken * speaking_shed)
+			var times_spoken = rng.randf_range(0, 15)
+			npc["viral_load"] = npc["viral_load"] + (times_spoken * speaking_shed * mask_factor)
 		if contagious_person["is_symptomatic"]:
 			var coughing = rng.randf_range(0, 2)
-			npc["viral_load"] = npc["viral_load"] + coughing * coughing_shed
+			npc["viral_load"] = npc["viral_load"] + (coughing * coughing_shed * mask_factor)
 
 
 func get_additional_health(game_settings):

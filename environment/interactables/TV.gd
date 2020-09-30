@@ -33,6 +33,7 @@ func Off():
 	is_on = false
 	$AudioStreamPlayer.play()
 
+
 func _on_tv_interaction(option_text):
 	match option_text:
 		"On":

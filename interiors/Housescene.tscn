@@ -127,7 +127,7 @@ position = Vector2( -4.8877, 2.31246 )
 shape = SubResource( 5 )
 
 [node name="Computer" parent="." instance=ExtResource( 5 )]
-position = Vector2( 88.514, 69.4821 )
+position = Vector2( 94.514, 70.4821 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

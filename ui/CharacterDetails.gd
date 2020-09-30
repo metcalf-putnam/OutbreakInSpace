@@ -18,13 +18,16 @@ var character_id = 0
 func init(data_in):	
 	data = data_in
 	
-	character_name.text = "Name: " + data["name"]
+	character_name.text = data["name"]
 	var health_value = stepify(data["health"], 0.01)
 	var health_percentage = (health_value / 100.0)
 	
 	var dose_status = CharacterManager.get_infective_dose_status(data)
 	if health_value == 0:
 		dose_status = "Dead"
+	elif health_value == 100:
+		dose_status = "Asymptomatic"
+		
 	health.text = "Health: " + str(health_value)
 	status.text = "Status: " + dose_status
 	
@@ -49,9 +52,7 @@ func init(data_in):
 		base_drain = 3
 	reduction += base_drain
 	
-	if dose_status == "Dead":
-		reduction = 0
-	health_reduction.text = "Health Reduction / Day: " + str(reduction)
+	health_reduction.text = "Minus Health / Day: " + str(reduction)
 	
 	portrait.self_modulate = Color(1.0, health_percentage, health_percentage, 1.0)
 	if data["portrait_path"] != "":
@@ -65,7 +66,9 @@ func init(data_in):
 		else:
 			portrait.set_texture(load("res://characters/portraits/portrait_blue_man.png"))
 	
-	if Global.energy < 1 or dose_status == "Dead" or health_value == 100:
+	if Global.energy < 1 or dose_status in ["Dead", "Asymptomatic"]:
+		if dose_status in ["Dead", "Asymptomatic"]:
+			health_reduction.modulate.a = 0
 		select_btn.hide()
 		auto_battle_btn.hide()
 

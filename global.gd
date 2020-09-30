@@ -1,6 +1,6 @@
 extends Node
 
-
+var active := true
 var debug_on := false
 var day := 1
 var energy := 5

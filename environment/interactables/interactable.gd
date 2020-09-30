@@ -26,7 +26,7 @@ func _on_Interactable_body_exited(body):
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_interact") and player_in_range:
+	if event.is_action_pressed("ui_interact") and player_in_range and Global.active:
 		interact()  # only works if no other interactable in range, otherwise issues
 
 

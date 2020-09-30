@@ -380,6 +380,7 @@ func animate_letters():
 	get_node("Text").parse_bbcode(block.text)
 	get_node("Text").visible_characters = 0
 	current_tick = 0
+	$Space_NinePatchRect.show()
 
 
 func show_buttons():

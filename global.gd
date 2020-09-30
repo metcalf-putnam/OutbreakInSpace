@@ -127,7 +127,7 @@ var player_settings = {
 	"total_extraction_points": 0,
 	"character_to_help_data": null
 }
-var completed_playthrough = true #set to false
+var completed_playthrough = false #set to false
 
 func update_playthrough():
 	completed_playthrough = true

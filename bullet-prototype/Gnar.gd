@@ -175,13 +175,13 @@ func _input(event):
 			get_tree().change_scene("res://root.tscn")
 
 func _on_dialogue_finished():
-	state = STATE.BATTLE
-	
-	virus_type = Global.player_settings["mode"]
-	show_HUD()
-	add_virus()
-	add_player()
-	Music.change_state("fighting")
+	if state != STATE.BATTLE:
+		state = STATE.BATTLE
+		virus_type = Global.player_settings["mode"]
+		show_HUD()
+		add_virus()
+		add_player()
+		Music.change_state("fighting")
 
 func _on_player_fire():
 	var index = ammo_container.get_child_count() - 1

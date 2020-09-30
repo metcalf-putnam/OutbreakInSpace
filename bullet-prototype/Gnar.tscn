@@ -545,6 +545,7 @@ visible = false
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
+editor/display_folded = true
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
@@ -611,6 +612,7 @@ custom_fonts/font = SubResource( 21 )
 text = "00:00"
 
 [node name="StageComplete" type="Control" parent="CanvasLayer"]
+editor/display_folded = true
 visible = false
 margin_left = 290.0
 margin_top = 160.0
@@ -655,7 +657,7 @@ margin_right = 278.0
 margin_bottom = 30.0
 custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "STATUS"
+text = "STATS"
 align = 1
 
 [node name="StatusValue" type="Label" parent="CanvasLayer/StageComplete/Panel/Contents/HBoxContainer/VBoxContainer"]

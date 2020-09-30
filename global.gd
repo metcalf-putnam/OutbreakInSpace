@@ -64,6 +64,7 @@ func reset_daily_values():
 	day += 1
 	report_read = false
 	tv_watched = false
+	player_position = player_initial_position
 
 
 func _on_viral_shedding_computed():
@@ -173,7 +174,6 @@ func _on_house_entered():
 
 
 func _on_house_exited():
-	#Global.player_position
 	get_tree().change_scene("res://root.tscn")
 
 

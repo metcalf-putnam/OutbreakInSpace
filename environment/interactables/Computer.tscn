@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://environment/interactables/Computer.gd" type="Script" id=1]
 [ext_resource path="res://interiors/House_Objects.png" type="Texture" id=2]
@@ -6,7 +6,10 @@
 [ext_resource path="res://environment/interactables/E_Button_9x10.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 3.08206, 4.97763 )
+extents = Vector2( 8.24947, 4.98861 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 8.23648, 4.83418 )
 
 [sub_resource type="Animation" id=2]
 length = 1.4
@@ -70,20 +73,21 @@ collision_layer = 32
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.249468, -4.82302 )
+position = Vector2( -0.22097, -3.22703 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.236481, -3.16582 )
 texture = ExtResource( 2 )
 region_enabled = true
-region_rect = Rect2( 32, 0, 16, 16 )
+region_rect = Rect2( 15.445, -0.421928, 15.6785, 8.86734 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/StaticBody2D"]
-position = Vector2( 0.236481, 3.16582 )
-polygon = PoolVector2Array( -8.25775, -11.1302, -8.21168, 4.8099, -2.36085, 4.8099, -2.25694, 0.0462122, -1.32781, -4.16391, -0.057373, -5.23326, 4.826, -5.23326, 4.77993, -6.20072, 6.71485, -6.15465, 6.71485, -11.1762 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D"]
+position = Vector2( 0.236481, -0.83418 )
+scale = Vector2( 0.891915, 0.833705 )
+shape = SubResource( 5 )
 
 [node name="Exclamation" type="Sprite" parent="."]
 visible = false

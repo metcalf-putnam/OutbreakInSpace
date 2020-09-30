@@ -5,6 +5,7 @@ export(String, FILE, "*.json") var failure_dialog_file
 func _ready():
 	Global.connect("overlord_discovery", self, "_on_overlord_discovery")
 	$AnimationPlayer.play("opening")
+	$Sprite.hide()
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
@@ -13,4 +14,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		$RichTextLabel.hide()
 
 func _on_overlord_discovery():
-	$Dialogue.update_name("Overlord Momo")
+	$Dialogue.update_name("Overlord Aso")
+	$Sprite.show()
+	

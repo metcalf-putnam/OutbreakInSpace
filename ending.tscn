@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://environment/Map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ending.gd" type="Script" id=3]
 [ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=4]
+[ext_resource path="res://characters/portraits/Overlord/Overlord_Sheet.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -78,6 +79,12 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/opening = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 134.356, 316.892 )
+texture = ExtResource( 5 )
+hframes = 4
+frame = 1
 
 [node name="Dialogue" parent="." instance=ExtResource( 4 )]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

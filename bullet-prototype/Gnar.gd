@@ -128,6 +128,9 @@ func add_virus():
 	yield(get_tree().create_timer(1), "timeout")
 
 func stage_complete(status, details):
+	player.can_move = false
+	player.is_shoot_ready = false
+	player.can_shoot = false
 	started = false
 	virus.stop_audio()
 	

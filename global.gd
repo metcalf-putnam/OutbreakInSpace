@@ -72,12 +72,12 @@ func restart_game(boolean):
 func reset_daily_values():
 	total_infections = total_infections + new_infections
 	var new_positives = check_new_positives()
-	generate_report(new_positives)
 	update_characters_health()
 	
 	new_infections = 0
 	energy = max_energy
 	day += 1
+	generate_report(new_positives)
 	report_read = false
 	tv_watched = false
 	player_position = player_initial_position
@@ -99,6 +99,7 @@ func add_test_results(data, result):
 		test_results[day + test_time].append(test_dic)
 	else:
 		test_results[day + test_time] = [test_dic]
+	#print(test_results)
 
 
 func increment_cookies():
@@ -276,9 +277,13 @@ func check_new_positives():
 
 
 func format_result(test_dic):
-	var result_string = test_dic["data"]["name"] + ", "  + test_dic["data"]["home"] + ", "
+	var result_string = test_dic["data"]["name"]
+	if test_dic["data"].has("home"):
+		result_string = result_string + ", home: " + test_dic["data"]["home"]
+	if test_dic["data"].has("work"):
+		result_string = result_string + ", work: " + test_dic["data"]["work"]
 	if test_dic["result"]:
-		result_string = result_string + "positive"
+		result_string = result_string + ", result: " + "positive"
 	else:
-		result_string = result_string + "negative"
+		result_string = result_string + ", " + "negative"
 	return result_string

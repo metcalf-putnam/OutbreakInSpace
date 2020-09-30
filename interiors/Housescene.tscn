@@ -105,9 +105,6 @@ position = Vector2( 120.628, 43.1814 )
 [node name="TV" parent="." instance=ExtResource( 6 )]
 position = Vector2( 88.3244, 27.2331 )
 
-[node name="Door" parent="." instance=ExtResource( 7 )]
-position = Vector2( 120.61, 72.7896 )
-
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 87.9951, 48.5569 )
 texture = ExtResource( 3 )
@@ -158,5 +155,8 @@ visible = false
 
 [node name="AnimationTree" parent="Player" index="9"]
 parameters/playback = SubResource( 6 )
+
+[node name="Door" parent="." instance=ExtResource( 7 )]
+position = Vector2( 120.61, 72.7896 )
 
 [editable path="Player"]

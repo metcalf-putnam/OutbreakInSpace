@@ -89,6 +89,7 @@ position = Vector2( 428.484, 146.769 )
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -6.5
+bus = "Virus SFX"
 
 [node name="PopUp" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

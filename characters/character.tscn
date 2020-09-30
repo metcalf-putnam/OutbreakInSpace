@@ -535,16 +535,12 @@ parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="Cough" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-<<<<<<< Updated upstream
-volume_db = -12.0
-=======
-volume_db = -8.0
+volume_db = -13.0
 max_distance = 500.0
->>>>>>> Stashed changes
 
 [node name="Sing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )
-volume_db = -9.0
+volume_db = -10.0
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color( 1, 1, 1, 0.380392 )

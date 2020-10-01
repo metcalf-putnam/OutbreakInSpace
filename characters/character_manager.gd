@@ -278,8 +278,8 @@ func get_additional_health(game_settings):
 	return minimum_health + additional_health
 
 
-func update_character_health(data):
-	var additional_health = get_additional_health(Global.player_settings)
+func update_character_health(data, additional_health):
+#	var additional_health = get_additional_health(Global.player_settings)
 	if data["id"] == CharacterManager.player_id:
 		var health = CharacterManager.player["health"]
 		health += additional_health

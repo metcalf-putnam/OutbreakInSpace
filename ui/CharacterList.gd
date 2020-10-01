@@ -12,10 +12,13 @@ onready var auto_battle_anim = $NinePatchRect/AutoBattle/AutoBattleAnimation
 
 var character_data
 
-func _ready():	
+func _ready():
 	auto_battle.hide()
 	nothing.hide()
 	scroll_container.hide()
+	scroll_container.get_h_scrollbar().connect("changed", self, "_on_scroll_change")
+	if Global.player_settings.character_to_help_data != null:
+		close.hide()
 	show_positive_characters()
 
 
@@ -37,6 +40,7 @@ func show_positive_characters():
 		character_details.connect("play_mini_game", self, "_on_play_mini_game")
 		character_details.connect("auto_battle", self, "_on_auto_battle")
 		character_details.connect("insufficient_energy", self, "_on_insufficient_energy")
+		character_details.connect("health_update", self, "_on_health_update")
 		list_container.add_child(character_details)
 		character_details.init(details)
 	
@@ -64,15 +68,45 @@ func _on_auto_battle(data):
 
 func _on_AutoBattleAnimation_animation_finished(anim_name):
 	if anim_name == "auto_battle":
-		CharacterManager.update_character_health(character_data)
-		for n in list_container.get_children():
-			list_container.remove_child(n)
-			n.queue_free()
-			
-		show_positive_characters()
+		var additional_health = CharacterManager.get_additional_health(Global.player_settings)
+		set_scroll_value(Global.positive_list_scroll_value)
+		play_health_anim(additional_health)
 		close.show()
+		scroll_container.show()
+		
+		for n in list_container.get_children():
+			n.check_buttons_availability()
+		
+		if Global.energy < 1:
+			insufficient_energy.show()
 	pass # Replace with function body.
 
 
 func _on_insufficient_energy():
 	insufficient_energy.show()
+
+
+func set_scroll_value(value):
+	scroll_container.get_h_scrollbar().value = value
+
+
+func _on_scroll_change(value):
+	Global.positive_list_scroll_value = value
+	pass # Replace with function body.
+
+
+func play_health_anim(additional_health, gnar_data = null):
+	
+	if gnar_data:
+		character_data = gnar_data
+	for positive in list_container.get_children():
+		if positive.is_same_id(character_data["id"]):
+			positive.play_add_health(additional_health)
+
+
+func _on_health_update():
+	close.show()
+
+func _on_ScrollContainer_draw():
+	scroll_container.get_h_scrollbar().value = Global.positive_list_scroll_value
+	pass # Replace with function body.

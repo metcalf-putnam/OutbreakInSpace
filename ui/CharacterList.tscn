@@ -255,4 +255,5 @@ anims/auto_battle = SubResource( 3 )
 
 [node name="SkipAudio" type="AudioStreamPlayer" parent="NinePatchRect/AutoBattle"]
 stream = ExtResource( 9 )
+[connection signal="draw" from="NinePatchRect/ScrollContainer" to="." method="_on_ScrollContainer_draw"]
 [connection signal="animation_finished" from="NinePatchRect/AutoBattle/AutoBattleAnimation" to="." method="_on_AutoBattleAnimation_animation_finished"]

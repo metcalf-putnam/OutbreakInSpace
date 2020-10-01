@@ -64,13 +64,15 @@ func restart_game(boolean):
 	else:
 		debug_on = false
 	CharacterManager.generate_characters()
-	reset_daily_values()
+	reset_daily_values(true)
 	total_infections = 1
 	day = 1
+	positive_characters = []
+	daily_reports = []
 	assert(get_tree().change_scene("res://interiors/Housescene.tscn") == OK)
 
 
-func reset_daily_values():
+func reset_daily_values(is_restart = false):
 	total_infections = total_infections + new_infections
 	var new_positives = check_new_positives()
 	update_characters_health()
@@ -78,7 +80,8 @@ func reset_daily_values():
 	new_infections = 0
 	energy = max_energy
 	day += 1
-	generate_report(new_positives)
+	if !is_restart:
+		generate_report(new_positives)
 	report_read = false
 	tv_watched = false
 	player_position = player_initial_position
@@ -143,6 +146,7 @@ var player_settings = {
 	"total_extraction_points": 0,
 	"character_to_help_data": null
 }
+var positive_list_scroll_value = 0
 var completed_playthrough = false #set to false
 
 func update_playthrough():
@@ -158,10 +162,12 @@ func _on_start_mini_game(data, game_mode):
 	get_tree().change_scene("res://bullet-prototype/Gnar.tscn")
 
 
-func show_positives():
+func show_positives(additional_health = 0, gnar_data = null):
 	var character_list = character_list_scn.instance()
 	get_tree().root.add_child(character_list)
-	pass
+	if additional_health:
+		character_list.set_scroll_value(positive_list_scroll_value)
+		character_list.play_health_anim(additional_health, gnar_data)
 
 
 func convince_npc():

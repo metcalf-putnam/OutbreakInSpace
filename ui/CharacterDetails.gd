@@ -7,18 +7,23 @@ onready var status = $MarginContainer/VBoxContainer/Status
 onready var health_reduction = $MarginContainer/VBoxContainer/HealthReductionPerDay
 onready var select_btn = $MarginContainer/VBoxContainer/Button
 onready var auto_battle_btn = $MarginContainer/VBoxContainer/AutoBattle
+onready var additional_health = $MarginContainer/VBoxContainer/Health/AddValue
+onready var health_anim = $MarginContainer/VBoxContainer/HealthAnimation
 
 signal play_mini_game
 signal auto_battle
 signal insufficient_energy
+signal health_update
 var data
 var game_mode
 var character_id = 0
+var add_health = 0
 
 func init(data_in):	
 	data = data_in
 	
 	character_name.text = data["name"]
+	character_id = data["id"]
 	var health_value = stepify(data["health"], 0.01)
 	var health_percentage = (health_value / 100.0)
 	
@@ -84,3 +89,30 @@ func _on_AutoBattle_pressed():
 	else:
 		emit_signal("insufficient_energy")
 	pass # Replace with function body.
+
+
+func is_same_id(id):
+	return character_id == id
+
+
+func play_add_health(to_add_health):
+	add_health = to_add_health
+	additional_health.text = "+" + str(add_health) + " Health"
+	health_anim.play("show_additional_health")
+
+
+func _on_HealthAnimation_animation_finished(anim_name):
+	if anim_name == "show_additional_health":
+		var health_value = float(health.text.split(" ")[1])
+		var new_health = stepify(float(health_value + add_health), 0.01)
+		print(health.text, " ", health_value, " ", new_health)
+		health.text = "Health: " + str(new_health)
+		CharacterManager.update_character_health(data, add_health)
+		emit_signal("health_update")
+	pass # Replace with function body.
+
+
+func check_buttons_availability():
+	if Global.energy < 1:
+		select_btn.hide()
+		auto_battle_btn.hide()

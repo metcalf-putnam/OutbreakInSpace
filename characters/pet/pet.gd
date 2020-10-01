@@ -8,4 +8,5 @@ func _ready():
 
 func interact():
 	$Emote.emote("happy")
+	$AudioStreamPlayer.play()
 	$Control.hide()

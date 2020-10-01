@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://environment/interactables/exclamation mark.png" type="Texture" id=1]
 [ext_resource path="res://characters/pet/pet.gd" type="Script" id=2]
 [ext_resource path="res://characters/effects/Emote.tscn" type="PackedScene" id=3]
 [ext_resource path="res://characters/pet/Pet_14x10.png" type="Texture" id=4]
+[ext_resource path="res://environment/interactables/Pet_Cry.wav" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blinking"
@@ -123,7 +124,6 @@ texture = SubResource( 8 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -5 )
 frames = SubResource( 5 )
-frame = 1
 playing = true
 
 [node name="Emote" parent="." instance=ExtResource( 3 )]
@@ -140,5 +140,8 @@ shape = SubResource( 6 )
 position = Vector2( 1.60173, -1.50732 )
 rotation = 1.5708
 shape = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 [connection signal="body_entered" from="." to="." method="_on_Interactable_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_Interactable_body_exited"]

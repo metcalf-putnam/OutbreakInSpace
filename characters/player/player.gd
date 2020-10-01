@@ -42,7 +42,6 @@ func _physics_process(_delta):
 
 	
 func _unhandled_input(event):
-	# TODO: make this different? maybe they can sing on command?
 	if state != State.ACTIVE:
 		return
 	if event.is_action_pressed("test") and Global.player_can_test:

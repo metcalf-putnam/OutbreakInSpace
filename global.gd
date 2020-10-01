@@ -77,12 +77,12 @@ func reset_daily_values(is_restart = false):
 	total_infections = total_infections + new_infections
 	update_characters_health()
 	var new_positives = check_new_positives()
+	day += 1
 	if !is_restart:
 		generate_report(new_positives)
 	
 	new_infections = 0
 	energy = max_energy
-	day += 1
 
 	report_read = false
 	tv_watched = false
@@ -239,6 +239,7 @@ func generate_report(add_new_positives):
 		textbox.append_bbcode("N/A")
 		
 	if dead_characters.size() > 0:
+		print("adding obituaries")
 		var death_message = "All casualties: "
 		for character in dead_characters:
 			death_message = death_message + character["name"] + ", "
@@ -278,13 +279,13 @@ func update_characters_health():
 		if data["is_symptomatic"]:
 			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
 			if data["health"] <= 0:
-				if dead_characters.has(data):
+				if !dead_characters.has(data):
 					dead_characters.append(data)
 	for data in CharacterManager.npcs:
 		if data["is_symptomatic"]:
 			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
 			if data["health"] <= 0:
-				if dead_characters.has(data):
+				if !dead_characters.has(data):
 					dead_characters.append(data)
 
 func check_new_positives():

@@ -244,7 +244,6 @@ func building_shed(dict_in):
 
 func simulate_contagious_person(people, contagious_person):
 	# ten seconds of breathing nearby
-	print("simulating contagious")
 	var breathing_shed = 5 * 10 * contagious_person["shed_multiplier"]
 	var speaking_shed = 75 
 	var coughing_shed = rng.randf_range(0, 1500)
@@ -261,7 +260,6 @@ func simulate_contagious_person(people, contagious_person):
 		if contagious_person["is_symptomatic"]:
 			var coughing = rng.randf_range(0, 2)
 			npc["viral_load"] = npc["viral_load"] + (coughing * coughing_shed * mask_factor)
-		print("this npc's viral load now: ", npc["viral_load"])
 
 
 func get_additional_health(game_settings):

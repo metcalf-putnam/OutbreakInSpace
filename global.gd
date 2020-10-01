@@ -75,14 +75,15 @@ func restart_game(boolean):
 
 func reset_daily_values(is_restart = false):
 	total_infections = total_infections + new_infections
-	var new_positives = check_new_positives()
 	update_characters_health()
+	var new_positives = check_new_positives()
+	if !is_restart:
+		generate_report(new_positives)
 	
 	new_infections = 0
 	energy = max_energy
 	day += 1
-	if !is_restart:
-		generate_report(new_positives)
+
 	report_read = false
 	tv_watched = false
 	player_position = player_initial_position

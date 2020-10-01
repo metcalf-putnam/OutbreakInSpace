@@ -48,14 +48,14 @@ func init(data_in):
 	if data["id"] == 200 and viralload > 3000:
 		viralload = 3000
 	
-	var reduction = stepify(viralload / infectivedose, 0.01)
+	var reduction = stepify(min(viralload / infectivedose, 3), 0.01)
 	
-	var base_drain = 1 # Moderate
+	var base_drain = 2 # Moderate
 	if dose_status == "Severe":
-		base_drain = 2
-	elif dose_status == "Critical":
 		base_drain = 3
-	reduction += base_drain
+	elif dose_status == "Critical":
+		base_drain = 12
+	reduction *= base_drain
 	
 	health_reduction.text = "Minus Health / Day: " + str(reduction)
 	

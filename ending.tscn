@@ -44,6 +44,7 @@ tracks/1/keys = {
 [node name="Ending" type="Node2D"]
 script = ExtResource( 3 )
 failure_dialog_file = "res://Dialog/json/overlord_failure.json"
+success_dialog_file = "res://Dialog/json/overlord_success.json"
 
 [node name="Navigation2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( 232.087, 240.496 )

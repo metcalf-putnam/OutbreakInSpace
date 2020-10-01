@@ -208,7 +208,6 @@ __meta__ = {
 }
 
 [node name="Close_NinePatchRect" parent="NinePatchRect" instance=ExtResource( 4 )]
-visible = false
 margin_left = 691.917
 margin_top = 301.041
 margin_right = 937.917

@@ -1,5 +1,6 @@
 extends Node2D
 export(String, FILE, "*.json") var failure_dialog_file
+export(String, FILE, "*.json") var success_dialog_file
 var bad_ending := true
 
 
@@ -12,9 +13,14 @@ func _ready():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "opening":
+	if anim_name != "opening":
+		return
+	if bad_ending:
 		EventHub.emit_signal("new_dialogue", failure_dialog_file, "???")
-		$RichTextLabel.hide()
+	else:
+		EventHub.emit_signal("new_dialogue", success_dialog_file, "Overlord Aso")
+
+	$RichTextLabel.hide()
 
 
 func _on_overlord_discovery():
@@ -27,5 +33,5 @@ func _on_dialogue_finished():
 
 
 func determine_ending():
-	pass
-	# TODO: fill this in
+	if Global.total_infections < 5 and Global.dead_characters.size() > 0:
+		bad_ending = false

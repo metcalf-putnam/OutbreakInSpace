@@ -75,6 +75,7 @@ func get_file_path(event_name):
 
 
 func _on_Interactable_dialogue_started():
+	print("this npc's data: ", data)
 	var event_dialogue = get_dialog_file()
 	if event_dialogue:
 		EventHub.emit_signal("new_dialogue", event_dialogue, full_name)

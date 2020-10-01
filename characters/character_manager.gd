@@ -192,6 +192,7 @@ func compute_daily_viral_shedding():
 	home_locs = sort_npcs(core_npcs, "home", home_locs)
 	building_shed(work_locs)
 	building_shed(home_locs)
+	check_infections()
 	emit_signal("viral_shedding_computed")
 
 
@@ -203,6 +204,17 @@ func check_infections():
 			npc["contagious_date"] = Global.day + Global.test_time
 		if npc.has("contagious_date") and npc["contagious_date"] == Global.day:
 			npc["is_contagious"] = true
+		if npc.has("symptomatic_date") and npc["symptomatic_date"] == Global.day:
+			npc["is_symptomatic"] = true
+	for npc in core_npcs:
+		if !npc["is_infected"] and npc["viral_load"] > npc["infective_dose"]:
+			npc["is_infected"] = true
+			Global.new_infections += 1
+			npc["contagious_date"] = Global.day + Global.test_time
+		if npc.has("contagious_date") and npc["contagious_date"] == Global.day:
+			npc["is_contagious"] = true
+		if npc.has("symptomatic_date") and npc["symptomatic_date"] == Global.day:
+			npc["is_symptomatic"] = true
 
 
 func sort_npcs(list, type, dict) -> Dictionary:
@@ -249,6 +261,7 @@ func simulate_contagious_person(people, contagious_person):
 		if contagious_person["is_symptomatic"]:
 			var coughing = rng.randf_range(0, 2)
 			npc["viral_load"] = npc["viral_load"] + (coughing * coughing_shed * mask_factor)
+		print("this npc's viral load now: ", npc["viral_load"])
 
 
 func get_additional_health(game_settings):

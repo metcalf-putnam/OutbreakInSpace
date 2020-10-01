@@ -224,12 +224,6 @@ func generate_report(add_new_positives):
 			test_dic["data"]["done_test"] = false
 			textbox.newline()
 			textbox.append_bbcode(format_result(test_dic))
-	if dead_characters.size() > 0:
-		var death_message = "All casualties: "
-		for character in dead_characters:
-			death_message = death_message + character["name"] + ", "
-		death_message.erase(len(death_message) -2, 1)
-	
 	
 	var new_positives_not_tested_by_player = add_new_positives.size() > 0
 	if new_positives_not_tested_by_player:
@@ -242,6 +236,14 @@ func generate_report(add_new_positives):
 	
 	if !new_positives_not_tested_by_player and !test_results.has(day):
 		textbox.append_bbcode("N/A")
+		
+	if dead_characters.size() > 0:
+		var death_message = "All casualties: "
+		for character in dead_characters:
+			death_message = death_message + character["name"] + ", "
+		death_message.erase(len(death_message) -2, 1)
+		textbox.newline()
+		textbox.append_bbcode(death_message)
 	
 	# TODO: List dead characters
 	daily_reports.append(textbox.text)
@@ -253,14 +255,14 @@ func compute_new_health(health, viral_load, infective_dose, cap = 0):
 		viral = cap
 	
 	var status = CharacterManager.get_infective_dose_status(infective_dose)
-	var base_drain = 1 # Moderate
+	var base_drain = 2 # Moderate
 	if status == "Severe":
-		base_drain = 2
-	elif status == "Critical":
 		base_drain = 3
+	elif status == "Critical":
+		base_drain = 12
 		
 	print("base_drain: ", base_drain)
-	var health_drain =  (viral / infective_dose) + base_drain
+	var health_drain =  min(viral / infective_dose, 3) * base_drain
 	print("health_drain: ", health_drain)
 	return clamp(health - health_drain, 0, 100)
 
@@ -270,7 +272,7 @@ func update_characters_health():
 		var data = CharacterManager.player
 		var health = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
 		CharacterManager.player["health"] = health
-		
+
 	for data in CharacterManager.core_npcs:
 		if data["is_symptomatic"]:
 			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])

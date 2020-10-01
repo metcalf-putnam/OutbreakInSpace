@@ -2,6 +2,7 @@ extends Node2D
 
 func _ready():
 	Music.change_state("none")
+	$AudioStreamPlayer.play()
 	$Player.init(CharacterManager.player)
 	$Player.deactivate_camaera()
 	$Player.position = Vector2(107, 33)

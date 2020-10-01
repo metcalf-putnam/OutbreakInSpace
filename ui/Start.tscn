@@ -24,15 +24,14 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 101.981
-margin_top = 2.0
-margin_right = 200.981
-margin_bottom = 41.0
+margin_left = 2.8419
+margin_top = 2.00337
+margin_right = 302.842
+margin_bottom = 41.0034
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Start"
 flat = true
-align = 0
 __meta__ = {
 "_edit_use_anchors_": false
 }

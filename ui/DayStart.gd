@@ -18,6 +18,7 @@ func _ready():
 func _input(event):
 	if !event.is_action_pressed("ui_accept"):
 		return
+	EventHub.emit_signal("dialogue_finished")
 	get_tree().paused = false
 	queue_free()
 

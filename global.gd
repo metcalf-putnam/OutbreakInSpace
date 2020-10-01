@@ -35,6 +35,7 @@ var test_results = {}
 var test_time := 1
 var positive_characters = []
 var healed_characters = []
+var dead_characters = []
 var overlord_day := 11
 var convinced := false
 var npcs_convinced := 0
@@ -223,6 +224,12 @@ func generate_report(add_new_positives):
 			test_dic["data"]["done_test"] = false
 			textbox.newline()
 			textbox.append_bbcode(format_result(test_dic))
+	if dead_characters.size() > 0:
+		var death_message = "All casualties: "
+		for character in dead_characters:
+			death_message = death_message + character["name"] + ", "
+		death_message.erase(len(death_message) -2, 1)
+	
 	
 	var new_positives_not_tested_by_player = add_new_positives.size() > 0
 	if new_positives_not_tested_by_player:
@@ -267,11 +274,15 @@ func update_characters_health():
 	for data in CharacterManager.core_npcs:
 		if data["is_symptomatic"]:
 			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
-			
+			if data["health"] <= 0:
+				if dead_characters.has(data):
+					dead_characters.append(data)
 	for data in CharacterManager.npcs:
 		if data["is_symptomatic"]:
 			data["health"] = compute_new_health(data["health"], data["viral_load"], data["infective_dose"])
-
+			if data["health"] <= 0:
+				if dead_characters.has(data):
+					dead_characters.append(data)
 
 func check_new_positives():
 	var new_positives = []

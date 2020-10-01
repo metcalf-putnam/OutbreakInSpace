@@ -161,5 +161,4 @@ func _on_dialog_finished():
 func _on_computer_interaction():
 	var morning_report = preload("res://ui/DayStart.tscn").instance()
 	get_tree().get_root().add_child(morning_report)
-	pass
 

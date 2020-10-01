@@ -5,7 +5,7 @@ func _ready():
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.connect("new_dialogue", self, "_on_new_dialogue")
 	EventHub.connect("testing_character", self, "_on_testing_character")
-	EventHub.connect("bed_dialogue", self, "_on_new_dialogue")
+	EventHub.connect("bed_dialogue", self, "_on_new_door_dialogue")
 	EventHub.connect("tv_dialogue", self, "_on_new_dialogue")
 	EventHub.connect("going_in_house_dialogue", self, "_on_new_door_dialogue")
 	EventHub.connect("going_out_house_dialogue", self, "_on_new_door_dialogue")
@@ -49,9 +49,9 @@ func update_controls():
 
 
 func _on_ReportButton_pressed():
-	print("report pressed!")
 	$ReportButton.release_focus()
 	EventHub.emit_signal("computer_interaction")
+	hide()
 
 
 func _on_SingButton_button_down():

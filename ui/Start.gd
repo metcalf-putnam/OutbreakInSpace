@@ -1,6 +1,10 @@
 extends NinePatchRect
 
 
+func _ready():
+	Music.change_state("normal")
+
+
 func _on_Button_pressed():
 	get_tree().change_scene("res://interiors/Housescene.tscn")
 

@@ -96,7 +96,7 @@ func _process(delta):
 						if option_text == "Check reports":
 							EventHub.emit_signal("computer_interaction")
 							
-						if option_text == "Take a rest":
+						if option_text == "Sleep":
 							EventHub.emit_signal("bed_interaction")
 							
 						end_dialogue()
@@ -356,12 +356,12 @@ func _on_bed_dialogue():
 	$Text.show()
 	update_name("Bed")
 	$Name_NinePatchRect.show()
-	$Text.bbcode_text = "Do you want to take a rest?"
+	$Text.bbcode_text = "Do you want to sleep (skip to next day and regain energy)?"
 	if Global.energy > 0:
 		$Text.bbcode_text = "Do you want to take a rest? You still have " + str(Global.energy) + " energy left."
 	show()
 	$Space_NinePatchRect.hide()
-	add_name_button("Take a rest")
+	add_name_button("Sleep")
 	add_name_button("Let me think")
 	state = State.HOUSE
 	set_process(true)

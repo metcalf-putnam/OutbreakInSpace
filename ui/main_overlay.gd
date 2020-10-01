@@ -59,4 +59,4 @@ func player_controls_toggle(boolean):
 
 func _on_Dialogue_player_controls_toggle(boolean):
 	player_controls_toggle(boolean)
-		
+

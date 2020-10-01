@@ -5,14 +5,22 @@ func _ready():
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.connect("new_dialogue", self, "_on_new_dialogue")
 	EventHub.connect("testing_character", self, "_on_testing_character")
-	
-	
+	EventHub.connect("bed_dialogue", self, "_on_new_dialogue")
+	EventHub.connect("tv_dialogue", self, "_on_new_dialogue")
+	EventHub.connect("going_in_house_dialogue", self, "_on_new_door_dialogue")
+	EventHub.connect("going_out_house_dialogue", self, "_on_new_door_dialogue")
+
+
 func _on_dialogue_finished():
 	update_controls()
 	show()
 
 
 func _on_new_dialogue(_file, _name):
+	hide()
+
+
+func _on_new_door_dialogue():
 	hide()
 	
 

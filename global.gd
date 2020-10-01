@@ -212,10 +212,12 @@ func generate_report(add_new_positives):
 		first_results = true
 		for test_dic in test_results[day]:
 			if test_dic["result"]:
+				print(test_dic)
 				if not positive_characters.has(test_dic["data"]):
 					positive_characters.append(test_dic["data"])
 					first_positive = true
-				if test_dic == CharacterManager.player:
+				if test_dic["data"]["id"] == CharacterManager.player_id:
+					print("and it was the player!!")
 					player_test_results = true
 			
 			test_dic["data"]["done_test"] = false

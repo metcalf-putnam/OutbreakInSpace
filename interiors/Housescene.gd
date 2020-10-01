@@ -11,6 +11,7 @@ func _ready():
 	EventHub.connect("computer_interaction", self, "_on_computer_interaction")
 	EventHub.connect("pet_interaction", self, "_on_pet_interaction")
 	$Player.speed = 50
+	$Overlay.player_controls_toggle(true)
 
 
 func _on_tv_interaction(status):

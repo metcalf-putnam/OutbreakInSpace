@@ -22,6 +22,8 @@ var ticks_before_next_letter = 5
 var current_tick = 0
 var text_length = 0
 
+signal player_controls_toggle
+
 func _ready():
 	set_process(false)
 	hide()
@@ -110,6 +112,7 @@ func step_forward(i):
 
 func init(file_path : String, name := " "):
 	Global.active = false
+	emit_signal("player_controls_toggle", false)
 	text_state = TEXT_STATE.READY
 	$PopUp.play()
 	EventHub.emit_signal("npc_dialogue")
@@ -128,6 +131,7 @@ func init(file_path : String, name := " "):
 
 func test_character(character_array, location_name = null):
 	Global.active = false
+	emit_signal("player_controls_toggle", false)
 	$PopUp.play()
 	$Text.show()
 	if !location_name:
@@ -290,6 +294,7 @@ func end_dialogue():
 	EventHub.emit_signal("dialogue_finished")
 	hide()
 	Global.active = true
+	emit_signal("player_controls_toggle", true)
 
 
 func update_name(name_in):

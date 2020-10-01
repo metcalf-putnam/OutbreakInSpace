@@ -48,3 +48,15 @@ func _on_Visuals_Debug_toggled(button_pressed):
 
 func _on_fade_away_explanation():
 	$AnimationPlayer.play("fade_away_explanation")
+
+
+func player_controls_toggle(boolean):
+	if boolean:
+		$PlayerControls.hide()
+	else:
+		$PlayerControls.show()
+
+
+func _on_Dialogue_player_controls_toggle(boolean):
+	player_controls_toggle(boolean)
+		

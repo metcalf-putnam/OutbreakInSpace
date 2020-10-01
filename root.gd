@@ -12,6 +12,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	EventHub.connect("building_exited", self, "on_building_exited")
 	EventHub.connect("dialogue_finished", self, "_on_dialog_finished")
+	EventHub.connect("computer_interaction", self, "_on_computer_interaction")
 	
 	if Global.player_settings.character_to_help_data != null:
 		CharacterManager.update_character_health(Global.player_settings.character_to_help_data)
@@ -153,3 +154,10 @@ func _on_GoHomeTimer_timeout():
 
 func _on_dialog_finished():
 	get_tree().call_group("core_npc", "check_special_dialog")
+
+
+func _on_computer_interaction():
+	var morning_report = preload("res://ui/DayStart.tscn").instance()
+	get_tree().get_root().add_child(morning_report)
+	pass
+

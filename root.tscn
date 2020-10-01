@@ -271,5 +271,6 @@ texture = ExtResource( 11 )
 position = Vector2( 0.468201, 0 )
 shape = SubResource( 1 )
 [connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
+[connection signal="player_controls_toggle" from="CanvasLayer/Dialogue" to="Overlay" method="_on_Dialogue_player_controls_toggle"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_DayTimer_timeout"]
 [connection signal="timeout" from="GoHomeTimer" to="." method="_on_GoHomeTimer_timeout"]

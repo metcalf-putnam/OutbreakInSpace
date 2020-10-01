@@ -36,11 +36,6 @@ func _on_TestButton_pressed():
 	EventHub.emit_signal("test_button_pressed")
 
 
-func _on_SingButton_toggled(button_pressed):
-	$SingButton.release_focus()
-	EventHub.emit_signal("sing_button_toggled", button_pressed)
-
-
 func update_controls():
 	if Global.player_can_sing:
 		$SingButton.show()
@@ -57,3 +52,13 @@ func _on_ReportButton_pressed():
 	print("report pressed!")
 	$ReportButton.release_focus()
 	EventHub.emit_signal("computer_interaction")
+
+
+func _on_SingButton_button_down():
+	EventHub.emit_signal("sing_button_pressed")
+
+
+func _on_SingButton_button_up():
+	EventHub.emit_signal("sing_button_released")
+	$SingButton.release_focus()
+	

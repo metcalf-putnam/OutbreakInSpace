@@ -290,7 +290,6 @@ __meta__ = {
 margin_left = 84.0
 margin_right = 142.0
 margin_bottom = 40.0
-toggle_mode = true
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
@@ -344,5 +343,6 @@ __meta__ = {
 [connection signal="toggled" from="Debug/MaskButton" to="." method="_on_MaskButton_toggled"]
 [connection signal="toggled" from="Debug/Visuals_Debug" to="." method="_on_Visuals_Debug_toggled"]
 [connection signal="pressed" from="PlayerControls/TestButton" to="PlayerControls" method="_on_TestButton_pressed"]
-[connection signal="toggled" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_toggled"]
+[connection signal="button_down" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_button_down"]
+[connection signal="button_up" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_button_up"]
 [connection signal="pressed" from="PlayerControls/ReportButton" to="PlayerControls" method="_on_ReportButton_pressed"]

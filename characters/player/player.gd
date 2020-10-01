@@ -12,7 +12,8 @@ func _ready():
 	EventHub.connect("player_spoke", self, "speak")
 	EventHub.connect("new_dialogue", self, "_on_new_dialogue")
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
-	EventHub.connect("sing_button_toggled", self, "_on_sing_button_toggled")
+	EventHub.connect("sing_button_pressed", self, "_on_sing_button_pressed")
+	EventHub.connect("sing_button_released", self, "_on_sing_button_released")
 	EventHub.connect("test_button_pressed", self, "_on_test_button_pressed")
 	
 
@@ -57,11 +58,15 @@ func _on_dialogue_finished():
 	state = State.ACTIVE
 
 
-func _on_sing_button_toggled(boolean):
-	sing_toggled = boolean
-	if state != State.ACTIVE or !boolean:
+func _on_sing_button_pressed():
+	if state != State.ACTIVE:
 		return
+	sing_toggled = true
 	sing()
+
+
+func _on_sing_button_released():
+	sing_toggled = false
 
 
 func _on_test_button_pressed():

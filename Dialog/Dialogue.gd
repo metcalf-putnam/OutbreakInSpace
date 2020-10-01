@@ -112,7 +112,7 @@ func step_forward(i):
 
 func init(file_path : String, name := " "):
 	Global.active = false
-	emit_signal("player_controls_toggle", false)
+	emit_signal("player_controls_toggle", true)
 	text_state = TEXT_STATE.READY
 	$PopUp.play()
 	EventHub.emit_signal("npc_dialogue")
@@ -131,7 +131,7 @@ func init(file_path : String, name := " "):
 
 func test_character(character_array, location_name = null):
 	Global.active = false
-	emit_signal("player_controls_toggle", false)
+	emit_signal("player_controls_toggle", true)
 	$PopUp.play()
 	$Text.show()
 	if !location_name:
@@ -294,7 +294,7 @@ func end_dialogue():
 	EventHub.emit_signal("dialogue_finished")
 	hide()
 	Global.active = true
-	emit_signal("player_controls_toggle", true)
+	emit_signal("player_controls_toggle", false)
 
 
 func update_name(name_in):

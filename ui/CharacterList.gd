@@ -22,10 +22,22 @@ func _ready():
 	show_positive_characters()
 
 
+func debugging():
+	for _i in range(6):
+		var character_details = character_details_scn.instance()
+		character_details.connect("play_mini_game", self, "_on_play_mini_game")
+		character_details.connect("auto_battle", self, "_on_auto_battle")
+		character_details.connect("insufficient_energy", self, "_on_insufficient_energy")
+		character_details.connect("health_update", self, "_on_health_update")
+		list_container.add_child(character_details)
+	scroll_container.show()
+
+
 func show_positive_characters():
 	
 	if Global.positive_characters.size() == 0:
 		nothing.show()
+		#debugging()
 		return
 	
 	if Global.energy == 0:
@@ -107,6 +119,11 @@ func play_health_anim(additional_health, gnar_data = null):
 func _on_health_update():
 	close.show()
 
+
 func _on_ScrollContainer_draw():
 	scroll_container.get_h_scrollbar().value = Global.positive_list_scroll_value
+	pass # Replace with function body.
+
+
+func _on_Timer_timeout():
 	pass # Replace with function body.

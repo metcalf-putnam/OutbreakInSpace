@@ -96,6 +96,7 @@ texture = ExtResource( 3 )
 
 [node name="Control" type="Sprite" parent="."]
 position = Vector2( -0.307003, -14.7184 )
+scale = Vector2( 0.3, 0.3 )
 z_index = 2
 z_as_relative = false
 texture = ExtResource( 4 )

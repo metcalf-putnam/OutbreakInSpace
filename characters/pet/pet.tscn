@@ -9,14 +9,17 @@
 load_path = "res://.import/E_Button_9x10.png-056bf42633ec35bafed6f776b4c77fda.stex"
 
 [sub_resource type="AtlasTexture" id=2]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=3]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 14, 0, 14, 10 )
 
 [sub_resource type="AtlasTexture" id=4]
+flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 28, 0, 14, 10 )
 
@@ -43,13 +46,11 @@ script = ExtResource( 2 )
 visible = false
 
 [node name="Control" parent="." index="2"]
-scale = Vector2( 1, 1 )
 texture = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="3"]
 position = Vector2( 0, -5 )
 frames = SubResource( 5 )
-frame = 2
 playing = true
 
 [node name="Emote" parent="." index="4" instance=ExtResource( 3 )]

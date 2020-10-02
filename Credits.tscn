@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Credits.gd" type="Script" id=1]
 [ext_resource path="res://Credits/Credits.png" type="Texture" id=2]
@@ -20,7 +20,7 @@
 [ext_resource path="res://characters/portraits/BluesChild.png" type="Texture" id=18]
 [ext_resource path="res://Credits/Juan.png" type="Texture" id=19]
 [ext_resource path="res://Credits/Panch.png" type="Texture" id=20]
-[ext_resource path="res://Credits/Kapden.png" type="Texture" id=21]
+[ext_resource path="res://Credits/Chris.png" type="Texture" id=21]
 [ext_resource path="res://Credits/Patrice.png" type="Texture" id=22]
 
 [sub_resource type="DynamicFont" id=1]
@@ -29,6 +29,10 @@ font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
 size = 72
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
 font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=3]
@@ -300,12 +304,25 @@ texture = ExtResource( 19 )
 [node name="Label3" type="Label" parent="Container/Creators/Juan"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 47.7388
-margin_top = -20.7703
-margin_right = 364.739
-margin_bottom = 29.2297
+margin_left = 41.4392
+margin_top = -42.189
+margin_right = 484.439
+margin_bottom = 7.811
 custom_fonts/font = SubResource( 2 )
 text = "Art and Level Design"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Container/Creators/Juan"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 82.0258
+margin_top = 7.8364
+margin_right = 409.026
+margin_bottom = 57.8364
+custom_fonts/font = SubResource( 4 )
+text = "Discord: JuanLr#6920"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -317,12 +334,25 @@ texture = ExtResource( 20 )
 [node name="Label4" type="Label" parent="Container/Creators/Panch"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 51.6761
-margin_top = -22.5342
-margin_right = 368.676
-margin_bottom = 27.4658
+margin_left = 108.373
+margin_top = -42.6929
+margin_right = 425.372
+margin_bottom = 7.30711
 custom_fonts/font = SubResource( 2 )
 text = "Programmer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Container/Creators/Panch"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 92.2839
+margin_top = 11.8857
+margin_right = 419.284
+margin_bottom = 61.8857
+custom_fonts/font = SubResource( 4 )
+text = "Discord: Panch#3505"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -334,12 +364,25 @@ texture = ExtResource( 21 )
 [node name="Label5" type="Label" parent="Container/Creators/Kapden"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 46.2322
-margin_top = -28.3174
-margin_right = 551.232
-margin_bottom = 21.6826
+margin_left = 37.2423
+margin_top = -43.3003
+margin_right = 542.242
+margin_bottom = 6.69969
 custom_fonts/font = SubResource( 2 )
 text = "Music and Sound Design"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Container/Creators/Kapden"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 97.7624
+margin_top = 6.64868
+margin_right = 424.762
+margin_bottom = 56.6487
+custom_fonts/font = SubResource( 4 )
+text = "Discord: Kapden#8418"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -351,10 +394,10 @@ texture = ExtResource( 22 )
 [node name="Label5" type="Label" parent="Container/Creators/Patrice"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 46.7705
-margin_top = -59.375
-margin_right = 363.771
-margin_bottom = -9.375
+margin_left = 134.078
+margin_top = -60.9624
+margin_right = 451.078
+margin_bottom = -10.9624
 custom_fonts/font = SubResource( 2 )
 text = "Programmer"
 __meta__ = {
@@ -364,12 +407,25 @@ __meta__ = {
 [node name="Label6" type="Label" parent="Container/Creators/Patrice"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = 43.4799
-margin_top = 12.6899
-margin_right = 568.48
-margin_bottom = 62.6899
+margin_left = 32.3682
+margin_top = 1.57808
+margin_right = 557.368
+margin_bottom = 51.5781
 custom_fonts/font = SubResource( 2 )
 text = "Writer / Game Dialogues"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Container/Creators/Patrice"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 108.339
+margin_top = 65.4326
+margin_right = 438.339
+margin_bottom = 115.433
+custom_fonts/font = SubResource( 4 )
+text = "Discord: Patrice#7703"
 __meta__ = {
 "_edit_use_anchors_": false
 }

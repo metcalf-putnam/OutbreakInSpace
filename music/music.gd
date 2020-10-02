@@ -4,6 +4,7 @@ var state
 var normal_db
 var fighting_db
 var fade_time = 3
+var menu_db 
 
 var letters_sounds = [
 	preload("res://Dialog/letter-sounds/A Letter.wav"),
@@ -39,6 +40,7 @@ func _ready():
 	state = "normal"
 	normal_db = $Players/MainIntro.volume_db
 	fighting_db = $Players/FightingIntro.volume_db
+	menu_db = $Players/MenuLoop.volume_db
 
 
 func change_state(new_state):
@@ -55,6 +57,9 @@ func change_state(new_state):
 		"fighting":
 			audio_to_play = $Players/FightingIntro
 			volume = fighting_db
+		"menu":
+			audio_to_play = $Players/MenuLoop
+			volume = menu_db
 		"none":
 			fade_current()
 			return
@@ -108,7 +113,14 @@ func _on_Tween_tween_all_completed():
 		"normal":
 			$Players/FightingIntro.stop()
 			$Players/FightingLoop.stop()
+			$Players/MenuLoop.stop()
 		"fighting":
+			$Players/MainIntro.stop()
+			$Players/MainLoop.stop()
+			$Players/MenuLoop.stop()
+		"menu":
+			$Players/FightingIntro.stop()
+			$Players/FightingLoop.stop()
 			$Players/MainIntro.stop()
 			$Players/MainLoop.stop()
 		"none":
@@ -116,4 +128,5 @@ func _on_Tween_tween_all_completed():
 			$Players/FightingLoop.stop()
 			$Players/MainIntro.stop()
 			$Players/MainLoop.stop()
+			$Players/MenuLoop.stop()
 	

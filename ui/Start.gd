@@ -2,7 +2,7 @@ extends NinePatchRect
 
 
 func _ready():
-	Music.change_state("normal")
+	Music.change_state("menu")
 
 
 func _on_Button_pressed():

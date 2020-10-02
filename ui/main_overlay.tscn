@@ -110,8 +110,8 @@ __meta__ = {
 }
 
 [node name="DaysBackground" type="NinePatchRect" parent="."]
-margin_left = 724.0
-margin_right = 1024.0
+margin_left = 647.0
+margin_right = 1022.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 208, 0 )
 mouse_filter = 1
@@ -130,10 +130,10 @@ position = Vector2( 883.427, 26.3357 )
 script = ExtResource( 3 )
 
 [node name="Label" type="Label" parent="Energy"]
-margin_left = -44.2326
+margin_left = -115.233
 margin_top = -5.56217
-margin_right = -4.23258
-margin_bottom = 8.43783
+margin_right = -43.2326
+margin_bottom = 16.4378
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 text = "Energy:"
@@ -143,7 +143,7 @@ __meta__ = {
 
 [node name="Sprites" type="Node2D" parent="Energy"]
 modulate = Color( 0.254902, 0.643137, 0.956863, 1 )
-position = Vector2( 44.0006, 3.56762 )
+position = Vector2( -19.9994, 3.56762 )
 
 [node name="Sprite" type="Sprite" parent="Energy/Sprites"]
 scale = Vector2( 2, 2 )
@@ -169,10 +169,25 @@ position = Vector2( 72, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
+[node name="Sprite6" type="Sprite" parent="Energy/Sprites"]
+position = Vector2( 91, 0 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="Sprite7" type="Sprite" parent="Energy/Sprites"]
+position = Vector2( 109, 0 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="Sprite8" type="Sprite" parent="Energy/Sprites"]
+position = Vector2( 127, 0 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
 [node name="DayCount" type="Label" parent="."]
-margin_left = 751.068
+margin_left = 671.068
 margin_top = 21.0524
-margin_right = 799.068
+margin_right = 719.068
 margin_bottom = 43.0524
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )

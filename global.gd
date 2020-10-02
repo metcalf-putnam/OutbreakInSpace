@@ -4,8 +4,8 @@ var active := true
 var essential_workers := false
 var debug_on := false
 var day := 1
-var energy := 5
-const max_energy := 5
+var energy := 8
+const max_energy := 8
 var new_infections := 0
 var total_infections := 1
 var visuals_on := true
@@ -48,6 +48,7 @@ signal fade_away_explanation
 
 var daily_reports = [] 
 
+
 func _ready():
 	EventHub.connect("day_ended", self, "_on_day_ended")
 	EventHub.connect("start_mini_game", self, "_on_start_mini_game")
@@ -55,6 +56,7 @@ func _ready():
 	EventHub.connect("house_exited", self, "_on_house_exited")
 	CharacterManager.connect("viral_shedding_computed", self, "_on_viral_shedding_computed")
 	EventHub.connect("restart_game", self, "restart_game")
+
 
 func _on_day_ended():
 	print("computing infection spread")
@@ -112,7 +114,6 @@ func add_test_results(data, result):
 		test_results[day + test_time].append(test_dic)
 	else:
 		test_results[day + test_time] = [test_dic]
-	#print(test_results)
 
 
 func increment_cookies():

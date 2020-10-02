@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/circle.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://characters/effects/cloud.png" type="Texture" id=7]
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://characters/effects/Emote.tscn" type="PackedScene" id=9]
+[ext_resource path="res://characters/effects/Full_Cough (1).wav" type="AudioStream" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.9767
@@ -486,7 +487,6 @@ texture = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
-frame = 1
 
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
@@ -494,7 +494,6 @@ frame = 1
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
-frame = 1
 
 [node name="ShedTimer" type="Timer" parent="."]
 
@@ -534,7 +533,7 @@ parameters/idle/blend_position = Vector2( -0.0257703, 0.181224 )
 parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="Cough" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 10 )
 volume_db = 24.0
 max_distance = 800.0
 

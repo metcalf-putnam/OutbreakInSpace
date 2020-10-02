@@ -9,6 +9,7 @@ func _ready():
 	EventHub.connect("tv_dialogue", self, "_on_new_dialogue")
 	EventHub.connect("going_in_house_dialogue", self, "_on_new_door_dialogue")
 	EventHub.connect("going_out_house_dialogue", self, "_on_new_door_dialogue")
+	check_new_reports()
 
 
 func _on_dialogue_finished():
@@ -46,11 +47,14 @@ func update_controls():
 		$TestButton.show()
 	else:
 		$TestButton.hide()
+		
+	check_new_reports()
 
 
 func _on_ReportButton_pressed():
 	$ReportButton.release_focus()
 	EventHub.emit_signal("computer_interaction")
+	Global.report_read = true
 	hide()
 
 
@@ -62,4 +66,11 @@ func _on_SingButton_button_up():
 	EventHub.emit_signal("sing_button_released")
 	Global.songs_sung += 1
 	$SingButton.release_focus()
+
+
+func check_new_reports():
+	if Global.report_read:
+		$ReportButton/Sprite.hide()
+	else:
+		$ReportButton/Sprite.show()
 	

@@ -10,7 +10,7 @@ export var work : String
 export var npc_handle : String
 export (String, FILE, "*.png") var portrait_file
 
-var Events = ["virus_detected", "first_results", "first_positive", "first_death"]
+var Events = ["virus_detected", "first_results", "first_positive", "first_death", "testing_completed"]
 var event
 
 func _ready():
@@ -50,6 +50,11 @@ func get_dialog_file():
 		file_path = get_file_path(event)
 		if file2check.file_exists(file_path):
 			return file_path
+	if Global.testing_completed and !data["event_checks"]["testing_completed"]:
+		event = "testing_completed"
+		file_path = get_file_path(event)
+		if file2check.file_exists(file_path):
+			return file_path
 	if Global.first_results and !data["event_checks"]["first_results"]:
 		event = "first_results"
 		file_path = get_file_path(event)
@@ -75,7 +80,6 @@ func get_file_path(event_name):
 
 
 func _on_Interactable_dialogue_started():
-	print("this npc's data: ", data)
 	var event_dialogue = get_dialog_file()
 	if event_dialogue:
 		EventHub.emit_signal("new_dialogue", event_dialogue, full_name)

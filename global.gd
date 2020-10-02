@@ -1,7 +1,7 @@
 extends Node
 
 var active := true
-var essential_workers := false
+var essential_workers := true
 var debug_on := false
 var day := 1
 var energy := 8
@@ -49,6 +49,8 @@ signal fade_away_explanation
 var d1s_tested := 0
 var idk_quests := false
 var daily_reports = [] 
+var helmet_mandate := true
+var testing_completed := false
 
 
 func _ready():
@@ -81,6 +83,8 @@ func restart_game(boolean):
 	conversations_had = 0
 	songs_sung = 0
 	cookies = 0
+	helmet_mandate = false
+	essential_workers = false
 	
 	assert(get_tree().change_scene("res://interiors/Housescene.tscn") == OK)
 
@@ -241,7 +245,8 @@ func generate_report(add_new_positives):
 		for positive in add_new_positives:
 			var test_dic = {"data": positive, "result": true}
 			if not positive_characters.has(test_dic["data"]):
-					positive_characters.append(test_dic["data"])
+				first_positive = true
+				positive_characters.append(test_dic["data"])
 			new_test_result_table += format_result(test_dic)
 		new_test_result_table += "[/table]"
 		report += new_test_result_table
@@ -332,4 +337,11 @@ func _on_character_tested(character_data):
 
 func activate_idk_quests():
 	idk_quests = true
-	
+
+
+func start_helmet_mandate():
+	helmet_mandate = true
+
+
+func start_essential_worker_mandate():
+	essential_workers = true

@@ -43,6 +43,7 @@ func update_quests():
 	$List/TestingQuest/Status.bbcode_text = "(" + str(Global.d1s_tested) + "/8)" 
 	if Global.d1s_tested == 8:
 		strikeout_quest($List/TestingQuest)
+		Global.testing_completed = true
 	if Global.player_helmet:
 		strikeout_quest($List/HelmetQuest)
 	$List/ConvinceQuest/Status.bbcode_text = "(" + str(Global.npcs_convinced) + "/3)"

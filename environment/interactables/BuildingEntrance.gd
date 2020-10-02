@@ -52,6 +52,8 @@ func spawn_npc():
 	# Stay home if tested positive (all should occupants stay home instead)?
 	if characters_inside[0] in Global.positive_characters and characters_inside[0]["is_infected"]:
 		return
+	if characters_inside[0]["race"] == "Blues" and Global.essential_workers:
+		return
 	var npc = characters_inside.pop_front()
 	EventHub.emit_signal("building_exited", npc, type)
 	characters_inside.erase(npc)

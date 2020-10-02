@@ -85,6 +85,8 @@ func send_npcs_home():
 func spawn_npc(npc_data, location : String):
 	if npc_data["health"] <= 0:
 		return
+	if Global.helmet_mandate:
+		npc_data["has_helmet"] = true
 	var npc = NPC.instance()
 	$YSort/npcs.add_child(npc)
 	npc.init(npc_data)

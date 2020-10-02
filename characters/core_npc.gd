@@ -95,6 +95,7 @@ func _on_dialogue_finished():
 		data["has_helmet"] = true
 		if npc_handle == "work_friend":
 			CharacterManager.player["has_helmet"] = true
+			Global.player_helmet = true
 		Global.convinced = false
 		Global.npcs_convinced += 1
 		update_sprite()

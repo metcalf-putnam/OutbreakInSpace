@@ -1,7 +1,7 @@
 extends Node
 
 var active := true
-var essential_workers := true
+var essential_workers := false
 var debug_on := false
 var day := 1
 var energy := 8
@@ -49,7 +49,7 @@ signal fade_away_explanation
 var d1s_tested := 0
 var idk_quests := false
 var daily_reports = [] 
-var helmet_mandate := true
+var helmet_mandate := false
 var testing_completed := false
 
 

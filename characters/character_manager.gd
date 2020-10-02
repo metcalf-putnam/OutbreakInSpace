@@ -225,7 +225,7 @@ func sort_npcs(list, type, dict) -> Dictionary:
 			continue
 		if type == "work" and (Global.positive_characters.has(npc) or npc["health"] < 50):
 			continue
-		if type == "work" and Global.essential_workers and npc["race"] == "Blues":
+		if type == "work" and Global.essential_workers and (npc.has("race") and npc["race"] == "Blues"):
 			continue
 		if dict.has(npc[type]):
 			dict[npc[type]].append(npc)

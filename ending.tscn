@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://environment/Map.tscn" type="PackedScene" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://ui/Check_Reports.png" type="Texture" id=7]
 [ext_resource path="res://ui/Check_Reports_Hover.png" type="Texture" id=8]
 [ext_resource path="res://ui/Check_Reports_Pressed.png" type="Texture" id=9]
+[ext_resource path="res://music/Victory_Theme.ogg" type="AudioStream" id=10]
+[ext_resource path="res://music/Failure_Ambience.ogg" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -112,6 +114,16 @@ margin_right = 139.021
 margin_bottom = 49.4853
 custom_fonts/font = SubResource( 3 )
 text = "Acknowledge"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="FailureAmbiance" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 [connection signal="gui_input" from="RichTextLabel" to="." method="_on_RichTextLabel_gui_input"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

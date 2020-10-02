@@ -44,9 +44,11 @@ func _on_dialogue_finished():
 func determine_ending():
 	if Global.total_infections < 5 and Global.dead_characters.size() > 0:
 		bad_ending = false
+		$VictorySound.play()
 		textbox.append_bbcode(good_ending_text)
 		$ColorRect.modulate = good_modulate
 	else:
+		$FailureAmbiance.play()
 		bad_ending = true
 		textbox.append_bbcode(bad_ending_text)
 		$ColorRect.modulate = bad_modulate

@@ -32,7 +32,7 @@ func init():
 	first_pattern = "fire-2468"
 	current_pattern = first_pattern
 	
-	health = 50
+	health = 100
 	$HealthBar.max_value = health
 	$AnimationPlayer.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")
 	$HitAnimation.connect("animation_finished", self, "_on_HitAnimation_animation_finished")

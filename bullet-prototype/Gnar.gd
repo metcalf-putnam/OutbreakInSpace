@@ -11,13 +11,13 @@ onready var viruses = {
 		"bonus_completed_time": 100
 	},
 	"MEDIUM": {
-		"scene": preload("res://bullet-prototype/enemies/knuk/Knuk.tscn"),
+		"scene": preload("res://bullet-prototype/enemies/shmu/Shmu.tscn"),
 		"extraction_points": 6,
 		"extraction_multiplier": 2,
 		"bonus_completed_time": 200
 	},
 	"HARD": {
-		"scene": preload("res://bullet-prototype/enemies/shmu/Shmu.tscn"),
+		"scene": preload("res://bullet-prototype/enemies/knuk/Knuk.tscn"),
 		"extraction_points": 8,
 		"extraction_multiplier": 3,
 		"bonus_completed_time": 300

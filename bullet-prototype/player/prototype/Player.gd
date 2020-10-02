@@ -8,7 +8,7 @@ onready var hit = $hit
 export(int) var speed = 250
 export(PackedScene) var bullet_scn = preload("res://bullet-prototype/bullets/small_bullet/SmallBullet.tscn")
 export(int) var shoot_delay = 1
-export(int) var max_ammo = 40
+export(int) var max_ammo = 60
 
 var health = 3
 var current_ammo = max_ammo

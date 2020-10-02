@@ -466,7 +466,7 @@ tracks/36/keys = {
 "times": PoolRealArray( 0, 4.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ false, true ]
+"values": [ false, false ]
 }
 tracks/37/type = "value"
 tracks/37/path = NodePath("HealthBar:rect_scale")
@@ -807,6 +807,7 @@ emission_sphere_radius = 40.0
 gravity = Vector2( 0, 40 )
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
 margin_left = -45.0
 margin_top = -48.0
 margin_right = 45.0
@@ -837,9 +838,7 @@ bus = "Virus SFX"
 [node name="Hit" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 13 )
 volume_db = -1.0
-bus = "Drum Bus"
 
 [node name="Entrance" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 14 )
 volume_db = -1.0
-bus = "Drum Bus"

@@ -153,7 +153,7 @@ var mini_game_scn = preload("res://bullet-prototype/Gnar.tscn")
 var player_settings = {
 	"is_skip": false,
 	"mode": "EASY",
-	"ammo": 40,
+	"ammo": 60,
 	"shield": 3,
 	"extraction_points": 0,
 	"total_extraction_points": 0,

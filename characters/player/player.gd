@@ -3,8 +3,12 @@ class_name Player
 export var is_contagious = true
 export var is_infected = true
 var last_direction = Vector2()
+
 export (String, FILE, "*.png") var sprite_file
 export (String, FILE, "*.png") var helmet_file
+
+var running_speed = 150
+var walking_speed = 100
 
 
 func _ready():
@@ -33,7 +37,11 @@ func _physics_process(_delta):
 	var direction = Vector2()
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	direction.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-
+	
+	if get_tree().get_current_scene().get_name() != "House":
+		speed = running_speed if Input.get_action_strength("run")  else walking_speed
+	
+	
 	if direction.length() > 0 and state == State.ACTIVE:
 		animate_sprite(direction)
 		last_direction = direction

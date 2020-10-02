@@ -24,7 +24,7 @@ func init():
 	first_pattern = "fire-246811"
 	current_pattern = first_pattern
 	
-	health = 50
+	health = 100
 	threshold_distance = 250
 	$HealthBar.max_value = health
 	$AnimationPlayer.connect("animation_finished", self, "_on_AnimationPlayer_animation_finished")

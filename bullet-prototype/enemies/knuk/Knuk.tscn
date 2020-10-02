@@ -693,7 +693,6 @@ position = Vector2( 0, -0.225937 )
 shape = SubResource( 1 )
 
 [node name="SpawnerManager" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="1" parent="SpawnerManager" instance=ExtResource( 6 )]
 position = Vector2( 5.71985, -18.6793 )
@@ -769,10 +768,9 @@ is_running = false
 [node name="10" parent="SpawnerManager" instance=ExtResource( 6 )]
 position = Vector2( 0, 0 )
 bullet_scn = ExtResource( 7 )
-total_bullet_ammo = 200
 bullets_per_array = 4
 individual_array_spread = 270.0
-fire_rate = 30
+fire_rate = 5
 bullet_speed = 400
 turnaround_in_seconds = 6
 bullet_lifetime = 6
@@ -850,9 +848,7 @@ bus = "Virus SFX"
 [node name="Hit" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 13 )
 volume_db = -1.0
-bus = "Drum Bus"
 
 [node name="Entrance" type="AudioStreamPlayer2D" parent="Audios"]
 stream = ExtResource( 14 )
 volume_db = -1.0
-bus = "Drum Bus"

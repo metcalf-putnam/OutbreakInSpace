@@ -77,9 +77,11 @@ func restart_game(boolean):
 	reset_daily_values(true)
 	total_infections = 1
 	day = 1
+	d1s_tested = 0
 	positive_characters = []
 	daily_reports = []
 	dead_characters = []
+	testing_completed = false
 	conversations_had = 0
 	songs_sung = 0
 	cookies = 0

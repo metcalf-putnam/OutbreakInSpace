@@ -54,6 +54,8 @@ func spawn_npc():
 		return
 	if characters_inside[0]["race"] == "Blues" and Global.essential_workers:
 		return
+	if characters_inside[0]["type"] == "Child" and Global.essential_workers:
+		return 
 	var npc = characters_inside.pop_front()
 	EventHub.emit_signal("building_exited", npc, type)
 	characters_inside.erase(npc)

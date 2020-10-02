@@ -31,11 +31,11 @@ font_data = ExtResource( 3 )
 size = 72
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 48
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 20.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Container:position")
@@ -321,7 +321,7 @@ margin_left = 82.0258
 margin_top = 7.8364
 margin_right = 409.026
 margin_bottom = 57.8364
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Discord: JuanLr#6920"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -351,7 +351,7 @@ margin_left = 92.2839
 margin_top = 11.8857
 margin_right = 419.284
 margin_bottom = 61.8857
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Discord: Panch#3505"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -381,7 +381,7 @@ margin_left = 97.7624
 margin_top = 6.64868
 margin_right = 424.762
 margin_bottom = 56.6487
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Discord: Kapden#8418"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -424,7 +424,7 @@ margin_left = 108.339
 margin_top = 65.4326
 margin_right = 438.339
 margin_bottom = 115.433
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Discord: Patrice#7703"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -445,5 +445,5 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Credits"
-anims/Credits = SubResource( 3 )
+anims/Credits = SubResource( 4 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

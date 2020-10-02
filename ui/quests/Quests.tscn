@@ -17,7 +17,7 @@ font_data = ExtResource( 1 )
 margin_left = 622.429
 margin_top = 69.4901
 margin_right = 1022.43
-margin_bottom = 115.49
+margin_bottom = 449.49
 texture = ExtResource( 6 )
 patch_margin_left = 5
 patch_margin_top = 5
@@ -29,20 +29,20 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 130.68
+margin_left = 98.68
 margin_top = 13.5919
-margin_right = 200.68
+margin_right = 228.68
 margin_bottom = 53.5919
 custom_fonts/font = SubResource( 1 )
-text = "Quests"
+text = "Quests/Hints"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureButton" type="TextureButton" parent="Label"]
-margin_left = 80.809
+margin_left = 136.809
 margin_top = -4.81554
-margin_right = 138.809
+margin_right = 194.809
 margin_bottom = 35.1845
 rect_scale = Vector2( 1, 0.72 )
 toggle_mode = true
@@ -149,55 +149,78 @@ bbcode_enabled = true
 bbcode_text = "(0/9)"
 text = "(0/9)"
 
-[node name="IdkQuest1" type="HBoxContainer" parent="List"]
+[node name="Spacer" type="HBoxContainer" parent="List"]
 margin_top = 87.0
 margin_right = 390.0
 margin_bottom = 112.0
-rect_min_size = Vector2( 0, 25 )
 custom_constants/separation = 0
 
-[node name="Description" type="RichTextLabel" parent="List/IdkQuest1"]
+[node name="Description" type="RichTextLabel" parent="List/Spacer"]
 margin_right = 390.0
 margin_bottom = 25.0
-rect_min_size = Vector2( 296, 0 )
+rect_min_size = Vector2( 296, 25 )
 rect_clip_content = false
 size_flags_horizontal = 3
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "Try to test coughing people??"
-text = "Try to test coughing people??"
 
-[node name="IdkQuest2" type="HBoxContainer" parent="List"]
+[node name="idkQuests" type="VBoxContainer" parent="List"]
 margin_top = 116.0
 margin_right = 390.0
-margin_bottom = 141.0
-custom_constants/separation = 0
+margin_bottom = 320.0
 
-[node name="Description" type="RichTextLabel" parent="List/IdkQuest2"]
+[node name="HintLabel" type="Label" parent="List/idkQuests"]
 margin_right = 390.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 296, 25 )
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "Convince mayor to do something???"
-text = "Convince mayor to do something???"
+margin_bottom = 22.0
+custom_fonts/font = SubResource( 1 )
+text = "Hints:"
 
-[node name="IdkQuest3" type="HBoxContainer" parent="List"]
-margin_top = 145.0
+[node name="HintLabel2" type="Label" parent="List/idkQuests"]
+margin_top = 26.0
 margin_right = 390.0
-margin_bottom = 170.0
-custom_constants/separation = 0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 1 )
+text = "Make sure no one dies (use gnar)"
 
-[node name="Description" type="RichTextLabel" parent="List/IdkQuest3"]
+[node name="Label" type="Label" parent="List/idkQuests"]
+margin_top = 52.0
 margin_right = 390.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 296, 25 )
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "Make sure no one dies (use gnar)????"
-text = "Make sure no one dies (use gnar)????"
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "          -See mini prof when people are sick"
+
+[node name="Label4" type="Label" parent="List/idkQuests"]
+margin_top = 78.0
+margin_right = 390.0
+margin_bottom = 100.0
+custom_fonts/font = SubResource( 1 )
+text = "Test people who might be infected"
+
+[node name="Label6" type="Label" parent="List/idkQuests"]
+margin_top = 104.0
+margin_right = 390.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 1 )
+text = "          -Coughing people (may take time)"
+
+[node name="Label7" type="Label" parent="List/idkQuests"]
+margin_top = 130.0
+margin_right = 390.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 1 )
+text = "          -Contacts of infected people"
+
+[node name="Label8" type="Label" parent="List/idkQuests"]
+margin_top = 156.0
+margin_right = 390.0
+margin_bottom = 178.0
+custom_fonts/font = SubResource( 1 )
+text = "Convince mayor to take action"
+
+[node name="Label5" type="Label" parent="List/idkQuests"]
+margin_top = 182.0
+margin_right = 390.0
+margin_bottom = 204.0
+custom_fonts/font = SubResource( 1 )
+text = "          -May be stubborn"
 [connection signal="toggled" from="Label/TextureButton" to="." method="_on_TextureButton_toggled"]

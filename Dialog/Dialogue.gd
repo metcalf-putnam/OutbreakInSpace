@@ -136,6 +136,7 @@ func test_character(character_array, location_name = null):
 	emit_signal("player_controls_toggle", true)
 	$PopUp.play()
 	$Text.show()
+	$Text.visible_characters = -1
 	if !location_name:
 		$Name_NinePatchRect.hide()
 	else:

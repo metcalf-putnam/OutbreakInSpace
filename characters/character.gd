@@ -27,8 +27,8 @@ enum State {SINGING, DIALOGUE, ACTIVE}
 var state = State.ACTIVE
 var rng = RandomNumberGenerator.new()
 const testing_suffix_days := ", last tested: Day "
-const cough_min = 10
-const cough_max = 30
+const cough_min = 5
+const cough_max = 15
 var sing_toggled := false
 
 

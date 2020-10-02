@@ -46,13 +46,13 @@ func generate_characters():
 	
 	create_family("D1", "Reptiles", 2, 0, 0, "Flarf")
 	create_family("D1", "Reptiles", 2, 0, 0, "Snuktuk")
-	create_family("D1", "Reptiles", 3, 0, 1, "Grurf")
-	create_family("D2", "Reptiles", 1, 0, 0, "Klarmore")
+	create_family("D1", "Reptiles", 3, 1, 1, "Grurf")
+	create_family("D2", "Reptiles", 2, 0, 0, "Klarmore")
 	create_family("D2", "Reptiles", 1, 0, 0, "Narkto")
-	create_family("D3", "Reptiles", 3, 1, 0, "Shmortl")
+	create_family("D3", "Reptiles", 3, 1, 0, "Pufto")
 	create_family("D3", "Reptiles", 1, 0, 0, "Shmortl")
 	create_family("D4", "Reptiles", 2, 0, 0, "Duckto")
-	create_family("D4", "Reptiles", 1, 0, 0, "Duckto")
+	create_family("D4", "Reptiles", 2, 0, 0, "Juapa")
 	
 	create_family("S1", "Blues", 1, 2, 1, "Snorgyl")
 
@@ -225,7 +225,9 @@ func sort_npcs(list, type, dict) -> Dictionary:
 			continue
 		if type == "work" and (Global.positive_characters.has(npc) or npc["health"] < 50):
 			continue
-		if type == "work" and Global.essential_workers and (npc.has("race") and npc["race"] == "Blues"):
+		if type == "work" and Global.essential_workers and npc.has("race") and npc["race"] == "Blues":
+			continue
+		if type == "work" and Global.essential_workers and npc.has("type") and npc["type"] == "Child":
 			continue
 		if dict.has(npc[type]):
 			dict[npc[type]].append(npc)

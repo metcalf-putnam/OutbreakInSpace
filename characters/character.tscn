@@ -486,6 +486,7 @@ texture = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
+frame = 1
 
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
@@ -493,6 +494,7 @@ hframes = 4
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
+frame = 1
 
 [node name="ShedTimer" type="Timer" parent="."]
 
@@ -533,8 +535,8 @@ parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="Cough" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
-volume_db = -13.0
-max_distance = 500.0
+volume_db = 24.0
+max_distance = 800.0
 
 [node name="Sing" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 6 )

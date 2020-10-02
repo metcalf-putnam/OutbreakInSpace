@@ -2,6 +2,9 @@ extends Node2D
 
 var credits_finished = false
 
+func _ready():
+	Music.change_state("normal")
+
 func _on_AnimationPlayer_animation_finished(anim_name):
 	credits_finished = true
 	$Continue.show()

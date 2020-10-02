@@ -1,6 +1,6 @@
 extends NinePatchRect
 var completed_modulate = Color(0.58, 0.58, 0.58)
-var full_size = 225
+var full_size = 387
 var mid_size = 137
 var collapsed_size = 46
 var all_quests := false
@@ -31,22 +31,18 @@ func update_quests():
 		
 	if Global.idk_quests:
 		all_quests = true
-		$List/IdkQuest1.show()
-		$List/IdkQuest2.show()
-		$List/IdkQuest3.show()
+		$List/idkQuests.show()
 	else:
 		all_quests = false
-		$List/IdkQuest1.hide()
-		$List/IdkQuest2.hide()
-		$List/IdkQuest3.hide()
+		$List/idkQuests.hide()
 		
-	$List/TestingQuest/Status.bbcode_text = "(" + str(Global.d1s_tested) + "/8)" 
-	if Global.d1s_tested == 8:
+	$List/TestingQuest/Status.bbcode_text = "(" + str(min(Global.d1s_tested, 8)) + "/8)" 
+	if Global.d1s_tested >= 8:
 		strikeout_quest($List/TestingQuest)
 		Global.testing_completed = true
 	if Global.player_helmet:
 		strikeout_quest($List/HelmetQuest)
-	$List/ConvinceQuest/Status.bbcode_text = "(" + str(Global.npcs_convinced) + "/3)"
+	$List/ConvinceQuest/Status.bbcode_text = "(" + str(min(Global.npcs_convinced, 3)) + "/3)"
 	if Global.npcs_convinced >= 3:
 		strikeout_quest($List/ConvinceQuest)
 	

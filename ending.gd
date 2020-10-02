@@ -24,7 +24,7 @@ func start_overlord_dialogue():
 		EventHub.emit_signal("new_dialogue", failure_dialog_file, "???")
 	else:
 		EventHub.emit_signal("new_dialogue", success_dialog_file, "Overlord Aso")
-		$VictoryLoop.play()
+		Music.change_state("menu")
 	$RichTextLabel.hide()
 
 
@@ -41,7 +41,7 @@ func _on_dialogue_finished():
 
 
 func determine_ending():
-	if Global.total_infections < 5 and Global.dead_characters.size() > 0:
+	if Global.total_infections < 5 and Global.dead_characters.size() == 0:
 		bad_ending = false
 		$VictorySound.play()
 		textbox.append_bbcode(good_ending_text)

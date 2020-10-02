@@ -16,7 +16,7 @@
 [ext_resource path="res://environment/interactables/circle.png" type="Texture" id=14]
 [ext_resource path="res://ui/quests/Quests.tscn" type="PackedScene" id=15]
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -37,7 +37,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
@@ -136,7 +136,7 @@ margin_left = -115.233
 margin_top = -5.56217
 margin_right = -43.2326
 margin_bottom = 16.4378
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 text = "Energy:"
 __meta__ = {
@@ -191,7 +191,7 @@ margin_left = 655.068
 margin_top = 21.0524
 margin_right = 703.068
 margin_bottom = 43.0524
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 text = "Day 1"
 __meta__ = {
@@ -201,7 +201,7 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade_in"
 anims/fade_away_explanation = SubResource( 2 )
-anims/fade_in = SubResource( 5 )
+anims/fade_in = SubResource( 3 )
 anims/fade_to_black = SubResource( 4 )
 
 [node name="Button" type="Button" parent="."]
@@ -211,7 +211,7 @@ margin_top = 16.0576
 margin_right = 1006.4
 margin_bottom = 44.0576
 mouse_filter = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "End Day"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -223,7 +223,7 @@ margin_left = 56.693
 margin_top = 15.7847
 margin_right = 224.693
 margin_bottom = 37.7847
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Overlord Options:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -235,7 +235,7 @@ margin_top = -2.66971
 margin_right = 612.488
 margin_bottom = 25.3303
 focus_mode = 1
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 toggle_mode = true
 enabled_focus_mode = 1
 text = "Masks on/off"
@@ -248,7 +248,7 @@ margin_left = 201.515
 margin_top = -2.0045
 margin_right = 443.515
 margin_bottom = 25.9955
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 toggle_mode = true
 text = "Infection Visual on/off"
 __meta__ = {
@@ -261,7 +261,7 @@ margin_left = 957.376
 margin_top = 64.2751
 margin_right = 997.376
 margin_bottom = 104.275
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -297,7 +297,7 @@ margin_left = 6.345
 margin_top = 8.73596
 margin_right = 52.345
 margin_bottom = 48.736
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Test"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -316,7 +316,7 @@ margin_left = 8.909
 margin_top = 8.5
 margin_right = 48.909
 margin_bottom = 48.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Sing"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -335,7 +335,7 @@ margin_left = 6.0
 margin_top = 8.5
 margin_right = 146.0
 margin_bottom = 48.5
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 1 )
 text = "Check Reports"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -346,15 +346,6 @@ modulate = Color( 0.839216, 0.34902, 0.34902, 1 )
 position = Vector2( 2.51453, 1.57489 )
 texture = ExtResource( 14 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color( 0, 0, 0, 0 )
-margin_right = 1024.0
-margin_bottom = 600.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -363,6 +354,15 @@ __meta__ = {
 }
 
 [node name="Quests" parent="." instance=ExtResource( 15 )]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color( 0, 0, 0, 0 )
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
 [connection signal="toggled" from="Debug/MaskButton" to="." method="_on_MaskButton_toggled"]
 [connection signal="toggled" from="Debug/Visuals_Debug" to="." method="_on_Visuals_Debug_toggled"]

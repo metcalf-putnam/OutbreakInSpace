@@ -13,10 +13,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[node name="Quests" type="CanvasLayer"]
-script = ExtResource( 2 )
-
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="Quests" type="NinePatchRect"]
 margin_left = 622.429
 margin_top = 69.4901
 margin_right = 1022.43
@@ -26,155 +23,21 @@ patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
 patch_margin_bottom = 5
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 753.109
-margin_top = 83.082
-margin_right = 823.109
-margin_bottom = 123.082
+margin_left = 130.68
+margin_top = 13.5919
+margin_right = 200.68
+margin_bottom = 53.5919
 custom_fonts/font = SubResource( 1 )
 text = "Quests"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="List" type="VBoxContainer" parent="Label"]
-margin_left = -119.073
-margin_top = 33.1416
-margin_right = 270.927
-margin_bottom = 433.142
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="TestingQuest" type="HBoxContainer" parent="Label/List"]
-margin_right = 390.0
-margin_bottom = 25.0
-custom_constants/separation = 0
-
-[node name="Description" type="RichTextLabel" parent="Label/List/TestingQuest"]
-margin_right = 301.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 301, 0 )
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "Test all residents who live in D1"
-text = "Test all residents who live in D1"
-
-[node name="Status" type="RichTextLabel" parent="Label/List/TestingQuest"]
-margin_left = 301.0
-margin_right = 390.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 20, 25 )
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "(2/9)"
-text = "(2/9)"
-
-[node name="HelmetQuest" type="HBoxContainer" parent="Label/List"]
-margin_top = 29.0
-margin_right = 390.0
-margin_bottom = 54.0
-custom_constants/separation = 8
-
-[node name="Description" type="RichTextLabel" parent="Label/List/HelmetQuest"]
-margin_right = 390.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 308, 25 )
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "Get your helmet from work"
-text = "Get your helmet from work"
-
-[node name="ConvinceQuest" type="HBoxContainer" parent="Label/List"]
-margin_top = 58.0
-margin_right = 390.0
-margin_bottom = 83.0
-custom_constants/separation = 0
-
-[node name="Description" type="RichTextLabel" parent="Label/List/ConvinceQuest"]
-margin_right = 325.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 325, 0 )
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "Convince people to wear helmets"
-text = "Convince people to wear helmets"
-
-[node name="Status" type="RichTextLabel" parent="Label/List/ConvinceQuest"]
-margin_left = 325.0
-margin_right = 390.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 45, 25 )
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "(0/9)"
-text = "(0/9)"
-
-[node name="IdkQuest1" type="HBoxContainer" parent="Label/List"]
-margin_top = 87.0
-margin_right = 390.0
-margin_bottom = 112.0
-rect_min_size = Vector2( 0, 25 )
-custom_constants/separation = 0
-
-[node name="Description" type="RichTextLabel" parent="Label/List/IdkQuest1"]
-margin_right = 390.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 296, 0 )
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "Try to test coughing people??"
-text = "Try to test coughing people??"
-
-[node name="IdkQuest2" type="HBoxContainer" parent="Label/List"]
-margin_top = 116.0
-margin_right = 390.0
-margin_bottom = 141.0
-custom_constants/separation = 0
-
-[node name="Description" type="RichTextLabel" parent="Label/List/IdkQuest2"]
-margin_right = 390.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 296, 25 )
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "Convince mayor to do something???"
-text = "Convince mayor to do something???"
-
-[node name="IdkQuest3" type="HBoxContainer" parent="Label/List"]
-margin_top = 145.0
-margin_right = 390.0
-margin_bottom = 170.0
-custom_constants/separation = 0
-
-[node name="Description" type="RichTextLabel" parent="Label/List/IdkQuest3"]
-margin_right = 390.0
-margin_bottom = 25.0
-rect_min_size = Vector2( 296, 25 )
-rect_clip_content = false
-size_flags_horizontal = 3
-custom_fonts/normal_font = SubResource( 1 )
-bbcode_enabled = true
-bbcode_text = "Make sure no one dies????"
-text = "Make sure no one dies????"
 
 [node name="TextureButton" type="TextureButton" parent="Label"]
 margin_left = 80.809
@@ -202,4 +65,139 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="List" type="VBoxContainer" parent="."]
+margin_left = 11.607
+margin_top = 46.7335
+margin_right = 401.607
+margin_bottom = 446.734
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestingQuest" type="HBoxContainer" parent="List"]
+margin_right = 390.0
+margin_bottom = 25.0
+custom_constants/separation = 0
+
+[node name="Description" type="RichTextLabel" parent="List/TestingQuest"]
+margin_right = 301.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 301, 0 )
+rect_clip_content = false
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Test all residents who live in D1"
+text = "Test all residents who live in D1"
+
+[node name="Status" type="RichTextLabel" parent="List/TestingQuest"]
+margin_left = 301.0
+margin_right = 390.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 20, 25 )
+rect_clip_content = false
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "(2/9)"
+text = "(2/9)"
+
+[node name="HelmetQuest" type="HBoxContainer" parent="List"]
+margin_top = 29.0
+margin_right = 390.0
+margin_bottom = 54.0
+custom_constants/separation = 8
+
+[node name="Description" type="RichTextLabel" parent="List/HelmetQuest"]
+margin_right = 390.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 308, 25 )
+rect_clip_content = false
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Get your helmet from work"
+text = "Get your helmet from work"
+
+[node name="ConvinceQuest" type="HBoxContainer" parent="List"]
+margin_top = 58.0
+margin_right = 390.0
+margin_bottom = 83.0
+custom_constants/separation = 0
+
+[node name="Description" type="RichTextLabel" parent="List/ConvinceQuest"]
+margin_right = 325.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 325, 0 )
+rect_clip_content = false
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Convince people to wear helmets"
+text = "Convince people to wear helmets"
+
+[node name="Status" type="RichTextLabel" parent="List/ConvinceQuest"]
+margin_left = 325.0
+margin_right = 390.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 45, 25 )
+rect_clip_content = false
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "(0/9)"
+text = "(0/9)"
+
+[node name="IdkQuest1" type="HBoxContainer" parent="List"]
+margin_top = 87.0
+margin_right = 390.0
+margin_bottom = 112.0
+rect_min_size = Vector2( 0, 25 )
+custom_constants/separation = 0
+
+[node name="Description" type="RichTextLabel" parent="List/IdkQuest1"]
+margin_right = 390.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 296, 0 )
+rect_clip_content = false
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Try to test coughing people??"
+text = "Try to test coughing people??"
+
+[node name="IdkQuest2" type="HBoxContainer" parent="List"]
+margin_top = 116.0
+margin_right = 390.0
+margin_bottom = 141.0
+custom_constants/separation = 0
+
+[node name="Description" type="RichTextLabel" parent="List/IdkQuest2"]
+margin_right = 390.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 296, 25 )
+rect_clip_content = false
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Convince mayor to do something???"
+text = "Convince mayor to do something???"
+
+[node name="IdkQuest3" type="HBoxContainer" parent="List"]
+margin_top = 145.0
+margin_right = 390.0
+margin_bottom = 170.0
+custom_constants/separation = 0
+
+[node name="Description" type="RichTextLabel" parent="List/IdkQuest3"]
+margin_right = 390.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 296, 25 )
+rect_clip_content = false
+size_flags_horizontal = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Make sure no one dies (use gnar)????"
+text = "Make sure no one dies (use gnar)????"
 [connection signal="toggled" from="Label/TextureButton" to="." method="_on_TextureButton_toggled"]

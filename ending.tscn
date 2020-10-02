@@ -125,8 +125,10 @@ volume_db = -10.0
 
 [node name="FailureAmbiance" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+bus = "Music"
 
 [node name="VictoryLoop" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+bus = "Music"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

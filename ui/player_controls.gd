@@ -25,7 +25,7 @@ func _on_new_door_dialogue():
 	hide()
 	
 
-func _on_testing_character(_characters):
+func _on_testing_character(_characters, _name):
 	print("inside testing character")
 	hide()
 

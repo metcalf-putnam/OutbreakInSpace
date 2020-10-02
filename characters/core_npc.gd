@@ -33,6 +33,8 @@ func _ready():
 		data["event_checks"] = {}
 		for e in Events:
 			data["event_checks"][e] = false
+	if Global.helmet_mandate:
+		data["has_helmet"] = true
 	check_special_dialog()
 	update_testing_label()
 	if Global.first_lab_visit and npc_handle == "granny":

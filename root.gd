@@ -20,16 +20,13 @@ func _ready():
 		Global.show_positives(additional_health, Global.player_settings.character_to_help_data)
 		
 	spawn_player()
-	if Global.energy <= lower_energy_limit:
-		return
 	
 	var building_occupy_type
 	
 	# Middle of day, everyone at work (if applicable)
 	if Global.energy > lower_energy_limit and Global.energy < Global.max_energy:
 		building_occupy_type = "work"
-	# Start of day, everyone at home
-	elif Global.energy == Global.max_energy:
+	else:
 		building_occupy_type = "home"
 		
 	for npc in CharacterManager.npcs:
@@ -45,8 +42,8 @@ func _ready():
 				else:
 					spawn_npc(npc, "wander")
 					yield(get_tree().create_timer(0.75), "timeout")
-
-	EventHub.emit_signal("leave_building", building_occupy_type)
+	if Global.energy > 0:
+		EventHub.emit_signal("leave_building", building_occupy_type)
 
 
 func validate_character_status(data):

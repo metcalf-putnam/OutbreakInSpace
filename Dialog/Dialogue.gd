@@ -71,14 +71,17 @@ func _process(delta):
 						if len(characters) <= i:
 							cancel_test()
 						else:
-							if characters[i] is KinematicBody2D:
-								characters[i].test()
-								EventHub.emit_signal("character_tested", characters[i].data)
+							if Global.energy <= 0:
+								decline_test()
 							else:
-								characters[i]["last_tested"] = Global.day
-								Global.add_test_results(characters[i], characters[i]["is_infected"])
-								EventHub.emit_signal("character_tested", characters[i])
-							confirm_test($Buttons.get_child(i).get_text())
+								if characters[i] is KinematicBody2D:
+									characters[i].test()
+									EventHub.emit_signal("character_tested", characters[i].data)
+								else:
+									characters[i]["last_tested"] = Global.day
+									Global.add_test_results(characters[i], characters[i]["is_infected"])
+									EventHub.emit_signal("character_tested", characters[i])
+								confirm_test($Buttons.get_child(i).get_text())
 						clear_buttons()
 						$Space_NinePatchRect.show()
 			State.HOUSE:
@@ -163,11 +166,7 @@ func test_character(character_array, location_name = null):
 		is_final = true
 		$Space_NinePatchRect.show()
 		return
-	elif Global.player_can_test and Global.energy <= 0:
-		$Text.bbcode_text = "Insufficient energy to test"
-		is_final = true
-		$Space_NinePatchRect.show()
-		return
+
 	else:
 		$Text.bbcode_text = testing_text
 		$Space_NinePatchRect.hide()
@@ -216,6 +215,12 @@ func confirm_test(name_tested : String):
 
 func cancel_test():
 	$Text.bbcode_text = "no one was been tested"
+	is_final = true
+	get_tree().paused = false
+
+
+func decline_test():
+	$Text.bbcode_text = "insufficient energy to test"
 	is_final = true
 	get_tree().paused = false
 

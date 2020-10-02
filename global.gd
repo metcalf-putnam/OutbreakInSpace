@@ -39,6 +39,8 @@ var dead_characters = []
 var overlord_day := 11
 var convinced := false
 var npcs_convinced := 0
+var conversations_had := 0
+var songs_sung := 0
 
 signal singing_lesson
 signal overlord_discovery
@@ -70,6 +72,11 @@ func restart_game(boolean):
 	day = 1
 	positive_characters = []
 	daily_reports = []
+	dead_characters = []
+	conversations_had = 0
+	songs_sung = 0
+	cookies = 0
+	
 	assert(get_tree().change_scene("res://interiors/Housescene.tscn") == OK)
 
 

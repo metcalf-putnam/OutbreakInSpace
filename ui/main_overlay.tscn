@@ -14,7 +14,7 @@
 [ext_resource path="res://ui/Check_Reports_Hover.png" type="Texture" id=12]
 [ext_resource path="res://ui/Check_Reports_Pressed.png" type="Texture" id=13]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
@@ -35,7 +35,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("ColorRect:modulate")
 tracks/0/interp = 1
@@ -133,7 +133,7 @@ margin_left = -44.2326
 margin_top = -5.56217
 margin_right = -4.23258
 margin_bottom = 8.43783
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 text = "Energy:"
 __meta__ = {
@@ -173,7 +173,7 @@ margin_left = 751.068
 margin_top = 21.0524
 margin_right = 799.068
 margin_bottom = 43.0524
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 text = "Day 1"
 __meta__ = {
@@ -183,7 +183,7 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "fade_in"
 anims/fade_away_explanation = SubResource( 2 )
-anims/fade_in = SubResource( 3 )
+anims/fade_in = SubResource( 5 )
 anims/fade_to_black = SubResource( 4 )
 
 [node name="Button" type="Button" parent="."]
@@ -193,7 +193,7 @@ margin_top = 16.0576
 margin_right = 1006.4
 margin_bottom = 44.0576
 mouse_filter = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "End Day"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -205,7 +205,7 @@ margin_left = 56.693
 margin_top = 15.7847
 margin_right = 224.693
 margin_bottom = 37.7847
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Overlord Options:"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -217,7 +217,7 @@ margin_top = -2.66971
 margin_right = 612.488
 margin_bottom = 25.3303
 focus_mode = 1
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 toggle_mode = true
 enabled_focus_mode = 1
 text = "Masks on/off"
@@ -230,7 +230,7 @@ margin_left = 201.515
 margin_top = -2.0045
 margin_right = 443.515
 margin_bottom = 25.9955
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 toggle_mode = true
 text = "Infection Visual on/off"
 __meta__ = {
@@ -243,7 +243,7 @@ margin_left = 957.376
 margin_top = 64.2751
 margin_right = 997.376
 margin_bottom = 104.275
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -279,7 +279,7 @@ margin_left = 6.345
 margin_top = 8.73596
 margin_right = 52.345
 margin_bottom = 48.736
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Test"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -298,7 +298,7 @@ margin_left = 8.909
 margin_top = 8.5
 margin_right = 48.909
 margin_bottom = 48.5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Sing"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -317,7 +317,7 @@ margin_left = 6.0
 margin_top = 8.5
 margin_right = 146.0
 margin_bottom = 48.5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Check Reports"
 __meta__ = {
 "_edit_use_anchors_": false

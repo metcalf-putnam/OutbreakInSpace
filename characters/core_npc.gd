@@ -90,6 +90,7 @@ func _on_Interactable_dialogue_started():
 func _on_dialogue_finished():
 	EventHub.disconnect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.disconnect("npc_dialogue", self, "_on_dialog")
+	Global.conversations_had += 1
 	if Global.convinced and !data["has_helmet"]:
 		data["has_helmet"] = true
 		if npc_handle == "work_friend":

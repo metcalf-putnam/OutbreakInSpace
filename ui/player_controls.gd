@@ -60,5 +60,6 @@ func _on_SingButton_button_down():
 
 func _on_SingButton_button_up():
 	EventHub.emit_signal("sing_button_released")
+	Global.songs_sung += 1
 	$SingButton.release_focus()
 	

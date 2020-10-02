@@ -73,9 +73,11 @@ func _process(delta):
 						else:
 							if characters[i] is KinematicBody2D:
 								characters[i].test()
+								EventHub.emit_signal("character_tested", characters[i].data)
 							else:
 								characters[i]["last_tested"] = Global.day
 								Global.add_test_results(characters[i], characters[i]["is_infected"])
+								EventHub.emit_signal("character_tested", characters[i])
 							confirm_test($Buttons.get_child(i).get_text())
 						clear_buttons()
 						$Space_NinePatchRect.show()

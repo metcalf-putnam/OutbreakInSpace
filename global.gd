@@ -46,6 +46,8 @@ signal singing_lesson
 signal overlord_discovery
 signal fade_away_explanation
 
+var d1s_tested := 0
+var idk_quests := false
 var daily_reports = [] 
 
 
@@ -56,6 +58,7 @@ func _ready():
 	EventHub.connect("house_exited", self, "_on_house_exited")
 	CharacterManager.connect("viral_shedding_computed", self, "_on_viral_shedding_computed")
 	EventHub.connect("restart_game", self, "restart_game")
+	EventHub.connect("character_tested", self, "_on_character_tested")
 
 
 func _on_day_ended():
@@ -319,3 +322,13 @@ func format_result(test_dic):
 	else:
 		result_string = result_string + ", " + "negative *"
 	return result_string
+
+
+func _on_character_tested(character_data):
+	if character_data.has("home") and character_data["home"] == "D1":
+		d1s_tested += 1
+
+
+func activate_idk_quests():
+	idk_quests = true
+	

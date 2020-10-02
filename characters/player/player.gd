@@ -3,6 +3,8 @@ class_name Player
 export var is_contagious = true
 export var is_infected = true
 var last_direction = Vector2()
+export (String, FILE, "*.png") var sprite_file
+export (String, FILE, "*.png") var helmet_file
 
 
 func _ready():
@@ -78,6 +80,11 @@ func deactivate_camaera():
 
 
 func update_sprite():
-	.update_sprite()
 	if data["has_helmet"] == true:
 		Global.player_helmet = true
+		$Helmet.show()
+	else:
+		$Helmet.hide()
+
+	$Sprite.texture = load(sprite_file)
+	$Helmet.texture = load(helmet_file)

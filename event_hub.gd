@@ -23,6 +23,7 @@ signal leave_building
 
 # Testing signals
 signal testing_character
+signal character_tested
 
 # Building signals
 signal building_entered

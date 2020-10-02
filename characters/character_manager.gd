@@ -46,7 +46,7 @@ func generate_characters():
 	
 	create_family("D1", "Reptiles", 2, 0, 0, "Flarf")
 	create_family("D1", "Reptiles", 2, 0, 0, "Snuktuk")
-	create_family("D1", "Reptiles", 4, 0, 1, "Grurf")
+	create_family("D1", "Reptiles", 3, 0, 1, "Grurf")
 	create_family("D2", "Reptiles", 1, 0, 0, "Klarmore")
 	create_family("D2", "Reptiles", 1, 0, 0, "Narkto")
 	create_family("D3", "Reptiles", 3, 1, 0, "Shmortl")

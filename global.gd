@@ -209,20 +209,14 @@ func _on_house_exited():
 
 
 func generate_report(add_new_positives):
-	var textbox = RichTextLabel.new()
-	textbox.clear()
-	textbox.append_bbcode("[wave]Podtown CX-6 Virus Report - Day " + str(day) + "[/wave]") 
-	textbox.newline()
-	textbox.newline()
-	textbox.append_bbcode("New infections: " + str(new_infections))
-	textbox.newline()
-	textbox.newline()
-	textbox.append_bbcode("Total infections: " + str(total_infections))
-	textbox.newline()
-	textbox.newline()
-	textbox.append_bbcode("[wave]Test Results:[/wave]")
+	var report = ""
+	report += "[wave]Podtown CX-6 Virus Report - Day " + str(day-1) + "[/wave]" + "\n\n"
+	report += "New infections: " + str(new_infections) + "\n\n"
+	report += "Total infections: " + str(total_infections) + "\n\n"
+	report += "[wave]Test Results:[/wave]" + "\n"
 	if test_results.has(day):
 		first_results = true
+		var test_result_table = "[table=4][cell]Name          [/cell][cell]Home          [/cell][cell]Work          [/cell][cell]Result[/cell]"
 		for test_dic in test_results[day]:
 			if test_dic["result"]:
 				print(test_dic)
@@ -234,32 +228,35 @@ func generate_report(add_new_positives):
 					player_test_results = true
 			
 			test_dic["data"]["done_test"] = false
-			textbox.newline()
-			textbox.append_bbcode(format_result(test_dic))
+			test_result_table += format_result(test_dic)
+		test_result_table += "[/table]"
+		report += test_result_table
 	
 	var new_positives_not_tested_by_player = add_new_positives.size() > 0
 	if new_positives_not_tested_by_player:
+		
+		report += "\n\n"
+		report += "[wave]New Positive Results from Lab:[/wave]" + "\n"
+		var new_test_result_table = "[table=4][cell]Name          [/cell][cell]Home          [/cell][cell]Work          [/cell][cell]Result[/cell]"
 		for positive in add_new_positives:
 			var test_dic = {"data": positive, "result": true}
 			if not positive_characters.has(test_dic["data"]):
 					positive_characters.append(test_dic["data"])
-			textbox.newline()
-			textbox.append_bbcode(format_result(test_dic))
-	
-	if !new_positives_not_tested_by_player and !test_results.has(day):
-		textbox.append_bbcode("N/A")
+			new_test_result_table += format_result(test_dic)
+		new_test_result_table += "[/table]"
+		report += new_test_result_table
 		
 	if dead_characters.size() > 0:
 		print("adding obituaries")
-		var death_message = "All casualties: "
+		report += "\n\n"
+		report += "[wave]Running Casualties:[/wave]" + "\n"
+		var casualties_table = "[table=1][cell]Name[/cell]"
 		for character in dead_characters:
-			death_message = death_message + character["name"] + ", "
-		death_message.erase(len(death_message) -2, 1)
-		textbox.newline()
-		textbox.append_bbcode(death_message)
+			casualties_table += "[cell]" + character["name"] + "[/cell]"
+		casualties_table += "[/table]"
+		report += casualties_table
 	
-	# TODO: List dead characters
-	daily_reports.append(textbox.text)
+	daily_reports.append(report)
 
 
 func compute_new_health(health, viral_load, infective_dose, cap = 0):
@@ -312,15 +309,19 @@ func check_new_positives():
 
 
 func format_result(test_dic):
-	var result_string = "*" + test_dic["data"]["name"]
+	var result_string = "[cell]" + test_dic["data"]["name"] + "[/cell]"
 	if test_dic["data"].has("home"):
-		result_string = result_string + ", home: " + test_dic["data"]["home"]
-	if test_dic["data"].has("work"):
-		result_string = result_string + ", work: " + test_dic["data"]["work"]
-	if test_dic["result"]:
-		result_string = result_string + ", " + "positive *"
+		result_string = result_string + "[cell]" + test_dic["data"]["home"] + "[/cell]"
 	else:
-		result_string = result_string + ", " + "negative *"
+		result_string = result_string + "[cell]N/A[/cell]"
+	if test_dic["data"].has("work"):
+		result_string = result_string + "[cell]" + test_dic["data"]["work"] + "[/cell]"
+	else:
+		result_string = result_string + "[cell]N/A[/cell]"
+	if test_dic["result"]:
+		result_string = result_string + "[cell]Positive[/cell]"
+	else:
+		result_string = result_string + "[cell]Negative[/cell]"
 	return result_string
 
 

@@ -171,6 +171,10 @@ func _input(event):
 	
 	if event is InputEventKey:
 		if event.scancode == KEY_SPACE:
+			
+			if not Global.completed_playthrough:
+				Global.completed_playthrough = true
+			
 			Music.fade_current()
 			get_tree().change_scene("res://root.tscn")
 

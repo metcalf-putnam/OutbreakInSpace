@@ -24,6 +24,7 @@ NPC = ExtResource( 2 )
 
 [node name="Homes" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
+editor/display_folded = true
 
 [node name="PlayerHome" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
 position = Vector2( -342, -525 )
@@ -186,6 +187,7 @@ infective_dose = 5000
 is_immune = true
 sprite_file = "res://characters/corenpcs/Scietist/MiniProfessor.png"
 helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
+npc_handle = "mini_prof"
 portrait_file = "res://characters/portraits/Professor.png"
 
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 6 )]

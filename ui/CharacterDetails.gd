@@ -104,7 +104,8 @@ func play_add_health(to_add_health):
 func _on_HealthAnimation_animation_finished(anim_name):
 	if anim_name == "show_additional_health":
 		var health_value = float(health.text.split(" ")[1])
-		var new_health = stepify(float(health_value + add_health), 0.01)
+		var computed_health = clamp(health_value + add_health, 0, 100)
+		var new_health = stepify(float(computed_health), 0.01)
 		print(health.text, " ", health_value, " ", new_health)
 		health.text = "Health: " + str(new_health)
 		CharacterManager.update_character_health(data, add_health)

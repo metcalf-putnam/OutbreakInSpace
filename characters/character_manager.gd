@@ -274,14 +274,12 @@ func get_additional_health(game_settings):
 		minimum_health = 1
 	elif mode == "MEDIUM":
 		modifier = 150.0
-		minimum_health = 1
+		minimum_health = 2
 	elif mode == "HARD":
 		modifier = 200.0
-		minimum_health = 2
+		minimum_health = 3
 	
 	if is_skip:
-		minimum_health -= 1
-		minimum_health = clamp(minimum_health, 1, 3)
 		return minimum_health
 	
 	var additional_health = points / modifier

@@ -37,8 +37,7 @@ func _on_dialogue_finished():
 	if bad_ending:
 		Global.restart_game(bad_ending) # overlord options on
 	else:
-		# TODO: check to make sure this resets the game?
-		get_tree().change_scene("res://menu.tscn")
+		get_tree().change_scene("res://Credits.tscn")
 
 
 func determine_ending():

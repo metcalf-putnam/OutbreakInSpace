@@ -57,26 +57,6 @@ func validate_character_status(data):
 		Global.total_infections -= 1
 
 
-func update_character_health(data):
-	if data["id"] == CharacterManager.player_id:
-		CharacterManager.player["viral_load"] -= Global.player_settings.extraction_points
-		if CharacterManager.player["viral_load"] <= 0:
-			CharacterManager.player["viral_load"] = 0
-			CharacterManager.player["is_infected"] = false
-			CharacterManager.player["is_contagious"] = false
-			Global.healed_characters.append(data)
-			Global.positive_characters.erase(data)
-			Global.total_infections -= 1
-	else:
-		for npc in CharacterManager.npcs:
-			if data["id"] == npc["id"]:
-				npc["viral_load"] -= Global.player_settings.extraction_points
-				validate_character_status(npc)
-	
-	Global.player_settings.extraction_points = 0
-	Global.player_settings.character_to_help_data = null
-
-
 func send_npcs_home():
 	EventHub.emit_signal("work_ended")
 	$GoHomeTimer.start()

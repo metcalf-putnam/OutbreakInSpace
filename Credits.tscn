@@ -1,0 +1,393 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Credits.gd" type="Script" id=1]
+[ext_resource path="res://Credits/Credits.png" type="Texture" id=2]
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://characters/portraits/Player.png" type="Texture" id=4]
+[ext_resource path="res://characters/portraits/Granny.png" type="Texture" id=5]
+[ext_resource path="res://characters/portraits/Professor.png" type="Texture" id=6]
+[ext_resource path="res://characters/portraits/SingingCoach.png" type="Texture" id=7]
+[ext_resource path="res://characters/portraits/WorkerFriend.png" type="Texture" id=8]
+[ext_resource path="res://characters/portraits/Mayor.png" type="Texture" id=9]
+[ext_resource path="res://characters/portraits/Overlord/Overlord_Sheet.png" type="Texture" id=10]
+[ext_resource path="res://characters/portraits/ReptilesElderly.png" type="Texture" id=11]
+[ext_resource path="res://characters/portraits/ReptilesMan.png" type="Texture" id=12]
+[ext_resource path="res://characters/portraits/ReptilesWoman.png" type="Texture" id=13]
+[ext_resource path="res://characters/portraits/ReptilesChild.png" type="Texture" id=14]
+[ext_resource path="res://characters/portraits/BluesElderly.png" type="Texture" id=15]
+[ext_resource path="res://characters/portraits/BluesMan.png" type="Texture" id=16]
+[ext_resource path="res://characters/portraits/BluesWoman.png" type="Texture" id=17]
+[ext_resource path="res://characters/portraits/BluesChild.png" type="Texture" id=18]
+[ext_resource path="res://Credits/Juan.png" type="Texture" id=19]
+[ext_resource path="res://Credits/Panch.png" type="Texture" id=20]
+[ext_resource path="res://Credits/Kapden.png" type="Texture" id=21]
+[ext_resource path="res://Credits/Patrice.png" type="Texture" id=22]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 72
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=3]
+length = 20.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Container:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 600 ), Vector2( 0, -3500 ) ]
+}
+
+[node name="Credits" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.313726 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Continue" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 239.815
+margin_top = 425.659
+margin_right = 770.815
+margin_bottom = 494.659
+custom_fonts/font = SubResource( 1 )
+text = "Thank you for playing!
+Press SPACE to go back to main menu"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Node2D" parent="."]
+position = Vector2( 0, 600 )
+
+[node name="Characters" type="Node2D" parent="Container"]
+
+[node name="Knuthl" type="Sprite" parent="Container/Characters"]
+position = Vector2( 497.127, 264.008 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label2" type="Label" parent="Container/Characters/Knuthl"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.775
+margin_top = 61.835
+margin_right = 29.225
+margin_bottom = 94.835
+custom_fonts/font = SubResource( 1 )
+text = "Knuthl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Granny" type="Sprite" parent="Container/Characters"]
+position = Vector2( 497.127, 464.008 )
+texture = ExtResource( 5 )
+
+[node name="Label4" type="Label" parent="Container/Characters/Granny"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -168.141
+margin_top = 62.3785
+margin_right = 65.8586
+margin_bottom = 95.3785
+custom_fonts/font = SubResource( 1 )
+text = "Granny Murktuk"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Professor" type="Sprite" parent="Container/Characters"]
+position = Vector2( 497.127, 664.008 )
+texture = ExtResource( 6 )
+
+[node name="Label3" type="Label" parent="Container/Characters/Professor"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -122.077
+margin_top = 62.7375
+margin_right = 24.9232
+margin_bottom = 95.7375
+custom_fonts/font = SubResource( 1 )
+text = "Professor"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SingingCoach" type="Sprite" parent="Container/Characters"]
+position = Vector2( 497.127, 864.008 )
+texture = ExtResource( 7 )
+
+[node name="Label5" type="Label" parent="Container/Characters/SingingCoach"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -338.714
+margin_top = 62.3108
+margin_right = 231.286
+margin_bottom = 95.3108
+custom_fonts/font = SubResource( 1 )
+text = "Singing Coach - Kortuk the Magnificent"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WorkerFriend" type="Sprite" parent="Container/Characters"]
+position = Vector2( 497.127, 1064.01 )
+texture = ExtResource( 8 )
+
+[node name="Label6" type="Label" parent="Container/Characters/WorkerFriend"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -207.497
+margin_top = 66.2866
+margin_right = 107.503
+margin_bottom = 135.286
+custom_fonts/font = SubResource( 1 )
+text = "Work Friend - Snitgar"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Mayor" type="Sprite" parent="Container/Characters"]
+position = Vector2( 497.127, 1264.01 )
+texture = ExtResource( 9 )
+
+[node name="Label7" type="Label" parent="Container/Characters/Mayor"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -155.649
+margin_top = 61.3854
+margin_right = 54.3505
+margin_bottom = 130.385
+custom_fonts/font = SubResource( 1 )
+text = "Mayor Snorgyl"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Aso" type="Sprite" parent="Container/Characters"]
+position = Vector2( 497.127, 1464.01 )
+texture = ExtResource( 10 )
+hframes = 5
+frame = 3
+
+[node name="Label8" type="Label" parent="Container/Characters/Aso"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -144.817
+margin_top = 60.5446
+margin_right = 53.1832
+margin_bottom = 129.545
+custom_fonts/font = SubResource( 1 )
+text = "Overlord Aso"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Reptiles" type="Node2D" parent="Container/Characters"]
+position = Vector2( -1.86279, 545.111 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label3" type="Label" parent="Container/Characters/Reptiles"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 395.061
+margin_top = 1257.57
+margin_right = 605.061
+margin_bottom = 1290.57
+custom_fonts/font = SubResource( 1 )
+text = "Reptiles Family"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ReptilesElderly" type="Sprite" parent="Container/Characters/Reptiles"]
+position = Vector2( 501.039, 1094.95 )
+texture = ExtResource( 11 )
+
+[node name="ReptileMan" type="Sprite" parent="Container/Characters/Reptiles"]
+position = Vector2( 434.102, 1142.78 )
+texture = ExtResource( 12 )
+
+[node name="ReptileWoman" type="Sprite" parent="Container/Characters/Reptiles"]
+position = Vector2( 569.177, 1143.96 )
+texture = ExtResource( 13 )
+
+[node name="ReptilesChild" type="Sprite" parent="Container/Characters/Reptiles"]
+modulate = Color( 0.909804, 0.635294, 0.67451, 1 )
+position = Vector2( 498.358, 1185.11 )
+texture = ExtResource( 14 )
+
+[node name="ReptilesChild2" type="Sprite" parent="Container/Characters/Reptiles"]
+position = Vector2( 368.973, 1187.12 )
+texture = ExtResource( 14 )
+
+[node name="ReptilesChild3" type="Sprite" parent="Container/Characters/Reptiles"]
+modulate = Color( 0.443137, 0.545098, 0.792157, 1 )
+position = Vector2( 631.307, 1188.25 )
+texture = ExtResource( 14 )
+
+[node name="Blues" type="Node2D" parent="Container/Characters"]
+position = Vector2( -3.79437, 896.436 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label2" type="Label" parent="Container/Characters/Blues"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 418.301
+margin_top = 1201.18
+margin_right = 589.301
+margin_bottom = 1234.18
+custom_fonts/font = SubResource( 1 )
+text = "Blues Family"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BluesElderly" type="Sprite" parent="Container/Characters/Blues"]
+position = Vector2( 506.546, 1027.79 )
+texture = ExtResource( 15 )
+
+[node name="BluesMan" type="Sprite" parent="Container/Characters/Blues"]
+position = Vector2( 432.108, 1081.67 )
+texture = ExtResource( 16 )
+
+[node name="BluesWoman" type="Sprite" parent="Container/Characters/Blues"]
+position = Vector2( 573.463, 1078.3 )
+texture = ExtResource( 17 )
+
+[node name="BluesChild" type="Sprite" parent="Container/Characters/Blues"]
+position = Vector2( 503.74, 1121.99 )
+texture = ExtResource( 18 )
+
+[node name="BluesChild2" type="Sprite" parent="Container/Characters/Blues"]
+self_modulate = Color( 0.854902, 0.835294, 0.627451, 1 )
+position = Vector2( 372.722, 1124.82 )
+texture = ExtResource( 18 )
+
+[node name="BluesChild3" type="Sprite" parent="Container/Characters/Blues"]
+self_modulate = Color( 0.505882, 0.552941, 0.741176, 1 )
+position = Vector2( 632.29, 1122 )
+texture = ExtResource( 18 )
+flip_h = true
+
+[node name="Creators" type="Node2D" parent="Container"]
+position = Vector2( -113.041, 8.4751 )
+
+[node name="Juan" type="Sprite" parent="Container/Creators"]
+position = Vector2( 324.638, 2315.97 )
+texture = ExtResource( 19 )
+
+[node name="Label3" type="Label" parent="Container/Creators/Juan"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 47.7388
+margin_top = -20.7703
+margin_right = 364.739
+margin_bottom = 29.2297
+custom_fonts/font = SubResource( 2 )
+text = "Art and Level Design"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panch" type="Sprite" parent="Container/Creators"]
+position = Vector2( 326.128, 2535.71 )
+texture = ExtResource( 20 )
+
+[node name="Label4" type="Label" parent="Container/Creators/Panch"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 51.6761
+margin_top = -22.5342
+margin_right = 368.676
+margin_bottom = 27.4658
+custom_fonts/font = SubResource( 2 )
+text = "Programmer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Kapden" type="Sprite" parent="Container/Creators"]
+position = Vector2( 328.141, 2750.71 )
+texture = ExtResource( 21 )
+
+[node name="Label5" type="Label" parent="Container/Creators/Kapden"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 46.2322
+margin_top = -28.3174
+margin_right = 551.232
+margin_bottom = 21.6826
+custom_fonts/font = SubResource( 2 )
+text = "Music and Sound Design"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Patrice" type="Sprite" parent="Container/Creators"]
+position = Vector2( 334.516, 2980.1 )
+texture = ExtResource( 22 )
+
+[node name="Label5" type="Label" parent="Container/Creators/Patrice"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 46.7705
+margin_top = -59.375
+margin_right = 363.771
+margin_bottom = -9.375
+custom_fonts/font = SubResource( 2 )
+text = "Programmer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Container/Creators/Patrice"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 43.4799
+margin_top = 12.6899
+margin_right = 568.48
+margin_bottom = 62.6899
+custom_fonts/font = SubResource( 2 )
+text = "Writer / Game Dialogues"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Container"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 437.11
+margin_top = 17.4034
+margin_right = 567.11
+margin_bottom = 50.4034
+custom_fonts/font = SubResource( 1 )
+text = "CREDITS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Credits"
+anims/Credits = SubResource( 3 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

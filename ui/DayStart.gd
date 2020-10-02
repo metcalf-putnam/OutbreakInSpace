@@ -29,7 +29,7 @@ func load_report():
 	$NinePatchRect/NextButton/NextButton.disabled = (current_report_id + 1) == Global.daily_reports.size()
 	
 	var textbox = $NinePatchRect/RichTextLabel
-	textbox.text = Global.daily_reports[current_report_id]
+	textbox.bbcode_text = Global.daily_reports[current_report_id]
 
 
 func _on_PrevButton_pressed():

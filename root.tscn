@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://characters/corenpcs/Scietist/glass_32x32.png" type="Texture" id=11]
+[ext_resource path="res://environment/DumbSign.tscn" type="PackedScene" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 14.4662
@@ -271,6 +272,18 @@ texture = ExtResource( 11 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="glass_32x32/StaticBody2D"]
 position = Vector2( 0.468201, 0 )
 shape = SubResource( 1 )
+
+[node name="GrocerySign" parent="." instance=ExtResource( 12 )]
+position = Vector2( 528.131, -20.8961 )
+label_text = "<Grocery Store>"
+
+[node name="Park2Sign" parent="." instance=ExtResource( 12 )]
+position = Vector2( 97.4736, 304.488 )
+label_text = "<Park2>"
+
+[node name="Park1Sign" parent="." instance=ExtResource( 12 )]
+position = Vector2( 1027.91, -336.576 )
+label_text = "<Park1>"
 [connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
 [connection signal="player_controls_toggle" from="CanvasLayer/Dialogue" to="Overlay" method="_on_Dialogue_player_controls_toggle"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_DayTimer_timeout"]

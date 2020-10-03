@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://environment/interactables/sign.png" type="Texture" id=2]
+[ext_resource path="res://environment/DumbSign.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 18.6144
+
+[sub_resource type="DynamicFont" id=4]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[node name="DumbSign" type="Area2D"]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -58.3041
+margin_top = -17.3431
+margin_right = 61.6959
+margin_bottom = 22.6569
+custom_fonts/font = SubResource( 4 )
+text = "<Name Here>"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="." to="." method="_on_DumbSign_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_DumbSign_body_exited"]

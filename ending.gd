@@ -15,6 +15,7 @@ func _ready():
 	Global.connect("overlord_discovery", self, "_on_overlord_discovery")
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	$AnimationPlayer.play("opening")
+	$Tail.hide()
 	$Sprite.hide()
 	$TextureButton.hide()
 
@@ -25,6 +26,8 @@ func start_overlord_dialogue():
 	else:
 		EventHub.emit_signal("new_dialogue", success_dialog_file, "Overlord Aso")
 		Music.change_state("menu")
+		$Sprite.show()
+		$Tail.show()
 	$RichTextLabel.hide()
 
 
@@ -43,14 +46,23 @@ func _on_dialogue_finished():
 func determine_ending():
 	if Global.total_infections < 5 and Global.dead_characters.size() == 0:
 		bad_ending = false
-		$VictorySound.play()
-		textbox.append_bbcode(good_ending_text)
-		$ColorRect.modulate = good_modulate
+		_on_good_ending()
 	else:
-		$FailureAmbiance.play()
 		bad_ending = true
-		textbox.append_bbcode(bad_ending_text)
-		$ColorRect.modulate = bad_modulate
+		_on_bad_ending()
+
+
+func _on_good_ending():
+	$VictorySound.play()
+	textbox.append_bbcode(good_ending_text)
+	$ColorRect.modulate = good_modulate
+	$Sprite.frame = 3
+
+
+func _on_bad_ending():
+	textbox.append_bbcode(bad_ending_text)
+	$ColorRect.modulate = bad_modulate
+	$FailureAmbiance.play()
 
 
 func populate_stats():

@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://ui/main_overlay.gd" type="Script" id=1]
-[ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=2]
+[ext_resource path="res://dialog/menu_section_9patch.png" type="Texture" id=2]
 [ext_resource path="res://ui/energy.gd" type="Script" id=3]
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://ui/energy.png" type="Texture" id=5]
-[ext_resource path="res://fps.gd" type="Script" id=6]
+[ext_resource path="res://ui/fps.gd" type="Script" id=6]
 [ext_resource path="res://ui/player_controls.gd" type="Script" id=7]
 [ext_resource path="res://ui/button.png" type="Texture" id=8]
 [ext_resource path="res://ui/ButtonPressed.png" type="Texture" id=9]
@@ -218,8 +218,7 @@ __meta__ = {
 }
 
 [node name="Debug" type="Label" parent="."]
-visible = false
-margin_left = 56.693
+margin_left = 5.0
 margin_top = 15.7847
 margin_right = 224.693
 margin_bottom = 37.7847

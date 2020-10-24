@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/O Letter.wav-b9082f2ba21ce3fef5559069e5e1ef42.sample"
+path="res://.import/O Letter.wav-f2ad762984a1ace5c5ff9979850cf17d.sample"
 
 [deps]
 
-source_file="res://Dialog/letter-sounds/O Letter.wav"
-dest_files=[ "res://.import/O Letter.wav-b9082f2ba21ce3fef5559069e5e1ef42.sample" ]
+source_file="res://dialog/letter-sounds/O Letter.wav"
+dest_files=[ "res://.import/O Letter.wav-f2ad762984a1ace5c5ff9979850cf17d.sample" ]
 
 [params]
 

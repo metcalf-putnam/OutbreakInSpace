@@ -1,0 +1,163 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://gnar/assets/B&W_Explosão_32x32.png" type="Texture" id=1]
+[ext_resource path="res://gnar/assets/Leukocyte_32x32.png" type="Texture" id=2]
+[ext_resource path="res://gnar/assets/audios/player_shoot.wav" type="AudioStream" id=3]
+[ext_resource path="res://gnar/assets/audios/Player_Damaged.wav" type="AudioStream" id=4]
+[ext_resource path="res://gnar/player/prototype/Player.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 1.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 13.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "show"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.227451, 0.160784, 0.823529, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Aim:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Aim:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1, 1.7 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.85098, 0.835294, 0.705882, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 2, 2 ), Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Aim:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 1, 1.5, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 1.9, 2.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 450.0, 90.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "hit"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="Player" type="KinematicBody2D"]
+rotation = 1.5708
+collision_layer = 2
+collision_mask = 21
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Aim" type="Sprite" parent="."]
+self_modulate = Color( 0.109804, 0.690196, 0.866667, 1 )
+position = Vector2( -0.149227, -18.7908 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+hframes = 4
+
+[node name="Detection" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/show = SubResource( 3 )
+
+[node name="HitAnimation" type="AnimationPlayer" parent="."]
+anims/hit = SubResource( 4 )
+
+[node name="shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -4.0
+pitch_scale = 2.0
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -8.0
+[connection signal="body_entered" from="Detection" to="." method="_on_Detection_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="animation_finished" from="HitAnimation" to="." method="_on_HitAnimation_animation_finished"]

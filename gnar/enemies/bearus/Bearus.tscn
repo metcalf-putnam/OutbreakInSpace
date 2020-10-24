@@ -1,0 +1,823 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://gnar/spawner/Spawner.tscn" type="PackedScene" id=2]
+[ext_resource path="res://gnar/bullets/virus/bearus/bearus.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gnar/assets/audios/Virus_Loading_In_Fast.wav" type="AudioStream" id=4]
+[ext_resource path="res://gnar/assets/Virus_64x64.png" type="Texture" id=5]
+[ext_resource path="res://gnar/assets/audios/Bass_140bpm_loop.wav" type="AudioStream" id=6]
+[ext_resource path="res://gnar/assets/audios/Falling_Spread_Loop.wav" type="AudioStream" id=7]
+[ext_resource path="res://gnar/assets/details/particle.png" type="Texture" id=8]
+[ext_resource path="res://gnar/assets/audios/Virus_Attack.wav" type="AudioStream" id=9]
+[ext_resource path="res://gnar/assets/details/pore.png" type="Texture" id=10]
+[ext_resource path="res://gnar/assets/details/arm.png" type="Texture" id=11]
+[ext_resource path="res://gnar/assets/audios/Boss_Gets_Hit_V2.wav" type="AudioStream" id=12]
+[ext_resource path="res://gnar/assets/details/pore_front.png" type="Texture" id=13]
+[ext_resource path="res://gnar/enemies/bearus/Bearus.gd" type="Script" id=14]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 25.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "no_shoot"
+length = 5.0
+
+[sub_resource type="Animation" id=3]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.7, 0.9, 1.1, 1.3, 1.5, 4.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0.0823529, 0.0745098, 0.0745098, 1 ), Color( 0.160784, 0.133333, 0.133333, 1 ), Color( 0.0823529, 0.0745098, 0.0745098, 1 ), Color( 0.305882, 0.2, 0.2, 1 ), Color( 0.0823529, 0.0745098, 0.0745098, 1 ), Color( 0.356863, 0.219608, 0.219608, 1 ), Color( 0.0823529, 0.0745098, 0.0745098, 1 ), Color( 0.0823529, 0.0745098, 0.0745098, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Arms/1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite/Arms/2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite/Arms/3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite/Arms/4:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite/Arms/5:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Sprite/Arms/6:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Sprite/Arms/7:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2.1, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Sprite/Arms/8:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 2.2, 2.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Sprite/Arms/9:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 2.3, 2.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Sprite/Pores/1:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 2.4, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Sprite/Pores/2:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 2.6, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Sprite/Pores/3:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 2.8, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Sprite/Pores/4:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 2.8, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Sprite/Pores/5:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 2.6, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Sprite/Pores/6:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 2.4, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Sprite/Pores/7:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 2.6, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Sprite/Pores/8:visible")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 2.8, 2.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Sprite/Pores/9:visible")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 2.6, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Sprite/Pores_Front/1:visible")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 3, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Sprite/Pores_Front/2:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 3.1, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Sprite/Pores_Front/3:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 3.1, 3.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Sprite/Pores_Front/4:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 3, 3.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Sprite/Pores_Front/6:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 3.4, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Sprite/Pores_Front/5:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 3.5, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Sprite/Pores_Front/7:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 3.5, 3.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Sprite/Pores_Front/8:visible")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 3.3, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("Sprite/Pores_Front/9:visible")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0, 3.3, 3.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("Sprite/Pores_Front/10:visible")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0, 3.7, 3.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("Sprite/Pores_Front/11:visible")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0, 3.8, 3.9 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("Sprite/Pores_Front/12:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0, 3.9, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("Sprite/Arms:modulate")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0, 4.2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("Sprite/Pores:modulate")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0, 4.2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/34/type = "value"
+tracks/34/path = NodePath("Sprite/Pores_Front:modulate")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/keys = {
+"times": PoolRealArray( 0, 4.2, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/35/type = "value"
+tracks/35/path = NodePath("Particles:emitting")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/keys = {
+"times": PoolRealArray( 0, 4.9, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true ]
+}
+tracks/36/type = "value"
+tracks/36/path = NodePath("HealthBar:visible")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/keys = {
+"times": PoolRealArray( 0, 4.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/37/type = "value"
+tracks/37/path = NodePath("HealthBar:rect_scale")
+tracks/37/interp = 1
+tracks/37/loop_wrap = true
+tracks/37/imported = false
+tracks/37/enabled = true
+tracks/37/keys = {
+"times": PoolRealArray( 4.6, 4.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+tracks/38/type = "value"
+tracks/38/path = NodePath("HealthBar:value")
+tracks/38/interp = 1
+tracks/38/loop_wrap = true
+tracks/38/imported = false
+tracks/38/enabled = true
+tracks/38/keys = {
+"times": PoolRealArray( 4.8, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 100.0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "hit"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpawnerManager:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.392157 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 1 )
+
+[node name="Bearus" type="Area2D"]
+collision_layer = 4
+collision_mask = 14
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+editor/display_folded = true
+texture = ExtResource( 5 )
+
+[node name="Arms" type="Node2D" parent="Sprite"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="1" type="Sprite" parent="Sprite/Arms"]
+position = Vector2( 0.181631, -22.4399 )
+texture = ExtResource( 11 )
+
+[node name="2" type="Sprite" parent="Sprite/Arms"]
+position = Vector2( 12.2652, -20.0457 )
+rotation = 0.393992
+texture = ExtResource( 11 )
+
+[node name="3" type="Sprite" parent="Sprite/Arms"]
+position = Vector2( 22.8329, -10.86 )
+rotation = 0.826033
+scale = Vector2( 1.08976, 1.26963 )
+texture = ExtResource( 11 )
+
+[node name="4" type="Sprite" parent="Sprite/Arms"]
+position = Vector2( 23.1825, 13.2662 )
+rotation = 2.41819
+scale = Vector2( 1.08976, 1.26963 )
+texture = ExtResource( 11 )
+
+[node name="5" type="Sprite" parent="Sprite/Arms"]
+position = Vector2( 9.99214, 21.8099 )
+rotation = 2.76611
+scale = Vector2( 1.08976, 1.26963 )
+texture = ExtResource( 11 )
+
+[node name="6" type="Sprite" parent="Sprite/Arms"]
+position = Vector2( -9.5369, 22.8806 )
+rotation = 3.3842
+scale = Vector2( 1.08976, 1.26963 )
+texture = ExtResource( 11 )
+
+[node name="7" type="Sprite" parent="Sprite/Arms"]
+position = Vector2( -23.1236, 13.8065 )
+rotation = 3.91443
+scale = Vector2( 1.08976, 1.26963 )
+texture = ExtResource( 11 )
+
+[node name="8" type="Sprite" parent="Sprite/Arms"]
+position = Vector2( -22.5342, -9.817 )
+rotation = -0.713843
+scale = Vector2( 1.08976, 1.26963 )
+texture = ExtResource( 11 )
+
+[node name="9" type="Sprite" parent="Sprite/Arms"]
+position = Vector2( -12.7913, -19.8597 )
+rotation = -0.315599
+scale = Vector2( 1.08976, 1.26963 )
+texture = ExtResource( 11 )
+
+[node name="Pores" type="Node2D" parent="Sprite"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="1" type="Sprite" parent="Sprite/Pores"]
+position = Vector2( -21.8686, 0.971939 )
+texture = ExtResource( 10 )
+
+[node name="2" type="Sprite" parent="Sprite/Pores"]
+position = Vector2( -16.2955, -13.5261 )
+rotation = 1.56698
+texture = ExtResource( 10 )
+
+[node name="3" type="Sprite" parent="Sprite/Pores"]
+position = Vector2( -5.79599, -19.02 )
+rotation = 1.56698
+texture = ExtResource( 10 )
+
+[node name="4" type="Sprite" parent="Sprite/Pores"]
+position = Vector2( 5.5581, -19.5084 )
+rotation = 1.56698
+texture = ExtResource( 10 )
+
+[node name="5" type="Sprite" parent="Sprite/Pores"]
+position = Vector2( 15.203, -12.5494 )
+rotation = 1.56698
+texture = ExtResource( 10 )
+
+[node name="6" type="Sprite" parent="Sprite/Pores"]
+position = Vector2( 22.8945, 0.51387 )
+rotation = -3.05038
+texture = ExtResource( 10 )
+
+[node name="7" type="Sprite" parent="Sprite/Pores"]
+position = Vector2( 17.2785, 17.7281 )
+rotation = 4.02191
+texture = ExtResource( 10 )
+
+[node name="8" type="Sprite" parent="Sprite/Pores"]
+position = Vector2( 1.04089, 24.8092 )
+rotation = 4.6994
+texture = ExtResource( 10 )
+
+[node name="9" type="Sprite" parent="Sprite/Pores"]
+position = Vector2( -16.5396, 18.3386 )
+rotation = 5.59609
+texture = ExtResource( 10 )
+
+[node name="Pores_Front" type="Node2D" parent="Sprite"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="1" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( -0.95262, -1.96478 )
+texture = ExtResource( 13 )
+
+[node name="2" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( -11.3124, 7.6805 )
+texture = ExtResource( 13 )
+
+[node name="3" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( -11.9673, -1.13124 )
+texture = ExtResource( 13 )
+
+[node name="4" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( -6.96603, -6.25157 )
+texture = ExtResource( 13 )
+
+[node name="5" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( -0.238155, -9.94297 )
+texture = ExtResource( 13 )
+
+[node name="6" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( 9.70482, -4.16771 )
+texture = ExtResource( 13 )
+
+[node name="7" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( 5.65618, 2.79832 )
+texture = ExtResource( 13 )
+
+[node name="8" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( 14.2298, 5.95388 )
+texture = ExtResource( 13 )
+
+[node name="9" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( 7.9782, 11.6696 )
+texture = ExtResource( 13 )
+
+[node name="10" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( -1.96478, 9.58574 )
+texture = ExtResource( 13 )
+
+[node name="11" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( 3.93665, 17.8635 )
+texture = ExtResource( 13 )
+
+[node name="12" type="Sprite" parent="Sprite/Pores_Front"]
+position = Vector2( -5.05668, 16.8453 )
+texture = ExtResource( 13 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -0.225937 )
+shape = SubResource( 1 )
+
+[node name="SpawnerManager" type="Node2D" parent="."]
+editor/display_folded = true
+
+[node name="1" parent="SpawnerManager" instance=ExtResource( 2 )]
+position = Vector2( 5.71985, -18.6793 )
+bullet_scn = ExtResource( 3 )
+bullet_array_starting_angle = 75
+spin_speed = 0
+fire_rate = 20
+is_running = false
+
+[node name="2" parent="SpawnerManager" instance=ExtResource( 2 )]
+position = Vector2( 15.2452, -12.6082 )
+bullet_scn = ExtResource( 3 )
+bullet_array_starting_angle = 35
+spin_speed = 0
+fire_rate = 20
+is_running = false
+
+[node name="3" parent="SpawnerManager" instance=ExtResource( 2 )]
+position = Vector2( 21.9902, 0.785586 )
+bullet_scn = ExtResource( 3 )
+spin_speed = 0
+fire_rate = 20
+is_running = false
+
+[node name="4" parent="SpawnerManager" instance=ExtResource( 2 )]
+position = Vector2( 16.4677, 17.9518 )
+bullet_scn = ExtResource( 3 )
+bullet_array_starting_angle = 315
+spin_speed = 0
+fire_rate = 20
+is_running = false
+
+[node name="5" parent="SpawnerManager" instance=ExtResource( 2 )]
+position = Vector2( 0.418293, 25.4315 )
+bullet_scn = ExtResource( 3 )
+bullet_array_starting_angle = 270
+spin_speed = 0
+fire_rate = 20
+is_running = false
+
+[node name="6" parent="SpawnerManager" instance=ExtResource( 2 )]
+position = Vector2( -18.0024, 18.4872 )
+bullet_scn = ExtResource( 3 )
+bullet_array_starting_angle = 225
+spin_speed = 0
+fire_rate = 20
+is_running = false
+
+[node name="7" parent="SpawnerManager" instance=ExtResource( 2 )]
+position = Vector2( -22.7245, 1.10144 )
+bullet_scn = ExtResource( 3 )
+bullet_array_starting_angle = 170
+spin_speed = 0
+fire_rate = 20
+is_running = false
+
+[node name="8" parent="SpawnerManager" instance=ExtResource( 2 )]
+position = Vector2( -15.4267, -12.8501 )
+bullet_scn = ExtResource( 3 )
+bullet_array_starting_angle = 135
+spin_speed = 0
+fire_rate = 20
+is_running = false
+
+[node name="9" parent="SpawnerManager" instance=ExtResource( 2 )]
+position = Vector2( -5.76796, -18.86 )
+bullet_scn = ExtResource( 3 )
+bullet_array_starting_angle = 105
+spin_speed = 0
+fire_rate = 20
+is_running = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/no_shoot = SubResource( 2 )
+anims/show = SubResource( 3 )
+
+[node name="HitAnimation" type="AnimationPlayer" parent="."]
+anims/hit = SubResource( 4 )
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+modulate = Color( 0.517647, 0.878431, 0.913725, 1 )
+amount = 50
+lifetime = 1.2
+randomness = 1.0
+local_coords = false
+texture = ExtResource( 8 )
+emission_shape = 1
+emission_sphere_radius = 40.0
+gravity = Vector2( 0, 40 )
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+margin_left = -45.0
+margin_top = -48.0
+margin_right = 45.0
+margin_bottom = -34.0
+custom_fonts/font = SubResource( 5 )
+max_value = 20.0
+value = 20.0
+
+[node name="Tween" type="Tween" parent="HealthBar"]
+
+[node name="Audios" type="Node2D" parent="."]
+
+[node name="Bass140" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource( 6 )
+volume_db = -2.0
+bus = "Virus SFX"
+
+[node name="FallingSpread" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource( 7 )
+volume_db = -4.0
+bus = "Virus SFX"
+
+[node name="VirusAttack" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource( 9 )
+volume_db = -4.0
+bus = "Virus SFX"
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource( 12 )
+volume_db = -1.0
+bus = "Drum Bus"
+
+[node name="Entrance" type="AudioStreamPlayer2D" parent="Audios"]
+stream = ExtResource( 4 )
+volume_db = -1.0
+bus = "Drum Bus"

@@ -78,7 +78,7 @@ func get_dialog_file():
 
 
 func get_file_path(event_name):
-	return "res://Dialog/" + "json/"  + npc_handle + "_" + event_name + ".json"
+	return "res://dialog/" + "json/"  + npc_handle + "_" + event_name + ".json"
 
 
 func _on_Interactable_dialogue_started():

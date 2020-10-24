@@ -7,11 +7,14 @@
 [ext_resource path="res://environment/interactables/PlayerHouse.gd" type="Script" id=5]
 [ext_resource path="res://characters/core_npc.tscn" type="PackedScene" id=6]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=7]
-[ext_resource path="res://fps.gd" type="Script" id=8]
-[ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ui/fps.gd" type="Script" id=8]
+[ext_resource path="res://dialog/Dialogue.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://characters/corenpcs/Scietist/glass_32x32.png" type="Texture" id=11]
 [ext_resource path="res://environment/DumbSign.tscn" type="PackedScene" id=12]
+
+
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 14.4662

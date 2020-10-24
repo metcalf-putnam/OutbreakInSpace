@@ -1,14 +1,17 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://ui/CharacterList.gd" type="Script" id=1]
-[ext_resource path="res://Dialog/menu_section_9patch.png" type="Texture" id=2]
+[ext_resource path="res://dialog/menu_section_9patch.png" type="Texture" id=2]
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://ui/Close_NinePatchRect.tscn" type="PackedScene" id=4]
-[ext_resource path="res://bullet-prototype/assets/B&W_Explosão_32x32.png" type="Texture" id=5]
-[ext_resource path="res://bullet-prototype/bullets/virus_32x32-Sheet.png" type="Texture" id=6]
-[ext_resource path="res://bullet-prototype/assets/Virus_easy_64x64-export.png" type="Texture" id=7]
-[ext_resource path="res://bullet-prototype/assets/Leukocyte_32x32.png" type="Texture" id=8]
+[ext_resource path="res://gnar/assets/B&W_Explosão_32x32.png" type="Texture" id=5]
+[ext_resource path="res://gnar/bullets/virus_32x32-Sheet.png" type="Texture" id=6]
+[ext_resource path="res://gnar/assets/Virus_easy_64x64-export.png" type="Texture" id=7]
+[ext_resource path="res://gnar/assets/Leukocyte_32x32.png" type="Texture" id=8]
 [ext_resource path="res://music/AutoSkip_Gnar_Timer.wav" type="AudioStream" id=9]
+
+
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 48

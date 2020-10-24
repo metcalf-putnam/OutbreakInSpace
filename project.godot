@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "RigidBody2D",
 "class": "Bullet",
 "language": "GDScript",
-"path": "res://bullet-prototype/bullets/Bullet.gd"
+"path": "res://gnar/bullets/Bullet.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Character",
@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "WhiskersParser",
 "language": "GDScript",
-"path": "res://Dialog/WhiskersParser.gd"
+"path": "res://dialog/WhiskersParser.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
@@ -45,14 +45,14 @@ _global_script_class_icons={
 [application]
 
 config/name="OutbreakInSpace"
-run/main_scene="res://menu.tscn"
+run/main_scene="res://menu/menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-Global="*res://global.gd"
+Global="*res://autoloads/global.gd"
 CharacterManager="*res://characters/character_manager.gd"
-EventHub="*res://event_hub.gd"
+EventHub="*res://autoloads/event_hub.gd"
 Music="*res://music/music.tscn"
 
 [debug]

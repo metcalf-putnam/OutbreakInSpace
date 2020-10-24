@@ -8,9 +8,11 @@
 [ext_resource path="res://environment/interactables/TV.tscn" type="PackedScene" id=6]
 [ext_resource path="res://environment/interactables/Door.tscn" type="PackedScene" id=7]
 [ext_resource path="res://characters/player/player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Dialog/Dialogue.tscn" type="PackedScene" id=9]
+[ext_resource path="res://dialog/Dialogue.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://characters/pet/pet.tscn" type="PackedScene" id=11]
+
+
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Q Letter.wav-003902ec2f94f65461fbd698cda6724b.sample"
+path="res://.import/Q Letter.wav-aa7b8b0cf46d721ebaa5f859c9d9c5b7.sample"
 
 [deps]
 
-source_file="res://Dialog/letter-sounds/Q Letter.wav"
-dest_files=[ "res://.import/Q Letter.wav-003902ec2f94f65461fbd698cda6724b.sample" ]
+source_file="res://dialog/letter-sounds/Q Letter.wav"
+dest_files=[ "res://.import/Q Letter.wav-aa7b8b0cf46d721ebaa5f859c9d9c5b7.sample" ]
 
 [params]
 

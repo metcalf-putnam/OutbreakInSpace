@@ -2,7 +2,7 @@ extends Interactable
 
 onready var tv_anim = $Sprite
 var is_on := false
-var file_folder = "res://Dialog/json/tv/d"
+var file_folder = "res://dialog/json/tv/d"
 var anim
 
 func _ready():

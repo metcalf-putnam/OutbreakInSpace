@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/F Letter.wav-8e396fca8535682da367a2b4810ffae6.sample"
+path="res://.import/F Letter.wav-c88987b62c9542049b5c51e60ab64176.sample"
 
 [deps]
 
-source_file="res://dialog/letter-sounds/F Letter.wav"
-dest_files=[ "res://.import/F Letter.wav-8e396fca8535682da367a2b4810ffae6.sample" ]
+source_file="res://Dialog/letter-sounds/F Letter.wav"
+dest_files=[ "res://.import/F Letter.wav-c88987b62c9542049b5c51e60ab64176.sample" ]
 
 [params]
 

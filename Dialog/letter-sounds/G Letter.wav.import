@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/G Letter.wav-455de245934d8856f3add7bd8bf2d1fd.sample"
+path="res://.import/G Letter.wav-bac769099123f0405918fee113194ca2.sample"
 
 [deps]
 
-source_file="res://dialog/letter-sounds/G Letter.wav"
-dest_files=[ "res://.import/G Letter.wav-455de245934d8856f3add7bd8bf2d1fd.sample" ]
+source_file="res://Dialog/letter-sounds/G Letter.wav"
+dest_files=[ "res://.import/G Letter.wav-bac769099123f0405918fee113194ca2.sample" ]
 
 [params]
 

@@ -13,9 +13,6 @@
 [ext_resource path="res://characters/corenpcs/Scietist/glass_32x32.png" type="Texture" id=11]
 [ext_resource path="res://environment/DumbSign.tscn" type="PackedScene" id=12]
 
-
-
-
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 14.4662
 height = 8.922

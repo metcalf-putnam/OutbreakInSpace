@@ -185,7 +185,7 @@ func get_random(array):
 func compute_daily_viral_shedding():
 	var work_locs = {}
 	var home_locs = {}
-	check_infections()
+	
 	work_locs = sort_npcs(npcs, "work", work_locs)
 	work_locs = sort_npcs(core_npcs, "work", work_locs)
 	home_locs = sort_npcs(npcs, "home", home_locs)
@@ -264,33 +264,7 @@ func simulate_contagious_person(people, contagious_person):
 			npc["viral_load"] = npc["viral_load"] + (coughing * coughing_shed * mask_factor)
 
 
-func get_additional_health(game_settings):
-	var is_skip = game_settings["is_skip"]
-	var mode = game_settings["mode"]
-	var modifier = 0
-	var points = game_settings["extraction_points"]
-	
-	var minimum_health = 0
-	if mode == "EASY":
-		modifier = 100.0
-		minimum_health = 1
-	elif mode == "MEDIUM":
-		modifier = 150.0
-		minimum_health = 2
-	elif mode == "HARD":
-		modifier = 200.0
-		minimum_health = 3
-	
-	if is_skip:
-		return minimum_health
-	
-	var additional_health = points / modifier
-	print("additional_health: ", additional_health)
-	return minimum_health + additional_health
-
-
 func update_character_health(data, additional_health):
-#	var additional_health = get_additional_health(Global.player_settings)
 	if data["id"] == CharacterManager.player_id:
 		var health = CharacterManager.player["health"]
 		health += additional_health

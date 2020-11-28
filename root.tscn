@@ -179,6 +179,7 @@ npc_handle = "mayor"
 portrait_file = "res://characters/portraits/Mayor.png"
 
 [node name="Mini Professor" parent="YSort/npcs" instance=ExtResource( 6 )]
+visible = false
 self_modulate = Color( 0.419608, 0.172549, 0.172549, 1 )
 position = Vector2( 700, -400 )
 dialog_file = "res://Dialog/json/mini_professor.json"

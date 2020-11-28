@@ -47,6 +47,10 @@ func _ready():
 
 func init(data_in):
 	data = data_in
+	
+	if data.has("name") and data["id"] != 200:
+		name = str(data["id"]) + "-" + str(data["name"]).replace(" ", "-")
+	
 	if data.has("contagious_date") and data["contagious_date"] == Global.day:
 		data["is_contagious"] = true
 	if data.has("symptomatic_date") and data["symptomatic_date"] == Global.day:
@@ -99,7 +103,8 @@ func check_status():
 		Global.new_infections += 1
 		data["contagious_date"] = Global.day + days_to_contagious
 		data["symptomatic_date"] = Global.day + days_to_symptomatic
-		print("new contagious date: ", data["contagious_date"] )
+		print("new contagious date: ", data["contagious_date"])
+		print("new symptomatic date: ", data["symptomatic_date"])
 		update_label()
 
 

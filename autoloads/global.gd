@@ -29,7 +29,6 @@ var report_read := true # (no report on day 1)
 var tv_watched := false
 
 const player_initial_position := Vector2(-340, -528)
-const mini_professor_position := Vector2(700, -380)
 var player_position := player_initial_position
 var test_results = {}
 var test_time := 1
@@ -55,7 +54,6 @@ var testing_completed := false
 
 func _ready():
 	EventHub.connect("day_ended", self, "_on_day_ended")
-	EventHub.connect("start_mini_game", self, "_on_start_mini_game")
 	EventHub.connect("house_entered", self, "_on_house_entered")
 	EventHub.connect("house_exited", self, "_on_house_exited")
 	CharacterManager.connect("viral_shedding_computed", self, "_on_viral_shedding_computed")
@@ -152,41 +150,6 @@ func get_character_by_id(id):
 	if id == CharacterManager.player_id:
 		return get_node("Player")
 		
-
-# MINI GAME global - variables and functions
-var character_list_scn = preload("res://ui/CharacterList.tscn")
-var mini_game_scn = preload("res://gnar/Gnar.tscn")
-var player_settings = {
-	"is_skip": false,
-	"mode": "EASY",
-	"ammo": 60,
-	"shield": 3,
-	"extraction_points": 0,
-	"total_extraction_points": 0,
-	"character_to_help_data": null
-}
-var positive_list_scroll_value = 0
-var completed_playthrough = false #set to false
-
-func update_playthrough():
-	completed_playthrough = true
-
-
-func _on_start_mini_game(data, game_mode):
-	Music.fade_current()
-	player_settings["character_to_help_data"] = data
-	player_settings["mode"] = game_mode
-	decrement_energy()
-	player_position = mini_professor_position
-	get_tree().change_scene("res://gnar/Gnar.tscn")
-
-
-func show_positives(additional_health = 0, gnar_data = null):
-	var character_list = character_list_scn.instance()
-	get_tree().root.add_child(character_list)
-	if additional_health:
-		character_list.set_scroll_value(positive_list_scroll_value)
-		character_list.play_health_anim(additional_health, gnar_data)
 
 
 func convince_npc():
@@ -306,11 +269,11 @@ func update_characters_health():
 func check_new_positives():
 	var new_positives = []
 	for data in CharacterManager.core_npcs:
-		if data["health"] < 50 and not Global.positive_characters.has(data):
+		if data["health"] < 90 and not Global.positive_characters.has(data):
 			new_positives.append(data)
 			
 	for data in CharacterManager.npcs:
-		if data["health"] < 50 and not Global.positive_characters.has(data):
+		if data["health"] < 90 and not Global.positive_characters.has(data):
 			new_positives.append(data)
 	return new_positives
 

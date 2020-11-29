@@ -178,19 +178,6 @@ home = "S1"
 npc_handle = "mayor"
 portrait_file = "res://characters/portraits/Mayor.png"
 
-[node name="Mini Professor" parent="YSort/npcs" instance=ExtResource( 6 )]
-visible = false
-self_modulate = Color( 0.419608, 0.172549, 0.172549, 1 )
-position = Vector2( 700, -400 )
-dialog_file = "res://Dialog/json/mini_professor.json"
-full_name = "Mini Professor"
-infective_dose = 5000
-is_immune = true
-sprite_file = "res://characters/corenpcs/Scietist/MiniProfessor.png"
-helmet_file = "res://characters/corenpcs/Scietist/helmet.png"
-npc_handle = "mini_prof"
-portrait_file = "res://characters/portraits/Professor.png"
-
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( -104, -376 )
 dialog_file = "res://Dialog/json/granny_v2.json"

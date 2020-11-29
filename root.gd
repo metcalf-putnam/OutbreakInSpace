@@ -14,11 +14,6 @@ func _ready():
 	EventHub.connect("dialogue_finished", self, "_on_dialog_finished")
 	EventHub.connect("computer_interaction", self, "_on_computer_interaction")
 	
-	if Global.player_settings.character_to_help_data != null:
-		var additional_health = CharacterManager.get_additional_health(Global.player_settings)
-		var npc_id = Global.player_settings.character_to_help_data["id"]
-		Global.show_positives(additional_health, Global.player_settings.character_to_help_data)
-		
 	spawn_player()
 	
 	var building_occupy_type

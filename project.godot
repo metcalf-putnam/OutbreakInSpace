@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "RigidBody2D",
-"class": "Bullet",
-"language": "GDScript",
-"path": "res://gnar/bullets/Bullet.gd"
-}, {
 "base": "KinematicBody2D",
 "class": "Character",
 "language": "GDScript",
@@ -35,7 +30,6 @@ _global_script_classes=[ {
 "path": "res://Dialog/WhiskersParser.gd"
 } ]
 _global_script_class_icons={
-"Bullet": "",
 "Character": "",
 "Interactable": "",
 "Player": "",

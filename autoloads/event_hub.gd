@@ -33,9 +33,6 @@ signal building_occupied
 # Infection signals
 signal new_infection
 
-# Mini game
-signal start_mini_game
-
 # Onscreen control signals
 signal sing_button_pressed
 signal sing_button_released

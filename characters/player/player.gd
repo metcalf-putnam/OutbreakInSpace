@@ -96,3 +96,19 @@ func update_sprite():
 
 	$Sprite.texture = load(sprite_file)
 	$Helmet.texture = load(helmet_file)
+
+
+func _on_Close_body_entered(body):
+	._on_Close_body_entered(body)
+	if body.is_in_group("character") and Global.player_can_test and !body.is_in_group("player"):
+		body.show_glow(true)
+		EventHub.emit_signal("testable_character_in_range")
+	
+
+func _on_Close_body_exited(body):
+	._on_Close_body_exited(body)
+	if body.is_in_group("character"):
+		body.show_glow(false)
+		if close_contacts.size() <= 1:  # player counts as one;; only show when others in range
+			EventHub.emit_signal("no_testables_in_range")
+		

@@ -33,6 +33,7 @@ var sing_toggled := false
 
 
 func _ready():
+	show_glow(false)
 	$TestingLabel.hide()
 	if !Global.visuals_on:
 		$InfectionVisual.show()
@@ -292,11 +293,20 @@ func done_test():
 	return data["done_test"]
 
 
+func show_glow(boolean):
+	if boolean:
+		$Glow.show()
+	else:
+		$Glow.hide()
+
+
 func infection_visual(boolean):
 	if boolean:
+		$Glow.hide()
 		$InfectionVisual.hide()
 		$Label.hide()
 	else:
+		$Glow.show()
 		$InfectionVisual.show()
 		$Label.show()
 

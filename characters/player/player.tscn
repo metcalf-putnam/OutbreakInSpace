@@ -14,6 +14,12 @@ script = ExtResource( 2 )
 sprite_file = "res://characters/player/base_sprite.png"
 helmet_file = "res://characters/player/helmet.png"
 
+[node name="Sprite" parent="." index="3"]
+frame = 0
+
+[node name="Helmet" parent="." index="4"]
+frame = 0
+
 [node name="AnimationPlayer" parent="." index="8"]
 playback_speed = 2.0
 

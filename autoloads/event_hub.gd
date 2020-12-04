@@ -24,6 +24,8 @@ signal leave_building
 # Testing signals
 signal testing_character
 signal character_tested
+signal testable_character_in_range
+signal no_testables_in_range
 
 # Building signals
 signal building_entered

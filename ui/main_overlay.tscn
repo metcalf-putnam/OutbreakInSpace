@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://ui/main_overlay.gd" type="Script" id=1]
 [ext_resource path="res://dialog/menu_section_9patch.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://ui/Check_Reports_Pressed.png" type="Texture" id=13]
 [ext_resource path="res://environment/interactables/circle.png" type="Texture" id=14]
 [ext_resource path="res://ui/quests/Quests.tscn" type="PackedScene" id=15]
+[ext_resource path="res://ui/test_button.gd" type="Script" id=16]
+[ext_resource path="res://characters/glow.png" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -290,6 +292,7 @@ action_mode = 0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
+script = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="PlayerControls/TestButton"]
 margin_left = 6.345
@@ -301,6 +304,12 @@ text = "Test"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Glow" type="Sprite" parent="PlayerControls/TestButton"]
+position = Vector2( 29.217, 19.7289 )
+rotation = 1.5708
+scale = Vector2( 3, 3 )
+texture = ExtResource( 17 )
 
 [node name="SingButton" type="TextureButton" parent="PlayerControls"]
 margin_left = 84.0

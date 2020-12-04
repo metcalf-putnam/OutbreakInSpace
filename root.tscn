@@ -44,19 +44,19 @@ position = Vector2( -150, -189 )
 type = "home"
 
 [node name="D1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -262, -93 )
+position = Vector2( -358, -93 )
 type = "home"
 
 [node name="D2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -262, -13 )
+position = Vector2( -310, -93 )
 type = "home"
 
 [node name="D3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -262, 83 )
+position = Vector2( -262, -93 )
 type = "home"
 
 [node name="D4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -262, 179 )
+position = Vector2( -358, -14 )
 type = "home"
 
 [node name="A1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
@@ -84,39 +84,39 @@ position = Vector2( 1259, 195 )
 type = "home"
 
 [node name="B1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 395, 659 )
+position = Vector2( -309.709, -13.6334 )
 type = "home"
 
 [node name="B2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 474, 659 )
+position = Vector2( -261.94, -12.7211 )
 type = "home"
 
 [node name="B3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 602, 659 )
+position = Vector2( -358.94, 82.2789 )
 type = "home"
 
 [node name="B4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 682, 659 )
+position = Vector2( -309.94, 82.2789 )
 type = "home"
 
 [node name="B5" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 747, 659 )
+position = Vector2( -261.94, 82.2789 )
 type = "home"
 
 [node name="B6" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 922, 659 )
+position = Vector2( -358.94, 179.279 )
 type = "home"
 
 [node name="B7" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 986, 659 )
+position = Vector2( -309.94, 178.279 )
 type = "home"
 
 [node name="B8" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1050, 659 )
+position = Vector2( -261.94, 178.279 )
 type = "home"
 
 [node name="B9" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1114, 659 )
+position = Vector2( 157.06, 245.279 )
 type = "home"
 
 [node name="Locations" type="Node2D" parent="Navigation2D"]
@@ -266,7 +266,7 @@ position = Vector2( 528.131, -20.8961 )
 label_text = "<Grocery Store>"
 
 [node name="Park2Sign" parent="." instance=ExtResource( 12 )]
-position = Vector2( 97.4736, 304.488 )
+position = Vector2( 1021.79, 251.126 )
 label_text = "<Park2>"
 
 [node name="Park1Sign" parent="." instance=ExtResource( 12 )]

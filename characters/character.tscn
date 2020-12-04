@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://characters/character.gd" type="Script" id=1]
 [ext_resource path="res://characters/circle.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://characters/effects/Emote.tscn" type="PackedScene" id=9]
 [ext_resource path="res://characters/effects/Full_Cough (1).wav" type="AudioStream" id=10]
+[ext_resource path="res://characters/glow.png" type="Texture" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.9767
@@ -575,5 +576,8 @@ __meta__ = {
 position = Vector2( -2, -7 )
 animation = "default"
 frame = -1
+
+[node name="Glow" type="Sprite" parent="."]
+texture = ExtResource( 11 )
 [connection signal="timeout" from="ShedTimer" to="." method="_on_ShedTimer_timeout"]
 [connection signal="timeout" from="CoughTimer" to="." method="_on_CoughTimer_timeout"]

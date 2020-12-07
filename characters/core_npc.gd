@@ -78,7 +78,19 @@ func get_dialog_file():
 
 
 func get_file_path(event_name):
-	return "res://dialog/" + "json/"  + npc_handle + "_" + event_name + ".json"
+	
+	var file = File.new()
+	var path = "res://dialog/json/" + Global.selected_language + "/" + npc_handle + "_" + event_name + ".json"
+	if not file.file_exists(path):
+		path = "res://dialog/json/" + npc_handle + "_" + event_name + ".json"
+	return path
+
+
+func get_translated_file(dialog_file):
+	if Global.selected_locale != Global.default_locale:
+		var filename = dialog_file.substr(dialog_file.find_last("/") + 1)
+		return "res://dialog/json/" + Global.selected_locale + "/" + filename
+	return dialog_file
 
 
 func _on_Interactable_dialogue_started():
@@ -88,7 +100,7 @@ func _on_Interactable_dialogue_started():
 		data["event_checks"][event] = true
 		event = null
 	else:
-		EventHub.emit_signal("new_dialogue", dialog_file, full_name)
+		EventHub.emit_signal("new_dialogue", get_translated_file(dialog_file), full_name)
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.connect("npc_dialogue", self, "_on_dialog")
 

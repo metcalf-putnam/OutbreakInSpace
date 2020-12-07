@@ -1,5 +1,9 @@
 extends Node
 
+# Player Language Settings
+var default_locale = "en"
+var selected_locale = "en"
+
 var active := true
 var essential_workers := false
 var debug_on := false

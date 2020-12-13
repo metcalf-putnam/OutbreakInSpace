@@ -13,6 +13,28 @@ export (String, FILE, "*.png") var portrait_file
 var Events = ["virus_detected", "first_results", "first_positive", "first_death", "testing_completed"]
 var event
 
+func get_event_dialog_file_path():
+	var file2check = File.new()
+	var file_path = ""
+	
+	if !Global.first_lab_visit and !data["event_checks"]["virus_detected"]:
+		event = "virus_detected"
+	if Global.testing_completed and !data["event_checks"]["testing_completed"]:
+		event = "testing_completed"
+	if Global.first_results and !data["event_checks"]["first_results"]:
+		event = "first_results"
+	if Global.first_positive and !data["event_checks"]["first_positive"]:
+		event = "first_positive"
+	if Global.first_death and !data["event_checks"]["first_death"]:
+		event = "first_death"
+	else:
+		event = null
+		return null
+	
+	file_path = "res://dialog/json/" + npc_handle + "_" + event + ".json"
+	if file2check.file_exists(file_path):
+		return file_path
+
 func _ready():
 	data = CharacterManager.get_core_npc(npc_handle, portrait_file, is_immune)
 	if infective_dose:
@@ -44,63 +66,14 @@ func _ready():
 		Global.connect("singing_lesson", self, "_on_singing_lesson")
 
 
-func get_dialog_file():
-	var file2check = File.new()
-	var file_path = ""
-	if !Global.first_lab_visit and !data["event_checks"]["virus_detected"]:
-		event = "virus_detected"
-		file_path = get_file_path(event)
-		if file2check.file_exists(file_path):
-			return file_path
-	if Global.testing_completed and !data["event_checks"]["testing_completed"]:
-		event = "testing_completed"
-		file_path = get_file_path(event)
-		if file2check.file_exists(file_path):
-			return file_path
-	if Global.first_results and !data["event_checks"]["first_results"]:
-		event = "first_results"
-		file_path = get_file_path(event)
-		if file2check.file_exists(file_path):
-			return file_path
-	if Global.first_positive and !data["event_checks"]["first_positive"]:
-		event = "first_positive"
-		file_path = get_file_path(event)
-		if file2check.file_exists(file_path):
-			return file_path
-	if Global.first_death and !data["event_checks"]["first_death"]:
-		event = "first_death"
-		file_path = get_file_path(event)
-		if file2check.file_exists(file_path):
-			return file_path
-	else:
-		event = null
-		return null
-
-
-func get_file_path(event_name):
-	
-	var file = File.new()
-	var path = "res://dialog/json/" + Global.selected_language + "/" + npc_handle + "_" + event_name + ".json"
-	if not file.file_exists(path):
-		path = "res://dialog/json/" + npc_handle + "_" + event_name + ".json"
-	return path
-
-
-func get_translated_file(dialog_file):
-	if Global.selected_locale != Global.default_locale:
-		var filename = dialog_file.substr(dialog_file.find_last("/") + 1)
-		return "res://dialog/json/" + Global.selected_locale + "/" + filename
-	return dialog_file
-
-
 func _on_Interactable_dialogue_started():
-	var event_dialogue = get_dialog_file()
+	var event_dialogue = get_event_dialog_file_path()
 	if event_dialogue:
 		EventHub.emit_signal("new_dialogue", event_dialogue, full_name)
 		data["event_checks"][event] = true
 		event = null
 	else:
-		EventHub.emit_signal("new_dialogue", get_translated_file(dialog_file), full_name)
+		EventHub.emit_signal("new_dialogue", dialog_file, full_name)
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.connect("npc_dialogue", self, "_on_dialog")
 
@@ -142,7 +115,7 @@ func check_special_dialog():
 	if !Global.player_can_sing and npc_handle == "singer":
 		$Interactable.set_new_info(true)
 		return
-	if get_dialog_file():
+	if get_event_dialog_file_path():
 		$Interactable.set_new_info(true)
 	else:
 		$Interactable.set_new_info(false)

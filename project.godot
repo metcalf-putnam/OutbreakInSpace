@@ -48,6 +48,7 @@ Global="*res://autoloads/global.gd"
 CharacterManager="*res://characters/character_manager.gd"
 EventHub="*res://autoloads/event_hub.gd"
 Music="*res://music/music.tscn"
+TranslationHub="*res://autoloads/translation_hub.gd"
 
 [debug]
 
@@ -120,6 +121,10 @@ run={
 2d_physics/layer_3="virus"
 2d_physics/layer_4="player_bullet"
 2d_physics/layer_5="virus_bullet"
+
+[locale]
+
+translations=PoolStringArray( "res://translations/oip_strings.en.translation", "res://translations/oip_strings.pt.translation" )
 
 [rendering]
 

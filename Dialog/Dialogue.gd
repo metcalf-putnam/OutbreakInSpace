@@ -129,6 +129,9 @@ func init(file_path : String, name := " "):
 	set_process(true)
 	parser = WhiskersParser.new(Global)
 	parser.set_format_dictionary({"player_name" : CharacterManager.player["name"], "overlord_day" : Global.overlord_day})
+	
+	file_path = TranslationHub.get_translated_file(file_path)
+	
 	dialogue_data = parser.open_whiskers(file_path)
 	block = parser.start_dialogue(dialogue_data)
 	next()

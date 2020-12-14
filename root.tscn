@@ -27,20 +27,19 @@ NPC = ExtResource( 2 )
 pause_mode = 1
 
 [node name="PlayerHome" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -342, -525 )
+position = Vector2( 106, -115 )
 script = ExtResource( 5 )
 
 [node name="C1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -70, -493 )
+position = Vector2( -160, -193 )
 type = "home"
 
 [node name="C3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-visible = false
-position = Vector2( -341, -397 )
+position = Vector2( -25, -193 )
 type = "home"
 
 [node name="C4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -150, -189 )
+position = Vector2( 44, -194 )
 type = "home"
 
 [node name="D1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
@@ -80,7 +79,7 @@ position = Vector2( 1451, -109 )
 type = "home"
 
 [node name="S1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1259, 195 )
+position = Vector2( 515.124, 180.858 )
 type = "home"
 
 [node name="B1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
@@ -123,13 +122,13 @@ type = "home"
 pause_mode = 1
 
 [node name="Class1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 74, -93 )
+position = Vector2( -276.725, 277.524 )
 
 [node name="Class2" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 202, -77 )
+position = Vector2( -167.11, 275.139 )
 
 [node name="Class3" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 139, -205 )
+position = Vector2( -85.0291, 277.56 )
 
 [node name="Park1" type="Position2D" parent="Navigation2D/Locations"]
 position = Vector2( 1016, -280 )
@@ -138,26 +137,26 @@ position = Vector2( 1016, -280 )
 position = Vector2( 136, 416 )
 
 [node name="grocery" type="Position2D" parent="Navigation2D/Locations"]
-position = Vector2( 584, -64 )
+position = Vector2( 99, 423 )
 
 [node name="Factory1A" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 314, 354 )
+position = Vector2( 227.733, -23.5949 )
 
 [node name="Factory1B" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 426.15, 353.674 )
+position = Vector2( 482.719, -15.4356 )
 
 [node name="Factory1C" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 586, 354 )
+position = Vector2( 549.23, -12.2812 )
 
 [node name="Factory1D" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 698, 354 )
+position = Vector2( 608.905, -12.2812 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="npcs" type="YSort" parent="YSort"]
 
 [node name="Professor" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( 543.187, -417.402 )
+position = Vector2( -132.807, 37.9746 )
 dialog_file = "res://Dialog/json/professor.json"
 full_name = "Professor"
 infective_dose = 1000
@@ -168,7 +167,7 @@ npc_handle = "professor"
 portrait_file = "res://characters/portraits/Professor.png"
 
 [node name="Mayor" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( 1392, 176 )
+position = Vector2( 164.463, 150.544 )
 dialog_file = "res://Dialog/json/mayor_steady_state.json"
 full_name = "Mayor Snorgyl"
 infective_dose = 1000
@@ -179,7 +178,7 @@ npc_handle = "mayor"
 portrait_file = "res://characters/portraits/Mayor.png"
 
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( -104, -376 )
+position = Vector2( -37.532, 134.531 )
 dialog_file = "res://Dialog/json/granny_v2.json"
 full_name = "Granny Murktuk"
 infective_dose = 350
@@ -190,7 +189,7 @@ npc_handle = "granny"
 portrait_file = "res://characters/portraits/Granny.png"
 
 [node name="Singer" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( 189, -364 )
+position = Vector2( 51.8213, 29.1513 )
 dialog_file = "res://Dialog/json/singing_v3.json"
 full_name = "Kortuk the Magnificent"
 infective_dose = 1000
@@ -202,7 +201,7 @@ npc_handle = "singer"
 portrait_file = "res://characters/portraits/SingingCoach.png"
 
 [node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( 841.37, 161.548 )
+position = Vector2( 331.37, -5.452 )
 dialog_file = "res://Dialog/json/work_friend.json"
 full_name = "Snitgar"
 infective_dose = 750
@@ -214,7 +213,7 @@ npc_handle = "work_friend"
 portrait_file = "res://characters/portraits/WorkerFriend.png"
 
 [node name="Player" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( -340, -528 )
+position = Vector2( 179, -115 )
 
 [node name="FPS" type="Label" parent="."]
 visible = false
@@ -252,13 +251,13 @@ __meta__ = {
 }
 
 [node name="glass_32x32" type="Sprite" parent="."]
-position = Vector2( 543, -417 )
+position = Vector2( -90.3474, 127.73 )
 texture = ExtResource( 11 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="glass_32x32"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="glass_32x32/StaticBody2D"]
-position = Vector2( 0.468201, 0 )
+position = Vector2( -0.945861, 1.41422 )
 shape = SubResource( 1 )
 
 [node name="GrocerySign" parent="." instance=ExtResource( 12 )]
@@ -266,13 +265,12 @@ position = Vector2( 528.131, -20.8961 )
 label_text = "<Grocery Store>"
 
 [node name="Park2Sign" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1021.79, 251.126 )
+position = Vector2( 423.578, 236.984 )
 label_text = "<Park2>"
 
 [node name="Park1Sign" parent="." instance=ExtResource( 12 )]
 position = Vector2( 1027.91, -336.576 )
 label_text = "<Park1>"
 [connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
-[connection signal="player_controls_toggle" from="CanvasLayer/Dialogue" to="Overlay" method="_on_Dialogue_player_controls_toggle"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_DayTimer_timeout"]
 [connection signal="timeout" from="GoHomeTimer" to="." method="_on_GoHomeTimer_timeout"]

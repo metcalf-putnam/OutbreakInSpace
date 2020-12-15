@@ -1,4 +1,6 @@
 extends Character
+class_name CoreNPC
+
 export(String, FILE, "*.json") var dialog_file
 export var full_name : String
 export var infective_dose : int

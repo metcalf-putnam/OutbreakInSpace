@@ -21,7 +21,7 @@ var player_test_results := false
 var mask_effectiveness := 0.5
 
 var player_can_sing := false
-var player_can_test := true
+var player_can_test := false
 var player_helmet := false
 
 # Home flags

@@ -488,7 +488,6 @@ texture = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
-frame = 1
 
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
@@ -496,7 +495,6 @@ frame = 1
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
-frame = 1
 
 [node name="ShedTimer" type="Timer" parent="."]
 
@@ -544,6 +542,16 @@ max_distance = 800.0
 stream = ExtResource( 6 )
 volume_db = -10.0
 
+[node name="CoughTimer" type="Timer" parent="." groups=[
+"character",
+]]
+wait_time = 20.0
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+
+[node name="Glow" type="Sprite" parent="."]
+texture = ExtResource( 11 )
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 modulate = Color( 1, 1, 1, 0.380392 )
 emitting = false
@@ -553,15 +561,20 @@ emission_shape = 1
 emission_sphere_radius = 13.39
 gravity = Vector2( 0, -1 )
 
-[node name="CoughTimer" type="Timer" parent="." groups=[
-"character",
-]]
-wait_time = 20.0
+[node name="Emote" parent="." instance=ExtResource( 9 )]
+position = Vector2( -2, -7 )
+animation = "default"
+frame = -1
+playing = false
 
-[node name="TestingLabel" type="Label" parent="."]
-margin_left = 3.99426
+[node name="TestingLabelParent" type="Node2D" parent="."]
+z_index = 1
+z_as_relative = false
+
+[node name="TestingLabel" type="Label" parent="TestingLabelParent"]
+margin_left = 9.99426
 margin_top = -5.67605
-margin_right = 43.9943
+margin_right = 180.994
 margin_bottom = 8.32395
 custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
@@ -569,15 +582,5 @@ text = "Character Name, last tested: Day 3"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
-
-[node name="Emote" parent="." instance=ExtResource( 9 )]
-position = Vector2( -2, -7 )
-animation = "default"
-frame = -1
-
-[node name="Glow" type="Sprite" parent="."]
-texture = ExtResource( 11 )
 [connection signal="timeout" from="ShedTimer" to="." method="_on_ShedTimer_timeout"]
 [connection signal="timeout" from="CoughTimer" to="." method="_on_CoughTimer_timeout"]

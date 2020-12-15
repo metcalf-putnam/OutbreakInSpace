@@ -34,7 +34,7 @@ var sing_toggled := false
 
 func _ready():
 	show_glow(false)
-	$TestingLabel.hide()
+	$TestingLabelParent.hide()
 	if !Global.visuals_on:
 		$InfectionVisual.show()
 		$Label.show()
@@ -70,10 +70,8 @@ func init(data_in):
 
 
 func update_testing_label():
-	var testing_text = get_full_name()
-	if data.has("last_tested"):
-		testing_text = testing_text + testing_suffix_days + str(data["last_tested"])
-	$TestingLabel.text = testing_text
+	var testing_text = get_full_name().split(" ", true)[0]
+	$TestingLabelParent/TestingLabel.text = testing_text
 
 
 func update_sprite():
@@ -267,9 +265,9 @@ func mask_off():
 
 func show_testing_label(boolean):
 	if boolean:
-		$TestingLabel.show()
+		$TestingLabelParent.show()
 	else:
-		$TestingLabel.hide()
+		$TestingLabelParent.hide()
 
 
 func get_full_name():
@@ -282,9 +280,6 @@ func get_full_name():
 func test():
 	data["last_tested"] = Global.day
 	data["done_test"] = true
-	var testing_text = get_full_name()
-	testing_text = testing_text + testing_suffix_days + str(data["last_tested"])
-	$TestingLabel.text = testing_text
 	print(data["name"], "+", data["is_infected"])
 	Global.add_test_results(data, data["is_infected"])
 

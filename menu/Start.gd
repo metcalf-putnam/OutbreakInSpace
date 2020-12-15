@@ -11,3 +11,6 @@ func _on_Button_pressed():
 
 func _on_Button_mouse_entered():
 	$MouseOver.play()
+
+func apply_text_translation():
+	$Button.set_text(tr(TranslationHub.KEYS.START))

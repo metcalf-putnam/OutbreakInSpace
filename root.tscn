@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://characters/corenpcs/Scietist/glass_32x32.png" type="Texture" id=11]
 [ext_resource path="res://environment/DumbSign.tscn" type="PackedScene" id=12]
+[ext_resource path="res://test_ui/test_menu.tscn" type="PackedScene" id=13]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 14.4662
@@ -234,6 +236,8 @@ autostart = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 9 )]
+
+[node name="NinePatchRect" parent="CanvasLayer" instance=ExtResource( 13 )]
 
 [node name="Overlay" parent="." instance=ExtResource( 10 )]
 

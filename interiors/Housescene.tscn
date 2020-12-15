@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://interiors/Housescene.gd" type="Script" id=1]
 [ext_resource path="res://interiors/Player_Indoor_House_Tiles.png" type="Texture" id=2]
@@ -11,7 +11,7 @@
 [ext_resource path="res://dialog/Dialogue.tscn" type="PackedScene" id=9]
 [ext_resource path="res://ui/main_overlay.tscn" type="PackedScene" id=10]
 [ext_resource path="res://characters/pet/pet.tscn" type="PackedScene" id=11]
-
+[ext_resource path="res://test_ui/test_menu.tscn" type="PackedScene" id=12]
 
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -125,6 +125,8 @@ shape = SubResource( 5 )
 
 [node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 9 )]
 
+[node name="NinePatchRect" parent="CanvasLayer" instance=ExtResource( 12 )]
+
 [node name="Overlay" parent="." instance=ExtResource( 10 )]
 
 [node name="Carpet" type="Sprite" parent="."]
@@ -143,5 +145,6 @@ position = Vector2( 107.389, 33.253 )
 position = Vector2( 87.601, 75.5345 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 5 )
 volume_db = -13.0

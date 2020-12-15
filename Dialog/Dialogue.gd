@@ -28,7 +28,7 @@ func _ready():
 	set_process(false)
 	hide()
 	EventHub.connect("new_dialogue", self, "init")
-	EventHub.connect("testing_character", self, "test_character")
+	#EventHub.connect("testing_character", self, "test_character")
 	EventHub.connect("insufficient_energy", self, "error")
 	EventHub.connect("going_in_house_dialogue", self, "_on_going_in_house_dialogue")
 	EventHub.connect("going_out_house_dialogue", self, "_on_going_out_house_dialogue")
@@ -65,25 +65,6 @@ func _process(delta):
 						if !option_text.begins_with(action_prefix):
 							EventHub.emit_signal("player_spoke")
 						step_forward(i)
-			State.TESTING:
-				for i in range(0, get_node("Buttons").get_child_count()):
-					if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
-						if len(characters) <= i:
-							cancel_test()
-						else:
-							if Global.energy <= 0:
-								decline_test()
-							else:
-								if characters[i] is KinematicBody2D:
-									characters[i].test()
-									EventHub.emit_signal("character_tested", characters[i].data)
-								else:
-									characters[i]["last_tested"] = Global.day
-									Global.add_test_results(characters[i], characters[i]["is_infected"])
-									EventHub.emit_signal("character_tested", characters[i])
-								confirm_test($Buttons.get_child(i).get_text())
-						clear_buttons()
-						$Space_NinePatchRect.show()
 			State.HOUSE:
 				for i in range(0, get_node("Buttons").get_child_count()):
 					if get_node('Buttons').get_child(i).pressed and timer >= 0.5:
@@ -175,28 +156,6 @@ func test_character(character_array, location_name = null):
 		$Space_NinePatchRect.hide()
 		get_tree().paused = true
 
-	for character in characters:
-		if character is KinematicBody2D:
-			character.show_testing_label(true)
-			add_name_button(format_name_button(character.data))
-		else:
-			add_name_button(format_name_button(character))
-	
-	if get_node("Buttons").get_child_count() == 0:
-		characters = []
-		
-	add_name_button("No one for now")
-
-
-func format_name_button(data):
-	var label_text = data["name"]
-	if data.has("home"):
-		label_text = label_text + ", h: " + data["home"]
-	if data.has("work"):
-		label_text = label_text + ", w: " + data["work"]
-	if data.has("last_tested"):
-		label_text = label_text + ", lt: Day " + str(data["last_tested"])
-	return label_text
 
 
 func error():
@@ -209,40 +168,12 @@ func error():
 	is_final = true
 
 
-func confirm_test(name_tested : String):
-	$Text.bbcode_text = name_tested + " has been tested. Results will be posted in " + str(Global.test_time) + " days."
-	Global.decrement_energy()
-	is_final = true
-	get_tree().paused = false
-
-
-func cancel_test():
-	$Text.bbcode_text = "no one was been tested"
-	is_final = true
-	get_tree().paused = false
-
-
-func decline_test():
-	$Text.bbcode_text = "insufficient energy to test"
-	is_final = true
-	get_tree().paused = false
-
-
 func next():
 	clear_buttons()
 	if block:
 		show()
 		text_state = TEXT_STATE.INPROGRESS
 		animate_letters()
-
-
-func add_name_button(name : String):
-	var node = ChoiceButton.instance()
-	node.set_text(name)
-	node.rect_position = Vector2($ChoicePos.position.x, $ChoicePos.position.y + lastBttnPos)
-	self.get_node("Buttons").add_child(node)
-	node.show()
-	lastBttnPos -= node.rect_size.y + 3
 
 
 func add_button(button_data):
@@ -398,6 +329,14 @@ func _on_computer_dialogue():
 func _on_pet_dialogue():
 	print("pet")
 
+
+func add_name_button(name : String):
+	var node = ChoiceButton.instance()
+	node.set_text(name)
+	node.rect_position = Vector2($ChoicePos.position.x, $ChoicePos.position.y + lastBttnPos)
+	self.get_node("Buttons").add_child(node)
+	node.show()
+	lastBttnPos -= node.rect_size.y + 3
 
 
 func animate_letters():

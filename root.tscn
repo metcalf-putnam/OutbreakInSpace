@@ -73,11 +73,7 @@ position = Vector2( 1171, 27 )
 type = "home"
 
 [node name="A4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1177, 100 )
-type = "home"
-
-[node name="A5" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1173, 193 )
+position = Vector2( 1171, 27 )
 type = "home"
 
 [node name="S1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
@@ -94,14 +90,6 @@ type = "home"
 
 [node name="B3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
 position = Vector2( -44.94, 20.2789 )
-type = "home"
-
-[node name="B4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 716.06, -291.721 )
-type = "home"
-
-[node name="B5" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 272.06, 90.2789 )
 type = "home"
 
 [node name="B6" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
@@ -150,6 +138,9 @@ position = Vector2( 586.15, -440.326 )
 [node name="Factory1C" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 650, -454 )
 
+[node name="Factory1C2" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
+position = Vector2( 650, -454 )
+
 [node name="Factory1D" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 974, -332 )
 
@@ -172,7 +163,7 @@ portrait_file = "res://characters/portraits/Professor.png"
 position = Vector2( 508, -214 )
 dialog_file = "res://Dialog/json/mayor_steady_state.json"
 full_name = "Mayor Snorgyl"
-infective_dose = 1000
+infective_dose = 603
 sprite_file = "res://characters/corenpcs/Mayor/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Mayor/helmet.png"
 home = "S1"
@@ -186,7 +177,7 @@ full_name = "Granny Murktuk"
 infective_dose = 350
 sprite_file = "res://characters/corenpcs/Granny Murktuk/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Granny Murktuk/helmet.png"
-home = "C3"
+home = "C2"
 npc_handle = "granny"
 portrait_file = "res://characters/portraits/Granny.png"
 
@@ -197,7 +188,7 @@ full_name = "Kortuk the Magnificent"
 infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Singin Coach/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Singin Coach/helmet.png"
-home = "C4"
+home = "C3"
 work = "Idol"
 npc_handle = "singer"
 portrait_file = "res://characters/portraits/SingingCoach.png"
@@ -239,6 +230,7 @@ autostart = true
 [node name="NinePatchRect" parent="CanvasLayer" instance=ExtResource( 13 )]
 
 [node name="Overlay" parent="." instance=ExtResource( 10 )]
+layer = -1
 
 [node name="DayTimer" type="Timer" parent="."]
 wait_time = 400.0

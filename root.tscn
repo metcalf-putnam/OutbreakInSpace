@@ -57,67 +57,67 @@ position = Vector2( 1101.3, -170.782 )
 type = "home"
 
 [node name="D4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -358, -14 )
+position = Vector2( -46, -492 )
 type = "home"
 
 [node name="A1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1435, -498 )
+position = Vector2( 863, -42 )
 type = "home"
 
 [node name="A2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1451, -397 )
+position = Vector2( 987, -33 )
 type = "home"
 
 [node name="A3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1451, -317 )
+position = Vector2( 1171, 27 )
 type = "home"
 
 [node name="A4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1451, -226 )
+position = Vector2( 1177, 100 )
 type = "home"
 
 [node name="A5" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1451, -109 )
+position = Vector2( 1173, 193 )
 type = "home"
 
 [node name="S1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1259, 195 )
+position = Vector2( 587, -213 )
 type = "home"
 
 [node name="B1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -309.709, -13.6334 )
+position = Vector2( -39.709, -343.633 )
 type = "home"
 
 [node name="B2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -261.94, -12.7211 )
+position = Vector2( -37.94, -132.721 )
 type = "home"
 
 [node name="B3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -358.94, 82.2789 )
+position = Vector2( -44.94, 20.2789 )
 type = "home"
 
 [node name="B4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -309.94, 82.2789 )
+position = Vector2( 716.06, -291.721 )
 type = "home"
 
 [node name="B5" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -261.94, 82.2789 )
+position = Vector2( 272.06, 90.2789 )
 type = "home"
 
 [node name="B6" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -358.94, 179.279 )
+position = Vector2( 349.06, 97.279 )
 type = "home"
 
 [node name="B7" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -309.94, 178.279 )
+position = Vector2( 440.06, 92.279 )
 type = "home"
 
 [node name="B8" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -261.94, 178.279 )
+position = Vector2( 520.06, 94.279 )
 type = "home"
 
 [node name="B9" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 157.06, 245.279 )
+position = Vector2( 271.06, 153.279 )
 type = "home"
 
 [node name="Locations" type="Node2D" parent="Navigation2D"]
@@ -142,16 +142,16 @@ position = Vector2( 136, 416 )
 position = Vector2( 584, -64 )
 
 [node name="Factory1A" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 314, 354 )
+position = Vector2( 508, -440 )
 
 [node name="Factory1B" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 426.15, 353.674 )
+position = Vector2( 586.15, -440.326 )
 
 [node name="Factory1C" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 586, 354 )
+position = Vector2( 650, -454 )
 
 [node name="Factory1D" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 698, 354 )
+position = Vector2( 974, -332 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -169,7 +169,7 @@ npc_handle = "professor"
 portrait_file = "res://characters/portraits/Professor.png"
 
 [node name="Mayor" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( 1392, 176 )
+position = Vector2( 508, -214 )
 dialog_file = "res://Dialog/json/mayor_steady_state.json"
 full_name = "Mayor Snorgyl"
 infective_dose = 1000
@@ -203,7 +203,7 @@ npc_handle = "singer"
 portrait_file = "res://characters/portraits/SingingCoach.png"
 
 [node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( 841.37, 161.548 )
+position = Vector2( 891.37, -338.452 )
 dialog_file = "res://Dialog/json/work_friend.json"
 full_name = "Snitgar"
 infective_dose = 750
@@ -269,11 +269,11 @@ position = Vector2( 528.131, -20.8961 )
 label_text = "<Grocery Store>"
 
 [node name="Park2Sign" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1021.79, 251.126 )
+position = Vector2( 773.79, -312.874 )
 label_text = "<Park2>"
 
 [node name="Park1Sign" parent="." instance=ExtResource( 12 )]
-position = Vector2( 1027.91, -336.576 )
+position = Vector2( 417.91, 3.42401 )
 label_text = "<Park1>"
 [connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
 [connection signal="player_controls_toggle" from="CanvasLayer/Dialogue" to="Overlay" method="_on_Dialogue_player_controls_toggle"]

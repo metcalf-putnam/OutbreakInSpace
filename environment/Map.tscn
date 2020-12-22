@@ -2331,7 +2331,7 @@ position = Vector2( 19.5026, -404.373 )
 texture = ExtResource( 12 )
 
 [node name="PathFinding" type="TileMap" parent="."]
-z_index = -4
+z_index = -5
 tile_set = SubResource( 10 )
 cell_size = Vector2( 16, 16 )
 format = 1

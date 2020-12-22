@@ -32,80 +32,67 @@ position = Vector2( 324.5, -457.5 )
 script = ExtResource( 5 )
 
 [node name="C1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -37.5, -435 )
+position = Vector2( 872.5, -36 )
+type = "home"
+
+[node name="C2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 983, -38 )
 type = "home"
 
 [node name="C3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-visible = false
-position = Vector2( -341, -397 )
-type = "home"
-
-[node name="C4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 3.5, -196.5 )
+position = Vector2( 1097.5, -40.5 )
 type = "home"
 
 [node name="D1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 870.951, -167.953 )
+position = Vector2( 871.951, 89.047 )
 type = "home"
 
 [node name="D2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 986.833, -167.953 )
+position = Vector2( 987.833, 93.047 )
 type = "home"
 
 [node name="D3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1101.3, -170.782 )
+position = Vector2( 1095.3, 90.218 )
 type = "home"
 
-[node name="D4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -46, -492 )
+[node name="E1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 873.3, 213.218 )
+type = "home"
+
+[node name="E2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 983.3, 214.218 )
+type = "home"
+
+[node name="E3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
+position = Vector2( 1097.3, 214.218 )
 type = "home"
 
 [node name="A1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 863, -42 )
+position = Vector2( -45, -476 )
 type = "home"
 
 [node name="A2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 987, -33 )
+position = Vector2( -38, -321 )
 type = "home"
 
 [node name="A3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1171, 27 )
+position = Vector2( -39, -135 )
 type = "home"
 
 [node name="A4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1171, 27 )
-type = "home"
-
-[node name="S1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 587, -213 )
+position = Vector2( -38, 38 )
 type = "home"
 
 [node name="B1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -39.709, -343.633 )
+position = Vector2( 871.291, -167.633 )
 type = "home"
 
 [node name="B2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -37.94, -132.721 )
+position = Vector2( 986.06, -169.721 )
 type = "home"
 
 [node name="B3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -44.94, 20.2789 )
-type = "home"
-
-[node name="B6" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 349.06, 97.279 )
-type = "home"
-
-[node name="B7" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 440.06, 92.279 )
-type = "home"
-
-[node name="B8" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 520.06, 94.279 )
-type = "home"
-
-[node name="B9" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 271.06, 153.279 )
+position = Vector2( 1096.06, -174.721 )
 type = "home"
 
 [node name="Locations" type="Node2D" parent="Navigation2D"]
@@ -124,25 +111,28 @@ position = Vector2( 423, -78.5 )
 position = Vector2( 1016, -280 )
 
 [node name="Park2" type="Position2D" parent="Navigation2D/Locations"]
-position = Vector2( 136, 416 )
+position = Vector2( 151, 414 )
 
 [node name="grocery" type="Position2D" parent="Navigation2D/Locations"]
 position = Vector2( 584, -64 )
 
-[node name="Factory1A" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 508, -440 )
+[node name="HatFactory" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
+position = Vector2( 516, -450 )
 
-[node name="Factory1B" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 586.15, -440.326 )
+[node name="MaintenanceFactory1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
+position = Vector2( 584.15, -449.326 )
 
-[node name="Factory1C" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 650, -454 )
+[node name="MaintenanceFactory2" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
+position = Vector2( 648, -450 )
 
-[node name="Factory1C2" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 650, -454 )
+[node name="shop" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
+position = Vector2( 656, -79 )
 
-[node name="Factory1D" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 974, -332 )
+[node name="townhall" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
+position = Vector2( 656, -79 )
+
+[node name="FoodFactory" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
+position = Vector2( 1018, -346 )
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -160,13 +150,13 @@ npc_handle = "professor"
 portrait_file = "res://characters/portraits/Professor.png"
 
 [node name="Mayor" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( 508, -214 )
+position = Vector2( 447.542, -221.071 )
 dialog_file = "res://Dialog/json/mayor_steady_state.json"
 full_name = "Mayor Snorgyl"
 infective_dose = 603
 sprite_file = "res://characters/corenpcs/Mayor/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Mayor/helmet.png"
-home = "S1"
+home = "A2"
 npc_handle = "mayor"
 portrait_file = "res://characters/portraits/Mayor.png"
 
@@ -177,7 +167,7 @@ full_name = "Granny Murktuk"
 infective_dose = 350
 sprite_file = "res://characters/corenpcs/Granny Murktuk/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Granny Murktuk/helmet.png"
-home = "C2"
+home = "A1"
 npc_handle = "granny"
 portrait_file = "res://characters/portraits/Granny.png"
 
@@ -188,7 +178,7 @@ full_name = "Kortuk the Magnificent"
 infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Singin Coach/base_sprite.png"
 helmet_file = "res://characters/corenpcs/Singin Coach/helmet.png"
-home = "C3"
+home = "A4"
 work = "Idol"
 npc_handle = "singer"
 portrait_file = "res://characters/portraits/SingingCoach.png"
@@ -230,7 +220,6 @@ autostart = true
 [node name="NinePatchRect" parent="CanvasLayer" instance=ExtResource( 13 )]
 
 [node name="Overlay" parent="." instance=ExtResource( 10 )]
-layer = -1
 
 [node name="DayTimer" type="Timer" parent="."]
 wait_time = 400.0
@@ -247,7 +236,7 @@ __meta__ = {
 }
 
 [node name="glass_32x32" type="Sprite" parent="."]
-position = Vector2( 320, -187 )
+position = Vector2( 234.087, -233.315 )
 texture = ExtResource( 11 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="glass_32x32"]
@@ -257,7 +246,7 @@ position = Vector2( 0.468201, 0 )
 shape = SubResource( 1 )
 
 [node name="GrocerySign" parent="." instance=ExtResource( 12 )]
-position = Vector2( 528.131, -20.8961 )
+position = Vector2( 608.131, -64.8961 )
 label_text = "<Grocery Store>"
 
 [node name="Park2Sign" parent="." instance=ExtResource( 12 )]

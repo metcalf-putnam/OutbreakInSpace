@@ -9,9 +9,10 @@ var player_id = 200
 var i := 0
 enum Infective{NORMAL, LOW, HIGH}
 var rng = RandomNumberGenerator.new()
-var workplaces = ["Factory1A", "Factory1B", "Factory1C", "Factory1D", "unemployed"]
+var classrooms = ["Class1", "Class2", "Class3"]
+var workplaces = ["HatFactory", "MaintenanceFactory1", "MaintenanceFactory2", "FoodFactory", "unemployed", "shop", "townhall"]
 var eld_places = ["grocery", "Park1", "Park2"]
-var syllables = 	["jack", "nu", "cu", "mo", "knuk", "sus", "ca", "shmu", "bo", "abod", "thl", "mo", "tuk", "foos"]
+var syllables = 	["jack", "nu", "cu", "mo", "knuk", "sus", "ca", "shmu", "bo", "abod", "thl", "mo", "tuk", "foos", "ric"]
 
 signal viral_shedding_computed
 
@@ -27,34 +28,26 @@ func generate_characters():
 	core_npcs = []
 	player = {}
 	create_player()
-	create_family("A1", "Blues", 2, 2, 1, "Fuzzlebee")
-	create_family("A2", "Blues", 1, 0, 0, "Fallshtuck")
+	create_family("A1", "Blues", 2, 2, 1, "Murktuk") # Granny
+	create_family("A2", "Blues", 1, 2, 1, "Snorgyl") # Mayor
 	create_family("A3", "Blues", 2, 1, 2, "Snucksno")
-	create_family("A4", "Blues", 2, 1, 2, "Bashface")
-	create_family("A5", "Blues", 2, 1, 2, "Gnostnoct")
-	
+	create_family("A4", "Blues", 2, 1, 2, "Pafbeen") # Singer 
+		
 	create_family("B1", "Reptiles", 2, 1, 1, "Albeback")
 	create_family("B2", "Reptiles", 2, 0, 2, "Smushl")
-	create_family("B3", "Reptiles", 1, 2, 3, "Tanyl")
-	create_family("B4", "Reptiles", 2, 1, 1, "Shnooson")
-	create_family("B6", "Reptiles", 2, 0, 1, "Beesl")
-	create_family("B7", "Reptiles", 1, 0, 1, "Knutl")
+	create_family("B3", "Reptiles", 1, 2, 3, "Tanyl") # Work friend
 	
-	create_family("C1", "Blues", 2, 1, 0, "Parsho")
-	create_family("C3", "Blues", 2, 2, 1, "Murktuk")
-	create_family("C4", "Blues", 2, 1, 1, "Raotao")
+	create_family("C1", "Reptiles", 2, 1, 0, "Parsho")
+	create_family("C2", "Reptiles", 2, 2, 1, "Fuzzlebee")
+	create_family("C3", "Reptiles", 2, 1, 1, "Raotao")
 	
 	create_family("D1", "Reptiles", 2, 0, 0, "Flarf")
-	create_family("D1", "Reptiles", 2, 0, 0, "Snuktuk")
-	create_family("D1", "Reptiles", 3, 1, 1, "Grurf")
-	create_family("D2", "Reptiles", 2, 0, 0, "Klarmore")
-	create_family("D2", "Reptiles", 1, 0, 0, "Narkto")
-	create_family("D3", "Reptiles", 3, 1, 0, "Pufto")
-	create_family("D3", "Reptiles", 1, 0, 0, "Shmortl")
-	create_family("D4", "Reptiles", 2, 0, 0, "Duckto")
-	create_family("D4", "Reptiles", 2, 0, 0, "Juapa")
+	create_family("D2", "Reptiles", 2, 0, 0, "Snuktuk")
+	create_family("D3", "Reptiles", 3, 1, 1, "Grurf")
 	
-	create_family("S1", "Blues", 1, 2, 1, "Snorgyl")
+	create_family("E1", "Reptiles", 2, 0, 0, "Klarmore")
+	create_family("E2", "Reptiles", 1, 0, 0, "Narkto")
+	create_family("E3", "Reptiles", 3, 1, 0, "Pufto")
 
 
 func get_core_npc(npc_name, portrait_file, is_immune):
@@ -138,7 +131,7 @@ func create_npc(home : String, family_name : String, race : String,
 		"adult":
 			dict["work"] = get_random(workplaces)
 		"Child": 
-			dict["work"] = get_random(["Class1", "Class2", "Class3"])
+			dict["work"] = get_random(classrooms)
 		"Elderly":
 			dict["work"] = get_random(eld_places)
 	dict["is_infected"] = false

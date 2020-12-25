@@ -129,7 +129,7 @@ position = Vector2( 647.5, -434 )
 position = Vector2( 654, -63 )
 
 [node name="townhall" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 513, -214.5 )
+position = Vector2( 514.5, -292.5 )
 
 [node name="FoodFactory" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 1018, -322 )

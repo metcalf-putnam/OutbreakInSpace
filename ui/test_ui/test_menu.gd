@@ -273,3 +273,6 @@ func exit_menu():
 	# TODO: make sure this is not needed here
 	#emit_signal("player_controls_toggle", false)
 	get_tree().paused = false
+	
+	if Global.energy == 0 and not Global.no_more_energy:
+		EventHub.emit_signal("no_energy_left")

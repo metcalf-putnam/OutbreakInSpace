@@ -11,7 +11,12 @@ func _ready():
 		$PlayerControls/ReportButton.show()
 	else:
 		$PlayerControls/ReportButton.hide()
-
+	
+	if Global.energy > 0:
+		$Energy/EndDayButton.hide()
+	else:
+		$Energy/EndDayButton.show()
+		
 	$PlayerControls.update_controls()
 	$ColorRect.visible = true
 	$ColorRect.modulate = Color(0,0,0,1)
@@ -60,3 +65,17 @@ func player_controls_toggle(boolean):
 func _on_Dialogue_player_controls_toggle(boolean):
 	player_controls_toggle(boolean)
 
+
+func show_end_day_button():
+	$Energy/EndDayButton.show()
+
+
+func _on_NoEnergyPopup_show_end_day():
+	$Energy/EndDayButton.show()
+	Global.no_more_energy = true
+	pass # Replace with function body.
+
+
+func _on_NoEnergyPopup_player_controls_toggle(boolean):
+	player_controls_toggle(boolean)
+	pass # Replace with function body.

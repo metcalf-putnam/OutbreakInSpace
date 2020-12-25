@@ -15,6 +15,7 @@ signal pet_dialogue
 # Energy use signals
 signal energy_used
 signal insufficient_energy
+signal no_energy_left
 
 # Day signals
 signal day_ended

@@ -6,6 +6,7 @@ var debug_on := false
 var day := 1
 var energy := 8
 const max_energy := 8
+var no_more_energy = false
 var new_infections := 0
 var total_infections := 1
 var visuals_on := true
@@ -28,7 +29,7 @@ var player_helmet := false
 var report_read := true # (no report on day 1)
 var tv_watched := false
 
-const player_initial_position := Vector2(-340, -528)
+const player_initial_position := Vector2(-38.5, -317.5)
 var player_position := player_initial_position
 var test_results = {}
 var test_time := 1

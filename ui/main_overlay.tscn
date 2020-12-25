@@ -188,6 +188,30 @@ position = Vector2( 127, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
+[node name="EndDayButton" type="TextureButton" parent="Energy"]
+margin_left = -12.3193
+margin_top = -15.3972
+margin_right = 139.681
+margin_bottom = 24.6028
+mouse_filter = 1
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Energy/EndDayButton"]
+margin_left = 39.4653
+margin_top = 8.7528
+margin_right = 113.465
+margin_bottom = 30.7528
+custom_fonts/font = SubResource( 1 )
+text = "End Day"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="DayCount" type="Label" parent="."]
 margin_left = 655.068
 margin_top = 21.0524
@@ -205,19 +229,6 @@ autoplay = "fade_in"
 anims/fade_away_explanation = SubResource( 2 )
 anims/fade_in = SubResource( 3 )
 anims/fade_to_black = SubResource( 4 )
-
-[node name="Button" type="Button" parent="."]
-visible = false
-margin_left = 920.399
-margin_top = 16.0576
-margin_right = 1006.4
-margin_bottom = 44.0576
-mouse_filter = 1
-custom_fonts/font = SubResource( 1 )
-text = "End Day"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Debug" type="Label" parent="."]
 margin_left = 5.0
@@ -364,6 +375,7 @@ __meta__ = {
 [node name="Quests" parent="." instance=ExtResource( 15 )]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 modulate = Color( 0, 0, 0, 0 )
 margin_right = 1024.0
 margin_bottom = 600.0
@@ -371,7 +383,7 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Energy/EndDayButton" to="." method="_on_Button_pressed"]
 [connection signal="toggled" from="Debug/MaskButton" to="." method="_on_MaskButton_toggled"]
 [connection signal="toggled" from="Debug/Visuals_Debug" to="." method="_on_Visuals_Debug_toggled"]
 [connection signal="pressed" from="PlayerControls/TestButton" to="PlayerControls" method="_on_TestButton_pressed"]

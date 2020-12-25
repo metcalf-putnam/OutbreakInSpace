@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://characters/corenpcs/Scietist/glass_32x32.png" type="Texture" id=11]
 [ext_resource path="res://environment/DumbSign.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ui/test_ui/test_menu.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ui/no_energy_popup/NoEnergyPopup.tscn" type="PackedScene" id=14]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 14.4662
@@ -219,6 +220,8 @@ autostart = true
 
 [node name="NinePatchRect" parent="CanvasLayer" instance=ExtResource( 13 )]
 
+[node name="NoEnergyPopup" parent="CanvasLayer" instance=ExtResource( 14 )]
+
 [node name="Overlay" parent="." instance=ExtResource( 10 )]
 
 [node name="DayTimer" type="Timer" parent="."]
@@ -258,5 +261,7 @@ position = Vector2( 417.91, 3.42401 )
 label_text = "<Park1>"
 [connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
 [connection signal="player_controls_toggle" from="CanvasLayer/Dialogue" to="Overlay" method="_on_Dialogue_player_controls_toggle"]
+[connection signal="player_controls_toggle" from="CanvasLayer/NoEnergyPopup" to="Overlay" method="_on_NoEnergyPopup_player_controls_toggle"]
+[connection signal="show_end_day" from="CanvasLayer/NoEnergyPopup" to="Overlay" method="_on_NoEnergyPopup_show_end_day"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_DayTimer_timeout"]
 [connection signal="timeout" from="GoHomeTimer" to="." method="_on_GoHomeTimer_timeout"]

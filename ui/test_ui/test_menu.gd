@@ -16,7 +16,8 @@ var details_offset = Vector2(15, -118)
 var text_buffer = 17
 var is_kinematic = false
 var selected_character
-
+var current_button_index = 0
+var button_navigation_used = false
 
 func _ready():
 	hide()
@@ -27,6 +28,9 @@ func _ready():
 
 func _process(delta):
 	timer += delta
+	
+	get_button_inputs()
+	
 	var mouse_over = false
 	for i in range(0, get_node("Buttons").get_child_count()):
 		if get_node('Buttons').get_child(i).mouse_over:
@@ -53,6 +57,31 @@ func _process(delta):
 		$Details.hide()
 	if is_kinematic:
 		update_visuals()
+
+# Testing menu popups contains 1 default button e.g "No one for now"
+# In this case we need to create a method that will navigate through Buttons and DeclineButton 
+# NOTE: If WASD controls will be remapped, we need to revisit this code.
+func get_button_inputs():
+	if $Buttons.get_child_count() > 0 and (
+		Input.is_action_just_pressed("ui_up") or 
+		Input.is_action_just_pressed("ui_down")):
+		
+		if Input.is_action_just_pressed("ui_up"):
+			current_button_index += 1
+		if Input.is_action_just_pressed("ui_down"):
+			current_button_index -= 1
+		
+		current_button_index = clamp(current_button_index, 0, $Buttons.get_child_count())
+		
+		if current_button_index == 0:
+			$DeclineButton.grab_focus()
+		else:
+			var button = $Buttons.get_child(current_button_index - 1)
+			button.grab_focus()
+	elif $Buttons.get_child_count() > 0 and Input.is_action_just_pressed("ui_accept"):
+		if current_button_index != 0:
+			var button = $Buttons.get_child(current_button_index - 1)
+			button.click()
 
 
 func update_visuals():
@@ -162,6 +191,8 @@ func test_character(character_array, location_name = null):
 	
 	if get_node("Buttons").get_child_count() == 0:
 		characters = []
+	
+	$DeclineButton.grab_focus()
 
 
 func format_building_name():
@@ -191,12 +222,14 @@ func cancel_test():
 	state = State.FINAL_MESSAGE
 	clear_buttons()
 	$DeclineButton.set_text(continue_text)
+	$DeclineButton.grab_focus()
 	
 
 func decline_test():
 	$Text.bbcode_text = "insufficient energy to test"
 	state = State.FINAL_MESSAGE
 	$DeclineButton.set_text(continue_text)
+	$DeclineButton.grab_focus()
 
 
 func confirm_test(name_tested : String):
@@ -204,6 +237,7 @@ func confirm_test(name_tested : String):
 	Global.decrement_energy()
 	state = State.FINAL_MESSAGE
 	$DeclineButton.set_text(continue_text)
+	$DeclineButton.grab_focus()
 
 
 func format_name_button(data):

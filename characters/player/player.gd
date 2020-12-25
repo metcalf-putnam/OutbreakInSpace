@@ -60,11 +60,15 @@ func _unhandled_input(event):
 
 
 func _on_new_dialogue(_file, _full_name):
-	state = State.DIALOGUE
+	in_dialogue()
 
 
 func _on_dialogue_finished():
 	state = State.ACTIVE
+
+
+func in_dialogue():
+	state = State.DIALOGUE
 
 
 func _on_sing_button_pressed():

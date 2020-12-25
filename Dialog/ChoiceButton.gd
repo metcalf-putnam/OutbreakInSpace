@@ -17,14 +17,24 @@ func set_text(text_in):
 	rect_size.x = $Button.get_font("font").get_string_size(text_in).x + buffer
 
 
-
 func get_text() -> String:
 	return $Button.text
 
 
-func _on_Button_pressed():
+func click():
 	pressed = true
 	emit_signal("is_pressed")
+
+
+func grab_focus():
+	$Button.grab_focus()
+
+
+func has_focus():
+	return $Button.has_focus()
+
+func _on_Button_pressed():
+	click()
 
 
 func _on_Button_mouse_entered():
@@ -33,4 +43,13 @@ func _on_Button_mouse_entered():
 
 
 func _on_Button_mouse_exited():
+	mouse_over = false
+
+
+func _on_Button_focus_entered():
+	$MouseOver.play()
+	mouse_over = true
+
+
+func _on_Button_focus_exited():
 	mouse_over = false

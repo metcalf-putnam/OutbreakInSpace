@@ -22,6 +22,9 @@ var ticks_before_next_letter = 5
 var current_tick = 0
 var text_length = 0
 
+# Button navigation
+var current_button_index = 0
+
 signal player_controls_toggle
 
 func _ready():
@@ -42,6 +45,7 @@ func _process(delta):
 	# TODO: get this out of process for speed improvements?
 	# TODO: add modes
 	timer += delta
+	
 	if text_state == TEXT_STATE.INPROGRESS:
 		current_tick += 1
 		if current_tick == ticks_before_next_letter:
@@ -52,6 +56,7 @@ func _process(delta):
 				text_state = TEXT_STATE.COMPLETE
 				show_buttons()
 	else:
+		
 		match state:
 			State.DIALOGUE:
 				for i in range(0, get_node("Buttons").get_child_count()):
@@ -86,6 +91,7 @@ func _process(delta):
 							EventHub.emit_signal("bed_interaction")
 							
 						end_dialogue()
+
 
 func step_forward(i):
 	if i == -1:
@@ -181,6 +187,14 @@ func add_button(button_data):
 	node.set_text(button_data.text)
 	node.rect_position = Vector2($ChoicePos.position.x, $ChoicePos.position.y + lastBttnPos)
 	self.get_node("Buttons").add_child(node)
+	
+	# Dialogues contains button choices that are coming from Whisker file
+	# With focus and using ui_inputs (ui_up, ui_down) it automatically solves the button navigation
+	# NOTE: If WASD controls will be remapped, we need to revisit this code.
+	if self.get_node("Buttons").get_child_count() == 1:
+		var first_button = get_node("Buttons").get_child(0)
+		first_button.grab_focus()
+	
 	node.show()
 	node.set_name(button_data.key)
 	print("data.key:", button_data.key)
@@ -211,10 +225,12 @@ func reset_characters():
 func _unhandled_input(event):
 	if !is_processing():
 		return
+	
 	if !event.is_action_pressed("ui_accept"):
 		return
 	
 	if text_state == TEXT_STATE.INPROGRESS:
+		current_button_index = 0
 		text_state = TEXT_STATE.COMPLETE
 		get_node("Text").visible_characters = -1
 		show_buttons()
@@ -335,6 +351,14 @@ func add_name_button(name : String):
 	node.set_text(name)
 	node.rect_position = Vector2($ChoicePos.position.x, $ChoicePos.position.y + lastBttnPos)
 	self.get_node("Buttons").add_child(node)
+	
+	# Dialogues contains button choices that are coming from Whisker file
+	# With focus and using ui_inputs (ui_up, ui_down) it automatically solves the button navigation
+	# NOTE: If WASD controls will be remapped, we need to revisit this code.
+	if self.get_node("Buttons").get_child_count() == 1:
+		var first_button = get_node("Buttons").get_child(0)
+		first_button.grab_focus()
+	
 	node.show()
 	lastBttnPos -= node.rect_size.y + 3
 
@@ -368,4 +392,5 @@ func speech():
 		var sound_file = Music.letters_sounds[file_number]
 		get_node("Speech").stream = sound_file
 		get_node("Speech").play()
+
 

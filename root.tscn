@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://environment/DumbSign.tscn" type="PackedScene" id=12]
 [ext_resource path="res://ui/test_ui/test_menu.tscn" type="PackedScene" id=13]
 [ext_resource path="res://ui/no_energy_popup/NoEnergyPopup.tscn" type="PackedScene" id=14]
+[ext_resource path="res://ui/log_screen/LogScreen.tscn" type="PackedScene" id=15]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 14.4662
@@ -221,6 +222,8 @@ autostart = true
 [node name="NinePatchRect" parent="CanvasLayer" instance=ExtResource( 13 )]
 
 [node name="NoEnergyPopup" parent="CanvasLayer" instance=ExtResource( 14 )]
+
+[node name="LogScreen" parent="CanvasLayer" instance=ExtResource( 15 )]
 
 [node name="Overlay" parent="." instance=ExtResource( 10 )]
 

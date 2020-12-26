@@ -78,6 +78,7 @@ func _on_Interactable_dialogue_started():
 		EventHub.emit_signal("new_dialogue", dialog_file, full_name)
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.connect("npc_dialogue", self, "_on_dialog")
+	Logger.create_log_for(full_name, Logger.LOG_TYPE.NPC_INTERACTION)
 
 
 func _on_dialogue_finished():

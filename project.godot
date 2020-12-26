@@ -55,6 +55,7 @@ CharacterManager="*res://characters/character_manager.gd"
 EventHub="*res://autoloads/event_hub.gd"
 Music="*res://music/music.tscn"
 TranslationHub="*res://autoloads/translation_hub.gd"
+Logger="*res://autoloads/logger.gd"
 
 [debug]
 

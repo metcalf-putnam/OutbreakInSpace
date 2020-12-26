@@ -86,7 +86,7 @@ func restart_game(boolean):
 	cookies = 0
 	helmet_mandate = false
 	essential_workers = false
-	
+	Logger.reset()
 	assert(get_tree().change_scene("res://interiors/Housescene.tscn") == OK)
 
 

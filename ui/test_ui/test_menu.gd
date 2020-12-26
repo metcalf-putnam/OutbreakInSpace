@@ -238,6 +238,7 @@ func confirm_test(name_tested : String):
 	state = State.FINAL_MESSAGE
 	$DeclineButton.set_text(continue_text)
 	$DeclineButton.grab_focus()
+	Logger.create_log_for(name_tested, Logger.LOG_TYPE.TESTING)
 
 
 func format_name_button(data):

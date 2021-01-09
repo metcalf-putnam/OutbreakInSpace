@@ -7,8 +7,7 @@ func _ready():
 	
 	pass # Replace with function body.
 
-func _on_LanguageList_item_selected(index):
-	
+func _on_LanguageList_item_selected(_index):
 	var locale = "en"
 	match ($LanguageList.text):
 		"Portuguese": locale = "pt"

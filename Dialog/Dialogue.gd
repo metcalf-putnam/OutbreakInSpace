@@ -39,6 +39,7 @@ func _ready():
 	EventHub.connect("bed_dialogue", self, "_on_bed_dialogue")
 	EventHub.connect("computer_dialogue", self, "_on_computer_dialogue")
 	EventHub.connect("pet_dialogue", self, "_on_pet_dialogue")
+	parser = WhiskersParser.new(Global)
 
 
 func _process(delta):
@@ -114,54 +115,13 @@ func init(file_path : String, name := " "):
 	$Name_NinePatchRect.show()
 	$Text.show()
 	set_process(true)
-	parser = WhiskersParser.new(Global)
-	parser.set_format_dictionary({"player_name" : CharacterManager.player["name"], "overlord_day" : Global.overlord_day})
+	parser.set_format_dictionary({"player_name" : CharacterManager.player["name"], "overlord_day" : Global.overlord_day, "current_day" : Global.day, "days_to_overlord" : Global.days_to_overlord})
 	
 	file_path = TranslationHub.get_translated_file(file_path)
 	
 	dialogue_data = parser.open_whiskers(file_path)
 	block = parser.start_dialogue(dialogue_data)
 	next()
-
-
-func test_character(character_array, location_name = null):
-	Global.active = false
-	emit_signal("player_controls_toggle", true)
-	$PopUp.play()
-	$Text.show()
-	$Text.visible_characters = -1
-	if !location_name:
-		$Name_NinePatchRect.hide()
-	else:
-		var location_text = ""
-		if location_name.begins_with("Class"):
-			location_text = "School, " + location_name
-		else:
-			location_text = "Building " + location_name
-		$Name_NinePatchRect/Name.text = location_text
-		$Name_NinePatchRect.rect_size.x = $Name_NinePatchRect/Name.get_font("font").get_string_size(location_text).x + 23
-		$Name_NinePatchRect.show()
-	show()
-	characters = character_array
-	state = State.TESTING
-	set_process(true)
-	
-	if characters.size() == 0 and Global.player_can_test:
-		$Text.bbcode_text = "No one inside"
-		is_final = true
-		$Space_NinePatchRect.show()
-		return
-	elif !Global.player_can_test:
-		$Text.hide()
-		is_final = true
-		$Space_NinePatchRect.show()
-		return
-
-	else:
-		$Text.bbcode_text = testing_text
-		$Space_NinePatchRect.hide()
-		get_tree().paused = true
-
 
 
 func error():

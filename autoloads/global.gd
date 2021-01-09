@@ -36,7 +36,8 @@ var test_time := 1
 var positive_characters = []
 var healed_characters = []
 var dead_characters = []
-var overlord_day := 11
+var overlord_day := 7
+var days_to_overlord := overlord_day - day
 var convinced := false
 var npcs_convinced := 0
 var conversations_had := 0
@@ -95,6 +96,7 @@ func reset_daily_values(is_restart = false):
 	update_characters_health()
 	var new_positives = check_new_positives()
 	day += 1
+	days_to_overlord -= 1
 	if !is_restart:
 		generate_report(new_positives)
 	

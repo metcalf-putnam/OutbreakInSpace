@@ -142,7 +142,7 @@ position = Vector2( 1018, -322 )
 
 [node name="Professor" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 234.187, -234.402 )
-dialog_file = "res://Dialog/json/professor.json"
+dialog_file = "res://dialog/json/professor.json"
 full_name = "Professor"
 infective_dose = 1000
 is_immune = true
@@ -153,7 +153,7 @@ portrait_file = "res://characters/portraits/Professor.png"
 
 [node name="Mayor" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 447.542, -221.071 )
-dialog_file = "res://Dialog/json/mayor_steady_state.json"
+dialog_file = "res://dialog/json/mayor_steady_state.json"
 full_name = "Mayor Snorgyl"
 infective_dose = 603
 sprite_file = "res://characters/corenpcs/Mayor/base_sprite.png"
@@ -164,7 +164,7 @@ portrait_file = "res://characters/portraits/Mayor.png"
 
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 143.5, -447.5 )
-dialog_file = "res://Dialog/json/granny_v2.json"
+dialog_file = "res://dialog/json/granny_v2.json"
 full_name = "Granny Murktuk"
 infective_dose = 350
 sprite_file = "res://characters/corenpcs/Granny Murktuk/base_sprite.png"
@@ -175,7 +175,7 @@ portrait_file = "res://characters/portraits/Granny.png"
 
 [node name="Singer" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 768, -20 )
-dialog_file = "res://Dialog/json/singing_v3.json"
+dialog_file = "res://dialog/json/singing_v3.json"
 full_name = "Kortuk the Magnificent"
 infective_dose = 1000
 sprite_file = "res://characters/corenpcs/Singin Coach/base_sprite.png"
@@ -187,7 +187,7 @@ portrait_file = "res://characters/portraits/SingingCoach.png"
 
 [node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 891.37, -338.452 )
-dialog_file = "res://Dialog/json/work_friend.json"
+dialog_file = "res://dialog/json/work_friend.json"
 full_name = "Snitgar"
 infective_dose = 750
 sprite_file = "res://characters/corenpcs/Work Friend/base_sprite.png"

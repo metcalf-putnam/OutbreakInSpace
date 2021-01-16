@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Select_Dialogue_Option.wav-f352b0b9ef114345845f5efae236d2bb.sample"
+path="res://.import/Select_Dialogue_Option.wav-e55cf6c5dab7a5569c36872385191464.sample"
 
 [deps]
 
-source_file="res://Dialog/Select_Dialogue_Option.wav"
-dest_files=[ "res://.import/Select_Dialogue_Option.wav-f352b0b9ef114345845f5efae236d2bb.sample" ]
+source_file="res://dialog/Select_Dialogue_Option.wav"
+dest_files=[ "res://.import/Select_Dialogue_Option.wav-e55cf6c5dab7a5569c36872385191464.sample" ]
 
 [params]
 

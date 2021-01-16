@@ -352,5 +352,3 @@ func speech():
 		var sound_file = Music.letters_sounds[file_number]
 		get_node("Speech").stream = sound_file
 		get_node("Speech").play()
-
-

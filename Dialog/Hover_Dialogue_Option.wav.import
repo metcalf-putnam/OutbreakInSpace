@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Hover_Dialogue_Option.wav-8f1b537cb80ac4b0eb392b3d03f403c2.sample"
+path="res://.import/Hover_Dialogue_Option.wav-c841be075564fa54784d1022f485ee1b.sample"
 
 [deps]
 
-source_file="res://Dialog/Hover_Dialogue_Option.wav"
-dest_files=[ "res://.import/Hover_Dialogue_Option.wav-8f1b537cb80ac4b0eb392b3d03f403c2.sample" ]
+source_file="res://dialog/Hover_Dialogue_Option.wav"
+dest_files=[ "res://.import/Hover_Dialogue_Option.wav-c841be075564fa54784d1022f485ee1b.sample" ]
 
 [params]
 

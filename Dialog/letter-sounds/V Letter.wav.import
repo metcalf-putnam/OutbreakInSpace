@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/V Letter.wav-b0c81f3bcef667b6c52dac51ec6483ba.sample"
+path="res://.import/V Letter.wav-625b8a962f33946fb206517f60a631f4.sample"
 
 [deps]
 
-source_file="res://Dialog/letter-sounds/V Letter.wav"
-dest_files=[ "res://.import/V Letter.wav-b0c81f3bcef667b6c52dac51ec6483ba.sample" ]
+source_file="res://dialog/letter-sounds/V Letter.wav"
+dest_files=[ "res://.import/V Letter.wav-625b8a962f33946fb206517f60a631f4.sample" ]
 
 [params]
 

@@ -1,15 +1,12 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Dialog/Dialogue.gd" type="Script" id=1]
-[ext_resource path="res://Dialog/ChoiceButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://dialog/Dialogue.gd" type="Script" id=1]
+[ext_resource path="res://dialog/ChoiceButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://dialog/menu_section_9patch.png" type="Texture" id=3]
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://ui/Space_NinePatchRect.tscn" type="PackedScene" id=5]
 
-[sub_resource type="StreamTexture" id=1]
-flags = 4
-load_path = "res://.import/menu_section_9patch.png-d676d5e5579884daefb2812ec97b3f0e.stex"
-
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 4 )
 
@@ -35,7 +32,7 @@ margin_left = 71.2173
 margin_top = 383.435
 margin_right = 521.217
 margin_bottom = 563.435
-texture = SubResource( 1 )
+texture = ExtResource( 3 )
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5
@@ -51,7 +48,7 @@ margin_left = 27.0
 margin_top = 28.0
 margin_right = 417.0
 margin_bottom = 153.0
-custom_fonts/normal_font = SubResource( 2 )
+custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
 bbcode_text = "dfssdffasddf"
@@ -72,7 +69,7 @@ margin_left = -14.1237
 margin_top = -16.0507
 margin_right = 135.876
 margin_bottom = 14.9493
-texture = SubResource( 1 )
+texture = ExtResource( 3 )
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5

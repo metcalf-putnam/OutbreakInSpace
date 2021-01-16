@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/Dialogue_Popup_v2.wav-fbdecd9bfb527047c01ffc8215cbe3be.sample"
+path="res://.import/Dialogue_Popup_v2.wav-371157e8310740f12b3170548ffbbb99.sample"
 
 [deps]
 
-source_file="res://Dialog/Dialogue_Popup_v2.wav"
-dest_files=[ "res://.import/Dialogue_Popup_v2.wav-fbdecd9bfb527047c01ffc8215cbe3be.sample" ]
+source_file="res://dialog/Dialogue_Popup_v2.wav"
+dest_files=[ "res://.import/Dialogue_Popup_v2.wav-371157e8310740f12b3170548ffbbb99.sample" ]
 
 [params]
 

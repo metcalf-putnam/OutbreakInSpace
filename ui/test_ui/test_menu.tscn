@@ -6,8 +6,6 @@
 [ext_resource path="res://dialog/ChoiceButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/test_ui/caret.png" type="Texture" id=5]
 
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 32
 font_data = ExtResource( 1 )
@@ -16,7 +14,7 @@ font_data = ExtResource( 1 )
 pause_mode = 2
 margin_left = 71.0
 margin_top = 383.0
-margin_right = 321.0
+margin_right = 413.0
 margin_bottom = 546.0
 texture = ExtResource( 2 )
 patch_margin_left = 5
@@ -35,15 +33,17 @@ ChoiceButton = ExtResource( 4 )
 [node name="Select" type="AudioStreamPlayer" parent="."]
 
 [node name="ChoicePos" type="Position2D" parent="."]
-position = Vector2( 230, 107 )
+position = Vector2( 318.388, 108.414 )
 
 [node name="Text" type="RichTextLabel" parent="."]
 anchor_left = 0.131
 anchor_top = 0.254
 anchor_right = 0.131
 anchor_bottom = 0.331
-margin_right = 170.0
-margin_bottom = 100.0
+margin_left = 0.198002
+margin_top = -0.402
+margin_right = 265.198
+margin_bottom = 100.047
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 bbcode_enabled = true
@@ -56,20 +56,23 @@ __meta__ = {
 [node name="Buttons" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="DeclineButton" parent="." instance=ExtResource( 4 )]
-margin_left = 230.0
+margin_left = 309.903
 margin_top = 145.0
-margin_right = 536.8
+margin_right = 616.703
 margin_bottom = 172.0
 focus_next = NodePath("../Buttons")
 focus_previous = NodePath("../Buttons")
 
 [node name="Details" type="NinePatchRect" parent="."]
-margin_left = 428.157
-margin_top = 5.4974
-margin_right = 778.157
-margin_bottom = 155.497
+margin_left = -7.63004
+margin_top = -172.694
+margin_right = 342.37
+margin_bottom = -22.6939
 texture = ExtResource( 2 )
 patch_margin_left = 5
 patch_margin_top = 5

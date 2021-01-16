@@ -178,7 +178,6 @@ func test_character(character_array, location_name = null):
 	elif !Global.player_can_test:
 		$Text.hide()
 		return
-
 	else:
 		$Text.bbcode_text = testing_text
 		get_tree().paused = true

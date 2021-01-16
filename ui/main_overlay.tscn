@@ -113,10 +113,8 @@ __meta__ = {
 }
 
 [node name="DaysBackground" type="NinePatchRect" parent="."]
-margin_left = 622.0
-margin_top = 2.0
-margin_right = 1022.0
-margin_bottom = 62.0
+margin_right = 400.0
+margin_bottom = 60.0
 rect_min_size = Vector2( 208, 0 )
 mouse_filter = 1
 texture = ExtResource( 2 )
@@ -128,12 +126,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Energy" type="Node2D" parent="."]
+[node name="Energy" type="Node2D" parent="DaysBackground"]
 modulate = Color( 0.960784, 0.960784, 0.960784, 1 )
-position = Vector2( 875.427, 27.3357 )
+position = Vector2( 253.427, 25.3357 )
 script = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="Energy"]
+[node name="Label" type="Label" parent="DaysBackground/Energy"]
 margin_left = -115.233
 margin_top = -5.56217
 margin_right = -43.2326
@@ -145,50 +143,50 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprites" type="Node2D" parent="Energy"]
+[node name="Sprites" type="Node2D" parent="DaysBackground/Energy"]
 modulate = Color( 0.254902, 0.643137, 0.956863, 1 )
 position = Vector2( -19.9994, 3.56762 )
 
-[node name="Sprite" type="Sprite" parent="Energy/Sprites"]
+[node name="Sprite" type="Sprite" parent="DaysBackground/Energy/Sprites"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
-[node name="Sprite2" type="Sprite" parent="Energy/Sprites"]
+[node name="Sprite2" type="Sprite" parent="DaysBackground/Energy/Sprites"]
 position = Vector2( 18, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
-[node name="Sprite3" type="Sprite" parent="Energy/Sprites"]
+[node name="Sprite3" type="Sprite" parent="DaysBackground/Energy/Sprites"]
 position = Vector2( 36, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
-[node name="Sprite4" type="Sprite" parent="Energy/Sprites"]
+[node name="Sprite4" type="Sprite" parent="DaysBackground/Energy/Sprites"]
 position = Vector2( 54, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
-[node name="Sprite5" type="Sprite" parent="Energy/Sprites"]
+[node name="Sprite5" type="Sprite" parent="DaysBackground/Energy/Sprites"]
 position = Vector2( 72, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
-[node name="Sprite6" type="Sprite" parent="Energy/Sprites"]
+[node name="Sprite6" type="Sprite" parent="DaysBackground/Energy/Sprites"]
 position = Vector2( 91, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
-[node name="Sprite7" type="Sprite" parent="Energy/Sprites"]
+[node name="Sprite7" type="Sprite" parent="DaysBackground/Energy/Sprites"]
 position = Vector2( 109, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
-[node name="Sprite8" type="Sprite" parent="Energy/Sprites"]
+[node name="Sprite8" type="Sprite" parent="DaysBackground/Energy/Sprites"]
 position = Vector2( 127, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
-[node name="EndDayButton" type="TextureButton" parent="Energy"]
+[node name="EndDayButton" type="TextureButton" parent="DaysBackground/Energy"]
 margin_left = -12.3193
 margin_top = -15.3972
 margin_right = 139.681
@@ -201,7 +199,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Energy/EndDayButton"]
+[node name="Label" type="Label" parent="DaysBackground/Energy/EndDayButton"]
 margin_left = 39.4653
 margin_top = 8.7528
 margin_right = 113.465
@@ -212,11 +210,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DayCount" type="Label" parent="."]
-margin_left = 655.068
-margin_top = 21.0524
-margin_right = 703.068
-margin_bottom = 43.0524
+[node name="DayCount" type="Label" parent="DaysBackground"]
+margin_left = 33.068
+margin_top = 19.0524
+margin_right = 81.068
+margin_bottom = 41.0524
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.913725, 0.913725, 0.913725, 1 )
 text = "Day 1"
@@ -231,10 +229,10 @@ anims/fade_in = SubResource( 3 )
 anims/fade_to_black = SubResource( 4 )
 
 [node name="Debug" type="Label" parent="."]
-margin_left = 5.0
-margin_top = 15.7847
-margin_right = 224.693
-margin_bottom = 37.7847
+margin_left = 7.83167
+margin_top = 70.5294
+margin_right = 227.525
+margin_bottom = 92.5294
 custom_fonts/font = SubResource( 1 )
 text = "Overlord Options:"
 __meta__ = {
@@ -242,10 +240,9 @@ __meta__ = {
 }
 
 [node name="MaskButton" type="Button" parent="Debug"]
-margin_left = 472.488
-margin_top = -2.66971
-margin_right = 612.488
-margin_bottom = 25.3303
+margin_top = 59.2041
+margin_right = 140.0
+margin_bottom = 87.2041
 focus_mode = 1
 custom_fonts/font = SubResource( 1 )
 toggle_mode = true
@@ -256,10 +253,9 @@ __meta__ = {
 }
 
 [node name="Visuals_Debug" type="Button" parent="Debug"]
-margin_left = 201.515
-margin_top = -2.0045
-margin_right = 443.515
-margin_bottom = 25.9955
+margin_top = 25.3303
+margin_right = 242.0
+margin_bottom = 53.3303
 custom_fonts/font = SubResource( 1 )
 toggle_mode = true
 text = "Infection Visual on/off"
@@ -279,25 +275,68 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayerControls" type="HBoxContainer" parent="."]
+[node name="PlayerControls" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -123.0
-margin_top = -45.0
-margin_right = 123.0
-margin_bottom = -5.0
-custom_constants/separation = 26
-alignment = 1
+margin_left = -504.168
+margin_top = -153.266
+margin_right = -184.168
+margin_bottom = -3.26599
+custom_constants/separation = 15
+alignment = 2
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TestButton" type="TextureButton" parent="PlayerControls"]
-margin_right = 58.0
+[node name="ReportButton" type="TextureButton" parent="PlayerControls"]
+margin_right = 320.0
 margin_bottom = 40.0
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="PlayerControls/ReportButton"]
+margin_left = 6.0
+margin_top = 8.5
+margin_right = 146.0
+margin_bottom = 48.5
+custom_fonts/font = SubResource( 1 )
+text = "Check Reports"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="PlayerControls/ReportButton"]
+modulate = Color( 0.839216, 0.34902, 0.34902, 1 )
+position = Vector2( 2.51453, 1.57489 )
+texture = ExtResource( 14 )
+
+[node name="SingButton" type="TextureButton" parent="PlayerControls"]
+margin_top = 55.0
+margin_right = 320.0
+margin_bottom = 95.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="PlayerControls/SingButton"]
+margin_left = 8.909
+margin_top = 8.5
+margin_right = 48.909
+margin_bottom = 48.5
+custom_fonts/font = SubResource( 1 )
+text = "Sing"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TestButton" type="TextureButton" parent="PlayerControls"]
+margin_top = 110.0
+margin_right = 320.0
+margin_bottom = 150.0
 rect_min_size = Vector2( 50, 0 )
 action_mode = 0
 texture_normal = ExtResource( 8 )
@@ -322,49 +361,6 @@ rotation = 1.5708
 scale = Vector2( 3, 3 )
 texture = ExtResource( 17 )
 
-[node name="SingButton" type="TextureButton" parent="PlayerControls"]
-margin_left = 84.0
-margin_right = 142.0
-margin_bottom = 40.0
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 10 )
-
-[node name="Label" type="Label" parent="PlayerControls/SingButton"]
-margin_left = 8.909
-margin_top = 8.5
-margin_right = 48.909
-margin_bottom = 48.5
-custom_fonts/font = SubResource( 1 )
-text = "Sing"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ReportButton" type="TextureButton" parent="PlayerControls"]
-margin_left = 168.0
-margin_right = 320.0
-margin_bottom = 40.0
-texture_normal = ExtResource( 11 )
-texture_pressed = ExtResource( 13 )
-texture_hover = ExtResource( 12 )
-
-[node name="Label" type="Label" parent="PlayerControls/ReportButton"]
-margin_left = 6.0
-margin_top = 8.5
-margin_right = 146.0
-margin_bottom = 48.5
-custom_fonts/font = SubResource( 1 )
-text = "Check Reports"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite" type="Sprite" parent="PlayerControls/ReportButton"]
-modulate = Color( 0.839216, 0.34902, 0.34902, 1 )
-position = Vector2( 2.51453, 1.57489 )
-texture = ExtResource( 14 )
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -373,6 +369,12 @@ __meta__ = {
 }
 
 [node name="Quests" parent="." instance=ExtResource( 15 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -400.001
+margin_top = 0.0
+margin_right = 0.0
+margin_bottom = 380.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -383,10 +385,10 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Energy/EndDayButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="DaysBackground/Energy/EndDayButton" to="." method="_on_Button_pressed"]
 [connection signal="toggled" from="Debug/MaskButton" to="." method="_on_MaskButton_toggled"]
 [connection signal="toggled" from="Debug/Visuals_Debug" to="." method="_on_Visuals_Debug_toggled"]
-[connection signal="pressed" from="PlayerControls/TestButton" to="PlayerControls" method="_on_TestButton_pressed"]
+[connection signal="pressed" from="PlayerControls/ReportButton" to="PlayerControls" method="_on_ReportButton_pressed"]
 [connection signal="button_down" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_button_down"]
 [connection signal="button_up" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_button_up"]
-[connection signal="pressed" from="PlayerControls/ReportButton" to="PlayerControls" method="_on_ReportButton_pressed"]
+[connection signal="pressed" from="PlayerControls/TestButton" to="PlayerControls" method="_on_TestButton_pressed"]

@@ -219,7 +219,7 @@ autostart = true
 
 [node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 9 )]
 
-[node name="NinePatchRect" parent="CanvasLayer" instance=ExtResource( 13 )]
+[node name="TestingMenu" parent="CanvasLayer" instance=ExtResource( 13 )]
 
 [node name="NoEnergyPopup" parent="CanvasLayer" instance=ExtResource( 14 )]
 
@@ -233,13 +233,6 @@ one_shot = true
 autostart = true
 
 [node name="GoHomeTimer" type="Timer" parent="."]
-
-[node name="TextureButton" type="TextureButton" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="glass_32x32" type="Sprite" parent="."]
 position = Vector2( 234.087, -233.315 )

@@ -29,7 +29,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 2.21914, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 600 ), Vector2( 0, 430 ) ]
+"values": [ Vector2( 521, 600 ), Vector2( 521, 430 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ShowHideLogsBtn/Label:text")
@@ -45,11 +45,12 @@ tracks/1/keys = {
 }
 
 [node name="LogScreen" type="NinePatchRect"]
+pause_mode = 2
 self_modulate = Color( 0.372549, 0.337255, 0.337255, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 521.0
 margin_top = 600.0
-margin_right = -521.0
 margin_bottom = 170.0
 texture = ExtResource( 1 )
 patch_margin_left = 5
@@ -62,9 +63,9 @@ __meta__ = {
 }
 
 [node name="ShowHideLogsBtn" type="TextureButton" parent="."]
-margin_left = 3.5
+margin_left = 351.0
 margin_top = -30.0
-margin_right = 155.5
+margin_right = 503.0
 margin_bottom = 10.0
 rect_scale = Vector2( 1, 0.72 )
 toggle_mode = true

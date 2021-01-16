@@ -23,10 +23,8 @@ func _process(delta):
 	var new_logs_size = new_logs.size()
 	
 	while prev_log_count < new_logs_size:
-		print(prev_log_count)
 		$Logs.append_bbcode(new_logs[prev_log_count])
 		prev_log_count += 1
-		
 
 
 func _on_TextureButton_pressed():

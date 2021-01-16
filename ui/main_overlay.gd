@@ -13,14 +13,14 @@ func _ready():
 		$PlayerControls/ReportButton.hide()
 	
 	if Global.energy > 0:
-		$Energy/EndDayButton.hide()
+		$DaysBackground/Energy/EndDayButton.hide()
 	else:
-		$Energy/EndDayButton.show()
+		$DaysBackground/Energy/EndDayButton.show()
 		
 	$PlayerControls.update_controls()
 	$ColorRect.visible = true
 	$ColorRect.modulate = Color(0,0,0,1)
-	$DayCount.text = day_label + str(Global.day)
+	$DaysBackground/DayCount.text = day_label + str(Global.day)
 	Global.connect("fade_away_explanation", self, "_on_fade_away_explanation")
 
 
@@ -67,11 +67,11 @@ func _on_Dialogue_player_controls_toggle(boolean):
 
 
 func show_end_day_button():
-	$Energy/EndDayButton.show()
+	$DaysBackground/Energy/EndDayButton.show()
 
 
 func _on_NoEnergyPopup_show_end_day():
-	$Energy/EndDayButton.show()
+	$DaysBackground/Energy/EndDayButton.show()
 	Global.no_more_energy = true
 	pass # Replace with function body.
 

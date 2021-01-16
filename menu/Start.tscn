@@ -1,12 +1,12 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://font/Lusitana-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://dialog/menu_section_9patch.png" type="Texture" id=2]
 [ext_resource path="res://menu/Start.gd" type="Script" id=3]
 [ext_resource path="res://dialog/Hover_Dialogue_Option.wav" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
+size = 24
 font_data = ExtResource( 1 )
 
 [node name="Start" type="NinePatchRect"]
@@ -24,10 +24,10 @@ __meta__ = {
 }
 
 [node name="Button" type="Button" parent="."]
-margin_left = 2.8419
-margin_top = 2.00337
-margin_right = 302.842
-margin_bottom = 41.0034
+margin_left = 3.0
+margin_top = 2.0
+margin_right = 303.0
+margin_bottom = 40.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Start"

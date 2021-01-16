@@ -2,7 +2,6 @@ extends Node
 
 var state
 var normal_db
-var fighting_db
 var fade_time = 3
 var menu_db 
 
@@ -39,8 +38,9 @@ func _ready():
 	print("in music ready function")
 	state = "normal"
 	normal_db = $Players/MainIntro.volume_db
-	fighting_db = $Players/FightingIntro.volume_db
 	menu_db = $Players/MenuLoop.volume_db
+	
+	
 
 
 func change_state(new_state):
@@ -54,9 +54,6 @@ func change_state(new_state):
 		"normal":
 			audio_to_play = $Players/MainIntro
 			volume = normal_db
-		"fighting":
-			audio_to_play = $Players/FightingIntro
-			volume = fighting_db
 		"menu":
 			audio_to_play = $Players/MenuLoop
 			volume = menu_db
@@ -92,12 +89,6 @@ func _on_MainIntro_finished():
 		$Players/MainLoop.volume_db = normal_db
 
 
-func _on_FightingIntro_finished():
-	if state == "fighting":
-		$Players/FightingLoop.volume_db = fighting_db
-		$Players/FightingLoop.play()
-
-
 func _set_fade_out(audio_player : AudioStreamPlayer):
 	# Set Tween node to fade out one audio stream for a set amount of time
 	# Tween needs to be started elsewhere, and may have issues if already tweening values
@@ -111,21 +102,11 @@ func _set_fade_out(audio_player : AudioStreamPlayer):
 func _on_Tween_tween_all_completed():
 	match state:
 		"normal":
-			$Players/FightingIntro.stop()
-			$Players/FightingLoop.stop()
-			$Players/MenuLoop.stop()
-		"fighting":
-			$Players/MainIntro.stop()
-			$Players/MainLoop.stop()
 			$Players/MenuLoop.stop()
 		"menu":
-			$Players/FightingIntro.stop()
-			$Players/FightingLoop.stop()
 			$Players/MainIntro.stop()
 			$Players/MainLoop.stop()
 		"none":
-			$Players/FightingIntro.stop()
-			$Players/FightingLoop.stop()
 			$Players/MainIntro.stop()
 			$Players/MainLoop.stop()
 			$Players/MenuLoop.stop()

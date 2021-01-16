@@ -198,7 +198,7 @@ npc_handle = "work_friend"
 portrait_file = "res://characters/portraits/WorkerFriend.png"
 
 [node name="Player" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 314, -422.5 )
+position = Vector2( 321, -436 )
 
 [node name="FPS" type="Label" parent="."]
 visible = false

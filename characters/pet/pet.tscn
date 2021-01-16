@@ -66,33 +66,33 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="StreamTexture" id=8]
+[sub_resource type="StreamTexture" id=4]
 load_path = "res://.import/E_Button_9x10.png-056bf42633ec35bafed6f776b4c77fda.stex"
 
-[sub_resource type="AtlasTexture" id=9]
+[sub_resource type="AtlasTexture" id=5]
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 14, 10 )
 
-[sub_resource type="AtlasTexture" id=10]
+[sub_resource type="AtlasTexture" id=6]
 atlas = ExtResource( 4 )
 region = Rect2( 14, 0, 14, 10 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=7]
 atlas = ExtResource( 4 )
 region = Rect2( 28, 0, 14, 10 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
-"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 4 ) ],
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=9]
 radius = 8.43381
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=10]
 radius = 2.24874
 height = 4.98537
 
@@ -119,12 +119,11 @@ position = Vector2( 0.420908, -20.7655 )
 scale = Vector2( 0.3, 0.3 )
 z_index = 2
 z_as_relative = false
-texture = SubResource( 8 )
+texture = SubResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 position = Vector2( 0, -5 )
-frames = SubResource( 5 )
-frame = 1
+frames = SubResource( 8 )
 playing = true
 
 [node name="Emote" parent="." instance=ExtResource( 3 )]
@@ -133,14 +132,14 @@ animation = "BeatingHeart"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -5 )
-shape = SubResource( 6 )
+shape = SubResource( 9 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 1.60173, -1.50732 )
 rotation = 1.5708
-shape = SubResource( 7 )
+shape = SubResource( 10 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

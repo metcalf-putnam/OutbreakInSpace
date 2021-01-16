@@ -17,7 +17,7 @@ func _on_dialogue_finished():
 	show()
 
 
-func _on_new_dialogue(_file, _name = null):
+func _on_new_dialogue(_file, _name = null, _portrait = null):
 	hide()
 
 

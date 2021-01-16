@@ -6,6 +6,7 @@ func _ready():
 
 
 func _on_Button_pressed():
+	Music.change_state("none")
 	get_tree().change_scene("res://interiors/Housescene.tscn")
 
 

@@ -22,9 +22,9 @@ func _ready():
 
 func start_overlord_dialogue():
 	if bad_ending:
-		EventHub.emit_signal("new_dialogue", failure_dialog_file, "???")
+		EventHub.emit_signal("new_dialogue", failure_dialog_file, "???", "")
 	else:
-		EventHub.emit_signal("new_dialogue", success_dialog_file, "Overlord Aso")
+		EventHub.emit_signal("new_dialogue", success_dialog_file, "Overlord Aso", "")
 		Music.change_state("menu")
 		$Sprite.show()
 		$Tail.show()

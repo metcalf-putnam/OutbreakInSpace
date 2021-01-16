@@ -59,7 +59,7 @@ func _unhandled_input(event):
 		get_tree().set_input_as_handled()
 
 
-func _on_new_dialogue(_file, _full_name):
+func _on_new_dialogue(_file, _full_name, _portrait_file = ""):
 	in_dialogue()
 
 

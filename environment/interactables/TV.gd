@@ -55,5 +55,5 @@ func _on_Sprite_animation_finished():
 func watch_tv():
 	var file_path = file_folder + str(Global.day) + ".json"
 	Global.tv_watched = true
-	EventHub.emit_signal("new_dialogue", file_path, "TV Report")
+	EventHub.emit_signal("new_dialogue", file_path, "TV Report", "")
 	set_new_info(false)

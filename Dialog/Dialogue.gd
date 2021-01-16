@@ -103,7 +103,7 @@ func step_forward(i):
 	timer = 0
 
 
-func init(file_path : String, name := " ", portrait_file := " "):
+func init(file_path : String, name := " ", portrait_file := ""):
 	Global.active = false
 	emit_signal("player_controls_toggle", true)
 	text_state = TEXT_STATE.READY
@@ -111,8 +111,9 @@ func init(file_path : String, name := " ", portrait_file := " "):
 	EventHub.emit_signal("npc_dialogue")
 	state = State.DIALOGUE
 	
-	if portrait_file != " ":
+	if portrait_file != "":
 		$Portrait.texture = load(portrait_file)
+		$Portrait.show()
 	
 	$Name_NinePatchRect/Name.text = name
 	$Name_NinePatchRect.rect_size.x = $Name_NinePatchRect/Name.get_font("font").get_string_size(name).x + 23
@@ -226,6 +227,7 @@ func update_name(name_in):
 
 func _on_going_in_house_dialogue():
 	Global.active = false
+	$Portrait.hide()
 	$PopUp.play()
 	$Text.show()
 	update_name("C2 (Home)")
@@ -241,6 +243,7 @@ func _on_going_in_house_dialogue():
 
 func _on_going_out_house_dialogue():
 	Global.active = false
+	$Portrait.hide()
 	$PopUp.play()
 	$Text.show()
 	update_name("Home")
@@ -256,6 +259,7 @@ func _on_going_out_house_dialogue():
 
 func _on_tv_dialogue(is_on):
 	Global.active = false
+	$Portrait.hide()
 	$PopUp.play()
 	$Text.show()
 	update_name("TV")
@@ -274,6 +278,7 @@ func _on_tv_dialogue(is_on):
 
 func _on_bed_dialogue():
 	Global.active = false
+	$Portrait.hide()
 	$PopUp.play()
 	$Text.show()
 	update_name("Bed")
@@ -292,6 +297,7 @@ func _on_bed_dialogue():
 
 func _on_computer_dialogue():
 	Global.active = false
+	$Portrait.hide()	
 	$PopUp.play()
 	$Text.show()
 	update_name("Computer")

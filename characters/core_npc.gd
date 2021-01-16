@@ -71,11 +71,11 @@ func _ready():
 func _on_Interactable_dialogue_started():
 	var event_dialogue = get_event_dialog_file_path()
 	if event_dialogue:
-		EventHub.emit_signal("new_dialogue", event_dialogue, full_name)
+		EventHub.emit_signal("new_dialogue", event_dialogue, full_name, portrait_file)
 		data["event_checks"][event] = true
 		event = null
 	else:
-		EventHub.emit_signal("new_dialogue", dialog_file, full_name)
+		EventHub.emit_signal("new_dialogue", dialog_file, full_name, portrait_file)
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.connect("npc_dialogue", self, "_on_dialog")
 	Logger.create_log_for(full_name, Logger.LOG_TYPE.NPC_INTERACTION)

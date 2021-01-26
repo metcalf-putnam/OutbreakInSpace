@@ -13,9 +13,8 @@ func _ready():
 
 
 func set_text(text_in):
-	$Button.text = text_in
+	$Button.text = text_in	
 	rect_size.x = $Button.get_font("font").get_string_size(text_in).x + buffer
-
 
 func get_text() -> String:
 	return $Button.text

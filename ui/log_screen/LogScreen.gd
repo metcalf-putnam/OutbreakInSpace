@@ -3,6 +3,7 @@ extends NinePatchRect
 const SHOW_LOGS_TEXT = "Show Logs"
 const HIDE_LOGS_TEXT = "Hide Logs"
 
+onready var show_hide_logs_btn = $ShowHideLogsBtn
 onready var show_hide_logs_btn_lbl = $ShowHideLogsBtn/Label
 onready var anim = $AnimationPlayer
 
@@ -27,8 +28,8 @@ func _process(delta):
 		prev_log_count += 1
 
 
-func _on_TextureButton_pressed():
-	
+func _on_ShowHideLogsBtn_pressed():
+	show_hide_logs_btn.release_focus()
 	if show_hide_logs_btn_lbl.text == SHOW_LOGS_TEXT:
 		anim.play("show")
 	else:

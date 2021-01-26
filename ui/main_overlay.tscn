@@ -292,6 +292,7 @@ __meta__ = {
 }
 
 [node name="ReportButton" type="TextureButton" parent="PlayerControls"]
+margin_right = 320.0
 margin_bottom = 40.0
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 13 )
@@ -315,7 +316,7 @@ texture = ExtResource( 14 )
 
 [node name="SingButton" type="TextureButton" parent="PlayerControls"]
 margin_top = 55.0
-margin_right = 58.0
+margin_right = 320.0
 margin_bottom = 95.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
@@ -334,7 +335,7 @@ __meta__ = {
 
 [node name="TestButton" type="TextureButton" parent="PlayerControls"]
 margin_top = 110.0
-margin_right = 58.0
+margin_right = 320.0
 margin_bottom = 150.0
 rect_min_size = Vector2( 50, 0 )
 action_mode = 0

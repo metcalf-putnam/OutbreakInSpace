@@ -1,0 +1,110 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://interiors/DayTransition.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "show"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Title:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 3, 4 ),
+"transitions": PoolRealArray( 2, 1, 1, 2 ),
+"update": 0,
+"values": [ Vector2( -500, 423 ), Vector2( 266.419, 423 ), Vector2( 266.419, 423 ), Vector2( -500, 423 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Subtitle:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 1, 3, 3.7 ),
+"transitions": PoolRealArray( 2, 1, 1, 2 ),
+"update": 0,
+"values": [ Vector2( 1067.43, 463 ), Vector2( 267.428, 463 ), Vector2( 267.428, 463 ), Vector2( 1067.43, 463 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("OverlordReminder:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6, 1, 3, 3.5 ),
+"transitions": PoolRealArray( -2, 1, 1, -2 ),
+"update": 0,
+"values": [ Vector2( 266.419, 603 ), Vector2( 266.419, 503 ), Vector2( 266.419, 503 ), Vector2( 266.419, 603 ) ]
+}
+
+[node name="DayTransition" type="CanvasLayer"]
+script = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1012.0
+margin_top = 123.0
+margin_right = -538.0
+margin_bottom = 163.0
+custom_fonts/font = SubResource( 1 )
+text = "Day 1: <Title for this Day Maybe?>"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtitle" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 539.102
+margin_top = 163.0
+margin_right = 1013.1
+margin_bottom = 203.0
+custom_fonts/font = SubResource( 2 )
+text = "<maybe a subtitle here?>"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OverlordReminder" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -245.581
+margin_top = 290.5
+margin_right = 228.419
+margin_bottom = 330.5
+custom_fonts/font = SubResource( 2 )
+text = "X Days until Overlord comes..."
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/show = SubResource( 3 )
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

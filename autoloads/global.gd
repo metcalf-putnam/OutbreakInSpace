@@ -28,6 +28,7 @@ var player_helmet := false
 # Home flags
 var report_read := true # (no report on day 1)
 var tv_watched := false
+var day_transitioned := false
 
 const player_initial_position := Vector2(321, -436)
 var player_position := player_initial_position
@@ -88,6 +89,7 @@ func restart_game(boolean):
 	helmet_mandate = false
 	essential_workers = false
 	Logger.reset()
+	day_transitioned = false
 	assert(get_tree().change_scene("res://interiors/Housescene.tscn") == OK)
 
 
@@ -105,6 +107,7 @@ func reset_daily_values(is_restart = false):
 
 	report_read = false
 	tv_watched = false
+	day_transitioned = false
 	player_position = player_initial_position
 
 

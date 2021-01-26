@@ -6,7 +6,6 @@ func _ready():
 	$Player.init(CharacterManager.player)
 	$Player.deactivate_camaera()
 	$Player.position = Vector2(107, 33)
-	$Camera2D.zoom = Vector2(0.2, 0.2)
 	
 	EventHub.connect("tv_interaction", self, "_on_tv_interaction")
 	EventHub.connect("bed_interaction", self, "_on_bed_interaction")
@@ -15,6 +14,9 @@ func _ready():
 
 
 	$Player.speed = 50
+	
+	if not Global.day_transitioned:
+		$DayTransition.show_transition()
 
 
 func _on_tv_interaction(status):

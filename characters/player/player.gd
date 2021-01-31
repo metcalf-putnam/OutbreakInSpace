@@ -65,6 +65,7 @@ func _on_new_dialogue(_file, _full_name, _portrait_file = ""):
 
 func _on_dialogue_finished():
 	state = State.ACTIVE
+	show_glow(false)
 
 
 func in_dialogue():

@@ -10,7 +10,7 @@
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://characters/effects/Emote.tscn" type="PackedScene" id=9]
 [ext_resource path="res://characters/effects/Full_Cough (1).wav" type="AudioStream" id=10]
-[ext_resource path="res://characters/glow.png" type="Texture" id=11]
+[ext_resource path="res://ui/glowingEffect_32x32.png" type="Texture" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.9767
@@ -488,6 +488,7 @@ texture = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
+frame = 1
 
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
@@ -495,6 +496,7 @@ hframes = 4
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
+frame = 1
 
 [node name="ShedTimer" type="Timer" parent="."]
 
@@ -550,6 +552,7 @@ wait_time = 20.0
 [node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
 
 [node name="Glow" type="Sprite" parent="."]
+position = Vector2( 0, -1 )
 texture = ExtResource( 11 )
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
@@ -564,7 +567,7 @@ gravity = Vector2( 0, -1 )
 [node name="Emote" parent="." instance=ExtResource( 9 )]
 position = Vector2( -2, -7 )
 animation = "default"
-frame = -1
+frame = 0
 playing = false
 
 [node name="TestingLabelParent" type="Node2D" parent="."]

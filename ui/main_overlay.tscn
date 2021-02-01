@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://ui/main_overlay.gd" type="Script" id=1]
 [ext_resource path="res://dialog/menu_section_9patch.png" type="Texture" id=2]
@@ -16,7 +16,11 @@
 [ext_resource path="res://environment/interactables/circle.png" type="Texture" id=14]
 [ext_resource path="res://ui/quests/Quests.tscn" type="PackedScene" id=15]
 [ext_resource path="res://ui/test_button.gd" type="Script" id=16]
-[ext_resource path="res://characters/glow.png" type="Texture" id=17]
+[ext_resource path="res://ui/glowingEffect_32x32.png" type="Texture" id=17]
+[ext_resource path="res://ui/test_ui/Test_Button_Power_On.wav" type="AudioStream" id=19]
+[ext_resource path="res://Dialog/Select_Dialogue_Option.wav" type="AudioStream" id=20]
+[ext_resource path="res://Dialog/Hover_Dialogue_Option.wav" type="AudioStream" id=21]
+[ext_resource path="res://ui/Test_Buttom_22x19.png" type="Texture" id=22]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -281,9 +285,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -504.168
-margin_top = -153.266
+margin_top = -157.266
 margin_right = -184.168
-margin_bottom = -3.26599
+margin_bottom = -7.26599
 custom_constants/separation = 15
 alignment = 2
 script = ExtResource( 7 )
@@ -292,8 +296,9 @@ __meta__ = {
 }
 
 [node name="ReportButton" type="TextureButton" parent="PlayerControls"]
+margin_top = 2.0
 margin_right = 320.0
-margin_bottom = 40.0
+margin_bottom = 42.0
 texture_normal = ExtResource( 11 )
 texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 12 )
@@ -315,9 +320,9 @@ position = Vector2( 2.51453, 1.57489 )
 texture = ExtResource( 14 )
 
 [node name="SingButton" type="TextureButton" parent="PlayerControls"]
-margin_top = 55.0
+margin_top = 57.0
 margin_right = 320.0
-margin_bottom = 95.0
+margin_bottom = 97.0
 texture_normal = ExtResource( 8 )
 texture_pressed = ExtResource( 9 )
 texture_hover = ExtResource( 10 )
@@ -334,17 +339,22 @@ __meta__ = {
 }
 
 [node name="TestButton" type="TextureButton" parent="PlayerControls"]
-margin_top = 110.0
+margin_top = 112.0
 margin_right = 320.0
 margin_bottom = 150.0
-rect_min_size = Vector2( 50, 0 )
+rect_min_size = Vector2( 44, 38 )
+rect_clip_content = true
+size_flags_stretch_ratio = 2.0
 action_mode = 0
-texture_normal = ExtResource( 8 )
-texture_pressed = ExtResource( 9 )
-texture_hover = ExtResource( 10 )
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 22 )
+texture_hover = ExtResource( 22 )
+expand = true
+stretch_mode = 4
 script = ExtResource( 16 )
 
 [node name="Label" type="Label" parent="PlayerControls/TestButton"]
+visible = false
 margin_left = 6.345
 margin_top = 8.73596
 margin_right = 52.345
@@ -355,11 +365,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Glow" type="Sprite" parent="PlayerControls/TestButton"]
-position = Vector2( 29.217, 19.7289 )
+[node name="Hover" type="AudioStreamPlayer" parent="PlayerControls/TestButton"]
+stream = ExtResource( 21 )
+
+[node name="Click" type="AudioStreamPlayer" parent="PlayerControls/TestButton"]
+stream = ExtResource( 20 )
+
+[node name="TestGlow" type="Sprite" parent="PlayerControls"]
+position = Vector2( 23.8853, 131.168 )
 rotation = 1.5708
-scale = Vector2( 3, 3 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 17 )
+
+[node name="TestActivation" type="AudioStreamPlayer" parent="PlayerControls"]
+stream = ExtResource( 19 )
+volume_db = -5.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_right = 40.0
@@ -391,4 +411,6 @@ __meta__ = {
 [connection signal="pressed" from="PlayerControls/ReportButton" to="PlayerControls" method="_on_ReportButton_pressed"]
 [connection signal="button_down" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_button_down"]
 [connection signal="button_up" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_button_up"]
+[connection signal="mouse_entered" from="PlayerControls/TestButton" to="PlayerControls/TestButton" method="_on_TestButton_mouse_entered"]
 [connection signal="pressed" from="PlayerControls/TestButton" to="PlayerControls" method="_on_TestButton_pressed"]
+[connection signal="pressed" from="PlayerControls/TestButton" to="PlayerControls/TestButton" method="_on_TestButton_pressed"]

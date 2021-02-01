@@ -2,6 +2,7 @@ extends VBoxContainer
 
 
 func _ready():
+	show_glow(false)
 	EventHub.connect("dialogue_finished", self, "_on_dialogue_finished")
 	EventHub.connect("new_dialogue", self, "_on_new_dialogue")
 	EventHub.connect("testing_character", self, "_on_testing_character")
@@ -10,6 +11,25 @@ func _ready():
 	EventHub.connect("going_in_house_dialogue", self, "_on_new_door_dialogue")
 	EventHub.connect("going_out_house_dialogue", self, "_on_new_door_dialogue")
 	check_new_reports()
+	EventHub.connect("no_testables_in_range", self, "_on_no_testables_in_range")
+	EventHub.connect("testable_character_in_range", self, "_on_testable_character_in_range")
+
+
+func _on_no_testables_in_range():
+	show_glow(false)
+
+
+func _on_testable_character_in_range():
+	show_glow(true)
+
+
+func show_glow(boolean):
+	if boolean:
+		if !$TestGlow.visible:
+			$TestActivation.play()
+		$TestGlow.show()
+	else:
+		$TestGlow.hide()	
 
 
 func _on_dialogue_finished():
@@ -35,6 +55,7 @@ func _on_TestButton_pressed():
 	if $SingButton.pressed or Input.is_action_pressed("ui_accept"):
 		return
 	EventHub.emit_signal("test_button_pressed")
+	show_glow(true)
 
 
 func update_controls():

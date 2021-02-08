@@ -25,11 +25,11 @@ func _on_testable_character_in_range():
 
 func show_glow(boolean):
 	if boolean:
-		if !$TestGlow.visible:
+		if !$AnimationPlayer.current_animation == "test_glow_on":
 			$TestActivation.play()
-		$TestGlow.show()
+			$AnimationPlayer.play("test_glow_on")
 	else:
-		$TestGlow.hide()	
+		$AnimationPlayer.play("test_glow_off")
 
 
 func _on_dialogue_finished():

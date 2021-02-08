@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/quests/Quests.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://ui/ButtonPressed.png" type="Texture" id=4]
 [ext_resource path="res://ui/ButtonHover.png" type="Texture" id=5]
 [ext_resource path="res://dialog/menu_section_9patch.png" type="Texture" id=6]
+[ext_resource path="res://Dialog/Hover_Dialogue_Option.wav" type="AudioStream" id=7]
+[ext_resource path="res://Dialog/Select_Dialogue_Option.wav" type="AudioStream" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -66,6 +68,12 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Click" type="AudioStreamPlayer" parent="Label/TextureButton"]
+stream = ExtResource( 8 )
+
+[node name="Hover" type="AudioStreamPlayer" parent="Label/TextureButton"]
+stream = ExtResource( 7 )
 
 [node name="List" type="VBoxContainer" parent="."]
 margin_left = 11.607

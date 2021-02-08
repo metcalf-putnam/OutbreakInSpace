@@ -10,8 +10,8 @@ var i := 0
 enum Infective{NORMAL, LOW, HIGH}
 var rng = RandomNumberGenerator.new()
 var classrooms = ["Class1", "Class2", "Class3"]
-var workplaces = ["HatFactory", "MaintenanceFactory1", "MaintenanceFactory2", "FoodFactory", "unemployed", "shop", "townhall"]
-var eld_places = ["grocery", "Park1", "Park2"]
+var workplaces = ["HatFactory", "MaintenanceFactory1", "MaintenanceFactory2", "FoodFactory", "unemployed", "grocery", "townhall"]
+var eld_places = ["grocery", "Park"]
 var syllables = 	["jack", "nu", "cu", "mo", "knuk", "sus", "ca", "shmu", "bo", "abod", "thl", "mo", "tuk", "foos", "ric"]
 
 signal viral_shedding_computed

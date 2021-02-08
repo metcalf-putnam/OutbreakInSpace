@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://root.gd" type="Script" id=1]
 [ext_resource path="res://characters/npc.tscn" type="PackedScene" id=2]
@@ -15,8 +15,14 @@
 [ext_resource path="res://ui/test_ui/test_menu.tscn" type="PackedScene" id=13]
 [ext_resource path="res://ui/no_energy_popup/NoEnergyPopup.tscn" type="PackedScene" id=14]
 [ext_resource path="res://ui/log_screen/LogScreen.tscn" type="PackedScene" id=15]
+[ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=16]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
+
+[sub_resource type="CapsuleShape2D" id=2]
 radius = 14.4662
 height = 8.922
 
@@ -34,39 +40,39 @@ position = Vector2( 321.5, -439 )
 script = ExtResource( 5 )
 
 [node name="C1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 872.5, -30.5 )
+position = Vector2( 872.5, -39.5 )
 type = "home"
 
 [node name="C2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 983.5, -31 )
+position = Vector2( 983.5, -40 )
 type = "home"
 
 [node name="C3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1097, -34 )
+position = Vector2( 1097, -43 )
 type = "home"
 
 [node name="D1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 870.951, 96.047 )
+position = Vector2( 870.951, 87.047 )
 type = "home"
 
 [node name="D2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 985.333, 96.547 )
+position = Vector2( 985.333, 87.547 )
 type = "home"
 
 [node name="D3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1095.8, 95.718 )
+position = Vector2( 1095.8, 86.718 )
 type = "home"
 
 [node name="E1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 873.8, 227.218 )
+position = Vector2( 873.8, 218.218 )
 type = "home"
 
 [node name="E2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 983.8, 224.218 )
+position = Vector2( 983.8, 215.218 )
 type = "home"
 
 [node name="E3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1097.3, 225.218 )
+position = Vector2( 1097.3, 216.218 )
 type = "home"
 
 [node name="A1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
@@ -78,7 +84,7 @@ position = Vector2( -38.5, -317.5 )
 type = "home"
 
 [node name="A3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( -39.5, -121.5 )
+position = Vector2( -39.5, -124.5 )
 type = "home"
 
 [node name="A4" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
@@ -86,40 +92,37 @@ position = Vector2( -39.5, 35.5 )
 type = "home"
 
 [node name="B1" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 871.291, -157.633 )
+position = Vector2( 871.291, -173.633 )
 type = "home"
 
 [node name="B2" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 985.06, -157.221 )
+position = Vector2( 985.06, -173.221 )
 type = "home"
 
 [node name="B3" parent="Navigation2D/Homes" instance=ExtResource( 4 )]
-position = Vector2( 1098.06, -156.221 )
+position = Vector2( 1098.06, -172.221 )
 type = "home"
 
 [node name="Locations" type="Node2D" parent="Navigation2D"]
 pause_mode = 1
 
 [node name="Class1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 263, -63.5 )
+position = Vector2( 263, -97.5 )
 
 [node name="Class2" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 342.5, -71 )
+position = Vector2( 342.5, -105 )
 
 [node name="Class3" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 422.5, -64.5 )
+position = Vector2( 422.5, -98.5 )
 
-[node name="Park1" type="Position2D" parent="Navigation2D/Locations"]
-position = Vector2( 1016, -280 )
-
-[node name="Park2" type="Position2D" parent="Navigation2D/Locations"]
-position = Vector2( 151, 414 )
-
-[node name="grocery" type="Position2D" parent="Navigation2D/Locations"]
-position = Vector2( 584, -64 )
+[node name="Park" type="Position2D" parent="Navigation2D/Locations"]
+position = Vector2( 707.995, -331.136 )
 
 [node name="HatFactory" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 518.5, -436 )
+position = Vector2( 518.5, -433 )
+
+[node name="grocery" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
+position = Vector2( 657.595, -88.3826 )
 
 [node name="MaintenanceFactory1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 582.15, -432.826 )
@@ -127,14 +130,59 @@ position = Vector2( 582.15, -432.826 )
 [node name="MaintenanceFactory2" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 647.5, -434 )
 
-[node name="shop" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 654, -63 )
-
 [node name="townhall" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 514.5, -292.5 )
+position = Vector2( 514.5, -298.5 )
 
 [node name="FoodFactory" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
-position = Vector2( 1018, -322 )
+position = Vector2( 1018, -335 )
+
+[node name="Blabel" type="Label" parent="Navigation2D"]
+margin_left = 813.186
+margin_top = -164.139
+margin_right = 853.186
+margin_bottom = -124.139
+custom_fonts/font = SubResource( 1 )
+text = "B"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Clabel" type="Label" parent="Navigation2D"]
+margin_left = 812.437
+margin_top = -35.6592
+margin_right = 852.437
+margin_bottom = 4.34077
+custom_fonts/font = SubResource( 1 )
+text = "C"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dlabel" type="Label" parent="Navigation2D"]
+margin_left = 813.186
+margin_top = 91.7213
+margin_right = 853.186
+margin_bottom = 131.721
+custom_fonts/font = SubResource( 1 )
+text = "D"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Elabel" type="Label" parent="Navigation2D"]
+margin_left = 812.656
+margin_top = 219.916
+margin_right = 852.656
+margin_bottom = 259.916
+custom_fonts/font = SubResource( 1 )
+text = "E"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -163,7 +211,7 @@ npc_handle = "mayor"
 portrait_file = "res://characters/portraits/Mayor.png"
 
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( 143.5, -447.5 )
+position = Vector2( 143.538, -423.116 )
 dialog_file = "res://dialog/json/granny_v2.json"
 full_name = "Granny Murktuk"
 infective_dose = 350
@@ -174,7 +222,7 @@ npc_handle = "granny"
 portrait_file = "res://characters/portraits/Granny.png"
 
 [node name="Singer" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( 768, -20 )
+position = Vector2( 759.171, -17.4773 )
 dialog_file = "res://dialog/json/singing_v3.json"
 full_name = "Kortuk the Magnificent"
 infective_dose = 1000
@@ -186,7 +234,7 @@ npc_handle = "singer"
 portrait_file = "res://characters/portraits/SingingCoach.png"
 
 [node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 6 )]
-position = Vector2( 891.37, -338.452 )
+position = Vector2( 935.517, -340.554 )
 dialog_file = "res://dialog/json/work_friend.json"
 full_name = "Snitgar"
 infective_dose = 750
@@ -242,19 +290,15 @@ texture = ExtResource( 11 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="glass_32x32/StaticBody2D"]
 position = Vector2( 0.468201, 0 )
-shape = SubResource( 1 )
-
-[node name="GrocerySign" parent="." instance=ExtResource( 12 )]
-position = Vector2( 608.131, -64.8961 )
-label_text = "<Grocery Store>"
+shape = SubResource( 2 )
 
 [node name="Park2Sign" parent="." instance=ExtResource( 12 )]
-position = Vector2( 773.79, -312.874 )
-label_text = "<Park2>"
+position = Vector2( 794.601, -351.523 )
+label_text = "<Park>"
 
 [node name="Park1Sign" parent="." instance=ExtResource( 12 )]
-position = Vector2( 226.638, -23.7996 )
-label_text = "<Park1>"
+position = Vector2( 481.723, -19.0428 )
+label_text = "<Park under construction>"
 [connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
 [connection signal="player_controls_toggle" from="CanvasLayer/Dialogue" to="Overlay" method="_on_Dialogue_player_controls_toggle"]
 [connection signal="player_controls_toggle" from="CanvasLayer/NoEnergyPopup" to="Overlay" method="_on_NoEnergyPopup_player_controls_toggle"]

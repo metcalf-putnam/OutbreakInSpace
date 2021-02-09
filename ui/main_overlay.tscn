@@ -403,9 +403,9 @@ stretch_mode = 4
 
 [node name="TestGlow" type="Sprite" parent="PlayerControls"]
 modulate = Color( 1, 1, 1, 0.2 )
-position = Vector2( 66.0583, 665.317 )
+position = Vector2( 65.761, 665.466 )
 rotation = 1.5708
-scale = Vector2( 4, 4 )
+scale = Vector2( 1.92103, 2.13007 )
 texture = ExtResource( 22 )
 
 [node name="TestActivation" type="AudioStreamPlayer" parent="PlayerControls"]

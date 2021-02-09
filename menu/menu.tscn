@@ -59,6 +59,7 @@ margin_right = 658.696
 margin_bottom = 511.139
 
 [node name="Language" type="Label" parent="."]
+visible = false
 margin_left = 360.472
 margin_top = 532.303
 margin_right = 546.472
@@ -70,6 +71,7 @@ __meta__ = {
 }
 
 [node name="LanguageList" type="OptionButton" parent="."]
+visible = false
 margin_left = 487.0
 margin_top = 529.0
 margin_right = 659.0

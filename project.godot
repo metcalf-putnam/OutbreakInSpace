@@ -32,7 +32,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "WhiskersParser",
 "language": "GDScript",
-"path": "res://dialog/WhiskersParser.gd"
+"path": "res://Dialog/WhiskersParser.gd"
 } ]
 _global_script_class_icons={
 "Character": "",

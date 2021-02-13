@@ -124,10 +124,10 @@ position = Vector2( 518.5, -433 )
 [node name="grocery" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 657.595, -88.3826 )
 
-[node name="MaintenanceFactory1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
+[node name="MachineShop1" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 582.15, -432.826 )
 
-[node name="MaintenanceFactory2" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
+[node name="MachineShop2" parent="Navigation2D/Locations" instance=ExtResource( 4 )]
 position = Vector2( 647.5, -434 )
 
 [node name="townhall" parent="Navigation2D/Locations" instance=ExtResource( 4 )]

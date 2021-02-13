@@ -27,8 +27,8 @@ enum State {SINGING, DIALOGUE, ACTIVE}
 var state = State.ACTIVE
 var rng = RandomNumberGenerator.new()
 const testing_suffix_days := ", last tested: Day "
-const cough_min = 5
-const cough_max = 15
+const cough_min = 3
+const cough_max = 8
 var sing_toggled := false
 
 
@@ -297,11 +297,9 @@ func show_glow(boolean):
 
 func infection_visual(boolean):
 	if boolean:
-		$Glow.hide()
 		$InfectionVisual.hide()
 		$Label.hide()
 	else:
-		$Glow.show()
 		$InfectionVisual.show()
 		$Label.show()
 

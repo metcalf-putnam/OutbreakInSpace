@@ -122,7 +122,6 @@ anims/opening = SubResource( 2 )
 visible = false
 position = Vector2( 134.35, 325.269 )
 frames = SubResource( 9 )
-frame = 4
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

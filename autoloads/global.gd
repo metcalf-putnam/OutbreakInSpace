@@ -11,6 +11,7 @@ var new_infections := 0
 var total_infections := 1
 var visuals_on := true
 var cookies := 0
+var total_population := 0
 
 # Event flags
 var first_lab_visit := true

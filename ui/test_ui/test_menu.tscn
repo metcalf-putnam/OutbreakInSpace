@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://font/Awake.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://dialog/menu_section_9patch.png" type="Texture" id=2]
+[ext_resource path="res://ui/test_ui/TestButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ui/test_ui/test_menu.gd" type="Script" id=3]
-[ext_resource path="res://dialog/ChoiceButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://ui/test_ui/caret.png" type="Texture" id=5]
+[ext_resource path="res://ui/NEW UI BUTTONS/UI_60x60.png" type="Texture" id=6]
+[ext_resource path="res://ui/test_ui/UI_60x60_No_Corner.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -16,17 +17,17 @@ margin_left = 71.0
 margin_top = 383.0
 margin_right = 413.0
 margin_bottom = 546.0
-texture = ExtResource( 2 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource( 6 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 354.931 ],
 "_edit_use_anchors_": false
 }
-ChoiceButton = ExtResource( 4 )
+ChoiceButton = ExtResource( 2 )
 
 [node name="PopUp" type="AudioStreamPlayer" parent="."]
 
@@ -60,24 +61,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DeclineButton" parent="." instance=ExtResource( 4 )]
-margin_left = 309.903
-margin_top = 145.0
-margin_right = 616.703
-margin_bottom = 172.0
-focus_next = NodePath("../Buttons")
-focus_previous = NodePath("../Buttons")
-
 [node name="Details" type="NinePatchRect" parent="."]
 margin_left = -7.63004
 margin_top = -172.694
 margin_right = 342.37
 margin_bottom = -22.6939
-texture = ExtResource( 2 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource( 6 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -186,11 +179,11 @@ margin_top = -10.1352
 margin_right = 42.37
 margin_bottom = 14.8648
 rect_min_size = Vector2( 50, 25 )
-texture = ExtResource( 2 )
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource( 7 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -206,4 +199,10 @@ text = "Building"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="DeclineButton" parent="." instance=ExtResource( 2 )]
+margin_left = 298.769
+margin_top = 145.547
+margin_right = 605.569
+margin_bottom = 172.547
 [connection signal="is_pressed" from="DeclineButton" to="." method="_on_DeclineButton_is_pressed"]

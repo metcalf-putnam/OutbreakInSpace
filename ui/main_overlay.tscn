@@ -295,10 +295,10 @@ anims/fade_in = SubResource( 3 )
 anims/fade_to_black = SubResource( 4 )
 
 [node name="Debug" type="Label" parent="."]
-margin_left = 7.83167
-margin_top = 61.5294
-margin_right = 227.525
-margin_bottom = 83.5294
+margin_left = 26.8317
+margin_top = 69.5294
+margin_right = 246.525
+margin_bottom = 91.5294
 custom_fonts/font = SubResource( 1 )
 text = "Overlord Options:"
 __meta__ = {
@@ -345,11 +345,11 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -492.0
-margin_top = -155.0
-margin_right = -368.0
-margin_bottom = -26.0
-custom_constants/separation = 17
+margin_left = -498.0
+margin_top = 166.0
+margin_right = -370.0
+margin_bottom = -9.0
+custom_constants/separation = 0
 alignment = 2
 script = ExtResource( 7 )
 __meta__ = {
@@ -357,9 +357,9 @@ __meta__ = {
 }
 
 [node name="ReportButton" parent="PlayerControls" instance=ExtResource( 8 )]
-margin_top = 311.0
+margin_top = 41.0
 margin_right = 128.0
-margin_bottom = 439.0
+margin_bottom = 169.0
 rect_min_size = Vector2( 128, 128 )
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 26 )
@@ -373,9 +373,9 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 25 )
 
 [node name="SingButton" type="TextureButton" parent="PlayerControls"]
-margin_top = 456.0
+margin_top = 169.0
 margin_right = 128.0
-margin_bottom = 584.0
+margin_bottom = 297.0
 rect_min_size = Vector2( 128, 128 )
 texture_normal = ExtResource( 20 )
 texture_pressed = ExtResource( 14 )
@@ -391,9 +391,9 @@ __meta__ = {
 stream = ExtResource( 16 )
 
 [node name="TestButton" parent="PlayerControls" instance=ExtResource( 8 )]
-margin_top = 601.0
+margin_top = 297.0
 margin_right = 128.0
-margin_bottom = 729.0
+margin_bottom = 425.0
 rect_min_size = Vector2( 128, 128 )
 texture_normal = ExtResource( 18 )
 texture_pressed = ExtResource( 23 )
@@ -403,7 +403,7 @@ stretch_mode = 4
 
 [node name="TestGlow" type="Sprite" parent="PlayerControls"]
 modulate = Color( 1, 1, 1, 0.2 )
-position = Vector2( 65.761, 665.466 )
+position = Vector2( 65.761, 361.466 )
 rotation = 1.5708
 scale = Vector2( 1.92103, 2.13007 )
 texture = ExtResource( 22 )

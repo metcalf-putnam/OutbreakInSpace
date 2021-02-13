@@ -179,7 +179,7 @@ __meta__ = {
 }
 
 [node name="DaysBackground" type="NinePatchRect" parent="."]
-margin_right = 400.0
+margin_right = 345.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 208, 0 )
 mouse_filter = 1
@@ -238,24 +238,27 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="Sprite6" type="Sprite" parent="DaysBackground/Energy/Sprites"]
+visible = false
 position = Vector2( 91, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="Sprite7" type="Sprite" parent="DaysBackground/Energy/Sprites"]
+visible = false
 position = Vector2( 109, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="Sprite8" type="Sprite" parent="DaysBackground/Energy/Sprites"]
+visible = false
 position = Vector2( 127, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="EndDayButton" type="TextureButton" parent="DaysBackground/Energy"]
-margin_left = -12.3193
+margin_left = -117.319
 margin_top = -15.3972
-margin_right = 139.681
+margin_right = 34.681
 margin_bottom = 24.6028
 mouse_filter = 1
 texture_normal = ExtResource( 11 )

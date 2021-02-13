@@ -49,6 +49,9 @@ func generate_characters():
 	create_family("E2", "Reptiles", 1, 0, 0, "Narkto")
 	create_family("E3", "Reptiles", 3, 1, 0, "Pufto")
 
+	Global.total_population = i
+	print("total NPCs: ", i)
+
 
 func get_core_npc(npc_name, portrait_file, is_immune):
 	for npc in core_npcs:
@@ -101,7 +104,6 @@ func create_family(location, race, adults, kids, elderly, surname):
 		create_and_add_npc(location, surname, race, "Child", 1000)
 	for _i in range(elderly):
 		create_and_add_npc(location, surname, race, "Elderly", 500)
-	print("total NPCs: ", i)
 
 
 func create_and_add_npc(home : String, family_name : String, race : String, 

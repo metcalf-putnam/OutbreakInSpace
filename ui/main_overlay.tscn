@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://ui/main_overlay.gd" type="Script" id=1]
 [ext_resource path="res://dialog/menu_section_9patch.png" type="Texture" id=2]
@@ -9,23 +9,20 @@
 [ext_resource path="res://ui/player_controls.gd" type="Script" id=7]
 [ext_resource path="res://ui/base_button/TextureButtonWithSound.tscn" type="PackedScene" id=8]
 [ext_resource path="res://ui/NEW UI BUTTONS/Report_Buttom.png" type="Texture" id=9]
-[ext_resource path="res://ui/base_button/TextureButtonWithSound.gd" type="Script" id=10]
 [ext_resource path="res://ui/Check_Reports.png" type="Texture" id=11]
 [ext_resource path="res://ui/Check_Reports_Hover.png" type="Texture" id=12]
 [ext_resource path="res://ui/Check_Reports_Pressed.png" type="Texture" id=13]
-[ext_resource path="res://ui/NEW UI BUTTONS/Sing_Pressed.png" type="Texture" id=14]
 [ext_resource path="res://ui/quests/Quests.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Dialog/Hover_Dialogue_Option.wav" type="AudioStream" id=16]
 [ext_resource path="res://ui/NEW UI BUTTONS/Test_Hover.png" type="Texture" id=17]
 [ext_resource path="res://ui/NEW UI BUTTONS/Test_Buttom.png" type="Texture" id=18]
-[ext_resource path="res://ui/test_ui/Test_Button_Power_On.wav" type="AudioStream" id=19]
-[ext_resource path="res://ui/NEW UI BUTTONS/Sing_Buttom.png" type="Texture" id=20]
-[ext_resource path="res://ui/NEW UI BUTTONS/Sing_Hover.png" type="Texture" id=21]
+[ext_resource path="res://ui/test_ui/Test_Button_Power_On_V.2.wav" type="AudioStream" id=19]
 [ext_resource path="res://ui/NEW UI BUTTONS/Glowing_For_Buttom.png" type="Texture" id=22]
 [ext_resource path="res://ui/NEW UI BUTTONS/Test_Pressed.png" type="Texture" id=23]
 [ext_resource path="res://ui/NEW UI BUTTONS/Report_Hover.png" type="Texture" id=24]
 [ext_resource path="res://ui/NEW UI BUTTONS/Report_Notify.png" type="Texture" id=25]
 [ext_resource path="res://ui/NEW UI BUTTONS/Report_Pressed.png" type="Texture" id=26]
+[ext_resource path="res://ui/test_ui/Report_Button.wav" type="AudioStream" id=27]
+[ext_resource path="res://ui/test_ui/Test_Button_Press.wav" type="AudioStream" id=28]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -179,7 +176,7 @@ __meta__ = {
 }
 
 [node name="DaysBackground" type="NinePatchRect" parent="."]
-margin_right = 400.0
+margin_right = 345.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 208, 0 )
 mouse_filter = 1
@@ -238,24 +235,27 @@ scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="Sprite6" type="Sprite" parent="DaysBackground/Energy/Sprites"]
+visible = false
 position = Vector2( 91, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="Sprite7" type="Sprite" parent="DaysBackground/Energy/Sprites"]
+visible = false
 position = Vector2( 109, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="Sprite8" type="Sprite" parent="DaysBackground/Energy/Sprites"]
+visible = false
 position = Vector2( 127, 0 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="EndDayButton" type="TextureButton" parent="DaysBackground/Energy"]
-margin_left = -12.3193
+margin_left = -117.319
 margin_top = -15.3972
-margin_right = 139.681
+margin_right = 34.681
 margin_bottom = 24.6028
 mouse_filter = 1
 texture_normal = ExtResource( 11 )
@@ -366,29 +366,19 @@ texture_pressed = ExtResource( 26 )
 texture_hover = ExtResource( 24 )
 expand = true
 stretch_mode = 4
+press_stream = ExtResource( 27 )
 
 [node name="Sprite" type="Sprite" parent="PlayerControls/ReportButton"]
 position = Vector2( 50.8799, 52.9915 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 25 )
 
-[node name="SingButton" type="TextureButton" parent="PlayerControls"]
+[node name="SingButton" parent="PlayerControls" instance=ExtResource( 8 )]
 margin_top = 169.0
 margin_right = 128.0
 margin_bottom = 297.0
 rect_min_size = Vector2( 128, 128 )
-texture_normal = ExtResource( 20 )
-texture_pressed = ExtResource( 14 )
-texture_hover = ExtResource( 21 )
 expand = true
-stretch_mode = 4
-script = ExtResource( 10 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Hover" type="AudioStreamPlayer" parent="PlayerControls/SingButton"]
-stream = ExtResource( 16 )
 
 [node name="TestButton" parent="PlayerControls" instance=ExtResource( 8 )]
 margin_top = 297.0
@@ -400,8 +390,10 @@ texture_pressed = ExtResource( 23 )
 texture_hover = ExtResource( 17 )
 expand = true
 stretch_mode = 4
+press_stream = ExtResource( 28 )
 
 [node name="TestGlow" type="Sprite" parent="PlayerControls"]
+visible = false
 modulate = Color( 1, 1, 1, 0.2 )
 position = Vector2( 65.761, 361.466 )
 rotation = 1.5708
@@ -410,7 +402,6 @@ texture = ExtResource( 22 )
 
 [node name="TestActivation" type="AudioStreamPlayer" parent="PlayerControls"]
 stream = ExtResource( 19 )
-volume_db = -5.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerControls"]
 anims/test_glow_off = SubResource( 5 )
@@ -446,5 +437,4 @@ __meta__ = {
 [connection signal="pressed" from="PlayerControls/ReportButton" to="PlayerControls" method="_on_ReportButton_pressed"]
 [connection signal="button_down" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_button_down"]
 [connection signal="button_up" from="PlayerControls/SingButton" to="PlayerControls" method="_on_SingButton_button_up"]
-[connection signal="mouse_entered" from="PlayerControls/SingButton" to="PlayerControls/SingButton" method="_on_TextureButton_mouse_entered"]
 [connection signal="pressed" from="PlayerControls/TestButton" to="PlayerControls" method="_on_TestButton_pressed"]

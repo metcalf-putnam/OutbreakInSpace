@@ -73,9 +73,7 @@ func show_end_day_button():
 func _on_NoEnergyPopup_show_end_day():
 	$DaysBackground/Energy/EndDayButton.show()
 	Global.no_more_energy = true
-	pass # Replace with function body.
 
 
 func _on_NoEnergyPopup_player_controls_toggle(boolean):
 	player_controls_toggle(boolean)
-	pass # Replace with function body.

@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const TITLE_FORMAT = "Day %s: %s"
+const TITLE_FORMAT = "Day %s"
 const OVERLORD_REMINDER_FORMAT = "%s Days until Overlord comes..."
 
 onready var title = $Title
@@ -12,9 +12,11 @@ onready var anim = $AnimationPlayer
 func show_transition():
 	#	get day transition details containing title and subtitle
 	
-	title.text = TITLE_FORMAT % [Global.day, "<Title for this Day Maybe?>"]
-	subtitle.text = "<maybe a subtitle here?>"
-	overload_reminder.text = OVERLORD_REMINDER_FORMAT % [Global.days_to_overlord]
+	title.text = TITLE_FORMAT % [Global.day]
+	subtitle.text = OVERLORD_REMINDER_FORMAT % [Global.days_to_overlord]
+	#title.text = TITLE_FORMAT % [Global.day, "<Title for this Day Maybe?>"]
+	#subtitle.text = "<maybe a subtitle here?>"
+	#overload_reminder.text = OVERLORD_REMINDER_FORMAT % [Global.days_to_overlord]
 	anim.play("show")
 
 

@@ -69,7 +69,7 @@ func populate_stats():
 	textbox.newline()
 	textbox.newline()
 	textbox.append_bbcode("Stats:")
-	add_formatted_stat("population", 86)
+	add_formatted_stat("population", Global.total_population)
 	add_formatted_stat("infections", Global.total_infections)
 	add_formatted_stat("deaths", Global.dead_characters.size())
 	add_formatted_stat("songs sung", Global.songs_sung)

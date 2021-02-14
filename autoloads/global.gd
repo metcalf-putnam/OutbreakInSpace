@@ -119,7 +119,10 @@ func _on_viral_shedding_computed():
 		assert(get_tree().change_scene("res://ending/ending.tscn") == OK)
 		return
 	
-	get_tree().reload_current_scene()
+	if get_tree().current_scene.name == "Root":
+		get_tree().change_scene("res://interiors/Housescene.tscn")
+	else:
+		get_tree().reload_current_scene()
 
 
 func add_test_results(data, result):

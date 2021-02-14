@@ -423,7 +423,6 @@ margin_right = 0.0
 margin_bottom = 380.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 modulate = Color( 0, 0, 0, 0 )
 margin_right = 1024.0
 margin_bottom = 600.0
@@ -431,7 +430,7 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="DaysBackground/Energy/EndDayButton" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="DaysBackground/Energy/EndDayButton" to="." method="_on_EndDayButton_pressed"]
 [connection signal="toggled" from="Debug/MaskButton" to="." method="_on_MaskButton_toggled"]
 [connection signal="toggled" from="Debug/Visuals_Debug" to="." method="_on_Visuals_Debug_toggled"]
 [connection signal="pressed" from="PlayerControls/ReportButton" to="PlayerControls" method="_on_ReportButton_pressed"]

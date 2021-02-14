@@ -33,10 +33,6 @@ func new_day():
 	EventHub.emit_signal("day_ended")
 
 
-func _on_Button_pressed():
-	fade_day()
-
-
 func _on_MaskButton_toggled(button_pressed):
 	$Debug/MaskButton.release_focus()
 	if button_pressed:
@@ -77,3 +73,8 @@ func _on_NoEnergyPopup_show_end_day():
 
 func _on_NoEnergyPopup_player_controls_toggle(boolean):
 	player_controls_toggle(boolean)
+
+
+func _on_EndDayButton_pressed():
+	fade_day()
+	pass # Replace with function body.

@@ -79,6 +79,7 @@ func restart_game(boolean):
 	reset_daily_values(true)
 	total_infections = 1
 	day = 1
+	days_to_overlord = overlord_day - day
 	d1s_tested = 0
 	positive_characters = []
 	daily_reports = []

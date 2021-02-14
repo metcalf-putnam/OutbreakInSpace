@@ -300,9 +300,9 @@ func format_result(test_dic):
 	else:
 		result_string = result_string + "[cell]N/A[/cell]"
 	if test_dic["result"]:
-		result_string = result_string + "[cell]Positive[/cell]"
+		result_string = result_string + "[cell][color=red]Positive[/color][/cell]"
 	else:
-		result_string = result_string + "[cell]Negative[/cell]"
+		result_string = result_string + "[cell][color=green]Negative[/color][/cell]"
 	return result_string
 
 

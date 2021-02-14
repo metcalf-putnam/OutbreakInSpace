@@ -505,11 +505,13 @@ position = Vector2( 0, 4.25 )
 shape = SubResource( 3 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = -20.3563
-margin_top = -31.035
-margin_right = 19.6437
-margin_bottom = -17.035
+margin_left = -20.0
+margin_top = -30.0
+margin_right = 122.0
+margin_bottom = -16.0
 custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -537,7 +539,7 @@ parameters/walk/blend_position = Vector2( 0, 0 )
 
 [node name="Cough" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
-volume_db = 24.0
+volume_db = -25.0
 max_distance = 800.0
 
 [node name="Sing" type="AudioStreamPlayer2D" parent="."]

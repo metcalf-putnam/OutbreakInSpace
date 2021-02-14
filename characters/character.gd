@@ -110,7 +110,7 @@ func check_status():
 func update_label():
 	#$Label.show()
 	if data["is_contagious"] and data["is_symptomatic"]:
-		$Label.text = "Contagious and Symptomatic"
+		$Label.text = "Contagious & Symptomatic"
 		$InfectionVisual.modulate.a = 1
 	elif data["is_contagious"]:
 		$Label.text = "Contagious"
@@ -296,6 +296,15 @@ func show_glow(boolean):
 
 
 func infection_visual(boolean):
+	if get_tree().current_scene.name == "House":
+		$InfectionVisual.scale = Vector2(0.6, 0.6)
+		$Label.rect_scale = Vector2(0.6, 0.6)
+		$Label.rect_position = Vector2(-40, -15)
+	else:
+		$InfectionVisual.scale = Vector2.ONE
+		$Label.rect_scale = Vector2.ONE
+		$Label.rect_position = Vector2(-20, -30)
+		
 	if boolean:
 		$InfectionVisual.hide()
 		$Label.hide()

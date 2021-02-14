@@ -92,7 +92,7 @@ failure_dialog_file = "res://dialog/json/overlord_failure.json"
 success_dialog_file = "res://Dialog/json/overlord_success.json"
 
 [node name="Navigation2D" parent="." instance=ExtResource( 2 )]
-position = Vector2( 232.087, 240.496 )
+position = Vector2( 260, 375 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -124,7 +124,7 @@ anims/opening = SubResource( 2 )
 visible = false
 position = Vector2( 134.35, 325.269 )
 frames = SubResource( 9 )
-frame = 5
+frame = 4
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

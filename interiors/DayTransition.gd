@@ -22,4 +22,5 @@ func show_transition():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	Global.day_transitioned = true
+	queue_free()
 	pass # Replace with function body.

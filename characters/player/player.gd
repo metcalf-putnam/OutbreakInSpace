@@ -31,7 +31,7 @@ func init(data):
 		add_to_group("susceptible")
 
 func _physics_process(_delta):
-	if state == State.SINGING or state == State.DIALOGUE:
+	if state == State.SINGING or state == State.DIALOGUE or !Global.day_transitioned:
 		return
 		
 	var direction = Vector2()

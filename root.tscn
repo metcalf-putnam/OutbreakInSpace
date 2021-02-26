@@ -300,7 +300,6 @@ label_text = "<Park>"
 position = Vector2( 481.723, -19.0428 )
 label_text = "<Park under construction>"
 [connection signal="timeout" from="CoughTimer" to="." method="_on_Timer_timeout"]
-[connection signal="player_controls_toggle" from="CanvasLayer/Dialogue" to="Overlay" method="_on_Dialogue_player_controls_toggle"]
 [connection signal="player_controls_toggle" from="CanvasLayer/NoEnergyPopup" to="Overlay" method="_on_NoEnergyPopup_player_controls_toggle"]
 [connection signal="show_end_day" from="CanvasLayer/NoEnergyPopup" to="Overlay" method="_on_NoEnergyPopup_show_end_day"]
 [connection signal="timeout" from="DayTimer" to="." method="_on_DayTimer_timeout"]

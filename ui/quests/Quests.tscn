@@ -9,8 +9,6 @@
 [ext_resource path="res://dialog/Hover_Dialogue_Option.wav" type="AudioStream" id=7]
 [ext_resource path="res://dialog/Select_Dialogue_Option.wav" type="AudioStream" id=8]
 
-
-
 [sub_resource type="DynamicFont" id=1]
 size = 32
 outline_size = 1

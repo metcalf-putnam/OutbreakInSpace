@@ -41,7 +41,7 @@ func generate_characters():
 	create_family("C2", "Reptiles", 2, 2, 1, "Fuzzlebee")
 	create_family("C3", "Reptiles", 2, 1, 1, "Raotao")
 	
-	create_family("D1", "Reptiles", 2, 0, 0, "Flarf")
+	create_family("D1", "Reptiles", 2, 2, 1, "Flarf")
 	create_family("D2", "Reptiles", 2, 0, 0, "Snuktuk")
 	create_family("D3", "Reptiles", 3, 1, 1, "Grurf")
 	

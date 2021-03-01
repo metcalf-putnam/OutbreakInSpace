@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/O.wav-a14eb02ea0f4178af784eb2851736ac6.sample"
+
+[deps]
+
+source_file="res://dialog/letter-sounds/O.wav"
+dest_files=[ "res://.import/O.wav-a14eb02ea0f4178af784eb2851736ac6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

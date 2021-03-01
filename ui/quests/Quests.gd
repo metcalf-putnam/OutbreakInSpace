@@ -36,7 +36,7 @@ func update_quests():
 		all_quests = false
 		$List/idkQuests.hide()
 		
-	$List/TestingQuest/Status.bbcode_text = "(" + str(min(Global.d1s_tested, 8)) + "/8)" 
+	$List/TestingQuest/Status.bbcode_text = "(" + str(min(Global.d1s_tested, 5)) + "/5)" 
 	if Global.d1s_tested >= 5:
 		strikeout_quest($List/TestingQuest)
 		Global.testing_completed = true

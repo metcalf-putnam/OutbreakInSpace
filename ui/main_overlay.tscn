@@ -357,6 +357,7 @@ __meta__ = {
 }
 
 [node name="ReportButton" parent="PlayerControls" instance=ExtResource( 8 )]
+pause_mode = 2
 margin_top = 41.0
 margin_right = 128.0
 margin_bottom = 169.0

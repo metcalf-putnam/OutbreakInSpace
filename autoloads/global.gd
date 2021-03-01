@@ -84,6 +84,7 @@ func restart_game(boolean):
 	positive_characters = []
 	daily_reports = []
 	dead_characters = []
+	test_results = {}
 	testing_completed = false
 	conversations_had = 0
 	songs_sung = 0

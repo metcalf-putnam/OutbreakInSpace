@@ -1,6 +1,6 @@
 extends NinePatchRect
 var completed_modulate = Color(0.58, 0.58, 0.58)
-var full_size = 387
+var full_size = 330
 var mid_size = 137
 var collapsed_size = 46
 var all_quests := false

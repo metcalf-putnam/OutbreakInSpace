@@ -75,6 +75,7 @@ func restart_game(boolean):
 		debug_on = true
 	else:
 		debug_on = false
+	total_population = 0
 	CharacterManager.generate_characters()
 	reset_daily_values(true)
 	total_infections = 1

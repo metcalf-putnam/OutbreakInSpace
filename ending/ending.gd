@@ -3,8 +3,8 @@ export(String, FILE, "*.json") var failure_dialog_file
 export(String, FILE, "*.json") var success_dialog_file
 var bad_ending := false
 onready var textbox = $RichTextLabel
-var good_ending_text = "On the 11th of Jeha, Lord Aso arrived for the festival"
-var bad_ending_text = "On the 11th of Jeha..........the festival was canceled.........."
+var good_ending_text = "On the 7th of Jeha, Lord Aso arrived for the festival"
+var bad_ending_text = "On the 7th of Jeha..........the festival was canceled.........."
 var good_modulate = Color(0.64, 0.79, 0.61, 0.84)
 var bad_modulate = Color(0.56, 0.52, 0.52, 0.84)
 

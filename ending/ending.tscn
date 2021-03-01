@@ -89,7 +89,7 @@ z_index = 2
 z_as_relative = false
 script = ExtResource( 3 )
 failure_dialog_file = "res://dialog/json/overlord_failure.json"
-success_dialog_file = "res://Dialog/json/overlord_success.json"
+success_dialog_file = "res://dialog/json/overlord_success.json"
 
 [node name="Navigation2D" parent="." instance=ExtResource( 2 )]
 position = Vector2( 260, 375 )
@@ -124,7 +124,6 @@ anims/opening = SubResource( 2 )
 visible = false
 position = Vector2( 134.35, 325.269 )
 frames = SubResource( 9 )
-frame = 4
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]

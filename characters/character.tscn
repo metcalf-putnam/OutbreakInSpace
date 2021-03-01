@@ -12,21 +12,21 @@
 [ext_resource path="res://characters/effects/Full_Cough (1).wav" type="AudioStream" id=10]
 [ext_resource path="res://ui/glowingEffect_32x32.png" type="Texture" id=11]
 
-[sub_resource type="CircleShape2D" id=35]
+[sub_resource type="CircleShape2D" id=1]
 radius = 23.9767
 
-[sub_resource type="CircleShape2D" id=36]
+[sub_resource type="CircleShape2D" id=2]
 radius = 45.3409
 
-[sub_resource type="CircleShape2D" id=37]
+[sub_resource type="CircleShape2D" id=3]
 radius = 4.13257
 
-[sub_resource type="DynamicFont" id=38]
+[sub_resource type="DynamicFont" id=4]
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 8 )
 
-[sub_resource type="Animation" id=39]
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -91,7 +91,7 @@ tracks/4/keys = {
 "values": [ -25.0 ]
 }
 
-[sub_resource type="Animation" id=40]
+[sub_resource type="Animation" id=6]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -119,7 +119,7 @@ tracks/1/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=41]
+[sub_resource type="Animation" id=7]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -147,7 +147,7 @@ tracks/1/keys = {
 "values": [ 26, 27 ]
 }
 
-[sub_resource type="Animation" id=42]
+[sub_resource type="Animation" id=8]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -175,7 +175,7 @@ tracks/1/keys = {
 "values": [ 12, 13 ]
 }
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=9]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -203,7 +203,7 @@ tracks/1/keys = {
 "values": [ 4, 5 ]
 }
 
-[sub_resource type="Animation" id=44]
+[sub_resource type="Animation" id=10]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -244,7 +244,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=45]
+[sub_resource type="Animation" id=11]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -270,7 +270,7 @@ tracks/1/keys = {
 "values": [ 36 ]
 }
 
-[sub_resource type="Animation" id=46]
+[sub_resource type="Animation" id=12]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -298,7 +298,7 @@ tracks/1/keys = {
 "values": [ 17, 18, 19, 16 ]
 }
 
-[sub_resource type="Animation" id=47]
+[sub_resource type="Animation" id=13]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -326,7 +326,7 @@ tracks/1/keys = {
 "values": [ 25, 26, 27, 26 ]
 }
 
-[sub_resource type="Animation" id=48]
+[sub_resource type="Animation" id=14]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -354,7 +354,7 @@ tracks/1/keys = {
 "values": [ 29, 30, 29, 30 ]
 }
 
-[sub_resource type="Animation" id=49]
+[sub_resource type="Animation" id=15]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -461,22 +461,23 @@ states/walk/position = Vector2( 444, 53 )
 transitions = [ "idle", "walk", SubResource( 28 ), "walk", "idle", SubResource( 29 ), "idle", "sing", SubResource( 30 ), "sing", "idle", SubResource( 31 ), "idle", "cough", SubResource( 32 ), "cough", "idle", SubResource( 33 ) ]
 start_node = "idle"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=50]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=35]
 
 [node name="Character" type="KinematicBody2D" groups=[
 "susceptible",
 ]]
+collision_mask = 0
 script = ExtResource( 1 )
 
 [node name="VeryClose" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VeryClose"]
-shape = SubResource( 35 )
+shape = SubResource( 1 )
 
 [node name="Close" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Close"]
-shape = SubResource( 36 )
+shape = SubResource( 2 )
 
 [node name="InfectionVisual" type="Sprite" parent="."]
 modulate = Color( 0.77, 0.14, 0.14, 0 )
@@ -486,7 +487,6 @@ texture = ExtResource( 2 )
 texture = ExtResource( 4 )
 vframes = 10
 hframes = 4
-frame = 1
 
 [node name="Helmet" type="Sprite" parent="." groups=[
 "character",
@@ -494,20 +494,19 @@ frame = 1
 texture = ExtResource( 3 )
 vframes = 10
 hframes = 4
-frame = 1
 
 [node name="ShedTimer" type="Timer" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4.25 )
-shape = SubResource( 37 )
+shape = SubResource( 3 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = -20.0
 margin_top = -30.0
 margin_right = 122.0
 margin_bottom = -16.0
-custom_fonts/font = SubResource( 38 )
+custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
 __meta__ = {
@@ -515,23 +514,23 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/cough = SubResource( 39 )
-anims/idle_down = SubResource( 40 )
-anims/idle_left = SubResource( 41 )
-anims/idle_right = SubResource( 42 )
-anims/idle_up = SubResource( 43 )
-anims/sing = SubResource( 44 )
-anims/sing_transition = SubResource( 45 )
-anims/walk_down = SubResource( 46 )
-anims/walk_left = SubResource( 47 )
-anims/walk_right = SubResource( 48 )
-anims/walk_up = SubResource( 49 )
+anims/cough = SubResource( 5 )
+anims/idle_down = SubResource( 6 )
+anims/idle_left = SubResource( 7 )
+anims/idle_right = SubResource( 8 )
+anims/idle_up = SubResource( 9 )
+anims/sing = SubResource( 10 )
+anims/sing_transition = SubResource( 11 )
+anims/walk_down = SubResource( 12 )
+anims/walk_left = SubResource( 13 )
+anims/walk_right = SubResource( 14 )
+anims/walk_up = SubResource( 15 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 34 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 50 )
+parameters/playback = SubResource( 35 )
 parameters/idle/blend_position = Vector2( -0.0257703, 0.181224 )
 parameters/walk/blend_position = Vector2( 0, 0 )
 
@@ -579,7 +578,7 @@ margin_left = 9.99426
 margin_top = -5.67605
 margin_right = 180.994
 margin_bottom = 8.32395
-custom_fonts/font = SubResource( 38 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Character Name, last tested: Day 3"
 __meta__ = {

@@ -190,6 +190,7 @@ __meta__ = {
 
 [node name="Professor" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 234.187, -234.402 )
+collision_mask = 1
 dialog_file = "res://dialog/json/professor.json"
 full_name = "Professor"
 infective_dose = 1000
@@ -201,6 +202,7 @@ portrait_file = "res://characters/portraits/Professor.png"
 
 [node name="Mayor" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 447.542, -221.071 )
+collision_mask = 1
 dialog_file = "res://dialog/json/mayor_steady_state.json"
 full_name = "Mayor Snorgyl"
 infective_dose = 603
@@ -212,6 +214,7 @@ portrait_file = "res://characters/portraits/Mayor.png"
 
 [node name="Granny" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 143.538, -423.116 )
+collision_mask = 1
 dialog_file = "res://dialog/json/granny_v2.json"
 full_name = "Granny Murktuk"
 infective_dose = 350
@@ -223,6 +226,7 @@ portrait_file = "res://characters/portraits/Granny.png"
 
 [node name="Singer" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 759.171, -17.4773 )
+collision_mask = 1
 dialog_file = "res://dialog/json/singing_v3.json"
 full_name = "Kortuk the Magnificent"
 infective_dose = 1000
@@ -235,6 +239,7 @@ portrait_file = "res://characters/portraits/SingingCoach.png"
 
 [node name="WorkFriend" parent="YSort/npcs" instance=ExtResource( 6 )]
 position = Vector2( 935.517, -340.554 )
+collision_mask = 1
 dialog_file = "res://dialog/json/work_friend.json"
 full_name = "Snitgar"
 infective_dose = 750
@@ -247,6 +252,7 @@ portrait_file = "res://characters/portraits/WorkerFriend.png"
 
 [node name="Player" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 440.865, -467.09 )
+collision_mask = 1
 
 [node name="FPS" type="Label" parent="."]
 visible = false

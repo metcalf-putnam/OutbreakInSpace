@@ -18,22 +18,22 @@ var event
 func get_event_dialog_file_path():
 	var file2check = File.new()
 	var file_path = ""
-	
 	if !Global.first_lab_visit and !data["event_checks"]["virus_detected"]:
 		event = "virus_detected"
-	if Global.testing_completed and !data["event_checks"]["testing_completed"]:
+	elif Global.testing_completed and !data["event_checks"]["testing_completed"]:
 		event = "testing_completed"
-	if Global.first_results and !data["event_checks"]["first_results"]:
+	elif Global.first_results and !data["event_checks"]["first_results"]:
 		event = "first_results"
-	if Global.first_positive and !data["event_checks"]["first_positive"]:
+	elif Global.first_positive and !data["event_checks"]["first_positive"]:
 		event = "first_positive"
-	if Global.first_death and !data["event_checks"]["first_death"]:
+	elif Global.first_death and !data["event_checks"]["first_death"]:
 		event = "first_death"
 	else:
 		event = null
 		return null
 	
 	file_path = "res://dialog/json/" + npc_handle + "_" + event + ".json"
+	print("checking file path: ", file_path)
 	if file2check.file_exists(file_path):
 		return file_path
 
@@ -112,6 +112,7 @@ func update_sprite():
 
 
 func check_special_dialog():
+	print("checking special dialogue")
 	if Global.first_lab_visit and npc_handle == "professor":
 		$Interactable.set_new_info(true)
 		return
@@ -119,6 +120,7 @@ func check_special_dialog():
 		$Interactable.set_new_info(true)
 		return
 	if get_event_dialog_file_path():
+		print("there is special dialogue for ", full_name)
 		$Interactable.set_new_info(true)
 	else:
 		$Interactable.set_new_info(false)

@@ -34,7 +34,6 @@ func get_event_dialog_file_path():
 		return null
 	
 	file_path = "res://dialog/json/" + npc_handle + "_" + event + ".json"
-	print("checking file path: ", file_path)
 	if file2check.file_exists(file_path):
 		return file_path
 
@@ -113,7 +112,6 @@ func update_sprite():
 
 
 func check_special_dialog():
-	print("checking special dialogue")
 	if Global.first_lab_visit and npc_handle == "professor":
 		$Interactable.set_new_info(true)
 		return

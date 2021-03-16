@@ -11,6 +11,7 @@ var new_infections := 0
 var total_infections := 1
 var visuals_on := true
 var cookies := 0
+var pets_given := 0
 var total_population := 0
 
 # Event flags
@@ -90,6 +91,7 @@ func restart_game(boolean):
 	conversations_had = 0
 	songs_sung = 0
 	cookies = 0
+	pets_given = 0
 	helmet_mandate = false
 	essential_workers = false
 	Logger.reset()

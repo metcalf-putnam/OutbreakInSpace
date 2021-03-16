@@ -75,6 +75,7 @@ func populate_stats():
 	add_formatted_stat("songs sung", Global.songs_sung)
 	add_formatted_stat("conversations had", Global.conversations_had)
 	add_formatted_stat("cookies eaten", Global.cookies)
+	add_formatted_stat("pets given", Global.pets_given)
 
 
 func add_formatted_stat(name, value):

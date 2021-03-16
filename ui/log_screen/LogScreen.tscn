@@ -45,7 +45,7 @@ tracks/1/keys = {
 }
 
 [node name="LogScreen" type="NinePatchRect"]
-pause_mode = 2
+pause_mode = 1
 self_modulate = Color( 0.372549, 0.337255, 0.337255, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0

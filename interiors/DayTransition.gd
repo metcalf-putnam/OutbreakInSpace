@@ -8,6 +8,7 @@ onready var subtitle = $Subtitle
 onready var overload_reminder = $OverlordReminder
 onready var anim = $AnimationPlayer
 
+signal day_transitioned
 
 func show_transition():
 	#	get day transition details containing title and subtitle
@@ -22,5 +23,6 @@ func show_transition():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	Global.day_transitioned = true
+	emit_signal("day_transitioned")
 	queue_free()
 	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://interiors/Housescene.gd" type="Script" id=1]
 [ext_resource path="res://interiors/Player_Indoor_House_Tiles.png" type="Texture" id=2]
@@ -13,6 +13,9 @@
 [ext_resource path="res://characters/pet/pet.tscn" type="PackedScene" id=11]
 [ext_resource path="res://ui/test_ui/test_menu.tscn" type="PackedScene" id=12]
 [ext_resource path="res://interiors/DayTransition.tscn" type="PackedScene" id=13]
+[ext_resource path="res://ui/log_screen/LogScreen.gd" type="Script" id=14]
+[ext_resource path="res://dialog/menu_section_9patch.png" type="Texture" id=15]
+[ext_resource path="res://ui/log_screen/LogScreen.tscn" type="PackedScene" id=16]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -127,6 +130,25 @@ shape = SubResource( 5 )
 [node name="Dialogue" parent="CanvasLayer" instance=ExtResource( 9 )]
 
 [node name="NinePatchRect" parent="CanvasLayer" instance=ExtResource( 12 )]
+
+[node name="LogScreen" type="NinePatchRect" parent="CanvasLayer" instance=ExtResource( 16 )]
+pause_mode = 2
+visible = false
+self_modulate = Color( 0.372549, 0.337255, 0.337255, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 521.0
+margin_top = 600.0
+margin_bottom = 170.0
+texture = ExtResource( 15 )
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Overlay" parent="." instance=ExtResource( 10 )]
 

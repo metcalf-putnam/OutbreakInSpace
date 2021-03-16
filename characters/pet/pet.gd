@@ -10,3 +10,4 @@ func interact():
 	$Emote.emote("happy")
 	$AudioStreamPlayer.play()
 	$Control.hide()
+	Logger.create_log_for("Pet", Logger.LOG_TYPE.PET_INTERACTION)

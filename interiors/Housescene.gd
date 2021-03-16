@@ -15,8 +15,13 @@ func _ready():
 
 	$Player.speed = 50
 	
+	
 	if not Global.day_transitioned:
 		$DayTransition.show_transition()
+	else:
+		$CanvasLayer/LogScreen.visible = true
+		
+	$DayTransition.connect("day_transitioned", self, "_on_day_transitioned")
 
 
 func _on_tv_interaction(status):
@@ -38,6 +43,6 @@ func _on_computer_interaction():
 func _on_pet_interaction():
 	print("pet")
 
-
-
+func _on_day_transitioned():
+	$CanvasLayer/LogScreen.visible = true
 
